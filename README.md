@@ -1,2 +1,3 @@
 # G14-ProjectDastarkhwan
-Course Project CS-360,A web application, which allows Restaurants and Generic User Donors to Donate Food to NGO 
+Course Project for CS-360 (software engineering),A web application, which allows Restaurants and Generic User Donors to Donate Food to NGO 
+Sprint link:
