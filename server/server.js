@@ -6,6 +6,6 @@ import connectDB from "./config/db";
 dotenv.config({path : "/Users/emaanmujahid/Desktop/G14-ProjectDastarkhwan/server/config/config.env"});
 connectDB();
 
-app.listen(8080, () =>{
+app.listen(process.env.PORT, () =>{
     console.log(`server is running at port ${process.env.PORT}`)
 });
