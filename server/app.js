@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from 'body-parser';
-import mongoose from "mongoose";
+import admin from "./routes/adminRoutes";
+
 const app = express();
 
 // // Init an Express App. 
@@ -16,5 +17,6 @@ app.get("/", (req, res) => {
    });
 });
 
+app.use("/api/v1", admin);
 
 export default app;

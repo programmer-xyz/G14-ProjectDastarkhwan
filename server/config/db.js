@@ -6,10 +6,8 @@ const connectDB = () =>{
         useUnifiedTopology: true
       }).then( (data) =>{
         console.log(`db server connected: ${data.connection.host}`);
-    }).catch((err) =>{console.log(`db not connected`)});
+    }).catch((err) =>{console.log(`db not connected \n ${err}`)});
 }
-const hel = () =>{
-    console.log("HELL");
-}
+
 
 export default connectDB;
