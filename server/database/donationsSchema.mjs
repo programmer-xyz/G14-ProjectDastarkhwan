@@ -1,11 +1,5 @@
 import mongoose from "mongoose";
 const {Schema} = mongoose;
-import dotenv from "dotenv";
-
-dotenv.config({debug:true,path:"./../.env"});
-
-mongoose.connect(process.env.DB_HOST,{useNewUrlParser:true});
-
 
 const donationSchema = new mongoose.Schema({
     donatedByUser:{type:Schema.Types.ObjectId,'ref':'user'},
@@ -21,28 +15,7 @@ const donationSchema = new mongoose.Schema({
     subscriptionId:{type:Schema.Types.ObjectId,'ref':'subscription'}
 });
 
-const donation = mongoose.model("donation",donationSchema);
+const donation = mongoose.model("Donation",donationSchema);
 
-// const donationOne = new donation({
-//     donatedBy:"6231b87f553cceae2b149f35",
-//     acceptedBy:"6231bffdb458bc574a965886",
-//     typeOfDonation:"Monetary",
-//     donataionComplete:true,
-//     amount:1000,
-//     isActive:true,
-//     createdAt:Date.now(),
-//     subscriptionId:"6231c108a51648a46d8e3960"
-// });
 
-// donationOne.save((err)=>{
-//     if(err)
-//     {
-//         console.log("Error came up while inserting into donationOne");
-//     }
-//     else
-//     {
-//         mongoose.connection.close();
-//     }
-// });
-
-export default {donationSchema};
+export default donation;
