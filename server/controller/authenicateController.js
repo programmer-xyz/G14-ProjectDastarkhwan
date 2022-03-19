@@ -1,4 +1,4 @@
-import Admin from "../models/admin";
+import Admin from "../models/adminSchema.mjs";
 
 
 //test func 

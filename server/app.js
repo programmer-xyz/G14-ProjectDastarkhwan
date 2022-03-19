@@ -11,12 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-app.get("/", (req, res) => {
-   res.status(200).json({
-      status: "Server Run successfully"
-   });
-});
-
+//admin
 app.use("/api/v1", admin);
 
 export default app;
