@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from 'body-parser';
 import admin from "./routes/adminRoutes";
 import midErr from "./middleware/basicErr";
+import ngo from "./routes/ngoRoutes";
 
 const app = express();
 
@@ -14,7 +15,7 @@ app.use(bodyParser.json());
 
 //admin
 app.use("/api/v1", admin);
-
+app.use("/api/v1", ngo);
 
 ///middleware err
 app.use(midErr);

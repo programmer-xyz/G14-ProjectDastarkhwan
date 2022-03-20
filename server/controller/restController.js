@@ -1,17 +1,17 @@
-import Ngo from "../models/ngoSchema.mjs";
+import Rest from "../models/restuarauntSchema.mjs";
 import { handleAsyncErr } from "../middleware/handleAsyncErr.js";
 import bcrypt from "bcrypt";
 import HandErr from "../utils/err.js";
 
 //login 
-export const ngoLogin =  handleAsyncErr(async (req,res, next) =>{
+export const restLogin =  handleAsyncErr(async (req,res, next) =>{
     const {userName, password} = req.body;
 
     if(!userName || !password){
        
         return next(new HandErr("userName or password missing", 400))
     }
-    const user = await Ngo.findOne({userName}); //.select("+password");
+    const user = await Rest.findOne({userName}); //.select("+password");
     let pw = user.password;
 
     if(!user){
@@ -34,7 +34,7 @@ export const ngoLogin =  handleAsyncErr(async (req,res, next) =>{
     
 });
 
-export const ngoRegister = handleAsyncErr(async (req, res, next) =>{
+export const restRegister = handleAsyncErr(async (req, res, next) =>{
     const {name, email, phoneNumber, password, address,description, contactNum, contactName, contactEmail, accountNum, VerifiDoc} = req.body;
 
 });
