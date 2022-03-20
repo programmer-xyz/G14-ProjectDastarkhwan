@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from 'body-parser';
 import admin from "./routes/adminRoutes";
+import midErr from "./middleware/basicErr";
 
 const app = express();
 
@@ -13,5 +14,9 @@ app.use(bodyParser.json());
 
 //admin
 app.use("/api/v1", admin);
+
+
+///middleware err
+app.use(midErr);
 
 export default app;
