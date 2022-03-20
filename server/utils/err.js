@@ -1,3 +1,4 @@
+//this class handles all potential errors just add msg and status in constructor
 class HandErr extends Error{
     constructor(message, statusCode){
         super(message);
