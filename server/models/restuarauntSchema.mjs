@@ -11,7 +11,7 @@ const resturantSchema = new mongoose.Schema({
     createdAt:{type:Date, default:Date.now},
     lastUpdatedAt:{type:Date,default:Date.now},
     password:{type:String,required:true},
-    bio:{type:String,required:true},
+    description:{type:String,required:true},
     phoneNumber:{type:String,required:true},
     contactEmail:{type:String,required:true},
     contactNumber:{type:String,required:true},
