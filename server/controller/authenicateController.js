@@ -60,42 +60,45 @@ export const approvePost = handleAsyncErr(async(req, res, next) =>{
     if(appObj.approved == true || appObj.approvalStatus== "rejected"||  appObj.approvalStatus == "approved" || !appObj.isActive){
         return next(new HandErr("Cannot update application expired or already approved", 400))
     }
-    const appObjNew = await application.findOneAndUpdate({email}, {approved: true, approvalStatus:"approved", isActive:false});
+    
+    console.log(appObj);
 
-    if(appObjNew.accountType == "restaurant"){
+    if(appObj.accountType == "restaurant"){
         const restObj = await restaurant.create({
-            name: appObjNew.name, 
-            email: appObjNew.email, 
-            phoneNumber: appObjNew.phoneNumber, 
-            password: appObjNew.password , 
-            //address: address,
-            description: appObjNew.description, 
-            userName : appObjNew.userName,
-            contactNumber: appObjNew.contactNum, 
-            contactName: appObjNew.contactName, 
-            contactEmail: appObjNew.email,
+            name: appObj.name, 
+            email: appObj.email, 
+            phoneNumber: appObj.phoneNumber, 
+            password: appObj.password , 
+            address: appObj.address,
+            description: appObj.description, 
+            userName : appObj.userName,
+            contactNumber: appObj.contactNumber, 
+            contactName: appObj.contactName, 
+            contactEmail: appObj.email,
             mealsDonated: 0,
-            applicationId: appObjNew._id
+            applicationId: appObj._id
         });
     }
-    else if (appObjNew.accountType == "ngo"){
+    else if (appObj.accountType == "ngo"){
         const ngoObj = await ngo.create({
-            name: appObjNew.name, 
-            email: appObjNew.email, 
-            phoneNumber: appObjNew.phoneNumber, 
-            password: appObjNew.password , 
-            address: appObjNew.address,
-            description: appObjNew.description, 
-            userName : appObjNew.userName,
-            contactNumber: appObjNew.contactNum, 
-            contactName: appObjNew.contactName, 
-            contactEmail: appObjNew.email,
+            name: appObj.name, 
+            email: appObj.email, 
+            phoneNumber: appObj.phoneNumber, 
+            password: appObj.password , 
+            address: appObj.address,
+            description: appObj.description, 
+            userName : appObj.userName,
+            contactNumber: appObj.contactNumber, 
+            contactName: appObj.contactName, 
+            contactEmail: appObj.email,
             mealsAccepted: 0,
             monetaryFundsAccepted:0,
             rationAccepted:0,
-            applicationId: appObjNew._id
+            applicationId: appObj._id
         });
     }
+    const appObjNew = await application.findOneAndUpdate({email}, {approved: true, approvalStatus:"approved", isActive:false});
+
     res.status(200).json({
         success: true,
         message: "user account approved",
