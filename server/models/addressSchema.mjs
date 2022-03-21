@@ -7,7 +7,8 @@ const addressSchema = new mongoose.Schema({
     streetNumber:{type:String,required:true},
     houseNumber:{type:String,required:true}
 });
-const address = mongoose.model("Address",addressSchema);
+//const address = mongoose.model("Address",addressSchema);
 
 
-export default address;
+//export default address;
+export default addressSchema;

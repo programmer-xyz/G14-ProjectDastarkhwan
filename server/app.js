@@ -1,6 +1,9 @@
 import express from "express";
 import bodyParser from 'body-parser';
 import admin from "./routes/adminRoutes";
+import midErr from "./middleware/basicErr";
+import ngo from "./routes/ngoRoutes";
+import rest from "./routes/restRoutes";
 
 const app = express();
 
@@ -13,5 +16,10 @@ app.use(bodyParser.json());
 
 //admin
 app.use("/api/v1", admin);
+app.use("/api/v1", ngo);
+app.use("/api/v1", rest);
+
+///middleware err this must always be at the end 
+app.use(midErr);
 
 export default app;
