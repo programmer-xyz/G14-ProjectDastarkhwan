@@ -51,7 +51,6 @@ export const restRegister = handleAsyncErr(async (req, res, next) =>{
     let pw = await bcrypt.hash(password, 12);
     //console.log(address);
   
- 
     const restApp = await application.create({
         name: name, 
         email: email, 

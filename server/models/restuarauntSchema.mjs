@@ -6,7 +6,7 @@ const resturantSchema = new mongoose.Schema({
     name:{type:String,required:true},
     userName:{type:String,required:true},
     email:{type:String,required:true,unique:true},
-    address:{type:addressSchema,required:true},
+    address:{type:addressSchema},//required:true},
     isActive:{type:Boolean,default:false},
     createdAt:{type:Date, default:Date.now},
     lastUpdatedAt:{type:Date,default:Date.now},

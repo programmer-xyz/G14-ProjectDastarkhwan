@@ -1,4 +1,7 @@
 import Admin from "../models/adminSchema.mjs";
+import application from "../models/applicationSchema.mjs";
+import restaurant from "../models/restuarauntSchema.mjs";
+import ngo from "../models/ngoSchema.mjs";
 import HandErr from "../utils/err.js";
 import { handleAsyncErr } from "../middleware/handleAsyncErr.js";
 import bcrypt from "bcrypt";
@@ -48,6 +51,58 @@ export const adminLogin = handleAsyncErr(async (req,res, next) =>{
         return next(new HandErr("Password entered wrong", 401));
     }
     
+});
+
+//admin approve post
+export const approvePost = handleAsyncErr(async(req, res, next) =>{
+    const email = req.body.email;
+    const appObj = await application.findOne({email});
+    if(appObj.approved == true || appObj.approvalStatus== "rejected"||  appObj.approvalStatus == "approved" || !appObj.isActive){
+        return next(new HandErr("Cannot update application expired or already approved", 400))
+    }
+    const appObjNew = await application.findOneAndUpdate({email}, {approved: true, approvalStatus:"approved", isActive:false});
+
+    if(appObjNew.accountType == "restaurant"){
+        const restObj = await restaurant.create({
+            name: appObjNew.name, 
+            email: appObjNew.email, 
+            phoneNumber: appObjNew.phoneNumber, 
+            password: appObjNew.password , 
+            //address: address,
+            description: appObjNew.description, 
+            userName : appObjNew.userName,
+            contactNumber: appObjNew.contactNum, 
+            contactName: appObjNew.contactName, 
+            contactEmail: appObjNew.email,
+            mealsDonated: 0,
+            bio: "",
+            applicationId: appObjNew._id
+        });
+    }
+    else if (appObjNew.accountType == "ngo"){
+        const ngoObj = await ngo.create({
+            name: appObjNew.name, 
+            email: appObjNew.email, 
+            phoneNumber: appObjNew.phoneNumber, 
+            password: appObjNew.password , 
+            //address: address,
+            description: appObjNew.description, 
+            userName : appObjNew.userName,
+            contactNumber: appObjNew.contactNum, 
+            contactName: appObjNew.contactName, 
+            contactEmail: appObjNew.email,
+            mealsAccepted: 0,
+            monetaryFundsAccepted:0,
+            rationAccepted:0,
+            bio: "",
+            applicationId: appObjNew._id
+        });
+    }
+    res.status(200).json({
+        success: true,
+        message: "user account approved",
+      });
+
 });
 
 

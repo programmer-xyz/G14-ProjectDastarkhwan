@@ -6,7 +6,7 @@ const ngoSchema = new mongoose.Schema({
     name:{type:String,required:true},
     email:{type:String,required:true},
     userName:{type:String,required:true},
-    address:{type:addressSchema,required:true},
+    address:{type:addressSchema}, //,required:true},
     isActive:{type:Boolean,required:true},
     createdAt:{type:Date,default:Date.now},
     lastUpdated:{type:Date,default:Date.now},
