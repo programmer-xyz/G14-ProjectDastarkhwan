@@ -36,10 +36,10 @@ export const restLogin =  handleAsyncErr(async (req,res, next) =>{
 });
 
 export const restRegister = handleAsyncErr(async (req, res, next) =>{
-    const {name, email, phoneNumber, password,description, contactNum, contactName, contactEmail, userName} = req.body;
+    const {name, email, phoneNumber, password,description, contactNum, contactName, contactEmail, userName,address} = req.body;
     console.log(req.body);
     console.log(contactName);
-    if(!name || !email || !phoneNumber || !password || !description || !contactNum || !contactName || !contactEmail|| !userName){
+    if(!name || !email || !phoneNumber || !password || !description || !contactNum || !contactName || !contactEmail|| !userName || !address){
         return next(new HandErr("some fields are missing enter again!", 400))
     }
     let appUser = await application.find({email});
@@ -57,7 +57,7 @@ export const restRegister = handleAsyncErr(async (req, res, next) =>{
         email: email, 
         phoneNumber: phoneNumber, 
         password: pw , 
-        //address: address,
+        address: address,
         description: description, 
         userName : userName,
         contactNumber: contactNum, 
