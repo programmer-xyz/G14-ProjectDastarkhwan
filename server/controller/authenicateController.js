@@ -75,7 +75,6 @@ export const approvePost = handleAsyncErr(async(req, res, next) =>{
             contactName: appObjNew.contactName, 
             contactEmail: appObjNew.email,
             mealsDonated: 0,
-            bio: "",
             applicationId: appObjNew._id
         });
     }
@@ -85,7 +84,7 @@ export const approvePost = handleAsyncErr(async(req, res, next) =>{
             email: appObjNew.email, 
             phoneNumber: appObjNew.phoneNumber, 
             password: appObjNew.password , 
-            //address: address,
+            address: appObjNew.address,
             description: appObjNew.description, 
             userName : appObjNew.userName,
             contactNumber: appObjNew.contactNum, 
@@ -94,7 +93,6 @@ export const approvePost = handleAsyncErr(async(req, res, next) =>{
             mealsAccepted: 0,
             monetaryFundsAccepted:0,
             rationAccepted:0,
-            bio: "",
             applicationId: appObjNew._id
         });
     }
