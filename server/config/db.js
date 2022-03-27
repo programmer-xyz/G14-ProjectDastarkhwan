@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
+import config from "./config";
 
 const connectDB = () =>{
-    mongoose.connect(process.env.DB, {
+    mongoose.connect(config.DB, {
         useNewUrlParser: true,
         useUnifiedTopology: true
       }).then( (data) =>{
