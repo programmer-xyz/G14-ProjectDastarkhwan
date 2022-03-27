@@ -3,6 +3,7 @@ import application from "../models/applicationSchema.mjs";
 import { handleAsyncErr } from "../middleware/handleAsyncErr.js";
 import bcrypt from "bcrypt";
 import HandErr from "../utils/err.js";
+import {tokenMaker} from "../utils/tokenManager"
 
 //login 
 export const restLogin =  handleAsyncErr(async (req,res, next) =>{
@@ -23,16 +24,17 @@ export const restLogin =  handleAsyncErr(async (req,res, next) =>{
     //boolCheck = user.password == password ? true : false; //add bcrypt here
 
     if(boolCheck){
-        res.status(200).json({
-            success: true,
-            message: "user logged in",
-            user
-          });
+        tokenMaker(user, 201, res);
+        // res.status(200).json({
+        //     success: true,
+        //     message: "user logged in",
+        //     user
+        //   });
     }
     else{
         return next(new HandErr("Password entered wrong", 401));
     }
-    
+   
 });
 
 export const restRegister = handleAsyncErr(async (req, res, next) =>{
@@ -67,10 +69,11 @@ export const restRegister = handleAsyncErr(async (req, res, next) =>{
         approvalStatus: "inProgress",
         approved: false
     });
+    //tokenMaker(user, 201, res);
     res.status(200).json({
         success: true,
         message: "user added to app table",
         restApp 
       });
-       
+  
 });
