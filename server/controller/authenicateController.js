@@ -61,8 +61,6 @@ export const approvePost = handleAsyncErr(async(req, res, next) =>{
         return next(new HandErr("Cannot update application expired or already approved", 400))
     }
     
-    console.log(appObj);
-
     if(appObj.accountType == "restaurant"){
         const restObj = await restaurant.create({
             name: appObj.name, 
@@ -105,6 +103,23 @@ export const approvePost = handleAsyncErr(async(req, res, next) =>{
       });
 
 });
+
+export const rejectPost = handleAsyncErr(async(req, res, next) =>{
+    const email = req.body.email;
+    const appObj = await application.findOne({email});
+    if(appObj.approved == true || appObj.approvalStatus== "rejected"||  appObj.approvalStatus == "approved" || !appObj.isActive){
+        return next(new HandErr("Cannot update application expired or already approved", 400))
+    }
+    
+    const appObjNew = await application.findOneAndUpdate({email}, {approved: false, approvalStatus:"rejected", isActive:false});
+
+    res.status(200).json({
+        success: true,
+        message: "user account rejected",
+      });
+
+});
+
 
 
 

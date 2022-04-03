@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     address:{type:addressSchema,required:true},
     cnic:{type:String,required:true},
     phoneNumber:{type:String,required:true},
-    bio:{type:String,required:true},
+    description:{type:String,required:true},
     bankAccount:{type:String,default:null},
     mealDonated:{type:Number,required:true},
     amountDonated:{type:Number,required:true},

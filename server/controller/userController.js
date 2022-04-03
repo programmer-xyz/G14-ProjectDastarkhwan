@@ -1,19 +1,18 @@
-import Rest from "../models/restuarauntSchema.mjs";
-import application from "../models/applicationSchema.mjs";
+import User from "../models/userSchema.mjs";
 import { handleAsyncErr } from "../middleware/handleAsyncErr.js";
 import bcrypt from "bcrypt";
 import HandErr from "../utils/err.js";
 import {tokenMaker} from "../utils/tokenManager"
 
 //login 
-export const restLogin =  handleAsyncErr(async (req,res, next) =>{
+export const userLogin =  handleAsyncErr(async (req,res, next) =>{
     const {email, password} = req.body;
 
     if(!email || !password){
        
         return next(new HandErr("email or password missing", 400))
     }
-    const user = await Rest.findOne({email}); 
+    const user = await User.findOne({email}); 
     let pw = user.password;
 
     if(!user){
@@ -34,26 +33,25 @@ export const restLogin =  handleAsyncErr(async (req,res, next) =>{
     else{
         return next(new HandErr("Password entered wrong", 401));
     }
-   
+
 });
 
-export const restRegister = handleAsyncErr(async (req, res, next) =>{
-    const {name, email, phoneNumber, password,description, contactNum, contactName, contactEmail, userName,address} = req.body;
+export const userRegister = handleAsyncErr(async (req, res, next) =>{
+    const {name, email, phoneNumber, password,description,userName,address, CNIC} = req.body;
     console.log(req.body);
-    console.log(contactName);
-    if(!name || !email || !phoneNumber || !password || !description || !contactNum || !contactName || !contactEmail|| !userName || !address){
+   
+    if(!name || !email || !phoneNumber || !password || !description ||!CNIC || !userName || !address){
         return next(new HandErr("some fields are missing enter again!", 400))
     }
-    let appUser = await application.find({email});
-    let restUser = await Rest.find({email});
+    let appUser = await User.find({email});
    
-    if(appUser.length > 0 || restUser.length > 0){
+    if(appUser.length > 0){
         return next(new HandErr("user already exists", 401));
     }
     let pw = await bcrypt.hash(password, 12);
     //console.log(address);
-  
-    const restApp = await application.create({
+    
+    const userApp = await User.create({
         name: name, 
         email: email, 
         phoneNumber: phoneNumber, 
@@ -61,19 +59,17 @@ export const restRegister = handleAsyncErr(async (req, res, next) =>{
         address: address,
         description: description, 
         userName : userName,
-        contactNumber: contactNum, 
-        contactName: contactName, 
-        contactEmail: email,
         isActive: true,
-        accountType: "restaurant",
-        approvalStatus: "inProgress",
-        approved: false
+        cnic:CNIC,
+        description:description,
+        mealDonated:0,
+        amountDonated:0,
+        rationDonated:0,
     });
-    //tokenMaker(user, 201, res);
-    res.status(200).json({
-        success: true,
-        message: "user added to app table",
-        restApp 
-      });
-  
+    // res.status(200).json({
+    //     success: true,
+    //     message: "user added to app table",
+    //     restApp 
+    //   });
+      tokenMaker(userApp, 201, res);   
 });

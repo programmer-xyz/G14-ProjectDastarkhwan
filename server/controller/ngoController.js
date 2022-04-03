@@ -5,13 +5,13 @@ import HandErr from "../utils/err.js";
 
 //login 
 export const ngoLogin =  handleAsyncErr(async (req,res, next) =>{
-    const {userName, password} = req.body;
+    const {email, password} = req.body;
 
-    if(!userName || !password){
+    if(!email || !password){
        
-        return next(new HandErr("userName or password missing", 400))
+        return next(new HandErr("email or password missing", 400))
     }
-    const user = await Ngo.findOne({userName}); //.select("+password");
+    const user = await Ngo.findOne({email}); //.select("+password");
     let pw = user.password;
 
     if(!user){
@@ -38,3 +38,4 @@ export const ngoRegister = handleAsyncErr(async (req, res, next) =>{
     const {name, email, phoneNumber, password, address,description, contactNum, contactName, contactEmail, accountNum, VerifiDoc} = req.body;
 
 });
+
