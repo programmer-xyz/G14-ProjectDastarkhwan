@@ -1,11 +1,12 @@
 import jwt from "jsonwebtoken";
+import config from "../config/config";
 
 export const tokenMaker = (user, Code, res ) =>{
-    const token = jwt.sign({ id: user._id }, process.env.JWT_KEY, {
-        expiresIn: process.env.JWT_EXPIRE,
+    const token = jwt.sign({ id: user._id }, config.JWT_KEY, {
+        expiresIn: config.JWT_EXPIRE,
       });
       //conv to ms
-    let life_date = new Date(Date.now() + process.env.JWT_EXPIRE*1000)
+    let life_date = new Date(Date.now() + config.JWT_EXPIRE*1000)
     const cond = {
         httpOnly: true,
        expires: life_date
