@@ -37,22 +37,21 @@ export const userLogin =  handleAsyncErr(async (req,res, next) =>{
 });
 
 export const userRegister = handleAsyncErr(async (req, res, next) =>{
-    const {name, email, phoneNumber, password,description, contactNum, userName,address, CNIC} = req.body;
+    const {name, email, phoneNumber, password,description,userName,address, CNIC} = req.body;
     console.log(req.body);
    
-    if(!name || !email || !phoneNumber || !password || !description || !contactNum ||!CNIC || !userName || !address){
+    if(!name || !email || !phoneNumber || !password || !description ||!CNIC || !userName || !address){
         return next(new HandErr("some fields are missing enter again!", 400))
     }
-    let appUser = await application.find({email});
-    let user = await User.find({email});
+    let appUser = await User.find({email});
    
-    if(appUser.length > 0 || user.length > 0){
+    if(appUser.length > 0){
         return next(new HandErr("user already exists", 401));
     }
     let pw = await bcrypt.hash(password, 12);
     //console.log(address);
     
-    const userApp = await user.create({
+    const userApp = await User.create({
         name: name, 
         email: email, 
         phoneNumber: phoneNumber, 
@@ -60,7 +59,6 @@ export const userRegister = handleAsyncErr(async (req, res, next) =>{
         address: address,
         description: description, 
         userName : userName,
-        contactNumber: contactNum, 
         isActive: true,
         cnic:CNIC,
         description:description,
@@ -73,5 +71,5 @@ export const userRegister = handleAsyncErr(async (req, res, next) =>{
     //     message: "user added to app table",
     //     restApp 
     //   });
-      tokenMaker(user, 201, res);   
+      tokenMaker(userApp, 201, res);   
 });

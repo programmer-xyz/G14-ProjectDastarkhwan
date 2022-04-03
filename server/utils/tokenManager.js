@@ -5,7 +5,7 @@ export const tokenMaker = (user, Code, res ) =>{
         expiresIn: process.env.JWT_EXPIRE,
       });
       //conv to ms
-    let life_date = new Date(Date.now() + process.env.JWT_EXPIRE*24 *60 *60 *1000)
+    let life_date = new Date(Date.now() + process.env.JWT_EXPIRE*1000)
     const cond = {
         httpOnly: true,
        expires: life_date
@@ -18,3 +18,5 @@ export const tokenMaker = (user, Code, res ) =>{
       });
     
 }
+
+
