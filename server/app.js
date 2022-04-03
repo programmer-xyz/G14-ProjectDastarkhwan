@@ -1,9 +1,9 @@
 import express from "express";
 import bodyParser from 'body-parser';
-import admin from "./routes/adminRoutes";
-import midErr from "./middleware/basicErr";
-import ngo from "./routes/ngoRoutes";
-import rest from "./routes/restRoutes";
+import admin from "./routes/adminRoutes.js";
+import midErr from "./middleware/basicErr.js";
+import ngo from "./routes/ngoRoutes.js";
+import rest from "./routes/restRoutes.js";
 
 const app = express();
 

@@ -1,6 +1,6 @@
-import app from "./app";
-import connectDB from "./config/db";
-import config from './config/config.js'
+import app from "./app.js";
+import connectDB from "./config/db.js";
+import config from "./config/config.js";
 
 //configure env file
 //dotenv.config({path : "/Users/emaanmujahid/Desktop/G14-ProjectDastarkhwan/server/config/config.env"});
