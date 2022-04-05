@@ -6,7 +6,7 @@ import ngo from "./routes/ngoRoutes";
 import rest from "./routes/restRoutes";
 import user from "./routes/userRoutes"
 import cookieParser from "cookie-parser";
-
+import { rejectApplication } from "./backgroundTask/autoRejectJob";
 const app = express();
 
 // // Init an Express App. 
@@ -23,5 +23,8 @@ app.use("/api/v1", user);
 app.use("/api/v1", rest);
 ///middleware err this must always be at the end 
 app.use(midErr);
+
+//background task called
+rejectApplication();
 
 export default app;
