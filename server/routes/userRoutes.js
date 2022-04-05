@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {userLogin, userRegister,forgetPassCheckUser,forgetPassUpdateUser,changePassUser, mealDonation} from "../controller/userController";
+import {userLogin, userRegister,forgetPassCheckUser,forgetPassUpdateUser,changePassUser, mealDonation, rationDonation} from "../controller/userController";
 
 const router = Router();
 
@@ -10,5 +10,6 @@ router.route("/userForgetPassV").post(forgetPassCheckUser);
 router.route("/userForgetPassU").post(forgetPassUpdateUser);
 router.route("/userChangePass").post(changePassUser);
 router.route("/userMealDonation").post(mealDonation);
+router.route("/userMealDonation").post(rationDonation);
 
 export default router;

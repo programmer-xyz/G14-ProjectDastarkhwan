@@ -182,3 +182,36 @@ export const mealDonation = handleAsyncErr(async (req,res,next) =>{
         donation
       });
 })
+
+export const rationDonation = handleAsyncErr(async (req,res,next) =>{
+    //user email and selected ngo will be sent from frontend
+    const {address, description, image, email, ngoIdentifier} = req.body;
+    console.log(req.body)
+    if( !address|| !description||!image){
+        return next(new HandErr("some fields are missing", 401))
+    }
+    const userDonor = await User.findOne({email:email})
+    let md = userDonor.mealDonated
+    User.updateOne({email:email}, {mealDonated: md + 1})
+   
+    const ngoSelected = await Ngo.findOne({email:ngoIdentifier})
+    
+    if(!ngoSelected.isActive){
+        return next(new HandErr("Ngo is inactive", 401))
+    }
+    const donation = Donation.create({
+        donatedByUser: userDonor._id,
+        acceptedBy: ngoSelected._id,
+        typeOfDonation:"ration",
+        donataionComplete:false,
+        amount:1,
+        image:image,
+        address: address
+    });
+
+    res.status(200).json({
+        success: true,
+        message: "donation made to ngo",
+        donation
+      });
+})
