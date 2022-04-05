@@ -30,7 +30,8 @@ export const userLogin =  handleAsyncErr(async (req,res, next) =>{
         //     user
         //   });
     }
-    else{
+    else
+    {
         return next(new HandErr("Password entered wrong", 401));
     }
 
@@ -72,4 +73,75 @@ export const userRegister = handleAsyncErr(async (req, res, next) =>{
     //     restApp 
     //   });
       tokenMaker(userApp, 201, res);   
+});
+
+export const forgetPassCheckUser = handleAsyncErr(async(req,res,next)=>{
+    const {email} = req.body;
+    if (!email)
+    {
+        return next(new HandErr("email address was not found",400));
+    }
+    
+    // here we will first find the user 
+    const userobj = await User.findOne({email});
+    console.log(userobj);
+    if (!userobj)
+    {
+        return next(new HandErr("No user found with the specific email",401))
+    }
+    else
+    {
+        res.send({
+            success : true,
+            message:"user found",
+        });
+    }
+    
+});
+
+export const forgetPassUpdateUser = handleAsyncErr(async(req,res,next)=>{
+    const {email,newPassword} = req.body;
+    if (!email || !newPassword)
+    {
+        return next(new HandErr("email or new Password is missing",400));
+    }
+    let filter = {email:email};
+    let hashPass = await bcrypt.hash(newPassword,12);
+    let update = {password:hashPass};
+    let updatedNgo = await User.findOneAndUpdate(filter,update);
+    if (updatedNgo)
+    {
+        res.status(200).json({
+            success:true,
+            message:"Successfully updated password"
+        });
+    }
+    else
+    {
+        return next(new HandErr("Error while updating the password",401));
+    }
+});
+
+export const changePassUser = handleAsyncErr(async(req,res,next)=>{
+    const {email,newPassword} = req.body;
+    if (!email || !newPassword)
+    {
+        return next(new HandErr("email or password is missing",400));
+    }
+    let filter = {email:email};
+    let hashPass = await bcrypt.hash(newPassword,12);
+    let update = {password:hashPass};
+    let updatedUser = await User.findOneAndUpdate(filter,update,{new:true});
+    // console.log(updatedUser);
+    if (updatedUser)
+    {
+        res.status(200).json({
+            success:true,
+            message:"Successfully updated password"
+        });
+    }
+    else
+    {
+        return next(new HandErr("Error while updating the password",401));
+    }
 });
