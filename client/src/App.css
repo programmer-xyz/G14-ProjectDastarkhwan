@@ -7,11 +7,11 @@ body {
 .left-container {
   align-items: center;
   top: 0px;
-  float: left;
   left: -1px;
-  width: 760px;
+  width: 500px;
   height: 900px;
   background: #FEFEFE 0% 0% no-repeat padding-box;
+  float:left; 
   opacity: 1;
   overflow: hidden;
 }
@@ -35,32 +35,72 @@ input[type=text] {
 
 .right-container {
   top: 0px;
-  float: right;
   left: 760px;
-  width: 680px;
+  width: 900px;
   height: 900px;
+  float:right;
   background: #FFE5A5 0% 0% no-repeat padding-box;
-  opacity: 0.44;
 }
 
+.heading1{
+  color:#264653;
+  position: absolute;
+  font: normal normal normal 40px/21px Poppins;
+  top: 111px;
+  left: 1225px;
+}
+.paragraph1{
+  color:#264653;
+  position: absolute;
+  font: normal normal normal 34px/21px Poppins;
+  top: 165px;
+  left: 1260px;
+}
+.image{
+  top: 345px;
+  left: 1200px;
+  position:absolute;
+  background: transparent 0% no-repeat padding-box;;
+}
 .content {
-  display: flex;
+  top: 340px;
+  left: 10px;
+  right:1000px;
+  width: 450px;
+  height: 54px;
+  display: inline;
   justify-content: center;
-  align-items: center;
   margin: 5% auto;
-  transform: translateX(100%);
   position: absolute;
 }
+.heading{
+  position: absolute;
+  font: normal normal normal 32px/21px Poppins;
+  color: #264653;
+  top: 166px;
+  left:255px;
 
+}
+.paragraph{
+  position: absolute;
+  font: normal normal normal 18px/21px Poppins;
+  color: #264653;
+  top: 230px;
+  left:255px;
+}
 .btn-box {
-  display: flex;
-  border-bottom: 1px solid #ccc;
+  top: 340px;
+  left: 255px;
+  display: inline;
+  border-bottom: 1px solid #E4BF68;
+  opacity: 1;
+  position:absolute;
 }
 
 .btn-box button {
-  font: normal normal normal 14px/21px Poppins;
-  background: transparent;
-  border:none;
+  top: 383px;
+  left: 10px;
+  right:1200px;
   outline:none;
   cursor:pointer;
   padding: 14px 16px;
@@ -114,12 +154,24 @@ input[type=text] {
 .App-link {
   color: #61dafb;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Orangebutton{
+  color:#E76F51;
+  font: normal normal normal 14px/21px Poppins;
+  background: transparent;
+  border-top: none;
+  border-left:none;
+  border-right:none;
+  border-bottom:3px solid #E76F51;
+  opacity: 1;
+  ;
+}
+.greyButton
+{
+  color:#26465399;
+  border-bottom:10px #26465399;
+  font: normal normal normal 14px/21px Poppins;
+  background: transparent;
+  border-top: none;
+  border-left:none;
+  border-right:none;
 }
