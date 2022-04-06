@@ -145,3 +145,48 @@ export const changePassUser = handleAsyncErr(async(req,res,next)=>{
         return next(new HandErr("Error while updating the password",401));
     }
 });
+//view account profile for actor user
+export const viewUserProfile = handleAsyncErr(async (req,res,next)=>
+{
+    let {email} = req.body
+    if(!email)
+    {
+        return next(new HandErr("email is missing",400));
+    }
+    let user = await User.findOne({'email':email, 'isActive':true},{password:0});
+    console.log(user)
+    if(!!user)
+    {
+        res.status(200).json({
+            success:true,
+            message:"Successfully found user profile",
+            body: user
+        });
+    }
+    else
+    {
+        return next(new HandErr("user profile not found or account is no longer active",400));
+    }
+});
+//view account stats for actor user
+export const viewUserStats = handleAsyncErr(async (req,res,next)=>
+{
+    let {email} = req.body
+    if(!email)
+    {
+        return next(new HandErr("email is missing",400));
+    }
+    let userStats = await User.findOne({'email':email, 'isActive':true},{"mealDonated":1, "rationDonated":1, "amountDonated":1});
+    if(!!userStats)
+    {
+        res.status(200).json({
+            success:true,
+            message:"Successfully found user stats",
+            body: userStats
+        });
+    }
+    else
+    {
+        return next(new HandErr("user not found",400));
+    }
+});

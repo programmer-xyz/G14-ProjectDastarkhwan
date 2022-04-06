@@ -149,3 +149,4 @@ export const changePassRes = handleAsyncErr(async(req,res,next)=>{
         return next(new HandErr("Error while updating the password",401));
     }
 });
+//profile
