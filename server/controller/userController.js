@@ -176,14 +176,13 @@ export const viewUserStats = handleAsyncErr(async (req,res,next)=>
     {
         return next(new HandErr("email is missing",400));
     }
-    let user = await User.findOne({'email':email, 'isActive':true},{"mealDonated":1, "rationDonated":1, "amountDonated":1});
-    console.log(user)
-    if(!!user)
+    let userStats = await User.findOne({'email':email, 'isActive':true},{"mealDonated":1, "rationDonated":1, "amountDonated":1});
+    if(!!userStats)
     {
         res.status(200).json({
             success:true,
             message:"Successfully found user stats",
-            body: user
+            body: userStats
         });
     }
     else
