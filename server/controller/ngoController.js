@@ -41,20 +41,19 @@ export const ngoLogin =  handleAsyncErr(async (req,res, next) =>{
 });
 
 export const ngoRegister = handleAsyncErr(async (req, res, next) =>{
-    const {name, email, phoneNumber, password, address,description, contactNum, contactName, contactEmail, accountNum, VerifiDoc, userName} = req.body;
-    
-    if(!name || !email || !phoneNumber || !password || !description || !contactNum || !contactName || !contactEmail|| !userName || !address|| !accountNum || !VerifiDoc){
+    let {name, email, phoneNumber, password, address,description, contactNum, contactName, contactEmail, accountNum, userName} = req.body;
+    if(!name || !email || !phoneNumber || !password || !description || !contactNum || !contactName || !contactEmail|| !userName || !address|| !accountNum){
         return next(new HandErr("some fields are missing enter again!", 400))
     }
     let appUser = await application.find({email});
     let restUser = await Ngo.find({email});
-   
+    address = JSON.parse(address)
     if(appUser.length > 0 || restUser.length > 0){
         return next(new HandErr("user already exists", 401));
     }
     let pw = await bcrypt.hash(password, 12);
-    //console.log(address);
-  
+    console.log(address);
+    console.log(req.file)
     const restApp = await application.create({
         name: name, 
         email: email, 
@@ -70,15 +69,15 @@ export const ngoRegister = handleAsyncErr(async (req, res, next) =>{
         accountType: "ngo",
         approvalStatus: "inProgress",
         approved: false,
-        registerationDoc:VerifiDoc,
+        registerationDoc:req.file.buffer,
         bankAccount:accountNum
     });
-    tokenMaker(user, 201, res);
-    // res.status(200).json({
-    //     success: true,
-    //     message: "user added to app table",
-    //     restApp 
-    //   });
+    //tokenMaker(user, 201, res);
+    res.status(200).json({
+        success: true,
+        message: "user added to app table",
+        restApp 
+      });
     
 });
 

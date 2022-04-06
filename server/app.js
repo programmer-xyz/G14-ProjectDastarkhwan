@@ -6,14 +6,19 @@ import ngo from "./routes/ngoRoutes";
 import rest from "./routes/restRoutes";
 import user from "./routes/userRoutes"
 import cookieParser from "cookie-parser";
+import multer from 'multer';
+// var form = multer()
 
 const app = express();
 
 // // Init an Express App. 
 // // Use your dependencies here
 // // use all controllers(APIs) here
-app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(form.array());
+// app.use(express.static('public'))
 app.use(cookieParser());
 
 //admin
