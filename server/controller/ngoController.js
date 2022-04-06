@@ -132,7 +132,7 @@ export const viewNgoProfile = handleAsyncErr(async (req,res,next)=>
     }
     else
     {
-        return next(new HandErr("resturant profile not found or account is no longer active",400));
+        return next(new HandErr("Ngo profile not found or account is no longer active",400));
     }
 });
 //view account stats for actor Ngo
@@ -155,5 +155,51 @@ export const viewNgoStats = handleAsyncErr(async (req,res,next)=>
     else
     {
         return next(new HandErr("resturant not found",400));
+    }
+});
+
+export const deleteProfile = handleAsyncErr(async (req,res,next)=>
+{
+    let {email,password} = req.body;
+    if(!!email && !!password)
+    {
+        let ngoProfile = await Ngo.findOne({'email':email, 'isActive': true});
+        if(!!ngoProfile)
+        {
+            let bit = await bcrypt.compare(password,ngoProfile.password);
+            if(bit)
+            {
+                let updateResponse = await Ngo.updateOne({'email':email, 'isActive': true},{'isActive':false, 'lastUpdated':Date.now()});
+                if(updateResponse.modifiedCount===0)
+                {
+                    res.status(200).json({
+                        success:false,
+                        message:"Ngo account couldn't be deleted",
+                    });
+                }
+                else
+                {
+                    res.status(200).json({
+                        success:true,
+                        message:"Ngo account deleted",
+                    });
+                }
+            }
+            else
+            {
+                res.status(200).json({
+                    success:false,
+                    message:"Incorrect password",
+                });
+            }
+        }
+        else
+        {
+            return next(new HandErr("Ngo profile not found or account is no longer active",400));
+        }
+    } 
+    else
+    {
+        return next(new HandErr("Error as email or password is missing",401));
     }
 });
