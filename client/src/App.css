@@ -1,3 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+  background: #FEFEFE 0% 0% no-repeat padding-box;
+}
+
+.left-container {
+  align-items: center;
+  top: 0px;
+  float: left;
+  left: -1px;
+  width: 760px;
+  height: 900px;
+  background: #FEFEFE 0% 0% no-repeat padding-box;
+  opacity: 1;
+  overflow: hidden;
+}
+
+input[type=text] {
+  top: 383px;
+  left: 142px;
+  width: 435px;
+  height: 54px;
+  font: normal normal normal 14px/21px Poppins;
+  text-align: left;
+  padding-left: 15px;
+  vertical-align: middle;
+  letter-spacing: -0.66px;
+  color: #838E94;
+  border: none;
+  background: #FFF4D7 0% 0% no-repeat padding-box;
+  border-radius: 10px;
+  opacity: 0.55;
+}
+
+.right-container {
+  top: 0px;
+  float: right;
+  left: 760px;
+  width: 680px;
+  height: 900px;
+  background: #FFE5A5 0% 0% no-repeat padding-box;
+  opacity: 0.44;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5% auto;
+  transform: translateX(100%);
+  position: absolute;
+}
+
+.btn-box {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+
+.btn-box button {
+  font: normal normal normal 14px/21px Poppins;
+  background: transparent;
+  border:none;
+  outline:none;
+  cursor:pointer;
+  padding: 14px 16px;
+  margin-right: 50px;
+  font-size:20px;
+} 
+
+.sign-in {
+  width: 450px;
+  height: 54px;
+  background: #264653 0% 0% no-repeat padding-box;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  opacity: 1;
+  align-items: center;
+  font: normal normal 600 16px/25px Poppins;
+  color: #FFFFFF;
+}
+
 .App {
   text-align: center;
 }
@@ -14,7 +97,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #FFFFFF;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,6 +105,10 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.wrapper { 
+  width: 100%
 }
 
 .App-link {
