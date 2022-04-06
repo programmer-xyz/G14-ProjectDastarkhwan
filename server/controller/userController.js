@@ -145,7 +145,7 @@ export const changePassUser = handleAsyncErr(async(req,res,next)=>{
         return next(new HandErr("Error while updating the password",401));
     }
 });
-
+//view account profile for actor user
 export const viewUserProfile = handleAsyncErr(async (req,res,next)=>
 {
     let {email} = req.body
@@ -168,7 +168,7 @@ export const viewUserProfile = handleAsyncErr(async (req,res,next)=>
         return next(new HandErr("user profile not found or account is no longer active",400));
     }
 });
-
+//view account stats for actor user
 export const viewUserStats = handleAsyncErr(async (req,res,next)=>
 {
     let {email} = req.body
