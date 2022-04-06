@@ -25,6 +25,6 @@ app.use("/api/v1", rest);
 app.use(midErr);
 
 //background task called
-rejectApplication();
+//rejectApplication();
 
 export default app;

@@ -153,11 +153,13 @@ export const changePassRes = handleAsyncErr(async(req,res,next)=>{
 export const viewRestProfile = handleAsyncErr(async (req,res,next)=>
 {
     let {email} = req.body
+    console.log(email)
     if(!email)
     {
         return next(new HandErr("email is missing",400));
     }
     let restProfile = await Rest.findOne({'email':email, 'isActive':true},{password:0});
+    console.log(restProfile)
     if(!!restProfile)
     {
         res.status(200).json({
