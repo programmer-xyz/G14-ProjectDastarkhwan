@@ -1,8 +1,11 @@
 import User from "../models/userSchema.mjs";
+import Donation from "../models/donationsSchema.mjs";
+import Ngo from "../models/ngoSchema.mjs"
 import { handleAsyncErr } from "../middleware/handleAsyncErr.js";
 import bcrypt from "bcrypt";
 import HandErr from "../utils/err.js";
 import {tokenMaker} from "../utils/tokenManager"
+import mongoose from "mongoose";
 
 //login 
 export const userLogin =  handleAsyncErr(async (req,res, next) =>{
@@ -18,6 +21,9 @@ export const userLogin =  handleAsyncErr(async (req,res, next) =>{
     if(!user){
        
         return next(new HandErr("Wrong email or password", 401));
+    }
+    if(!user.isActive){
+        return next(new HandErr("User not exist", 401));
     }
     let boolCheck  = await bcrypt.compare(password, pw);
     //boolCheck = user.password == password ? true : false; //add bcrypt here
@@ -145,6 +151,108 @@ export const changePassUser = handleAsyncErr(async(req,res,next)=>{
         return next(new HandErr("Error while updating the password",401));
     }
 });
+
+
+export const mealDonation = handleAsyncErr(async (req,res,next) =>{
+    //user email and selected ngo will be sent from frontend
+    const {address, description, image, email, ngoIdentifier} = req.body;
+    console.log(req.body)
+    if( !address|| !description||!image){
+        return next(new HandErr("some fields are missing", 401))
+    }
+    // const userDonor = await User.findOne({email:email})
+    // let md = userDonor.mealDonated
+    // User.updateOne({email:email}, {mealDonated: md + 1})
+   
+    const ngoSelected = await Ngo.findOne({email:ngoIdentifier})
+    
+    if(!ngoSelected.isActive){
+        return next(new HandErr("Ngo is inactive", 401))
+    }
+    const donation = Donation.create({
+        donatedByUser: userDonor._id,
+        acceptedBy: ngoSelected._id,
+        typeOfDonation:"meal",
+        donataionComplete:false,
+        amount:1,
+        image:image,
+        address: address
+    });
+
+    res.status(200).json({
+        success: true,
+        message: "donation made to ngo",
+        donation
+      });
+})
+
+export const rationDonation = handleAsyncErr(async (req,res,next) =>{
+    //user email and selected ngo will be sent from frontend
+    const {address, description, image, email, ngoIdentifier} = req.body;
+    console.log(req.body)
+    if( !address|| !description||!image){
+        return next(new HandErr("some fields are missing", 401))
+    }
+    // const userDonor = await User.findOne({email:email})
+    // let rd = userDonor.rationDonated
+    // User.updateOne({email:email}, {rationDonated: rd + 1})
+   
+    const ngoSelected = await Ngo.findOne({email:ngoIdentifier})
+    
+    if(!ngoSelected.isActive){
+        return next(new HandErr("Ngo is inactive", 401))
+    }
+    const donation = Donation.create({
+        donatedByUser: userDonor._id,
+        acceptedBy: ngoSelected._id,
+        typeOfDonation:"ration",
+        donataionComplete:false,
+        amount:1,
+        image:image,
+        address: address
+    });
+
+    res.status(200).json({
+        success: true,
+        message: "donation made to ngo",
+        donation
+      });
+})
+
+export const moneyDonation = handleAsyncErr(async (req,res,next) =>{
+    //user email and selected ngo will be sent from frontend
+    const {address, description, image, email, ngoIdentifier, amount, cardNum} = req.body;
+    console.log(req.body)
+    if( !address|| !description||!image|| !amount|| !cardNum){
+        return next(new HandErr("some fields are missing", 401))
+    }
+    const userDonor = await User.findOne({email:email})
+    let ad = userDonor.amountDonated
+    User.updateOne({email:email}, {amountDonated: ad + amount,  bankAccount: cardNum})
+   //{monetaryFundsAccepted:}
+    const ngoSelected = await Ngo.findOne({email:ngoIdentifier}) 
+    let aa =ngoSelected.monetaryFundsAccepted
+    User.updateOne({email:email}, {monetaryFundsAccepted: aa + amount})
+
+    if(!ngoSelected.isActive){
+        return next(new HandErr("Ngo is inactive", 401))
+    }
+    const donation = Donation.create({
+        donatedByUser: userDonor._id,
+        acceptedBy: ngoSelected._id,
+        typeOfDonation:"monetary",
+        donataionComplete:false,
+        amount: amount,
+        image:image,
+        address: address
+    });
+
+    res.status(200).json({
+        success: true,
+        message: "donation made to ngo",
+        donation
+      });
+})
 //view account profile for actor user
 export const viewUserProfile = handleAsyncErr(async (req,res,next)=>
 {
