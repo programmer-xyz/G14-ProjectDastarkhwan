@@ -17,7 +17,7 @@ export const rejectApplication = ()=>
           },
         "approvalStatus": "inProgress"},
         {
-            $set: { approvalStatus:"rejected"}
+            $set: { approvalStatus:"exprired"}
         }
     )
      
