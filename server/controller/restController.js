@@ -149,4 +149,49 @@ export const changePassRes = handleAsyncErr(async(req,res,next)=>{
         return next(new HandErr("Error while updating the password",401));
     }
 });
-//profile
+//view account profile for actor resturant
+export const viewRestProfile = handleAsyncErr(async (req,res,next)=>
+{
+    let {email} = req.body
+    console.log(email)
+    if(!email)
+    {
+        return next(new HandErr("email is missing",400));
+    }
+    let restProfile = await Rest.findOne({'email':email, 'isActive':true},{password:0});
+    console.log(restProfile)
+    if(!!restProfile)
+    {
+        res.status(200).json({
+            success:true,
+            message:"Successfully found resturant profile",
+            body: restProfile
+        });
+    }
+    else
+    {
+        return next(new HandErr("resturant profile not found or account is no longer active",400));
+    }
+});
+//view account stats for actor resturant
+export const viewRestStats = handleAsyncErr(async (req,res,next)=>
+{
+    let {email} = req.body
+    if(!email)
+    {
+        return next(new HandErr("email is missing",400));
+    }
+    let restStats = await Rest.findOne({'email':email, 'isActive':true},{"mealDonated":1});
+    if(!!restStats)
+    {
+        res.status(200).json({
+            success:true,
+            message:"Successfully found resturant stats",
+            body: restStats
+        });
+    }
+    else
+    {
+        return next(new HandErr("resturant not found",400));
+    }
+});

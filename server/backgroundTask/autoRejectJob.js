@@ -12,11 +12,12 @@ export const rejectApplication = ()=>
         console.log("here")
         const response = await application.updateMany(
             {"createdAt": {
-            $lte: new Date((new Date().getTime() - (3 * 24 * 60 * 60 * 1000)))
+            $lte: new Date((new Date().getTime() - (3 * 24 * 60 * 60 * 1000))),
+            // $lt: new Date((new Date().getTime() - (2 * 24 * 60 * 60 * 1000)))
           },
         "approvalStatus": "inProgress"},
         {
-            $set: { approvalStatus:"rejected"}
+            $set: { approvalStatus:"exprired"}
         }
     )
      
