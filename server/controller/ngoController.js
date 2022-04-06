@@ -111,3 +111,49 @@ export const changePassNgo = handleAsyncErr(async(req,res,next)=>{
     }
 });
 
+//view account profile for actor Ngo
+export const viewNgoProfile = handleAsyncErr(async (req,res,next)=>
+{
+    let {email} = req.body
+    console.log(email)
+    if(!email)
+    {
+        return next(new HandErr("email is missing",400));
+    }
+    let ngoProfile = await Ngo.findOne({'email':email, 'isActive':true},{password:0});
+    console.log(ngoProfile)
+    if(!!ngoProfile)
+    {
+        res.status(200).json({
+            success:true,
+            message:"Successfully found resturant profile",
+            body: ngoProfile
+        });
+    }
+    else
+    {
+        return next(new HandErr("resturant profile not found or account is no longer active",400));
+    }
+});
+//view account stats for actor Ngo
+export const viewNgoStats = handleAsyncErr(async (req,res,next)=>
+{
+    let {email} = req.body
+    if(!email)
+    {
+        return next(new HandErr("email is missing",400));
+    }
+    let ngoStats = await Ngo.findOne({'email':email, 'isActive':true},{"mealsAccepted":1,"monetaryFundsAccepted":1,"rationAccepted":1});
+    if(!!ngoStats)
+    {
+        res.status(200).json({
+            success:true,
+            message:"Successfully found resturant stats",
+            body: ngoStats
+        });
+    }
+    else
+    {
+        return next(new HandErr("resturant not found",400));
+    }
+});
