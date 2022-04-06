@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 const {Schema} = mongoose;
+import addressSchema from "./addressSchema.mjs";
 
 const donationSchema = new mongoose.Schema({
     donatedByUser:{type:Schema.Types.ObjectId,'ref':'user'},
@@ -12,7 +13,8 @@ const donationSchema = new mongoose.Schema({
     image:{type:Buffer,default:null},
     isActive:{type:Boolean,default:false},
     createdAt:{type:Date,default:Date.now},
-    subscriptionId:{type:Schema.Types.ObjectId,'ref':'subscription'}
+    subscriptionId:{type:Schema.Types.ObjectId,'ref':'subscription'},
+    address:{type:addressSchema}
 });
 
 const donation = mongoose.model("Donation",donationSchema);
