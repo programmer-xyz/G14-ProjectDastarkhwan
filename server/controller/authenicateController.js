@@ -74,7 +74,8 @@ export const approvePost = handleAsyncErr(async(req, res, next) =>{
             contactName: appObj.contactName, 
             contactEmail: appObj.email,
             mealsDonated: 0,
-            applicationId: appObj._id
+            applicationId: appObj._id,
+            isActive: true
         });
     }
     else if (appObj.accountType == "ngo"){
@@ -92,7 +93,8 @@ export const approvePost = handleAsyncErr(async(req, res, next) =>{
             mealsAccepted: 0,
             monetaryFundsAccepted:0,
             rationAccepted:0,
-            applicationId: appObj._id
+            applicationId: appObj._id,
+            isActive: true
         });
     }
     const appObjNew = await application.findOneAndUpdate({email}, {approved: true, approvalStatus:"approved", isActive:false});

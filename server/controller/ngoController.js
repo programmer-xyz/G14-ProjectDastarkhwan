@@ -18,6 +18,10 @@ export const ngoLogin =  handleAsyncErr(async (req,res, next) =>{
        
         return next(new HandErr("Wrong userName or password", 401));
     }
+    
+    if(!user.isActive){
+        return next(new HandErr("User not exist", 401));
+    }
     let boolCheck  = await bcrypt.compare(password, pw);
     //boolCheck = user.password == password ? true : false; //add bcrypt here
 
@@ -38,6 +42,7 @@ export const ngoLogin =  handleAsyncErr(async (req,res, next) =>{
 export const ngoRegister = handleAsyncErr(async (req, res, next) =>{
     const {name, email, phoneNumber, password, address,description, contactNum, contactName, contactEmail, accountNum, VerifiDoc} = req.body;
 
+    
 });
 
 export const forgetPassResCheckUser = handleAsyncErr(async(req,res,next)=>{
