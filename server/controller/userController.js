@@ -232,7 +232,7 @@ export const moneyDonation = handleAsyncErr(async (req,res,next) =>{
    //{monetaryFundsAccepted:}
     const ngoSelected = await Ngo.findOne({email:ngoIdentifier}) 
     let aa =ngoSelected.monetaryFundsAccepted
-    User.updateOne({email:email}, {monetaryFundsAccepted: aa + amount})
+    User.updateOne({email:email}, {monetaryFundsAccepted: aa + amount,lastUpdated:Date.now()})
 
     if(!ngoSelected.isActive){
         return next(new HandErr("Ngo is inactive", 401))

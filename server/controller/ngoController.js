@@ -43,7 +43,7 @@ export const ngoLogin =  handleAsyncErr(async (req,res, next) =>{
 export const ngoRegister = handleAsyncErr(async (req, res, next) =>{
     const {name, email, phoneNumber, password, address,description, contactNum, contactName, contactEmail, accountNum, VerifiDoc, userName} = req.body;
     
-    if(!name || !email || !phoneNumber || !password || !description || !contactNum || !contactName || !contactEmail|| !userName || !address|| !accountNum || !VerifiDoc){
+    if(!name || !email || !phoneNumber || !password || !description || !contactNum || !contactName || !contactEmail|| !userName || !address|| !accountNum ){//|| !VerifiDoc){
         return next(new HandErr("some fields are missing enter again!", 400))
     }
     let appUser = await application.find({email});
@@ -73,12 +73,12 @@ export const ngoRegister = handleAsyncErr(async (req, res, next) =>{
         registerationDoc:VerifiDoc,
         bankAccount:accountNum
     });
-    tokenMaker(user, 201, res);
-    // res.status(200).json({
-    //     success: true,
-    //     message: "user added to app table",
-    //     restApp 
-    //   });
+    //tokenMaker(user, 201, res);
+    res.status(200).json({
+        success: true,
+        message: "user added to app table",
+        restApp 
+      });
     
 });
 
@@ -152,4 +152,7 @@ export const changePassNgo = handleAsyncErr(async(req,res,next)=>{
         return next(new HandErr("Error while updating the password",401));
     }
 });
+
+
+
 
