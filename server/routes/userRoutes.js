@@ -4,15 +4,15 @@ import {viewUserProfile, viewUserStats} from "../controller/userController";
 const router = Router();
 
 
-router.route("/userLogin").post( userLogin );
-router.route("/userRegister").post( userRegister);
-router.route("/userForgetPassV").post(forgetPassCheckUser);
-router.route("/userForgetPassU").post(forgetPassUpdateUser);
-router.route("/userChangePass").post(changePassUser);
-router.route("/userMealDonation").post(mealDonation);
-router.route("/userRationDonation").post(rationDonation);
-router.route("/userMoneyDonation").post(moneyDonation);
-router.route("/userProfile").post(viewUserProfile);
-router.route("/userStats").post(viewUserStats);
+router.route("/login").post( userLogin );
+router.route("/register").post( userRegister);
+router.route("/forgetPassV").post(forgetPassCheckUser);
+router.route("/forgetPassU").post(forgetPassUpdateUser);
+router.route("/changePass").post(changePassUser);
+router.route("/mealDonation").post(mealDonation);
+router.route("/rationDonation").post(rationDonation);
+router.route("/moneyDonation").post(moneyDonation);
+router.route("/viewProfile").post(viewUserProfile);
+router.route("/viewStats").post(viewUserStats);
 
 export default router;

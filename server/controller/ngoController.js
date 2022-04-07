@@ -244,3 +244,16 @@ export const deleteProfile = handleAsyncErr(async (req,res,next)=>
         return next(new HandErr("Error as email or password is missing",401));
     }
 });
+
+// export const viewDonation = handleAsyncErr(async (req,res,next)=>
+// {
+
+// });
+
+// export const viewUserDonation= handleAsyncErr(async (req,res,next)=>{
+
+// });
+// export const viewRestDonation = handleAsyncErr(async (req,res,next)=>
+// {
+
+// });
