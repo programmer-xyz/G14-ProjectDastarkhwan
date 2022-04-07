@@ -3,8 +3,8 @@ import {createAdmin, adminLogin, approvePost, rejectPost} from "../controller/au
 
 const router = Router();
 
-router.route("/admin").post(createAdmin);
-router.route("/adminLogin").post(adminLogin);
+router.route("/create").post(createAdmin);
+router.route("/login").post(adminLogin);
 router.route("/approve").get(approvePost);
 router.route("/reject").get(rejectPost);
 
