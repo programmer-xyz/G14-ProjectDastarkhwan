@@ -4,12 +4,12 @@ import {restLogin, restRegister,forgetPassResCheckUser,forgetPassUpdatePassRes,c
 const router = Router();
 
 
-router.route("/restLogin").post(restLogin);
-router.route("/restRegister").post(restRegister);
-router.route("/resChangePass").post(changePassRes);
-router.route("/resForgetPassV").post(forgetPassResCheckUser);
-router.route("/resForgetPassU").post(forgetPassUpdatePassRes);
-router.route("/restViewProfile").post(viewRestProfile);
-router.route("/restStatProfile").post(viewRestStats);
+router.route("/login").post(restLogin);
+router.route("/register").post(restRegister);
+router.route("/changePass").post(changePassRes);
+router.route("/forgetPassV").post(forgetPassResCheckUser);
+router.route("/forgetPassU").post(forgetPassUpdatePassRes);
+router.route("/viewProfile").post(viewRestProfile);
+router.route("/statProfile").post(viewRestStats);
 
 export default router;

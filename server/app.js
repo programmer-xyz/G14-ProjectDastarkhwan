@@ -23,10 +23,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 //admin
-app.use("/api/v1", admin);
-app.use("/api/v1", ngo);
-app.use("/api/v1", user);
-app.use("/api/v1", rest);
+app.use("/api/v1/admin", admin);
+app.use("/api/v1/ngo", ngo);
+app.use("/api/v1/user", user);
+app.use("/api/v1/rest", rest);
 ///middleware err this must always be at the end 
 app.use(midErr);
 
