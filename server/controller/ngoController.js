@@ -44,7 +44,7 @@ export const ngoLogin =  handleAsyncErr(async (req,res, next) =>{
 
 export const ngoRegister = handleAsyncErr(async (req, res, next) =>{
     let {name, email, phoneNumber, password, address,description, contactNum, contactName, contactEmail, accountNum, userName} = req.body;
-    if(!name || !email || !phoneNumber || !password || !description || !contactNum || !contactName || !contactEmail|| !userName || !address|| !accountNum){
+    if(!name || !email || !phoneNumber || !password || !description || !contactNum || !contactName || !contactEmail|| !userName || !address|| !accountNum||!req.file){
         return next(new HandErr("some fields are missing enter again!", 400))
     }
     let appUser = await application.find({email});
@@ -430,7 +430,6 @@ export const viewRestDonation = handleAsyncErr(async (req,res,next)=>
                 data: donations
             });
         }
-
     }
     else
     {
