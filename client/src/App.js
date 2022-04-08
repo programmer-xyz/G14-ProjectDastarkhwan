@@ -1,38 +1,25 @@
 import './App.css';
-import React from 'react';
+import React,{ useState} from 'react';
 import Grid from '@mui/material/Grid';
 import logo from './MaskGroup2.png'
+// import { isLabelWithInternallyDisabledControl } from '@testing-library/user-event/dist/utils';
 
-class Button extends React.Component {
-  
-  constructor(props)
-  {
-    super(props)
-    this.state = {
-      orange:null
-    }
-  }
-  
-  render(){
-    return (
-     
-      <button onClick={()=>{this.props.onClick()}} id= {"btn"+this.props.number} className ={this.props.orange?"Orangebutton":"greyButton"}>{this.props.title}</button>
-      );
-  }
+function Button (props) {  
+  console.log(props.orange)
+  return (
+    
+    <button onClick={()=>{props.onClick()}} id= {"btn"+props.number} className ={props.orange?"Orangebutton":"greyButton"}>{props.title}</button>
+    );
 }
-class App extends React.Component {
-  constructor(props)
-  {
-    super(props)
-    this.state = {
-      buttons: [true,false,false]
-    }
-    console.log("This is the state",this.state.buttons)
-  }
-  handleClick(i){
-    let btncopy = this.state.buttons.splice()
+function App (){
+  const [buttons,setbuttons] = useState([true,false,false]);
+
+  const handleClick = (i) =>{ 
+    let btncopy = buttons;
+    console.log(i)
     console.log("This is btncopy",btncopy)
     btncopy[i] = true
+    console.log("This is button copy after the assingment",btncopy)
     for (var j=0;j<btncopy.length;j++)
     {
       if (j === i)
@@ -44,55 +31,49 @@ class App extends React.Component {
         btncopy[j]= false;
       }
     }
-    console.log(btncopy)
-    this.setState({buttons:btncopy})
+    console.log("This is button copy after for loop",btncopy)
+    setbuttons(btncopy);
   }
-  renderButton (i,role)
+  const renderButton = (i,role) =>
   {
-    return <Button onClick={()=>{this.handleClick(i)}}  orange={this.state.buttons[i]} number = {i} title={role}/>
+    return <Button onClick= {()=>{handleClick(i)}} number={i} title={role} orange = {buttons[i]}/>
   }
-  render()
-  {
-    return (
-      <div className = "body">
-      <Grid>
-      <Grid item lg={6} md={6} xs={6}>
-        <div className = "left-container">
-        <h3 className="heading">Sign In</h3>
-        <p className="paragraph">Select whom you want to sign in as :</p>
-          <div className = "btn-box">
-            {this.renderButton(0,"User")}
-            {this.renderButton(1,"Restaurant")}
-            {this.renderButton(2,"NGO")}
-          </div>
-          <div id = "content1" className ="content">
-            <form action="/">
-            <input type = "text" placeholder = "Email"/>
-            <p>&nbsp;</p>
-            <input type = "text" placeholder = "Password"/>
-            <p>&nbsp;</p>
-            <button className = "sign-in" type = "submit"> SIGN IN</button>
-            </form>
-          </div>
+ 
+  return (
+    <div className = "body">
+    <Grid>
+    <Grid item lg={6} md={6} xs={6}>
+      <div className = "left-container">
+      <h3 className="heading">Sign In</h3>
+      <p className="paragraph">Select whom you want to sign in as :</p>
+        <div className = "btn-box">
+          {renderButton(0,"User")}
+          {renderButton(1,"Restaurant")}
+          {renderButton(2,"NGO")}
         </div>
-        </Grid>
-        <Grid item lg={6} md={6} xs={6}>
-        <div className = "right-container"> 
-        <h2 className="heading1">United, we can end hunger! </h2>
-        <p className="paragraph1">Your every donation counts!</p>
-        <img className="image" src={logo} alt="Logo"/>
+        <div id = "content1" className ="content">
+          <form action="/">
+          <input type = "text" placeholder = "Email"/>
+          <p>&nbsp;</p>
+          <input type = "text" placeholder = "Password"/>
+          <p>&nbsp;</p>
+          <button className = "sign-in" type = "submit"> SIGN IN</button>
+          </form>
         </div>
-       
-        </Grid>
-        </Grid>
       </div>
-    );
+      </Grid>
+      <Grid item lg={6} md={6} xs={0}>
+      <div className = "right-container"> 
+      <h2 className="heading1">United, we can end hunger! </h2>
+      <p className="paragraph1">Your every donation counts!</p>
+      <img className="image" src={logo} alt="Logo"/>
+      </div>
+      </Grid>
+      </Grid>
+    </div>
+  );
 
-  }
+  
 }
-// function App() {
-//     return (
-//       <loginS />
-//     );
-// }
+
 export default App;

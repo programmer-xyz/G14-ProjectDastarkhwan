@@ -163,7 +163,6 @@ input[type=text] {
   border-right:none;
   border-bottom:3px solid #E76F51;
   opacity: 1;
-  ;
 }
 .greyButton
 {
@@ -174,4 +173,26 @@ input[type=text] {
   border-top: none;
   border-left:none;
   border-right:none;
+}
+
+@media screen and (max-width:1780px){
+  .right-container {
+    top: 0px;
+    left: 760px;
+    width: 900px;
+    height: 900px;
+    float:right;
+    background: #FFE5A5 0% 0% no-repeat padding-box;
+  }
+  .content {
+    top: 340px;
+    left: 40px;
+    right:1000px;
+    width: 450px;
+    height: 54px;
+    display: inline;
+    justify-content: center;
+    margin: 5% auto;
+    position: absolute;
+  }
 }
