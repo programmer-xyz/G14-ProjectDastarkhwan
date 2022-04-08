@@ -481,7 +481,7 @@ export const acceptDonation = handleAsyncErr(async(req,res,next)=>
                         'mealsDonated':donations.amount
                     }});
                 }
-                const ngoUpdate = await Ngo.updateOne({'_id':donations.acceptedBy,'isActive':true},{$inc:updateNgo})
+                const ngoUpdate = await Ngo.updateOne({'_id':donations.acceptedBy,'isActive':true},{$inc:updateNgo,$push:{donationAccepted:donationId}},{ new: true, useFindAndModify: false })
                 const donationUpdate = await donation.findOneAndUpdate({'_id':donationId,'isActive':true},{'isActive':false,'donataionComplete':true})
                 console.log(donationUpdate)
             }   
@@ -527,3 +527,4 @@ export const editProfileNgo = handleAsyncErr(async (req, res, next)=>{
         body: user
     });
 });
+
