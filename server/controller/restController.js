@@ -238,7 +238,7 @@ export const mealDonation = handleAsyncErr(async (req,res,next) =>{
     }
  
     const donation = await Donation.insertMany({
-        donatedByUser: userDonor._id,
+        donatedByRest: userDonor._id,
         acceptedBy: ngoSelected._id,
         typeOfDonation:"meal",
         donataionComplete:false,

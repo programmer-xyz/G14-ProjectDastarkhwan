@@ -181,7 +181,8 @@ export const mealDonation = handleAsyncErr(async (req,res,next) =>{
     });
  
    let user1 = await User.findByIdAndUpdate(userDonor._id,{$push: {donations:donation[0]._id}}, { new: true, useFindAndModify: false }) //{donations: userDonor.donations.push(mongoose.Types.ObjectId(donation._id))})
-    //console.log(user1)
+    
+   //console.log(user1)
     res.status(200).json({
         success: true,
         message: "donation made to ngo",
@@ -223,6 +224,44 @@ export const rationDonation = handleAsyncErr(async (req,res,next) =>{
       });
 })
 
+// export const moneyDonation = handleAsyncErr(async (req,res,next) =>{
+//     //user email and selected ngo will be sent from frontend
+//     const {email, ngoIdentifier, amount, cardNum} = req.body;
+   
+//     if( !amount|| !cardNum ||!email ){
+//         return next(new HandErr("some fields are missing", 401))
+//     }
+//     ////
+//     const userDonor = await User.findOne({email:email,isActive:true})
+//     if(!userDonor){
+//         return next(new HandErr("user not exist", 401))
+//     }
+//     let ad = await userDonor.amountDonated
+//     let user1 = await User.findByIdAndUpdate(userDonor._id, {amountDonated: ad + amount,  bankAccount: cardNum})
+//     /////
+//    //{monetaryFundsAccepted:}
+//     const ngoSelected = await Ngo.findOne({email:ngoIdentifier,isActive:true}) 
+//     let aa = await ngoSelected.monetaryFundsAccepted
+//     let ngoR = await User.findOneAndUpdate({email:email}, {monetaryFundsAccepted: aa + amount,lastUpdated:Date.now()})
+
+//     if(!ngoSelected.isActive){
+//         return next(new HandErr("Ngo is inactive", 401))
+//     }
+//     const donation = Donation.create({
+//         donatedByUser: userDonor._id,
+//         acceptedBy: ngoSelected._id,
+//         typeOfDonation:"monetary",
+//         donataionComplete:false,
+//         amount: amount
+//     });
+
+//     res.status(200).json({
+//         success: true,
+//         message: "donation made to ngo",
+//         donation
+//       });
+// })
+
 export const moneyDonation = handleAsyncErr(async (req,res,next) =>{
     //user email and selected ngo will be sent from frontend
     const {email, ngoIdentifier, amount, cardNum} = req.body;
@@ -231,35 +270,34 @@ export const moneyDonation = handleAsyncErr(async (req,res,next) =>{
         return next(new HandErr("some fields are missing", 401))
     }
     ////
-    const userDonor = await User.findOne({email:email,isActive:true})
+    const userDonor = await User.findOneAndUpdate({email:email, isActive:true},  { $inc: { amountDonated:amount} }, { bankAccount: cardNum})
     if(!userDonor){
         return next(new HandErr("user not exist", 401))
     }
-    let ad = await userDonor.amountDonated
-    let user1 = await User.findByIdAndUpdate(userDonor._id, {amountDonated: ad + amount,  bankAccount: cardNum})
-    /////
-   //{monetaryFundsAccepted:}
-    const ngoSelected = await Ngo.findOne({email:ngoIdentifier,isActive:true}) 
-    let aa = await ngoSelected.monetaryFundsAccepted
-    let ngoR = await User.findOneAndUpdate({email:email}, {monetaryFundsAccepted: aa + amount,lastUpdated:Date.now()})
+ 
 
-    if(!ngoSelected.isActive){
-        return next(new HandErr("Ngo is inactive", 401))
+    let ngoSelected = await Ngo.findOneAndUpdate({email:ngoIdentifier, isActive:true},  { $inc: {monetaryFundsAccepted:amount} },{lastUpdated:Date.now()})
+    
+    if(!ngoSelected){
+        return next(new HandErr("Ngo is inactive or not exist", 401))
     }
-    const donation = Donation.create({
+    const donation = await Donation.insertMany({
         donatedByUser: userDonor._id,
         acceptedBy: ngoSelected._id,
         typeOfDonation:"monetary",
         donataionComplete:false,
         amount: amount
     });
-
+  
+    let user1 = await User.findByIdAndUpdate(userDonor._id,{$push: {donations:donation[0]._id}}, { new: true, useFindAndModify: false }) //{donations: userDonor.donations.push(mongoose.Types.ObjectId(donation._id))})
+    
     res.status(200).json({
         success: true,
         message: "donation made to ngo",
         donation
       });
 })
+
 //view account profile for actor user
 export const viewUserProfile = handleAsyncErr(async (req,res,next)=>
 {
