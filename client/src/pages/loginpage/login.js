@@ -1,4 +1,4 @@
-import './App.css';
+import './login.css';
 import React,{ useState} from 'react';
 import Grid from '@mui/material/Grid';
 import logo from './MaskGroup2.png'
@@ -11,33 +11,68 @@ function Button (props) {
     <button onClick={()=>{props.onClick()}} id= {"btn"+props.number} className ={props.orange?"Orangebutton":"greyButton"}>{props.title}</button>
     );
 }
-function App (){
-  const [buttons,setbuttons] = useState([true,false,false]);
+function Login (){
+  const [buttons,setbuttons] = useState({
+    button1:true,
+    button2:false,
+    button3:false
+  });
+  const handleClick = (i) =>{
 
-  const handleClick = (i) =>{ 
-    let btncopy = buttons;
-    console.log(i)
-    console.log("This is btncopy",btncopy)
-    btncopy[i] = true
-    console.log("This is button copy after the assingment",btncopy)
-    for (var j=0;j<btncopy.length;j++)
+    
+    console.log(buttons)
+    console.log("This is the value of i passsed into the function",i)
+    if (i===0)
     {
-      if (j === i)
-      {
-        btncopy[j] = true
-      } 
-      else
-      {
-        btncopy[j]= false;
+      let obj = {
+        button1:true,
+        button2:false,
+        button3:false
       }
+      console.log("here in if 0")
+      setbuttons(obj)
+
     }
-    console.log("This is button copy after for loop",btncopy)
-    setbuttons(btncopy);
+    else if ( i === 1)
+    {
+      let obj = {
+        button1:false,
+        button2:true,
+        button3:false
+      }
+      console.log("here in if 1")
+      setbuttons(obj)
+    }
+    else if (i === 2)
+    {
+      let obj = {
+        button1:false,
+        button2:false,
+        button3:true
+      }
+      console.log("here in if 2")
+      setbuttons(obj)
+    }
   }
   const renderButton = (i,role) =>
   {
-    return <Button onClick= {()=>{handleClick(i)}} number={i} title={role} orange = {buttons[i]}/>
-  }
+    if (i === 0)
+    {
+      console.log("Here in first if")
+      return <Button onClick= {()=>{handleClick(i)}} number={i} title={role} orange = {buttons.button1}/>
+    }
+    else if (i===1)
+    {
+      console.log("Here in second if")
+      return <Button onClick= {()=>{handleClick(i)}} number={i} title={role} orange = {buttons.button2}/>
+    }
+    else if (i===2)
+    {
+      console.log("Here in third if")
+      return <Button onClick= {()=>{handleClick(i)}} number={i} title={role} orange = {buttons.button3}/>
+    }
+
+  }  
  
   return (
     <div className = "body">
@@ -53,9 +88,9 @@ function App (){
         </div>
         <div id = "content1" className ="content">
           <form action="/">
-          <input type = "text" placeholder = "Email"/>
+          <input type = "email" placeholder = "Email"/>
           <p>&nbsp;</p>
-          <input type = "text" placeholder = "Password"/>
+          <input type = "password" placeholder = "Password"/>
           <p>&nbsp;</p>
           <button className = "sign-in" type = "submit"> SIGN IN</button>
           </form>
@@ -72,8 +107,7 @@ function App (){
       </Grid>
     </div>
   );
-
   
 }
 
-export default App;
+export default Login;
