@@ -2,7 +2,6 @@ import './login.css';
 import React,{ useState} from 'react';
 import Grid from '@mui/material/Grid';
 import logo from './MaskGroup2.png'
-// import { isLabelWithInternallyDisabledControl } from '@testing-library/user-event/dist/utils';
 
 function Button (props) {  
   console.log(props.orange)
