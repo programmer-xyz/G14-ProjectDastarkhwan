@@ -12,5 +12,5 @@ router.route("/forgetPassU").post(forgetPassUpdatePassRes);
 router.route("/viewProfile").post(viewRestProfile);
 router.route("/statProfile").post(viewRestStats);
 router.route("/editProfileRest").post(editProfileRest);
-router.route("/myRequest").post(myRequestRest)
+router.route("/myRequest").post(myRequestRest);
 export default router;
