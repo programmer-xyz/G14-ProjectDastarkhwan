@@ -229,9 +229,9 @@ export const mealDonation = handleAsyncErr(async (req,res,next) =>{
     if( !address|| !description||!image){
         return next(new HandErr("some fields are missing", 401))
     }
-    const userDonor = await Rest.findOne({email:email})
+    const userDonor = await Rest.findOne({email:email, isActive:true})
 
-    const ngoSelected = await Ngo.findOne({email:ngoIdentifier})
+    const ngoSelected = await Ngo.findOne({email:ngoIdentifier,isActive:true})
     
     if(!ngoSelected.isActive){
         return next(new HandErr("Ngo is inactive", 401))

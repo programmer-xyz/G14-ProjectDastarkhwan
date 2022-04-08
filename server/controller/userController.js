@@ -162,14 +162,13 @@ export const mealDonation = handleAsyncErr(async (req,res,next) =>{
     if( !address|| !description||!image){
         return next(new HandErr("some fields are missing", 401))
     }
-    const userDonor = await User.findOne({email:email})
+    const userDonor = await User.findOne({email:email, isActive:true})
 
-    const ngoSelected = await Ngo.findOne({email:ngoIdentifier})
-    
-    if(!ngoSelected.isActive){
+    const ngoSelected = await Ngo.findOne({email:ngoIdentifier, isActive:true})
+    if(!ngoSelected){
         return next(new HandErr("Ngo is inactive", 401))
     }
- 
+   
     const donation = await Donation.insertMany({
         donatedByUser: userDonor._id,
         acceptedBy: ngoSelected._id,
@@ -180,9 +179,8 @@ export const mealDonation = handleAsyncErr(async (req,res,next) =>{
         address: address,
         isActive:true
     });
-
  
-    let user1 = await User.findByIdAndUpdate(userDonor._id,{$push: {donations:donation[0]._id}}, { new: true, useFindAndModify: false }) //{donations: userDonor.donations.push(mongoose.Types.ObjectId(donation._id))})
+   let user1 = await User.findByIdAndUpdate(userDonor._id,{$push: {donations:donation[0]._id}}, { new: true, useFindAndModify: false }) //{donations: userDonor.donations.push(mongoose.Types.ObjectId(donation._id))})
     //console.log(user1)
     res.status(200).json({
         success: true,
@@ -199,11 +197,11 @@ export const rationDonation = handleAsyncErr(async (req,res,next) =>{
     if( !address|| !description||!image){
         return next(new HandErr("some fields are missing", 401))
     }
-    const userDonor = await User.findOne({email:email})
+    const userDonor = await User.findOne({email:email,isActive:true})
 
-    const ngoSelected = await Ngo.findOne({email:ngoIdentifier})
+    const ngoSelected = await Ngo.findOne({email:ngoIdentifier,isActive:true})
     
-    if(!ngoSelected.isActive){
+    if(!ngoSelected){
         return next(new HandErr("Ngo is inactive", 401))
     }
     const donation = await Donation.insertMany({
@@ -227,18 +225,23 @@ export const rationDonation = handleAsyncErr(async (req,res,next) =>{
 
 export const moneyDonation = handleAsyncErr(async (req,res,next) =>{
     //user email and selected ngo will be sent from frontend
-    const {address, description, image, email, ngoIdentifier, amount, cardNum} = req.body;
-    console.log(req.body)
-    if( !address|| !description||!image|| !amount|| !cardNum){
+    const {email, ngoIdentifier, amount, cardNum} = req.body;
+   
+    if( !amount|| !cardNum ||!email ){
         return next(new HandErr("some fields are missing", 401))
     }
-    const userDonor = await User.findOne({email:email})
-    let ad = userDonor.amountDonated
-    User.updateOne({email:email}, {amountDonated: ad + amount,  bankAccount: cardNum})
+    ////
+    const userDonor = await User.findOne({email:email,isActive:true})
+    if(!userDonor){
+        return next(new HandErr("user not exist", 401))
+    }
+    let ad = await userDonor.amountDonated
+    let user1 = await User.findByIdAndUpdate(userDonor._id, {amountDonated: ad + amount,  bankAccount: cardNum})
+    /////
    //{monetaryFundsAccepted:}
-    const ngoSelected = await Ngo.findOne({email:ngoIdentifier}) 
-    let aa =ngoSelected.monetaryFundsAccepted
-    User.updateOne({email:email}, {monetaryFundsAccepted: aa + amount,lastUpdated:Date.now()})
+    const ngoSelected = await Ngo.findOne({email:ngoIdentifier,isActive:true}) 
+    let aa = await ngoSelected.monetaryFundsAccepted
+    let ngoR = await User.findOneAndUpdate({email:email}, {monetaryFundsAccepted: aa + amount,lastUpdated:Date.now()})
 
     if(!ngoSelected.isActive){
         return next(new HandErr("Ngo is inactive", 401))
@@ -248,9 +251,7 @@ export const moneyDonation = handleAsyncErr(async (req,res,next) =>{
         acceptedBy: ngoSelected._id,
         typeOfDonation:"monetary",
         donataionComplete:false,
-        amount: amount,
-        image:image,
-        address: address
+        amount: amount
     });
 
     res.status(200).json({
