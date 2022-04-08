@@ -124,6 +124,10 @@ export const rejectPost = handleAsyncErr(async(req, res, next) =>{
 
 export const viewApplications = handleAsyncErr(async(req, res, next) =>{
     const apps = await application.find({isActive:true})
+    if(!apps){
+        return next(new HandErr("no applications to displsy", 400))
+    }
+    
     res.status(200).json({
         success: true,
         message: "list returned",
