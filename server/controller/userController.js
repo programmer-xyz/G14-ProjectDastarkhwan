@@ -303,7 +303,11 @@ export const viewUserStats = handleAsyncErr(async (req,res,next)=>
 
 export const editProfileUser = handleAsyncErr(async (req, res, next)=>{
     const jsonFields = req.body;
-    let user = User.findOneAndUpdate({_id: jsonFields._id, isActive:true}, jsonFields);
+    if(!jsonFields._id){
+        return next(new HandErr("id missing",400));
+    }
+    let user = await User.findOneAndUpdate({_id: jsonFields._id, isActive:true}, jsonFields);
+
     if(!user){
         return next(new HandErr("user profile not found or account is no longer active",400));
     }
