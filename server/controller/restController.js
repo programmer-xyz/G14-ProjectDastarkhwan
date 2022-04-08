@@ -4,6 +4,8 @@ import { handleAsyncErr } from "../middleware/handleAsyncErr.js";
 import bcrypt, { hashSync } from "bcrypt";
 import HandErr from "../utils/err.js";
 import {tokenMaker} from "../utils/tokenManager"
+import Ngo from "../models/ngoSchema.mjs"
+import Donation from "../models/donationsSchema.mjs";
 
 //login 
 export const restLogin =  handleAsyncErr(async (req,res, next) =>{
@@ -249,3 +251,39 @@ export const myRequestRest = handleAsyncErr(async(req,res,next)=>
     }
    
 });
+export const mealDonation = handleAsyncErr(async (req,res,next) =>{
+    //user email and selected ngo will be sent from frontend
+
+    let image = req.file.buffer;
+    const {address, description, email, ngoIdentifier} = req.body;
+
+    if( !address|| !description||!image){
+        return next(new HandErr("some fields are missing", 401))
+    }
+    const userDonor = await Rest.findOne({email:email, isActive:true})
+
+    const ngoSelected = await Ngo.findOne({email:ngoIdentifier,isActive:true})
+    
+    if(!ngoSelected.isActive){
+        return next(new HandErr("Ngo is inactive", 401))
+    }
+ 
+    const donation = await Donation.insertMany({
+        donatedByUser: userDonor._id,
+        acceptedBy: ngoSelected._id,
+        typeOfDonation:"meal",
+        donataionComplete:false,
+        amount:1,
+        image:image,
+        address: address,
+        isActive:true
+    });
+
+    let user1 = await Rest.findByIdAndUpdate(userDonor._id,{$push: {donations:donation[0]._id}}, { new: true, useFindAndModify: false }) //{donations: userDonor.donations.push(mongoose.Types.ObjectId(donation._id))})
+    //console.log(user1)
+    res.status(200).json({
+        success: true,
+        message: "donation made to ngo",
+        donation
+      });
+})
