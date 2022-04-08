@@ -176,7 +176,8 @@ export const mealDonation = handleAsyncErr(async (req,res,next) =>{
         donataionComplete:false,
         amount:1,
         image:image,
-        address: address
+        address: address,
+        isActive:true
     });
 
     res.status(200).json({
@@ -209,7 +210,8 @@ export const rationDonation = handleAsyncErr(async (req,res,next) =>{
         donataionComplete:false,
         amount:1,
         image:image,
-        address: address
+        address: address,
+        isActive:true
     });
 
     res.status(200).json({
@@ -232,7 +234,7 @@ export const moneyDonation = handleAsyncErr(async (req,res,next) =>{
    //{monetaryFundsAccepted:}
     const ngoSelected = await Ngo.findOne({email:ngoIdentifier}) 
     let aa =ngoSelected.monetaryFundsAccepted
-    User.updateOne({email:email}, {monetaryFundsAccepted: aa + amount})
+    User.updateOne({email:email}, {monetaryFundsAccepted: aa + amount,lastUpdated:Date.now()})
 
     if(!ngoSelected.isActive){
         return next(new HandErr("Ngo is inactive", 401))
@@ -297,4 +299,24 @@ export const viewUserStats = handleAsyncErr(async (req,res,next)=>
     {
         return next(new HandErr("user not found",400));
     }
+});
+
+export const editProfileUser = handleAsyncErr(async (req, res, next)=>{
+ 
+    const {name, userName, phoneNumber, cnic, description, address, _id} = req.body;
+    let editObj = {name: name, userName:userName, phoneNumber:phoneNumber,  cnic:cnic, description:description, address:address, lastUpdated:Date.now()}
+
+    if(!_id){
+        return next(new HandErr("id missing",400));
+    }
+    let user = await User.findOneAndUpdate({_id:_id, isActive:true}, editObj);
+
+    if(!user){
+        return next(new HandErr("user profile not found or account is no longer active",400));
+    }
+    res.status(200).json({
+        success:true,
+        message:"Successfully updated user profile",
+        body: user
+    });
 });

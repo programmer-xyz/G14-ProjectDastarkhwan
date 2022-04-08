@@ -198,3 +198,22 @@ export const viewRestStats = handleAsyncErr(async (req,res,next)=>
         return next(new HandErr("resturant not found",400));
     }
 });
+
+export const editProfileRest = handleAsyncErr(async (req, res, next)=>{
+    const {name, userName, phoneNumber, description, address, _id,  contactName, contactEmail, contactNumber} = req.body;
+    let editObj = {name: name,userName:userName, phoneNumber:phoneNumber, description:description, address:address, contactName: contactName,contactEmail:contactEmail,contactNumber:contactNumber,lastUpdated:Date.now()}
+
+    if(!_id){
+        return next(new HandErr("id missing",400));
+    }
+    let user = await Rest.findOneAndUpdate({_id:_id, isActive:true}, editObj);
+
+    if(!user){
+        return next(new HandErr("user profile not found or account is no longer active",400));
+    }
+    res.status(200).json({
+        success:true,
+        message:"Successfully updated user profile",
+        body: user
+    });
+});
