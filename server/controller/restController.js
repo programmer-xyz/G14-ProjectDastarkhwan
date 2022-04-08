@@ -200,11 +200,13 @@ export const viewRestStats = handleAsyncErr(async (req,res,next)=>
 });
 
 export const editProfileRest = handleAsyncErr(async (req, res, next)=>{
-    const jsonFields = req.body;
-    if(!jsonFields._id){
+    const {name, userName, phoneNumber, description, address, _id,  contactName, contactEmail, contactNumber} = req.body;
+    let editObj = {name: name,userName:userName, phoneNumber:phoneNumber, description:description, address:address, contactName: contactName,contactEmail:contactEmail,contactNumber:contactNumber,lastUpdated:Date.now()}
+
+    if(!_id){
         return next(new HandErr("id missing",400));
     }
-    let user = await Rest.findOneAndUpdate({_id: jsonFields._id, isActive:true}, jsonFields);
+    let user = await Rest.findOneAndUpdate({_id:_id, isActive:true}, editObj);
 
     if(!user){
         return next(new HandErr("user profile not found or account is no longer active",400));

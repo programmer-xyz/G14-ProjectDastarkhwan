@@ -94,7 +94,8 @@ export const approvePost = handleAsyncErr(async(req, res, next) =>{
             monetaryFundsAccepted:0,
             rationAccepted:0,
             applicationId: appObj._id,
-            isActive: true
+            isActive: true,
+            registerationDoc:appObj.registerationDoc
         });
     }
     const appObjNew = await application.findOneAndUpdate({email}, {approved: true, approvalStatus:"approved", isActive:false});
