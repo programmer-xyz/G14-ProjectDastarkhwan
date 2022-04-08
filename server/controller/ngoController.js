@@ -1,11 +1,13 @@
 import Ngo from "../models/ngoSchema.mjs";
+import User from "../models/userSchema.mjs";
+import Rest from "../models/restuarauntSchema.mjs";
 import application from "../models/applicationSchema.mjs";
 import donation from "../models/donationsSchema.mjs";
 import { handleAsyncErr } from "../middleware/handleAsyncErr.js";
 import bcrypt from "bcrypt";
 import HandErr from "../utils/err.js";
 import mongoose from "mongoose";
-import ngo from "../models/ngoSchema.mjs";
+
 
 //login 
 export const ngoLogin =  handleAsyncErr(async (req,res, next) =>{
@@ -447,16 +449,55 @@ export const acceptDonation = handleAsyncErr(async(req,res,next)=>
         let donations = await donation.findOne({'_id':donationId,'isActive':true})
         if(!!donations)
         {
-            if(!!donations.donatedByUser)
+            const user = await User.findOne({'_id':donations.donatedByUser,'isActive':true});
+            const rest = await Rest.findOne({'_id':donations.donatedByRestaurant,'isActive':true});
+            if(!user && !rest)
             {
-                //user block
-
+                const res = donation.updateOne({'_id':donations.donatedByUser,'isActive':true},{'isActive':false});
+                return next(new HandErr("User/restuarant is no longer active",401));
+            }
+            const session = await mongoose.startSession();
+            session.startTransaction();
+              let update = {}
+              let updateNgo = {}
+                 if(donations.typeOfDonation==='meal')
+                 {
+                     update['mealDonated'] = donations.amount;
+                     updateNgo['mealsAccepted'] = donations.amount;
+                 }
+                 else
+                 {
+                     update['rationDonated'] = 1;
+                     updateNgo['rationAccepted'] = 1;
+                 }
+            try{
+                if(!!donations.donatedByUser)
+                {
+                    const userUpdate = await User.updateOne({'_id':donations.donatedByUser,'isActive':true},{$inc:update})
+                    
+                }
+                else
+                {
+                    const restUpdate = await Rest.updateOne({'_id':donations.donatedByRestaurant,'isActive':true},{$inc:{
+                        'mealsDonated':donations.amount
+                    }});
+                }
+                const ngoUpdate = await Ngo.updateOne({'_id':donations.acceptedBy,'isActive':true},{$inc:updateNgo})
+                const donationUpdate = await donation.findOneAndUpdate({'_id':donationId,'isActive':true},{'isActive':false,'donataionComplete':true})
+                console.log(donationUpdate)
+            }   
+            catch (error)
+            {
+                await session.abortTransaction();
+                return next(new HandErr(error,401));
 
             }
-            else
-            {
-                //rest block 
-            }
+            await session.commitTransaction();
+            await session.endSession();
+            res.status(200).json({
+                success:true,
+                message:"Donation has been accpeted and completed"
+            });
         }
         else
         {
