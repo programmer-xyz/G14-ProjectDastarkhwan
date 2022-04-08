@@ -527,4 +527,39 @@ export const editProfileNgo = handleAsyncErr(async (req, res, next)=>{
         body: user
     });
 });
-
+export const myRequestRest = handleAsyncErr(async(req,res,next)=>
+{
+    let {email} = req.body;
+    if(!!email)
+    {
+        let ngo = await Ngo.findOne({'email':email,'isActive':true}).populate({path:'donationAccepted',populate:{
+            path: 'donatedByUser',
+            model: 'User',
+            select: 'name email userName address description phoneNumber image'
+        },populate:
+        {
+            path: 'donatedByRestaurant',
+            model: 'restuarant',
+            select: 'name email userName address description phoneNumber contactEmail contactName contactNumber image'
+        }});
+        if(!!ngo)
+        {   
+            res.status(200).json({
+                success:true,
+                message:"Successfully found donations details",
+                body: ngo.donationAccepted
+            });
+            
+        }
+        else
+        {
+            return next(new HandErr("NGO dosen't exist or is no longer active",400));
+        }
+        
+    }
+    else
+    {
+        return next(new HandErr("Email is missing",400))
+    }
+   
+});

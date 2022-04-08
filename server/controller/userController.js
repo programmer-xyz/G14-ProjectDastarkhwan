@@ -167,9 +167,7 @@ export const mealDonation = handleAsyncErr(async (req,res,next) =>{
 
     const ngoSelected = await Ngo.findOne({email:ngoIdentifier})
     
-    if(!ngoSelected.isActive){
-        return next(new HandErr("Ngo is inactive", 401))
-    }
+    
  
     const donation = await Donation.insertMany({
         donatedByUser: userDonor._id,
