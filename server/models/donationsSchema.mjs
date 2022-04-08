@@ -5,7 +5,7 @@ import addressSchema from "./addressSchema.mjs";
 const donationSchema = new mongoose.Schema({
     donatedByUser:{type:Schema.Types.ObjectId,'ref':'user',default:null},
     donatedByRestaurant:{type:Schema.Types.ObjectId,'ref':'restuarant',default:null},
-    acceptedBy:{type:Schema.Types.ObjectId,'ref':'ngo'},
+    acceptedBy:{type:Schema.Types.ObjectId,'ref':'NGO'},
     typeOfDonation:{type:String,required:true},
     donataionComplete:{type:Boolean,default:false},
     amount:{type:Number,required:true},
