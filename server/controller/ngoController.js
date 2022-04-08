@@ -564,3 +564,75 @@ export const myRequestNgo = handleAsyncErr(async(req,res,next)=>
     }
    
 });
+
+export const userRequestNgo = handleAsyncErr(async(req,res,next)=>
+{
+    let {email} = req.body;
+    if(!!email)
+    {
+        let ngo = await Ngo.findOne({'email':email,'isActive':true}).populate({path:'donationAccepted',
+        match:{'donatedByRestaurant':null},
+        populate:{
+            path: 'donatedByUser',
+            
+            model: 'User',
+            select: 'name email userName address description phoneNumber'
+        }
+        });
+        if(!!ngo)
+        {   
+            //console.log(ngo.donationAccepted.length)
+            res.status(200).json({
+                success:true,
+                message:"Successfully found donations details",
+                body: ngo.donationAccepted
+            });
+            
+        }
+        else
+        {
+            return next(new HandErr("NGO dosen't exist or is no longer active",400));
+        }
+        
+    }
+    else
+    {
+        return next(new HandErr("Email is missing",400))
+    }
+   
+});
+export const restRequestNgo = handleAsyncErr(async(req,res,next)=>
+{
+    let {email} = req.body;
+    if(!!email)
+    {
+        let ngo = await Ngo.findOne({'email':email,'isActive':true, 'donatedByUser':null}).populate({path:'donationAccepted',
+        match:{'donatedByUser':null},
+        populate:{
+            path: 'donatedByRestaurant',
+            model: 'restuarant',
+            select: 'name email userName address description phoneNumber contactEmail contactName contactNumber '
+        }
+        });
+        if(!!ngo)
+        {   
+            //console.log(ngo.donationAccepted.length)
+            res.status(200).json({
+                success:true,
+                message:"Successfully found donations details",
+                body: ngo.donationAccepted
+            });
+            
+        }
+        else
+        {
+            return next(new HandErr("NGO dosen't exist or is no longer active",400));
+        }
+        
+    }
+    else
+    {
+        return next(new HandErr("Email is missing",400))
+    }
+   
+});
