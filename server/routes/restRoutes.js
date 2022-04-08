@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {restLogin, restRegister,forgetPassResCheckUser,forgetPassUpdatePassRes,changePassRes,viewRestProfile,viewRestStats, editProfileRest} from "../controller/restController";
+import {myRequestRest, restLogin, restRegister,forgetPassResCheckUser,forgetPassUpdatePassRes,changePassRes,viewRestProfile,viewRestStats, editProfileRest} from "../controller/restController";
 
 const router = Router();
 
@@ -12,4 +12,5 @@ router.route("/forgetPassU").post(forgetPassUpdatePassRes);
 router.route("/viewProfile").post(viewRestProfile);
 router.route("/statProfile").post(viewRestStats);
 router.route("/editProfileRest").post(editProfileRest);
+router.route("/myRequest").post(myRequestRest)
 export default router;

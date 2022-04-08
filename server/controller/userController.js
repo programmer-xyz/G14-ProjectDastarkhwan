@@ -339,7 +339,7 @@ export const myRequestUser = handleAsyncErr(async(req,res,next)=>
         {   
             res.status(200).json({
                 success:true,
-                message:"Successfully updated user profile",
+                message:"Successfully found donations details",
                 body: user.donations
             });
             

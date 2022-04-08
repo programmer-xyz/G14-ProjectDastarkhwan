@@ -232,14 +232,14 @@ export const myRequestRest = handleAsyncErr(async(req,res,next)=>
         {   
             res.status(200).json({
                 success:true,
-                message:"Successfully updated user profile",
+                message:"Successfully found donations details",
                 body: rest.donations
             });
             
         }
         else
         {
-            return next(new HandErr("User is dosen't exist or is no longer active",400));
+            return next(new HandErr("Restuarant is dosen't exist or is no longer active",400));
         }
         
     }
