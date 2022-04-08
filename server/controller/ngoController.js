@@ -178,6 +178,7 @@ export const viewNgoProfile = handleAsyncErr(async (req,res,next)=>
         return next(new HandErr("Ngo profile not found or account is no longer active",400));
     }
 });
+
 //view account stats for actor Ngo
 export const viewNgoStats = handleAsyncErr(async (req,res,next)=>
 {
@@ -437,3 +438,22 @@ export const viewRestDonation = handleAsyncErr(async (req,res,next)=>
     }
 });
 
+export const editProfileNgo = handleAsyncErr(async (req, res, next)=>{
+
+    const {name,userName, accountNum, phoneNumber, description, address, _id,  contactName, contactEmail, contactNumber} = req.body;
+    let editObj = {name: name,userName:userName, bankAccount:accountNum, phoneNumber:phoneNumber, description:description, address:address, contactName: contactName,contactEmail:contactEmail,contactNumber:contactNumber,lastUpdated:Date.now()}
+
+    if(!_id){
+        return next(new HandErr("id missing",400));
+    }
+    let user = await Ngo.findOneAndUpdate({_id:_id, isActive:true}, editObj);
+
+    if(!user){
+        return next(new HandErr("user profile not found or account is no longer active",400));
+    }
+    res.status(200).json({
+        success:true,
+        message:"Successfully updated user profile",
+        body: user
+    });
+});
