@@ -217,3 +217,35 @@ export const editProfileRest = handleAsyncErr(async (req, res, next)=>{
         body: user
     });
 });
+
+export const myRequestRest = handleAsyncErr(async(req,res,next)=>
+{
+    let {email} = req.body;
+    if(!!email)
+    {
+        let rest = await Rest.findOne({'email':email,'isActive':true}).populate({path:'donations',populate:{
+            path: 'acceptedBy',
+            model: 'NGO',
+            select: 'name email userName address description phoneNumber contactEmail contactName contactNumber image'
+        }});
+        if(!!rest)
+        {   
+            res.status(200).json({
+                success:true,
+                message:"Successfully updated user profile",
+                body: rest.donations
+            });
+            
+        }
+        else
+        {
+            return next(new HandErr("User is dosen't exist or is no longer active",400));
+        }
+        
+    }
+    else
+    {
+        return next(new HandErr("Email is missing",400))
+    }
+   
+});
