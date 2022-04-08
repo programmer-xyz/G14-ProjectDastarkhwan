@@ -5,6 +5,7 @@ import { handleAsyncErr } from "../middleware/handleAsyncErr.js";
 import bcrypt from "bcrypt";
 import HandErr from "../utils/err.js";
 import mongoose from "mongoose";
+import ngo from "../models/ngoSchema.mjs";
 
 //login 
 export const ngoLogin =  handleAsyncErr(async (req,res, next) =>{
@@ -437,3 +438,32 @@ export const viewRestDonation = handleAsyncErr(async (req,res,next)=>
     }
 });
 
+export const acceptDonation = handleAsyncErr(async(req,res,next)=>
+{
+    let {donationId} = req.body
+    if(!!donationId)
+    {
+        let donations = await donation.findOne({'_id':donationId,'isActive':true})
+        if(!!donations)
+        {
+            if(!!donations.donatedByUser)
+            {
+                //user block
+
+
+            }
+            else
+            {
+                //rest block 
+            }
+        }
+        else
+        {
+            return next(new HandErr("Donation is no longer Active",401));
+        }
+    }
+    else
+    {
+        return next(new HandErr("Donation id is missing",401));
+    }
+})
