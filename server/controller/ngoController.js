@@ -270,6 +270,15 @@ export const viewDonation = handleAsyncErr(async (req,res,next)=>
                     as: 'userDetails'
                  }
             },
+            {
+                $lookup:
+                   {
+                     from: 'restuarants',
+                     localField: 'donatedByRestaurant',
+                     foreignField: '_id',
+                     as: 'restDetails'
+                  }
+            },
             { $match: { acceptedBy:id }},
             { $project : {userDetails:
             {
@@ -280,6 +289,14 @@ export const viewDonation = handleAsyncErr(async (req,res,next)=>
                 donations:0,
                 createdAt:0,
                 lastUpdated:0,
+            }}},
+            { $project : {restDetails:
+                {
+                    password:0,
+                    isActive:0,
+                    donations:0,
+                    createdAt:0,
+                    lastUpdatedAt:0,
             }}}
          ] )
         if(donations.length>=1)
