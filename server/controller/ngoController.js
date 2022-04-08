@@ -57,8 +57,8 @@ export const ngoRegister = handleAsyncErr(async (req, res, next) =>{
         return next(new HandErr("user already exists", 401));
     }
     let pw = await bcrypt.hash(password, 12);
-    console.log(address);
-    console.log(req.file)
+    // console.log(address);
+    // console.log(req.file)
     const restApp = await application.create({
         name: name, 
         email: email, 
@@ -483,7 +483,7 @@ export const acceptDonation = handleAsyncErr(async(req,res,next)=>
                 }
                 const ngoUpdate = await Ngo.updateOne({'_id':donations.acceptedBy,'isActive':true},{$inc:updateNgo,$push:{donationAccepted:donationId}},{ new: true, useFindAndModify: false })
                 const donationUpdate = await donation.findOneAndUpdate({'_id':donationId,'isActive':true},{'isActive':false,'donataionComplete':true})
-                console.log(donationUpdate)
+                // console.log(donationUpdate)
             }   
             catch (error)
             {
@@ -527,20 +527,21 @@ export const editProfileNgo = handleAsyncErr(async (req, res, next)=>{
         body: user
     });
 });
-export const myRequestRest = handleAsyncErr(async(req,res,next)=>
+export const myRequestNgo = handleAsyncErr(async(req,res,next)=>
 {
     let {email} = req.body;
     if(!!email)
     {
-        let ngo = await Ngo.findOne({'email':email,'isActive':true}).populate({path:'donationAccepted',populate:{
+        let ngo = await Ngo.findOne({'email':email,'isActive':true}).populate({path:'donationAccepted',
+        populate:{
             path: 'donatedByUser',
             model: 'User',
-            select: 'name email userName address description phoneNumber image'
+            select: 'name email userName address description phoneNumber'
         },populate:
         {
             path: 'donatedByRestaurant',
             model: 'restuarant',
-            select: 'name email userName address description phoneNumber contactEmail contactName contactNumber image'
+            select: 'name email userName address description phoneNumber contactEmail contactName contactNumber '
         }});
         if(!!ngo)
         {   

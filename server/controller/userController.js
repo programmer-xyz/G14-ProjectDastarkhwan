@@ -156,18 +156,20 @@ export const changePassUser = handleAsyncErr(async(req,res,next)=>{
 
 export const mealDonation = handleAsyncErr(async (req,res,next) =>{
     //user email and selected ngo will be sent from frontend
-
+    //console.log(req.body)
     let image = req.file.buffer;
-    const {address, description, email, ngoIdentifier} = req.body;
+    let {address, description, email, ngoIdentifier} = req.body;
 
     if( !address|| !description||!image){
         return next(new HandErr("some fields are missing", 401))
     }
+    address = JSON.parse(address);
     const userDonor = await User.findOne({email:email, isActive:true})
 
     const ngoSelected = await Ngo.findOne({email:ngoIdentifier, isActive:true})
-    if(!ngoSelected){
-        return next(new HandErr("Ngo is inactive", 401))
+    //console.log(ngoSelected)
+    if(!ngoSelected || !userDonor){
+        return next(new HandErr("Ngo/User is inactive", 401))
     }
    
     const donation = await Donation.insertMany({

@@ -255,21 +255,21 @@ export const mealDonation = handleAsyncErr(async (req,res,next) =>{
     //user email and selected ngo will be sent from frontend
 
     let image = req.file.buffer;
-    const {address, description, email, ngoIdentifier} = req.body;
+    let {address, description, email, ngoIdentifier} = req.body;
 
     if( !address|| !description||!image){
         return next(new HandErr("some fields are missing", 401))
     }
     const userDonor = await Rest.findOne({email:email, isActive:true})
-
+    address = JSON.parse(address)
     const ngoSelected = await Ngo.findOne({email:ngoIdentifier,isActive:true})
     
-    if(!ngoSelected.isActive){
-        return next(new HandErr("Ngo is inactive", 401))
+    if(!ngoSelected || !userDonor){
+        return next(new HandErr("Ngo/user is inactive", 401))
     }
  
     const donation = await Donation.insertMany({
-        donatedByUser: userDonor._id,
+        donatedByRestaurant: userDonor._id,
         acceptedBy: ngoSelected._id,
         typeOfDonation:"meal",
         donataionComplete:false,
