@@ -421,3 +421,19 @@ export const viewRestDonation = handleAsyncErr(async (req,res,next)=>
     }
 });
 
+export const editProfileNgo = handleAsyncErr(async (req, res, next)=>{
+    const jsonFields = req.body;
+    if(!jsonFields._id){
+        return next(new HandErr("id missing",400));
+    }
+    let user = await Ngo.findOneAndUpdate({_id: jsonFields._id, isActive:true}, jsonFields);
+
+    if(!user){
+        return next(new HandErr("user profile not found or account is no longer active",400));
+    }
+    res.status(200).json({
+        success:true,
+        message:"Successfully updated user profile",
+        body: user
+    });
+});
