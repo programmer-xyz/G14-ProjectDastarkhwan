@@ -155,21 +155,22 @@ export const changePassUser = handleAsyncErr(async(req,res,next)=>{
 
 export const mealDonation = handleAsyncErr(async (req,res,next) =>{
     //user email and selected ngo will be sent from frontend
-    const {address, description, image, email, ngoIdentifier} = req.body;
-    console.log(req.body)
+
+    let image = req.file.buffer;
+    const {address, description, email, ngoIdentifier} = req.body;
+
     if( !address|| !description||!image){
         return next(new HandErr("some fields are missing", 401))
     }
-    // const userDonor = await User.findOne({email:email})
-    // let md = userDonor.mealDonated
-    // User.updateOne({email:email}, {mealDonated: md + 1})
-   
+    const userDonor = await User.findOne({email:email})
+
     const ngoSelected = await Ngo.findOne({email:ngoIdentifier})
     
     if(!ngoSelected.isActive){
         return next(new HandErr("Ngo is inactive", 401))
     }
-    const donation = Donation.create({
+ 
+    const donation = await Donation.insertMany({
         donatedByUser: userDonor._id,
         acceptedBy: ngoSelected._id,
         typeOfDonation:"meal",
@@ -180,6 +181,9 @@ export const mealDonation = handleAsyncErr(async (req,res,next) =>{
         isActive:true
     });
 
+ 
+    let user1 = await User.findByIdAndUpdate(userDonor._id,{$push: {donations:donation[0]._id}}, { new: true, useFindAndModify: false }) //{donations: userDonor.donations.push(mongoose.Types.ObjectId(donation._id))})
+    //console.log(user1)
     res.status(200).json({
         success: true,
         message: "donation made to ngo",
@@ -189,21 +193,20 @@ export const mealDonation = handleAsyncErr(async (req,res,next) =>{
 
 export const rationDonation = handleAsyncErr(async (req,res,next) =>{
     //user email and selected ngo will be sent from frontend
-    const {address, description, image, email, ngoIdentifier} = req.body;
-    console.log(req.body)
+    let image = req.file.buffer;
+    const {address, description, email, ngoIdentifier} = req.body;
+  
     if( !address|| !description||!image){
         return next(new HandErr("some fields are missing", 401))
     }
-    // const userDonor = await User.findOne({email:email})
-    // let rd = userDonor.rationDonated
-    // User.updateOne({email:email}, {rationDonated: rd + 1})
-   
+    const userDonor = await User.findOne({email:email})
+
     const ngoSelected = await Ngo.findOne({email:ngoIdentifier})
     
     if(!ngoSelected.isActive){
         return next(new HandErr("Ngo is inactive", 401))
     }
-    const donation = Donation.create({
+    const donation = await Donation.insertMany({
         donatedByUser: userDonor._id,
         acceptedBy: ngoSelected._id,
         typeOfDonation:"ration",
@@ -213,6 +216,7 @@ export const rationDonation = handleAsyncErr(async (req,res,next) =>{
         address: address,
         isActive:true
     });
+    let user1 = await User.findByIdAndUpdate(userDonor._id,{$push: {donations:donation[0]._id}}, { new: true, useFindAndModify: false }) //{donations: userDonor.donations.push(mongoose.Types.ObjectId(donation._id))})
 
     res.status(200).json({
         success: true,
