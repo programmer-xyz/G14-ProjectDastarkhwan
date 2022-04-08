@@ -3,8 +3,8 @@ const {Schema} = mongoose;
 import addressSchema from "./addressSchema.mjs";
 
 const donationSchema = new mongoose.Schema({
-    donatedByUser:{type:Schema.Types.ObjectId,'ref':'user'},
-    donatedByRestaurant:{type:Schema.Types.ObjectId,'ref':'restuarant'},
+    donatedByUser:{type:Schema.Types.ObjectId,'ref':'user',default:null},
+    donatedByRestaurant:{type:Schema.Types.ObjectId,'ref':'restuarant',default:null},
     acceptedBy:{type:Schema.Types.ObjectId,'ref':'ngo'},
     typeOfDonation:{type:String,required:true},
     donataionComplete:{type:Boolean,default:false},

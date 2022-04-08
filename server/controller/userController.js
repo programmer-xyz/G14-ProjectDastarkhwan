@@ -300,3 +300,16 @@ export const viewUserStats = handleAsyncErr(async (req,res,next)=>
         return next(new HandErr("user not found",400));
     }
 });
+
+export const editProfileUser = handleAsyncErr(async (req, res, next)=>{
+    const jsonFields = req.body;
+    let user = User.findOneAndUpdate({_id: jsonFields._id, isActive:true}, jsonFields);
+    if(!user){
+        return next(new HandErr("user profile not found or account is no longer active",400));
+    }
+    res.status(200).json({
+        success:true,
+        message:"Successfully updated user profile",
+        body: user
+    });
+});

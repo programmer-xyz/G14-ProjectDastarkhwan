@@ -1,8 +1,10 @@
 import Ngo from "../models/ngoSchema.mjs";
 import application from "../models/applicationSchema.mjs";
+import donation from "../models/donationsSchema.mjs";
 import { handleAsyncErr } from "../middleware/handleAsyncErr.js";
 import bcrypt from "bcrypt";
 import HandErr from "../utils/err.js";
+import mongoose from "mongoose";
 
 //login 
 export const ngoLogin =  handleAsyncErr(async (req,res, next) =>{
@@ -246,15 +248,176 @@ export const deleteProfile = handleAsyncErr(async (req,res,next)=>
     }
 });
 
-// export const viewDonation = handleAsyncErr(async (req,res,next)=>
-// {
+export const viewDonation = handleAsyncErr(async (req,res,next)=>
+{
+    let {ngoId} = req.body
+    if(!!ngoId)
+    {
+        var id = mongoose.Types.ObjectId(ngoId);
+        //validate NGO
+        var response = await Ngo.findOne({'_id': id, 'isActive': true})
+        console.log(response)
+        if(!response)
+        {
+            return next(new HandErr("NGO with this id dosen't exist or has been deleted",401));
+        }
+        let donations = await donation.aggregate( [
+            {
+               $lookup:
+                  {
+                    from: 'users',
+                    localField: 'donatedByUser',
+                    foreignField: '_id',
+                    as: 'userDetails'
+                 }
+            },
+            { $match: { acceptedBy:id }},
+            { $project : {userDetails:
+            {
+                password:0,
+                isActive:0,
+                bankAccount:0,
+                cnic:0,
+                donations:0,
+                createdAt:0,
+                lastUpdated:0,
+            }}}
+         ] )
+        if(donations.length>=1)
+        {
+            res.status(200).json({
+                success:true,
+                message:"details found",
+                data: donations
+            });
+        }
+        else
+        {
+            res.status(200).json({
+                success:false,
+                message:"No pending donations to accept",
+                data: donations
+            });
+        }
 
-// });
+    }
+    else
+    {
+        return next(new HandErr("Ngo id is missing",401));
+    }
+});
 
-// export const viewUserDonation= handleAsyncErr(async (req,res,next)=>{
+export const viewUserDonation= handleAsyncErr(async (req,res,next)=>{
+    let {ngoId} = req.body
+    if(!!ngoId)
+    {
+        var id = mongoose.Types.ObjectId(ngoId);
+        //validate NGO
+        var response = await Ngo.findOne({'_id': id, 'isActive': true})
+        console.log(response)
+        if(!response)
+        {
+            return next(new HandErr("NGO with this id dosen't exist or has been deleted",401));
+        }
+        let donations = await donation.aggregate( [
+            {
+               $lookup:
+                  {
+                    from: 'users',
+                    localField: 'donatedByUser',
+                    foreignField: '_id',
+                    as: 'userDetails'
+                 }
+            },
+            { $match: { acceptedBy:id ,donatedByRestaurant:null}},
+            { $project : {userDetails:
+            {
+                password:0,
+                isActive:0,
+                bankAccount:0,
+                cnic:0,
+                donations:0,
+                createdAt:0,
+                lastUpdated:0,
+            }}}
+         ] )
+        if(donations.length>=1)
+        {
+            res.status(200).json({
+                success:true,
+                message:"details found",
+                data: donations
+            });
+        }
+        else
+        {
+            res.status(200).json({
+                success:false,
+                message:"No pending donations to accept",
+                data: donations
+            });
+        }
 
-// });
-// export const viewRestDonation = handleAsyncErr(async (req,res,next)=>
-// {
+    }
+    else
+    {
+        return next(new HandErr("Ngo id is missing",401));
+    }
+});
+export const viewRestDonation = handleAsyncErr(async (req,res,next)=>
+{
+    let {ngoId} = req.body
+    if(!!ngoId)
+    {
+        var id = mongoose.Types.ObjectId(ngoId);
+        //validate NGO
+        var response = await Ngo.findOne({'_id': id, 'isActive': true})
+        console.log(response)
+        if(!response)
+        {
+            return next(new HandErr("NGO with this id dosen't exist or has been deleted",401));
+        }
+        let donations = await donation.aggregate( [
+            {
+               $lookup:
+                  {
+                    from: 'restuarants',
+                    localField: 'donatedByRestaurant',
+                    foreignField: '_id',
+                    as: 'restDetails'
+                 }
+            },
+            { $match: { acceptedBy:id ,donatedByUser:null}},
+            { $project : {restDetails:
+            {
+                password:0,
+                isActive:0,
+                donations:0,
+                createdAt:0,
+                lastUpdatedAt:0,
+            }}}
+         ] )
+        if(donations.length>=1)
+        {
+            res.status(200).json({
+                success:true,
+                message:"details found",
+                data: donations
+            });
+        }
+        else
+        {
+            res.status(200).json({
+                success:false,
+                message:"No pending donations to accept",
+                data: donations
+            });
+        }
 
-// });
+    }
+    else
+    {
+        return next(new HandErr("Ngo id is missing",401));
+    }
+});
+
