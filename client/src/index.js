@@ -1,13 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Login from './pages/loginpage/login.js';
-import Navbar from "./components/Navbar/Navbar";
-import ForgetPassword from "./pages/forgetpassword/forgetpassword.js";
+import App from './App';
 
 ReactDOM.render(
-    // <Navbar/>,
-    // <Login />,
-    <ForgetPassword />,
+  <App/>,
   document.getElementById('root')
 );

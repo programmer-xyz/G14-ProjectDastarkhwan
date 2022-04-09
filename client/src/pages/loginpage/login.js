@@ -1,7 +1,7 @@
 import './login.css';
 import React,{ useState} from 'react';
 import Grid from '@mui/material/Grid';
-import logo from './MaskGroup2.png'
+import logo from '../../assets/MaskGroup2.png';
 
 function Button (props) {  
   console.log(props.orange)
