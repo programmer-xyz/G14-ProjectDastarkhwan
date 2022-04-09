@@ -6,7 +6,7 @@ const ngoSchema = new mongoose.Schema({
     name:{type:String,required:true},
     email:{type:String,required:true},
     userName:{type:String,required:true},
-    address:{type:addressSchema}, //,required:true},
+    address:{type:addressSchema,required:true},
     isActive:{type:Boolean,required:true},
     createdAt:{type:Date,default:Date.now},
     lastUpdated:{type:Date,default:Date.now},
@@ -21,8 +21,8 @@ const ngoSchema = new mongoose.Schema({
     mealsAccepted:{type:Number,required:true},
     monetaryFundsAccepted:{type:Number,required:true},
     rationAccepted:{type:Number,required:true},
-    donationAccepted:[{type:Schema.Types.ObjectId,ref:'donation'}],
-    applicationId:{type:Schema.Types.ObjectId,ref:'application'},
+    donationAccepted:[{type:Schema.Types.ObjectId,ref:'Donation'}],
+    applicationId:{type:Schema.Types.ObjectId,ref:'Application'},
     subscriptionList:[{type:Schema.Types.ObjectId,ref:'subscription'}],
     image:{type:Buffer,default:null}
 
