@@ -9,35 +9,35 @@ function Cards (props) {
     if(props.Resturant === 0)
     {
         return(
-            <div className= "container-fluid">
-            <h4 className="heading">Summary</h4>
-            <div className="row">
-                <div className= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                    <div className="card first">
-                        <div className="card-body">
-                            <h5 className="card-title">Meals Donations</h5>
-                            <p className="card-text">{props.mealsDonated}</p>
-                            <img className ="Res" src={mealsforres}/>
+            <div class ="container">
+            <h4 class ="heading">Summary</h4>
+            <div class ="row">
+                <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
+                    <div class="card first">
+                        <div class="card-body">
+                            <h5 class="card-title">Meals Donations</h5>
+                            <p class="card-text">{props.mealsDonated}</p>
+                            <img class ="Res" src={mealsforres}/>
                         </div>
                     </div>
                 </div>
-                <div className= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                <div className="card third" >
-                        <div className="card-body">
-                            <h5 className="card-title">Number of NGOs donated to</h5>
-                            <p className="card-text">{props.ngosDonatedTo}</p>
-                            <img alt="image1" className ="Res" src={ngodonated}/>
+                <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
+                <div class="card third" >
+                        <div class="card-body">
+                            <h5 class="card-title">Number of NGOs donated to</h5>
+                            <p class="card-text">{props.ngosDonatedTo}</p>
+                            <img alt="image1" class ="Res" src={ngodonated}/>
                         </div>
                     </div>
                 </div>
             </div>
-            <hr className="hr"></hr>
-            <div className="row">
-                <div className="col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                    <button className="buttons">Make Donations</button>
+            <hr class="hr"></hr>
+            <div class="row">
+                <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
+                    <button class="buttons">Make Donations</button>
                 </div>
-                <div className="col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                    <button className="buttons white">Past Requests</button>
+                <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
+                    <button class="buttons white">Past Requests</button>
                 </div>
             </div>
             </div>
@@ -46,44 +46,44 @@ function Cards (props) {
     else if (props.Resturant === 1)
     {
         return(
-            <div className= "container-fluid">
-            <h4 className="heading">Summary</h4>
-            <div className="row">
-                <div className= "col-lg-4 col-xs-12 col-md-12 col-sm-12">
-                    <div className="card first">
-                        <div className="card-body">
-                            <h5 className="card-title">Monetary Donations</h5>
-                            <p className="card-text">${props.monetaryDonations}</p>
+            <div class= "container">
+            <h4 class="heading">Summary</h4>
+            <div class="row">
+                <div class= "col-lg-4 col-xs-12 col-md-12 col-sm-12">
+                    <div class="card first">
+                        <div class="card-body">
+                            <h5 class="card-title">Monetary Donations</h5>
+                            <p class="card-text">${props.monetaryDonations}</p>
                             <img alt="image2" src={dollar} />
                         </div>
                     </div>
                 </div>
-                <div className= "col-lg-4 col-md-12 col-sm-12">
-                <div className="card second">
-                        <div className="card-body">
-                            <h5 className="card-title">Ration Donations</h5>
-                            <p className="card-text">{props.rationDonations}</p>
+                <div class= "col-lg-4 col-md-12 col-sm-12">
+                <div class="card second">
+                        <div class="card-body">
+                            <h5 class="card-title">Ration Donations</h5>
+                            <p class="card-text">{props.rationDonations}</p>
                             <img alt="image3" src={bag}/>
                         </div>
                     </div>
                 </div>
-                <div className= "col-lg-4 col-md-12 col-sm-12">
-                <div className="card third" >
-                        <div className="card-body">
-                            <h5 className="card-title">Meals Donations</h5>
-                            <p className="card-text">{props.mealDonations}</p>
+                <div class= "col-lg-4 col-md-12 col-sm-12">
+                <div class="card third" >
+                        <div class="card-body">
+                            <h5 class="card-title">Meals Donations</h5>
+                            <p class="card-text">{props.mealDonations}</p>
                             <img alt="image4" src={Meals}/>
                         </div>
                     </div>
                 </div>
             </div>
-            <hr className="hr1"></hr>
-            <div className="row">
-                <div className="col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                    <button className="buttons">Accept Donations</button>
+            <hr class="hr1"></hr>
+            <div class="row">
+                <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
+                    <button class="buttons">Accept Donations</button>
                 </div>
-                <div className="col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                    <button className="buttons white">Past Requests</button>
+                <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
+                    <button class="buttons white">Past Requests</button>
                 </div>
             </div>
             </div>
@@ -92,53 +92,52 @@ function Cards (props) {
     else if (props.Resturant === 2)
     {
         return(
-            <div className= "container-fluid">
-            <h4 className="heading">Summary</h4>
-            <div className="row">
-                <div className= "col-lg-4 col-xs-12 col-md-12 col-sm-12">
-                    <div className="card first">
-                        <div className="card-body">
-                            <h5 className="card-title">Monetary Donations</h5>
-                            <p className="card-text">${props.monetaryDonations}</p>
+            <div class= "container">
+            <h4 class="heading">Summary</h4>
+            <div class="row">
+                <div class= "col-lg-4 col-xs-12 col-md-12 col-sm-12">
+                    <div class="card first">
+                        <div class="card-body">
+                            <h5 class="card-title">Monetary Donations</h5>
+                            <p class="card-text">${props.monetaryDonations}</p>
                             <img alt="image5" src={dollar}/>
                         </div>
                     </div>
                 </div>
-                <div className= "col-lg-4 col-xs-12 col-md-12 col-sm-12">
-                <div className="card second">
-                        <div className="card-body">
-                            <h5 className="card-title">Ration Donations</h5>
-                            <p className="card-text">{props.rationDonations}</p>
+                <div class= "col-lg-4 col-xs-12 col-md-12 col-sm-12">
+                <div class="card second">
+                        <div class="card-body">
+                            <h5 class="card-title">Ration Donations</h5>
+                            <p class="card-text">{props.rationDonations}</p>
                             <img alt="image6" src={bag}/>
                         </div>
                     </div>
                 </div>
-                <div className= "col-lg-4 col-xs-12 col-md-12 col-sm-12">
-                <div className="card third" >
-                        <div className="card-body">
-                            <h5 className="card-title">Meals Donations</h5>
-                            <p className="card-text">{props.mealDonations}</p>
+                <div class= "col-lg-4 col-xs-12 col-md-12 col-sm-12">
+                <div class="card third" >
+                        <div class="card-body">
+                            <h5 class="card-title">Meals Donations</h5>
+                            <p class="card-text">{props.mealDonations}</p>
                             <img alt="image7" src={Meals}/>
                         </div>
                     </div>
                 </div>
             </div>
-            <hr className="hr1"></hr>
-            <div className="row">
-                <div className="col-lg-4 col-xs-12 col-md-12 col-sm-12">
-                    <button className="buttons">Make Donations</button>
+            <hr class="hr1"></hr>
+            <div class="row">
+                <div class="col-lg-4 col-xs-12 col-md-12 col-sm-12">
+                    <button class="buttons">Make Donations</button>
                 </div>
-                <div className="col-lg-4 col-xs-12 col-md-12 col-sm-12">
-                    <button className="buttons white">Past Requests</button>
+                <div class="col-lg-4 col-xs-12 col-md-12 col-sm-12">
+                    <button class="buttons white">Past Requests</button>
                 </div>
-                <div className="col-lg-4 col-xs-12 col-md-12 col-sm-12">
-                    <button className="buttons white">Subscription</button>
+                <div class="col-lg-4 col-xs-12 col-md-12 col-sm-12">
+                    <button class="buttons white">Subscription</button>
                 </div>
             </div>
             </div>
         );
     }
-    
 }
 
 export default Cards;

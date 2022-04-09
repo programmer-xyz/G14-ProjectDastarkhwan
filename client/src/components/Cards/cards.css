@@ -1,15 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-.container-fluid{
+.container {
     background-color: white;
-    width:50%;
-    display: flexbox;
+    width:50% !important;
     padding:30px;
     border-radius: 14px;
     box-shadow: 10px 10px 10px 10px #00000014;
-    padding: 93px 32px 93px 32px;
+    padding: 93px 32px 93px 32px !important;
     text-align: left;
 }
-.container-fluid h4{
+.container h4{
 
     top:2%;
     left:27%;
@@ -64,7 +63,7 @@
     font-family: 'Poppins';
     font-size:medium;
     margin-top: 2%;
-    border-radius: 10px;
+    border-radius: 10px !important;
 }
 .card-text{
     font-size: 55px;
@@ -82,19 +81,19 @@ img{
     color:#2A9D8F;
     font: normal normal medium 14px/21px Poppins;
     font-weight: bold;
-    background-color:rgba(178, 220, 214, 0.36);
+    background-color:rgba(178, 220, 214, 0.36) !important;
 }
 .second{
     color:#E76F51;
     font-weight: bold;
     font: normal normal medium 14px/21px Poppins;
-    background-color:rgba(244, 162, 97, 0.36);
+    background-color:rgba(244, 162, 97, 0.36) !important;
 }
 .third{
     color:#E9C46A;
     font-weight: bold;
     font: normal normal medium 14px/21px Poppins;
-    background-color:rgba(247, 234, 201, 0.36);
+    background-color:rgba(247, 234, 201, 0.36) !important;
 
 }
 .hr1 {
