@@ -33,25 +33,6 @@
     color:#264653;
     font: normal normal normal 14px/25px Poppins;
 }
-
-/* @media (min-width:992px)
-{
-    .conatiner{
-        height:900px;
-        background-color: white;
-        width: 75%;
-        display: block;
-        padding:30px;
-        margin-left:20px;
-        border-radius: 14px;
-        box-shadow: 10px 10px 10px 10px #00000014;
-        height: 475px;
-        padding: 93px 32px 93px 32px;
-        text-align: left;
-        top:300px;
-        position:relative;
-    }
-} */
 .hr{
     margin-top: 5%;
     border:1px solid #264653;
@@ -72,11 +53,6 @@
 .card-title{
     font-size: 14px;
     font-weight: bold;
-}
-.Res1{
-    left:55%;
-    position: relative;
-    opacity: 1;
 }
 .first{
     color:#2A9D8F;
