@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.buttons1{
+    border: none;
+    font: normal normal normal 16px/61px Poppins;
+    margin:10px;
+    background:#fff;
+    cursor:pointer;
+}
+.buttons2{
+    background: #264653;
+    font: normal normal normal 12px/18px Poppins;
+    color:#fff;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    padding: 5px 20px 5px 20px;
+    margin-left: 10px;
+    cursor:pointer;
+    
+}
+.orangeColor{
+        color:#E76F51;
+}
+.greenColor{
+    color:#264653;
+}
