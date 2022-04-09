@@ -226,6 +226,7 @@ export const deleteProfile = handleAsyncErr(async (req,res,next)=>
                 }
                 else
                 {
+                          
                     res.status(200).json({
                         success:true,
                         message:"Ngo account deleted",
