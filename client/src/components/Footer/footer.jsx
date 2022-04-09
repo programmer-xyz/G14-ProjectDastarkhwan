@@ -7,7 +7,7 @@ import logo from './Group 6935.png'
 const FooterPage = (props) => {
     return (
     <div class="pt-5 pb-2 footer" style={{background:props.user?'#FCEEE1':'#B2DCD6'}}>
-            <div class="row">
+            <div class="row hel">
                 <div class="col-lg-5 col-xs-12 about-company">
                 <h2>Alone we can do little,<br/>together we can do so much!</h2>
                 <img src ={logo} alt="logoofdastarkhwaan"/>
@@ -21,7 +21,7 @@ const FooterPage = (props) => {
                     <a>NGOs</a>
                 </div>
             </div>
-            <div class="row">
+            <div class="row hel">
                 <div class="col copyright">
                     <p class="">Copyright © 2022 Dastarkhwaan. All Rights Reserved.</p>
                 </div>
