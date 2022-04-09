@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+.footer{
+  margin-top:700px;
+  padding-right:20px;
+}
+.location.heads{
+  position:absolute;
+  font: normal normal medium 20px/30px Poppins;
+  color:#264653;
+}
+.location{
+  position:absolute;
+  bottom:15px;
+  left:1550px;
+  font:  normal normal normal 18px/27px Poppins;
+  color:#264653;
+}
+
+.copyright p{border-top:1px solid rgba(255,255,255,.1);
+  font:normal normal normal 15px/20px Montserrat;
+  color:#264653;
+  font-weight: bolder;
+  position: absolute;
+  top:1000px;
+} 
+
+.about-company h2{
+  font:normal normal normal 28px/42px Poppins;
+  color:#264653;
+}
+
+.followus{
+  position:absolute;
+  top:950px; 
+  left:1550px;
+  font:  normal normal normal 18px/27px Poppins;
+  color:#264653;
+}
+.mr-3{
+  margin:4px;
+}
