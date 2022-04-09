@@ -74,7 +74,8 @@ export const approvePost = handleAsyncErr(async(req, res, next) =>{
             contactName: appObj.contactName, 
             contactEmail: appObj.email,
             mealsDonated: 0,
-            applicationId: appObj._id
+            applicationId: appObj._id,
+            isActive: true
         });
     }
     else if (appObj.accountType == "ngo"){
@@ -92,7 +93,9 @@ export const approvePost = handleAsyncErr(async(req, res, next) =>{
             mealsAccepted: 0,
             monetaryFundsAccepted:0,
             rationAccepted:0,
-            applicationId: appObj._id
+            applicationId: appObj._id,
+            isActive: true,
+            registerationDoc:appObj.registerationDoc
         });
     }
     const appObjNew = await application.findOneAndUpdate({email}, {approved: true, approvalStatus:"approved", isActive:false});
@@ -119,6 +122,22 @@ export const rejectPost = handleAsyncErr(async(req, res, next) =>{
       });
 
 });
+
+export const viewApplications = handleAsyncErr(async(req, res, next) =>{
+    const apps = await application.find({isActive:true})
+    if(!apps){
+        return next(new HandErr("no applications to displsy", 400))
+    }
+    
+    res.status(200).json({
+        success: true,
+        message: "list returned",
+        apps:apps
+      });
+
+
+});
+
 
 
 

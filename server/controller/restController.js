@@ -4,6 +4,8 @@ import { handleAsyncErr } from "../middleware/handleAsyncErr.js";
 import bcrypt, { hashSync } from "bcrypt";
 import HandErr from "../utils/err.js";
 import {tokenMaker} from "../utils/tokenManager"
+import Ngo from "../models/ngoSchema.mjs"
+import Donation from "../models/donationsSchema.mjs";
 
 //login 
 export const restLogin =  handleAsyncErr(async (req,res, next) =>{
@@ -19,6 +21,9 @@ export const restLogin =  handleAsyncErr(async (req,res, next) =>{
     if(!user){
        
         return next(new HandErr("Wrong email or password", 401));
+    }
+    if(!user.isActive){
+        return next(new HandErr("User not exist", 401));
     }
     let boolCheck  = await bcrypt.compare(password, pw);
     //boolCheck = user.password == password ? true : false; //add bcrypt here
@@ -149,3 +154,136 @@ export const changePassRes = handleAsyncErr(async(req,res,next)=>{
         return next(new HandErr("Error while updating the password",401));
     }
 });
+//view account profile for actor resturant
+export const viewRestProfile = handleAsyncErr(async (req,res,next)=>
+{
+    let {email} = req.body
+    console.log(email)
+    if(!email)
+    {
+        return next(new HandErr("email is missing",400));
+    }
+    let restProfile = await Rest.findOne({'email':email, 'isActive':true},{password:0});
+    console.log(restProfile)
+    if(!!restProfile)
+    {
+        res.status(200).json({
+            success:true,
+            message:"Successfully found resturant profile",
+            body: restProfile
+        });
+    }
+    else
+    {
+        return next(new HandErr("resturant profile not found or account is no longer active",400));
+    }
+});
+//view account stats for actor resturant
+export const viewRestStats = handleAsyncErr(async (req,res,next)=>
+{
+    let {email} = req.body
+    if(!email)
+    {
+        return next(new HandErr("email is missing",400));
+    }
+    let restStats = await Rest.findOne({'email':email, 'isActive':true},{"mealDonated":1});
+    if(!!restStats)
+    {
+        res.status(200).json({
+            success:true,
+            message:"Successfully found resturant stats",
+            body: restStats
+        });
+    }
+    else
+    {
+        return next(new HandErr("resturant not found",400));
+    }
+});
+
+export const editProfileRest = handleAsyncErr(async (req, res, next)=>{
+    const {name, userName, phoneNumber, description, address, _id,  contactName, contactEmail, contactNumber} = req.body;
+    let editObj = {name: name,userName:userName, phoneNumber:phoneNumber, description:description, address:address, contactName: contactName,contactEmail:contactEmail,contactNumber:contactNumber,lastUpdated:Date.now()}
+
+    if(!_id){
+        return next(new HandErr("id missing",400));
+    }
+    let user = await Rest.findOneAndUpdate({_id:_id, isActive:true}, editObj);
+
+    if(!user){
+        return next(new HandErr("user profile not found or account is no longer active",400));
+    }
+    res.status(200).json({
+        success:true,
+        message:"Successfully updated user profile",
+        body: user
+    });
+});
+
+export const myRequestRest = handleAsyncErr(async(req,res,next)=>
+{
+    let {email} = req.body;
+    if(!!email)
+    {
+        let rest = await Rest.findOne({'email':email,'isActive':true}).populate({path:'donations',populate:{
+            path: 'acceptedBy',
+            model: 'NGO',
+            select: 'name email userName address description phoneNumber contactEmail contactName contactNumber image'
+        }});
+        if(!!rest)
+        {   
+            res.status(200).json({
+                success:true,
+                message:"Successfully found donations details",
+                body: rest.donations
+            });
+            
+        }
+        else
+        {
+            return next(new HandErr("Restuarant is dosen't exist or is no longer active",400));
+        }
+        
+    }
+    else
+    {
+        return next(new HandErr("Email is missing",400))
+    }
+   
+});
+export const mealDonation = handleAsyncErr(async (req,res,next) =>{
+    //user email and selected ngo will be sent from frontend
+
+    let image = req.file.buffer;
+    let {address, description, email, ngoIdentifier} = req.body;
+
+    if( !address|| !description||!image){
+        return next(new HandErr("some fields are missing", 401))
+    }
+    const userDonor = await Rest.findOne({email:email, isActive:true})
+    address = JSON.parse(address)
+    const ngoSelected = await Ngo.findOne({email:ngoIdentifier,isActive:true})
+    
+    if(!ngoSelected || !userDonor){
+        return next(new HandErr("Ngo/user is inactive", 401))
+    }
+ 
+    const donation = await Donation.insertMany({
+        donatedByRestaurant: userDonor._id,
+        acceptedBy: ngoSelected._id,
+        typeOfDonation:"meal",
+        donataionComplete:false,
+        amount:1,
+        image:image,
+        address: address,
+        isActive:true
+    });
+
+    let user1 = await Rest.findByIdAndUpdate(userDonor._id,{$push: {donations:donation[0]._id}}, { new: true, useFindAndModify: false }) //{donations: userDonor.donations.push(mongoose.Types.ObjectId(donation._id))})
+    //console.log(user1)
+    res.status(200).json({
+        success: true,
+        message: "donation made to ngo",
+        donation
+      });
+})
