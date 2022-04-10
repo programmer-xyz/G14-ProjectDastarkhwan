@@ -10,8 +10,8 @@ function Cards (props) {
     if(props.Resturant === 0)
     {
         return(
-            <div class ="container">
-            <h4 class ="heading">Summary</h4>
+            <div class ="container cards">
+            <h4 class ="headingS">Summary</h4>
             <div class ="row">
                 <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <div class="card first">
@@ -47,8 +47,8 @@ function Cards (props) {
     else if (props.Resturant === 1)
     {
         return(
-            <div class= "container">
-            <h4 class="heading">Summary</h4>
+            <div class= "container cards">
+            <h4 class="headingS">Summary</h4>
             <div class="row">
                 <div class= "col-lg-4 col-xs-12 col-md-12 col-sm-12">
                     <div class="card first">
@@ -93,8 +93,8 @@ function Cards (props) {
     else if (props.Resturant === 2)
     {
         return(
-            <div class= "container">
-            <h4 class="heading">Summary</h4>
+            <div class= "container cards">
+            <h4 class="headingS">Summary</h4>
             <div class="row">
                 <div class= "col-lg-4 col-xs-12 col-md-12 col-sm-12">
                     <div class="card first">

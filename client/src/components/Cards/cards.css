@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-.container {
+.cards {
     background-color: white;
     width:50% !important;
     padding:30px;
     border-radius: 14px;
     box-shadow: 10px 10px 10px 10px #00000014;
-    padding: 93px 32px 93px 32px !important;
+    padding: 40px 50px 93px 50px !important;
     text-align: left;
 
 }
-.container h4{
+.headingS{
     top:2%;
     left:27%;
     font: normal normal normal 16px/61px Poppins;
