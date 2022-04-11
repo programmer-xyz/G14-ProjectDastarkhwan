@@ -55,3 +55,8 @@
     width: 9%;
 
 }
+$my-fontFamily: normal normal normal 19px/25px Poppins;
+
+:export {
+    myFont: $my-fontFamily;
+  }
