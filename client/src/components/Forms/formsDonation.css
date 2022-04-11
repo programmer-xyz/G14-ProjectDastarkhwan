@@ -9,8 +9,25 @@
     text-align: left;
 }
 
+.newClass {
+    height: 100vh; /* Magic here */
+    display: flex;
+    width: 100%;
+    /* justify-content: center; */
+}
+
+.image{
+    top: 145px;
+    left: 800px;
+    width: 662px;
+    height: 552px;
+    position:absolute;
+    background: transparent 0% no-repeat padding-box;;
+}
+
 .form-group {
     /* background: #FFFFFF 0% 0% no-repeat padding-box; */
+    /* align-items: center; */
     position:relative;
     width: 450px;
     height: 54px;
@@ -25,6 +42,33 @@
     border-color: none;
     border-width: 0px;
     box-sizing: none;
+}
+
+.details {
+    font-family: "Poppins";
+    font-size: 14px/21px;
+    letter-spacing: -0.66px;
+    color: #838D94;
+    float: left;
+    padding-left: 35px;
+    margin-bottom:14px;
+}
+
+.form-select {
+    /* background: #FFFFFF 0% 0% no-repeat padding-box; */
+    position:relative;
+    color: #838D94;
+    width: 450px;
+    height: 54px;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    font-family: "Poppins";
+    font-size: 14px/21px;
+    letter-spacing: -0.66px;
+    border-color: none;
+    border-width: 0px;
+    box-sizing: none;
+    box-shadow: none;
 }
 
 form .form-control{
