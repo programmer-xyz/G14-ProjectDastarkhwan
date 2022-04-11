@@ -19,14 +19,14 @@ import {withStyles} from "@material-ui/core/styles";
 const tabStyle = {
     default_tab:{
         color: '#26465399',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'transparent',
         font: font.myFont,
         borderBottom: " 1px solid #E4BF68",
     },
     active_tab:{
         color: "#E76F51",
         borderBottom: "3px solid #E76F51",
-        backgroundColor: '#FFFFFF',
+        backgroundColor: 'transparent',
         font: font.myFont,
     }
 };
@@ -97,7 +97,7 @@ function ControlledTabs(props) {
         // </div>
         <Box sx={{ width: '100%' }}>
         <Tabs value={value}  onChange={handleChange}>
-            <Tab style={getStyle(value === 0)}label = {`${props.itemOne}`}>
+            <Tab style={getStyle(value === 0)} label = {`${props.itemOne}`}>
             </Tab>
             <Tab style={getStyle(value === 1)} label = {`${props.itemTwo}`}>
             </Tab>
