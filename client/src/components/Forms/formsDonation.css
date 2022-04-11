@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.container {
+    background-color: white;
+    width:auto !important;
+    padding:30px;
+    border-radius: 14px;
+    box-shadow: 10px 10px 10px 10px #00000014;
+    padding: 93px 32px 93px 32px !important;
+    text-align: left;
+}
+
+.newClass {
+    height: 100vh; /* Magic here */
+    display: flex;
+    width: 100%;
+    /* justify-content: center; */
+}
+
+.image{
+    top: 145px;
+    left: 800px;
+    width: 662px;
+    height: 552px;
+    position:absolute;
+    background: transparent 0% no-repeat padding-box;;
+}
+
+.form-group {
+    /* background: #FFFFFF 0% 0% no-repeat padding-box; */
+    /* align-items: center; */
+    position:relative;
+    width: 450px;
+    height: 54px;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    padding: 25px;
+    color: #838D94;
+    font-family: "Poppins";
+    font-size: 14px/21px;
+    letter-spacing: -0.66px;
+    box-shadow: none;
+    border-color: none;
+    border-width: 0px;
+    box-sizing: none;
+}
+
+.details {
+    font-family: "Poppins";
+    font-size: 14px/21px;
+    letter-spacing: -0.66px;
+    color: #838D94;
+    float: left;
+    padding-left: 35px;
+    margin-bottom:14px;
+}
+
+.form-select {
+    /* background: #FFFFFF 0% 0% no-repeat padding-box; */
+    position:relative;
+    color: #838D94;
+    width: 450px;
+    height: 54px;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    font-family: "Poppins";
+    font-size: 14px/21px;
+    letter-spacing: -0.66px;
+    border-color: none;
+    border-width: 0px;
+    box-sizing: none;
+    box-shadow: none;
+}
+
+form .form-control{
+    background-color: #FFFFFF 0% 0% no-repeat padding-box;
+    border-color: #FFFFFF;
+    box-shadow: none;
+    box-sizing: none;
+}
+
+label {
+    float: left;
+    padding-left: 10px;
+    color:#838D94;
+}
+
+.buttons{
+    background: #264653;
+    font: normal normal normal 14px/25px Poppins;
+    color:#fff;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    padding: 5px 20px 5px 20px;
+    border:1px solid #264653; 
+    cursor:pointer;
+    width: 450px;
+    height: 54px;
+    margin-bottom: 24px;
+    margin-top: 10%;
+    margin-left: -40%;
+    position: relative;
+}

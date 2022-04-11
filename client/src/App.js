@@ -9,7 +9,7 @@ import image1 from './components/RequestItems/testImage.jpeg';
 import ForgetPass from './pages/forgetpassword/forgetpassword';
 import './App.css';
 //import pages here and call then the way login has been called
-
+import FormsDonation from './components/Forms/formsDonation.jsx';
 
 const App = () => {
 
@@ -23,11 +23,9 @@ const App = () => {
                     <Route path="/Signup" element= {<ForgetPass/>}/>  
                     <Route path="/NavBar" element = {<NavBar />} />
                     <Route path="/modelitems" element = {<RequestItems image={image1} name={"Abdul Muizz khan"} heading1={"Type"} heading2={"Date"} pargaraph1={"Meal Donations"} date={"7/03/4"} time={"10:47 am"} userRequests={true} NGOrequests={false} Resreq={true} buttonStat={0}/>} />
-                  
                 </Routes>
             </div>
-
-         </Router>
+        </Router>
     );
 
 }
