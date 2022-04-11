@@ -5,7 +5,7 @@ import App from './App';
 import Cards from './components/Cards/cards.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TabBar from './components/TabBar/TabBar.jsx';
-
+import './index.css'
 
 ReactDOM.render(
   <App/>,

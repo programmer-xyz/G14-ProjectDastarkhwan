@@ -4,12 +4,12 @@
     border-left:None;
     border-right:None;
     border-top:None;
-    background-color: white;
     margin-right:1%;
     padding-bottom: 1%;
     font:normal normal normal 19px/25px Poppins;
     color:#26465399;
     width: 146px;
+    background-color: transparent;
 
 }
 .orangeborder
@@ -38,6 +38,7 @@
     padding-bottom: 0%;
     padding-right: 0%;
     padding-left: 0%;
+    background-color: transparent;
     
 }
 .container12{
