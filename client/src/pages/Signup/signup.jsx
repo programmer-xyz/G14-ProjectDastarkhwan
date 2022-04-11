@@ -1,4 +1,4 @@
-import './forgetpassword.css'
+import './signup.css'
 import TabBar from 'C:/SpringSemester/SE/SE_Proj/G14-ProjectDastarkhwan/client/src/components/TabBar/TabBar.jsx';
 import Forms from 'C:/SpringSemester/SE/SE_Proj/G14-ProjectDastarkhwan/client/src/components/Forms/forms.jsx';
 
@@ -20,7 +20,7 @@ function forgetPass ()
         <TabBar onChange={(e)=>{handleChange(e)}} itemOne={"User"} itemTwo={"Restuarant"} itemThree={"NGO"} Restuarant={false}/>
         </div>
         <div className='firstdiv'>
-        <Forms User={1}/>
+        <Forms User={3}/>
         </div>  
         </div>
     );
