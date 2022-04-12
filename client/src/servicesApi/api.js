@@ -15,7 +15,7 @@ export const createAccountUser =  async (name,username,email,phoneNumber,passwor
     "houseNumber":houseNumber
     }, 
     "CNIC":cnic}
-    return await axios.post(`${Url}/user/register`,obj),
+    return await axios.post(`${Url}/user/register`,obj);
 }
 
 export const createNgoUser =  async (name,username,email,phoneNumber,paswword,cnic,address,Description) =>
