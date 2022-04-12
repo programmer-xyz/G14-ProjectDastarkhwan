@@ -2,6 +2,7 @@ import './signup.css'
 import TabBar from '../../components/TabBar/TabBar.jsx';
 import Forms from '../../components/Forms/forms.jsx';
 
+//this is signup function
 function forgetPass ()
 {
     const handleChange= e =>{
