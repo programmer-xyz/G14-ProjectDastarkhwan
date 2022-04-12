@@ -1,4 +1,6 @@
 import './forms.css';
+import {createNgoUser} from  '../../servicesApi/api.js';
+
 import { useState } from 'react';
 
 const user1Init ={
@@ -54,6 +56,9 @@ const  user3Init ={
     bankAccount:""
 };
 
+
+
+
 function Forms (props) {
 
     const [user1, setUser1] = useState(user1Init);
@@ -70,7 +75,7 @@ function Forms (props) {
     const handleForm2 = (e)=>{
         e.preventDefault();
         const {name, value} = e.target;
-        setUser2({...user2, [name]: value});
+        setUser2({...user3, [name]: value});
       
     }
 
@@ -80,6 +85,34 @@ function Forms (props) {
         setUser3({...user3, [name]: value});
       
     }
+
+    const onCreate = (e) =>{
+        e.preventDefault();
+
+        // let city = user3.city
+        // let country = user3.country
+        // let streetNumber= user3.streetNumber
+        // let houseNumber = user3.houseNumber
+
+        let city = "lah"
+        let country = "pak"
+        let streetNumber= "user3.streetNumber"
+        let houseNumber= "user3.houseNumber"
+
+        createNgoUser(user3.name,user3.username,user3.email, user3.phoneNum, user3.pw,user3.cnic, city, country,streetNumber, houseNumber,user3.description).then((response)=>{
+    
+                if(response.data.success)
+                {
+                    
+                }
+                else{
+                
+                }
+    
+        }); 
+    
+    }
+    
 
     console.log(user1)
     if (props.User === 1){
