@@ -24,9 +24,7 @@ const App = () => {
             <div className="App">
                 <Routes> 
                     <Route path='/' element={<Login/>}/>
-                    <Route path="/Signup" element= {<Signup/>}/>  
-
-                
+                    <Route path="/Signup" element= {<Signup/>}/> 
                     <Route path='/Cards' element={<Cards Resturant={2} mealsDonated={10} ngosDonatedTo={10} monetaryDonations={20} mealDonations={40} rationDonations={10}/>}/>
                     <Route path="/footer" element={<FooterPage user={false}/>} />
                     <Route path="/NavBar" element = {<NavBar />} />
