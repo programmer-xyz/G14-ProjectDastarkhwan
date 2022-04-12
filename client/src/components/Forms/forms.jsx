@@ -87,8 +87,8 @@ function Forms (props) {
     }
 
     const onCreate = (e) =>{
+ 
         e.preventDefault();
-
         // let city = user3.city
         // let country = user3.country
         // let streetNumber= user3.streetNumber
@@ -99,22 +99,26 @@ function Forms (props) {
         let streetNumber= "user3.streetNumber"
         let houseNumber= "user3.houseNumber"
 
-        createNgoUser(user3.name,user3.username,user3.email, user3.phoneNum, user3.pw,user3.cnic, city, country,streetNumber, houseNumber,user3.description).then((response)=>{
+        createNgoUser(user3.name,user3.username,user3.email, user3.phoneNum, user3.pw,user3.cnic, city, country,streetNumber, houseNumber,user3.description,user3.file).then((response)=>{
     
                 if(response.data.success)
                 {
-                    
+                    console.log(response)
                 }
                 else{
-                
+                    console.log("here")
                 }
     
-        }); 
+        })
+        .catch((err)=>
+        {
+            console.log(err);
+        })
     
     }
     
 
-    console.log(user1)
+    console.log(user3)
     if (props.User === 1){
         return(
                 <div class = "row newClass">
@@ -245,7 +249,7 @@ function Forms (props) {
                             <label>Add Certification Email</label>
                             <input type="file" class="form-control shadow-none" id="exampleCheck5" placeholder="Add Certification Email" name = "file" value = {user3.file} onChange = {handleForm3}/>
                         </div>
-                        <button type = "submit" class="buttons">SIGN UP!</button>
+                        <button type = "submit" class="buttons" onClick={onCreate}>SIGN UP!</button>
                     </form>
                     </div>
                 </div>
