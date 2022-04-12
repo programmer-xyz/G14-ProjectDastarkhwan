@@ -5,3 +5,8 @@ export const createAccountUser =  async (name,username,email,phoneNumber,paswwor
     
 }
 
+export const createNgoUser =  async (name,username,email,phoneNumber,paswword,cnic,address,Description) =>
+{
+
+  
+}
