@@ -52,6 +52,7 @@ function FormsDonation (props) {
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleInputPassword1" placeholder="Address (House No, St. Block, City, Country)"/>
+                            <p class="details1">Ration Details</p>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="Description"/>
@@ -81,6 +82,7 @@ function FormsDonation (props) {
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleInputPassword1" placeholder="Address (House No, St. Block, City, Country)"/>
+                            <p class="details1">Meal Details</p>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="Description"/>

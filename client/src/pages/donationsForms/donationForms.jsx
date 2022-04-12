@@ -4,8 +4,9 @@ import NavBar from '../../components/Navbar/Navbar.jsx';
 import DForms from '../../components/Forms/formsDonation.jsx';
 import DImage from './Group-6952.png';
 
-function DonationForms ()
+function DonationForms (props)
 {
+    console.log(props.Resturant)
     return (
         <div className="parentdiv">
             <NavBar />
@@ -16,11 +17,13 @@ function DonationForms ()
                 <p>select what type of donation you want to make</p>
             </div>
             <div className="tabbardiv">
-                <TabBar itemOne = {"Monetary"} itemTwo = {"Ration"} itemThree = {"Meals"} />
+               {!props.Resturant && <TabBar itemOne = {"Monetary"} itemTwo = {"Ration"} itemThree = {"Meals"} />}
+               {props.Resturant && <TabBar itemOne = {"Meals"} Restuarant={true}/>}
 
             </div>
             <div className = "formDiv">
-                <DForms User={1} />
+                {!props.Resturant && <DForms User={props.Number} />}
+                {props.Resturant && <DForms User = {3}/>}
             </div>
             <div className="img-div">
                 <img className="imgClass" src={DImage}/>
