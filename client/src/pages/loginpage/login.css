@@ -1,67 +1,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 body {
-  background: #FEFEFE 0% 0% no-repeat padding-box;
+  background: #FEFEFE;
+  height: 100vh;
 }
 
-.left-container {
-  align-items: center;
-  top: 0px;
-  left: -1px;
-  width: 500px;
-  height: 900px;
-  background: #FEFEFE 0% 0% no-repeat padding-box;
-  float:left; 
-  opacity: 1;
-  overflow: hidden;
+.tabbar{
+  position:relative;
+  display:flex;
+  top: 20%;
+  left:20%;
+}
+.wrapper {
+  display: flex;
+  height:100vh;
 }
 
-input{
-  top: 383px;
-  left: 142px;
-  width: 435px;
-  height: 54px;
-  font: normal normal normal 14px/21px Poppins;
-  text-align: left;
-  padding-left: 15px;
-  vertical-align: middle;
-  letter-spacing: -0.66px;
-  color: #838E94;
-  border: none;
-  background: #FFF4D7 0% 0% no-repeat padding-box;
-  border-radius: 10px;
-  opacity: 0.55;
+.main-container{
+  flex:50%;
+
 }
 
-.right-container {
-  top: 0px;
-  left: 760px;
-  width: 900px;
-  height: 900px;
+.left-box{
+ height:100vh;
+  background: #FEFEFE;
+}
+
+.right-box{
   float:right;
-  background: #FFE5A5 0% 0% no-repeat padding-box;
+  height: 100vh;
+  background: #FFE5A5 
+  /* 0% 0% no-repeat padding-box; */
 }
 
-.heading1{
-  color:#264653;
-  position: absolute;
-  font: normal normal normal 40px/21px Poppins;
-  top: 111px;
-  left: 1225px;
+
+@media screen and (max-width: 600px) {
+  .main-container{
+    width: 100%;
+  }
+  .left-box{
+    width: 100%;
+     background: #FEFEFE;
+   }
+   .right-box{
+    width: 100%;
+    background: #FFE5A5 0% 0% no-repeat padding-box;
+  }
+  
 }
-.paragraph1{
-  color:#264653;
-  position: absolute;
-  font: normal normal normal 34px/21px Poppins;
-  top: 165px;
-  left: 1260px;
+
+.heading{
+  position:relative;
+  font: normal normal normal Poppins;
+  font-size:3vw;
+  color: #264653;
+  top: 15%;
+  left:15%;
 }
-.image{
-  top: 345px;
-  left: 1200px;
-  position:absolute;
-  background: transparent 0% no-repeat padding-box;;
+
+.paragraph{
+  position: relative;
+  font: normal normal normal Poppins;
+  color: #264653;
+  font-size:2vw;
+  top: 17%;
+  left:15%;
 }
+
 .content {
   top: 340px;
   left: 60px;
@@ -73,46 +78,12 @@ input{
   margin: 5% auto;
   position: absolute;
 }
-.heading{
-  position: absolute;
-  font: normal normal normal 32px/21px Poppins;
-  color: #264653;
-  top: 166px;
-  left:255px;
-
-}
-.paragraph{
-  position: absolute;
-  font: normal normal normal 18px/21px Poppins;
-  color: #264653;
-  top: 230px;
-  left:255px;
-}
-.btn-box {
-  top: 340px;
-  left: 255px;
-  display: inline;
-  border-bottom: 1px solid #E4BF68;
-  opacity: 1;
-  position:absolute;
-}
-
-.btn-box button {
-  top: 383px;
-  left: 10px;
-  right:1200px;
-  outline:none;
-  cursor:pointer;
-  padding: 14px 16px;
-  margin-right: 50px;
-  font-size:20px;
-} 
 
 .sign-in {
-  width: 450px;
-  height: 54px;
+  width: 30vw;
+  height: 10vh;
   background: #264653 0% 0% no-repeat padding-box;
-  border-radius: 10px;
+  border-radius: 3%;
   display: flex;
   justify-content: center;
   opacity: 1;
@@ -121,78 +92,69 @@ input{
   color: #FFFFFF;
 }
 
-.App {
-  text-align: center;
+.heading1{
+  color:#264653;
+  position: relative;
+  font: normal normal normal Poppins;
+  font-size:3vw;
+  top:5%;
+  left:15%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.paragraph1{
+  color:#264653;
+  position: relative;
+  font: normal normal normal Poppins;
+  font-size: 2vw;
+  top:7%;
+  left:23%;
+}
+.image{
+  top:30%;
+  left:10%;
+  width:40vw;
+  position:relative;
+  background: transparent 0% no-repeat padding-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+
+input{
+  top: 40%;
+  left: 40%;
+  width: 30vw;
+  height: 10vh;
+  font: normal normal normal Poppins;
+  font-size: 3rem;
+  text-align: left;
+  padding-left: 10%;
+  vertical-align: middle;
+  letter-spacing: -0.66px;
+  color: #838E94;
+  border: none;
+  background: #FFF4D7 0% 0% no-repeat padding-box;
+  border-radius: 7%;
+  opacity: 0.55;
 }
 
-.App-header {
-  background-color: #FFFFFF;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+.bottom-text{
+  padding-top: 3%;
+  position:relative;
+  top: 70%;
+  left: 20%;
+  text-align: left;
+  font: normal normal normal Poppins;
+  font-size: 1.3vw;
 
-.wrapper { 
-  width: 100%
-}
-
-.App-link {
-  color: #61dafb;
-}
-.Orangebutton{
-  color:#E76F51;
-  font: normal normal normal 14px/21px Poppins;
-  background: transparent;
-  border-top: none;
-  border-left:none;
-  border-right:none;
-  border-bottom:3px solid #E76F51;
   opacity: 1;
 }
-.greyButton
-{
-  color:#26465399;
-  border-bottom:10px #26465399;
-  font: normal normal normal 14px/21px Poppins;
-  background: transparent;
-  border-top: none;
-  border-left:none;
-  border-right:none;
-}
 
-@media screen and (max-width:1780px){
-  .right-container {
-    top: 0px;
-    left: 760px;
-    width: 900px;
-    height: 900px;
-    float:right;
-    background: #FFE5A5 0% 0% no-repeat padding-box;
-  }
-  .content {
-    top: 340px;
-    left: 40px;
-    right:1000px;
-    width: 450px;
-    height: 54px;
-    display: inline;
-    justify-content: center;
-    margin: 5% auto;
-    position: absolute;
-  }
+.lin{
+  padding-top: 3%;
+  position:relative;
+  top: 70%;
+  text-align: left;
+  text-decoration: underline;
+  font: normal normal normal Poppins;
+  color: #E76F51;
 }

@@ -1,0 +1,13 @@
+.sign-in {
+    width: 30vw;
+    height: 10vh;
+    background: #264653 0% 0% no-repeat padding-box;
+    border-radius: 3%;
+    display: flex;
+    justify-content: center;
+    opacity: 1;
+    align-items: center;
+    font: normal normal 600 16px/25px Poppins;
+    color: #FFFFFF;
+  }
+  

@@ -6,6 +6,7 @@ import TabBar from './components/TabBar/TabBar.jsx';
 import RequestItems from './components/RequestItems/requestItems.jsx';
 import NavBar from './components/Navbar/Navbar.jsx'
 import image1 from './components/RequestItems/testImage.jpeg'
+
 //import pages here and call then the way login has been called
 
 
@@ -16,6 +17,7 @@ const App = () => {
             <div className="App">
                 <Routes> 
                     <Route path='/' element={<Login/>}/>
+                   
                     <Route path='/Cards' element={<Cards Resturant={2} mealsDonated={10} ngosDonatedTo={10} monetaryDonations={20} mealDonations={40} rationDonations={10}/>}/>
                     <Route path="/footer" element={<FooterPage user={false}/>} />
                     <Route path="/TabBar" element= { <TabBar itemOne={"Monetary"} itemTwo={"Ration"} itemThree={"Meals"} Restuarant={false}/>} />  
