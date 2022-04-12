@@ -8,7 +8,7 @@ function DonationForms (props)
 {
     console.log(props.Resturant)
     return (
-        <div className="parentdiv">
+        <div className={"parentdiv"+(props.Resturant?" restaurantback":" userback")}>
             <NavBar />
             <div className="Fheading">
                 <h3>Make a Donation</h3>
