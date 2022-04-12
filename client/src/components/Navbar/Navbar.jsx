@@ -29,7 +29,7 @@ function Navbar() {
     }
   return (
     <React.Fragment>
-        <AppBar sx={{background:'#FFFFFF'}} elevation={0}>
+        <AppBar sx={{background:'transparent',position:'static'}} elevation={0}>
             <Toolbar>
                 <Tabs sx={{marginLeft:'auto'}}>
                     {console.log(button)}

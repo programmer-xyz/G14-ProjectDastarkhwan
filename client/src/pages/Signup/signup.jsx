@@ -1,6 +1,6 @@
 import './signup.css'
-import TabBar from 'C:/SpringSemester/SE/SE_Proj/G14-ProjectDastarkhwan/client/src/components/TabBar/TabBar.jsx';
-import Forms from 'C:/SpringSemester/SE/SE_Proj/G14-ProjectDastarkhwan/client/src/components/Forms/forms.jsx';
+import TabBar from '../../components/TabBar/TabBar.jsx';
+import Forms from '../../components/Forms/forms.jsx';
 
 function forgetPass ()
 {
