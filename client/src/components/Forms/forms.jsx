@@ -1,7 +1,7 @@
 import './forms.css';
 
 const user1 ={
-    name
+    name:""
 }
 function Forms (props) {
 

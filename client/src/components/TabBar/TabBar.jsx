@@ -41,7 +41,7 @@ function ControlledTabs(props) {
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
-    props.getId(value);
+    props.getId(newValue);
     setValue(newValue);
   };
     
