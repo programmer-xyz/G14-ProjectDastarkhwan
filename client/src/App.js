@@ -12,6 +12,7 @@ import Modals from './components/Modals/Modals.jsx'
 //import pages here and call then the way login has been called
 
 import Forms from './components/Forms/forms.jsx';
+import Dashboard from './pages/Dashboard/dashboard.jsx';
 
 import FormsDonation from './components/Forms/formsDonation.jsx';
 
@@ -30,6 +31,7 @@ const App = () => {
                     <Route path="/NavBar" element = {<NavBar />} />
                     <Route path="/modelitems" element = {<RequestItems image={image1} name={"Abdul Muizz khan"} heading1={"Type"} heading2={"Date"} pargaraph1={"Meal Donations"} date={"7/03/4"} time={"10:47 am"} userRequests={true} NGOrequests={false} Resreq={true} buttonStat={0}/>} />
                     <Route path = "/modals" element = {<Modals/>} />
+                    <Route path ="/dashboard" element = {<Dashboard/>} />
                     <Route path ="/forms" element = {<FormsDonation User={1} />} />
                     <Route path = "donationForms" element= {<DonationForms Resturant={true} Number = {2}/>} />
                     <Route path = "/loginforms" element = {<LoginForm />} />
@@ -39,6 +41,4 @@ const App = () => {
     );
 
 }
-
-
-export default App
+export default App;
