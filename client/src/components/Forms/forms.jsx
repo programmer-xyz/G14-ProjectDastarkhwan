@@ -84,7 +84,7 @@ function Forms (props) {
                 </div>
         );
     }
-    else if (props.User == 3){
+    else if (props.User === 3){
         return (
             <div class = "row newClass">
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
