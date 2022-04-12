@@ -1,20 +1,20 @@
 import axios from 'axios';
 
-export const createAccountUser =  async (name,username,email,phoneNumber,paswword,cnic,address,Description) =>
+const Url = process.env.API_URL;
+export const createAccountUser =  async (name,username,email,phoneNumber,password,cnic,city,country,streetNumber,houseNumber,Description) =>
 {
-    // const user1 ={
-    //     'name':name,
-    //     "username":"",
-    //     "email":"",
-    //     "phoneNum":"",
-    //     "paswword":"",
-    //     cnic:"",
-    //     address:"",
-    //     // HouseNo:"",
-    //     // stBlock:"",
-    //     // city:"",
-    //     // country:"",
-    //     description:""
-    // }
+    const obj = {"name":name, 
+    "email":email, 
+    "phoneNumber":phoneNumber, 
+    "password":password,
+    "description":Description,
+    "userName":username,
+    "address":{"city":city,
+    "country":country,
+    "streetNumber":streetNumber,
+    "houseNumber":houseNumber
+    }, 
+    "CNIC":cnic}
+    return await axios.post(`${Url}/user/register`,obj),
 }
 
