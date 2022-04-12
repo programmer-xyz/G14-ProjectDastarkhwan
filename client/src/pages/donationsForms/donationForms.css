@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.parentdiv{
+    background-color:rgba(255, 229, 165, 0.44);
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: 100vh;
+    display: flex;  
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.Fheading{
+    display: flex;
+    height: auto;
+    width: auto;
+    margin-top: 1%;
+    position: relative;
+    font: normal normal normal 32px/61px Poppins;
+    color:#264653;
+}
+.imgClass{
+    width: 70%;
+    height: auto;
+}
+.Fparagraph{
+
+    display: flex;
+    justify-content: center;
+    height: auto;
+    width: auto;
+    position: relative;
+    align-items: center;
+    font: normal normal normal 18px/27px Poppins;
+    color:#264653;
+}
+.tabbardiv{
+
+    display: flex;
+    height: 10vh;
+    width: auto;
+    position: relative;
+    justify-content: center;
+}
+
+.formDiv{
+    display: inline-block;
+    width:50vw;
+    position: relative;
+    left: -8%;
+    top:10%;
+    justify-content: center;
+}
+
+.img-div{
+    display: inline-block;
+    width: 50vw;
+    position: relative;
+    top:-90%;
+    left: 25%;
+}
+.navv {
+    display: flex;
+    justify-content: right;
+}
+
+
+
+@media screen and (max-width:400px) {
+    .parentdiv{
+        overflow-y: unset;
+    }
+    .Fheading{
+        margin-top: 14%;
+        font-size: smaller;
+    }
+    .Navbar{
+        left:-20%;
+        }
+        
+}
+@media screen and (max-width:900px) {
+    .Fheading{
+        margin-top: 14%;
+        font-size: smaller;
+    }
+    .formDiv{
+
+        left: -35%;
+        
+    }
+}
+
+@media screen and (min-width:800px) and (max-width:1280px)
+{
+
+    .Fheading{
+        margin-top: 14%;
+        font-size: smaller;
+    }
+    .formDiv{
+
+        left: -10%;
+        
+    }
+    .formDiv{
+
+        justify-content: center;
+    }
+
+}
+
+@media screen and (min-width:400px) and (max-width:1600px){
+    .parentdiv{
+        overflow-y: unset;
+    }
+    .Fheading{
+        margin-top: 14%;
+        font-size: smaller;
+    }
+    .formDiv{   
+        justify-content: center;
+    }
+    
+}
+
+@media screen and (min-width:750px) and (max-width:900px){
+    .parentdiv{
+        overflow-y: unset;
+    }
+    .Fheading{
+        margin-top: 14%;
+        font-size: smaller;
+    }
+    .formDiv{   
+        left:-1%;
+        justify-content: center;
+    }
+    
+}
+
+
+@media screen and (min-width:400px) and (max-width:550px) {
+    .parentdiv{
+        overflow-y: unset;
+    }
+    .Fheading{
+        margin-top: 14%;
+        font-size: smaller;
+    }
+    .formDiv{   
+        left:auto;
+        right:30%;
+        top:-1%;
+        justify-content: center;
+    }
+}
+@media screen and (max-width:1024px) {
+    .img-div{
+        display: none;
+    }
+    .formDiv{
+        justify-content: center;
+    }
+    
+}
+
