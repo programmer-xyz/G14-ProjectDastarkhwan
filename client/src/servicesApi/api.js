@@ -72,3 +72,31 @@ export const createRestUser = async (name,username,email,phoneNumber,paswword,ci
           }
     });
 }
+
+export const userLogin = async (email,password) =>
+{
+    const obj = 
+    {
+        "email":email, 
+        "password":password
+    }
+    return await axios.post(`${Url}/user/login`,obj);
+}
+export const ngoLogin = async (email,password) =>
+{
+    const obj = 
+    {
+        "email":email, 
+        "password":password
+    }
+    return await axios.post(`${Url}/ngo/login`,obj);
+}
+export const restLogin = async (email,password) =>
+{
+    const obj = 
+    {
+        "email":email, 
+        "password":password
+    }
+    return await axios.post(`${Url}/rest/login`,obj);
+}
