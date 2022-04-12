@@ -16,7 +16,7 @@ import Forms from './components/Forms/forms.jsx';
 import FormsDonation from './components/Forms/formsDonation.jsx';
 
 import DonationForms from './pages/donationsForms/donationForms.jsx';
-
+import LoginForm from './components/Forms/formslogin.jsx';
 const App = () => {
 
     return(
@@ -32,6 +32,7 @@ const App = () => {
                     <Route path = "/modals" element = {<Modals/>} />
                     <Route path ="/forms" element = {<FormsDonation User={1} />} />
                     <Route path = "donationForms" element= {<DonationForms Resturant={true} Number = {2}/>} />
+                    <Route path = "/loginforms" element = {<LoginForm />} />
                 </Routes>
             </div>
         </Router>

@@ -1,198 +1,239 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-body {
-  background: #FEFEFE 0% 0% no-repeat padding-box;
-}
 
+.loginbody{
+  background-color:white;
+  flex-direction: row;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  overflow-x: hidden;
+  overflow-y:hidden;
+}
 .left-container {
-  align-items: center;
-  top: 0px;
-  left: -1px;
-  width: 500px;
-  height: 900px;
-  background: #FEFEFE 0% 0% no-repeat padding-box;
-  float:left; 
-  opacity: 1;
-  overflow: hidden;
+    display: flex;
+    height:100vh;
+    width: 50vw;
+    background-color:white;
+}
+.right-container{
+  display: flex;
+  height:100vh;
+  width: 50vw;
+  background-color:rgba(255, 229, 165, 0.44);
+}
+.tab-bar{
+  height: 5%;
+}
+.image-c{
+  width:70%;
+  position: relative;
+  top:15%;
+  height: auto;
 }
 
-input{
-  top: 383px;
-  left: 142px;
-  width: 435px;
-  height: 54px;
-  font: normal normal normal 14px/21px Poppins;
+.headingL{
+  margin-top: 1%;
+  height: 8%;
   text-align: left;
-  padding-left: 15px;
-  vertical-align: middle;
-  letter-spacing: -0.66px;
-  color: #838E94;
-  border: none;
-  background: #FFF4D7 0% 0% no-repeat padding-box;
-  border-radius: 10px;
-  opacity: 0.55;
+  width:50%;
+  font: normal normal normal 32px/61px Poppins;
 }
+.paragraphL{
+  position: relative;
+  width: 50%;
+  font: normal normal normal 18px/27px Poppins;
+}
+.Loginform{
 
-.right-container {
-  top: 0px;
-  left: 760px;
-  width: 900px;
-  height: 900px;
-  float:right;
-  background: #FFE5A5 0% 0% no-repeat padding-box;
-}
-
-.heading1{
-  color:#264653;
-  position: absolute;
-  font: normal normal normal 40px/21px Poppins;
-  top: 111px;
-  left: 1225px;
-}
-.paragraph1{
-  color:#264653;
-  position: absolute;
-  font: normal normal normal 34px/21px Poppins;
-  top: 165px;
-  left: 1260px;
-}
-.image{
-  top: 345px;
-  left: 1200px;
-  position:absolute;
-  background: transparent 0% no-repeat padding-box;;
-}
-.content {
-  top: 340px;
-  left: 60px;
-  right:1000px;
-  width: 450px;
-  height: 54px;
-  display: inline;
-  justify-content: center;
-  margin: 5% auto;
-  position: absolute;
-}
-.heading{
-  position: absolute;
-  font: normal normal normal 32px/21px Poppins;
-  color: #264653;
-  top: 166px;
-  left:255px;
+  height: 25%;
 
 }
-.paragraph{
-  position: absolute;
-  font: normal normal normal 18px/21px Poppins;
-  color: #264653;
-  top: 230px;
-  left:255px;
-}
-.btn-box {
-  top: 340px;
-  left: 255px;
-  display: inline;
-  border-bottom: 1px solid #E4BF68;
-  opacity: 1;
-  position:absolute;
-}
-
-.btn-box button {
-  top: 383px;
-  left: 10px;
-  right:1200px;
-  outline:none;
-  cursor:pointer;
-  padding: 14px 16px;
-  margin-right: 50px;
-  font-size:20px;
-} 
-
-.sign-in {
-  width: 450px;
-  height: 54px;
-  background: #264653 0% 0% no-repeat padding-box;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  opacity: 1;
-  align-items: center;
-  font: normal normal 600 16px/25px Poppins;
-  color: #FFFFFF;
-}
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #FFFFFF;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.wrapper { 
-  width: 100%
-}
-
-.App-link {
-  color: #61dafb;
-}
-.Orangebutton{
-  color:#E76F51;
-  font: normal normal normal 14px/21px Poppins;
-  background: transparent;
-  border-top: none;
-  border-left:none;
-  border-right:none;
-  border-bottom:3px solid #E76F51;
-  opacity: 1;
-}
-.greyButton
+.left-div
 {
-  color:#26465399;
-  border-bottom:10px #26465399;
-  font: normal normal normal 14px/21px Poppins;
-  background: transparent;
-  border-top: none;
-  border-left:none;
-  border-right:none;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color: #264653;
+}
+.right-div{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color:#264653;
 }
 
-@media screen and (max-width:1780px){
-  .right-container {
-    top: 0px;
-    left: 760px;
-    width: 900px;
-    height: 900px;
-    float:right;
-    background: #FFE5A5 0% 0% no-repeat padding-box;
+.forgetPass{
+  display: flex;
+  position: relative;
+  justify-content: center;
+  top:22%;
+  right: -15%;
+  font: normal normal normal 14px/70px Poppins;
+  letter-spacing: -0.66px;
+
+}
+
+.signup{
+  display: flex;
+  position: relative;
+  top:8%;
+  font: normal normal normal 16px/25px Poppins;
+  color:#264653;
+}
+
+.admin-login{
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  top:7%;
+  font : normal normal normal 16px/25px Poppins;
+  color:#264653;
+}
+
+.adminmodel{
+  border-bottom:1px solid #E76F51 ;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  background-color: transparent;
+  font: normal normal normal 16px/25px Poppins;
+  position: relative;
+  top:-18%;
+  color: #E76F51;
+}
+
+.heading-right{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top:-10%;
+  height: 2%;
+  font: normal normal normal 34px/51px Poppins;
+  color:#264653; 
+}
+
+.paragraph-right{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top:-5%;
+  font: normal normal normal 22px/27px Poppins;
+  color:#264653;
+}
+
+@media only screen and (max-device-width:540px) {
+  .right-container{
+    display: none;
   }
-  .content {
-    top: 340px;
-    left: 40px;
-    right:1000px;
-    width: 450px;
-    height: 54px;
-    display: inline;
-    justify-content: center;
-    margin: 5% auto;
-    position: absolute;
+  .left-container{
+    width: 100vw;
   }
+  .forgetPass{
+    top:28%;
+    left: 20%;
+  }
+  .admin-login{
+    top:15%;
+  }
+  .signup{
+    top:15%;
+  }
+}
+@media only screen and (min-device-width:1280px) and (max-device-width:1281px) {
+  .right-container{
+    display: none;
+  }
+  .left-container{
+    width: 100vw;
+  }
+  .forgetPass{
+    top:25%;
+    left: 10%;
+  }
+}
+@media only screen and (min-device-width:1023.5px) and (max-device-width:1024px) {
+  .right-container{
+    display: none;
+  }
+  .left-container{
+    width: 100vw;
+  }
+  .forgetPass{
+    position: relative;
+    top:40%;
+    left: 10%;
+  }
+  .admin-login{
+    top:17%;
+  }
+  .signup{
+    top:20%;
+  }
+}
+
+@media only screen and (min-device-width:800px) and (max-device-width:1023px) {
+  .right-container{
+    display: none;
+  }
+  .left-container{
+    width: 100vw;
+  }
+  .forgetPass{
+    top:17%;
+  }
+}
+@media only screen and (min-device-width:768px) and (max-device-width:800px) {
+  .right-container{
+    display: none;
+  }
+  .left-container{
+    width: 100vw;
+  }
+  .forgetPass{
+    top:19%;
+  }
+}
+@media only screen and (min-device-width : 390px) and (max-device-width : 414px) {
+  .right-container{
+    display: none;
+  }
+  .left-container{
+    width: 100vw;
+  }
+  .Loginform{
+    width: 100vw;
+  }
+  .forgetPass{
+    top:25%;
+    left: 27%;
+  }
+}
+@media only screen and (max-width : 375px) {
+   .right-container{
+     display: none;
+   }
+   .left-container{
+     width: 100vw;
+   }
+   .Loginform{
+     width: 100vw;
+   }
+   .forgetPass{
+     top:30%;
+     left: 25%;
+   }
+   .admin-login{
+     top:15%;
+   }
+   .signup{
+     top:15%;
+   }
 }
