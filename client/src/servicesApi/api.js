@@ -9,10 +9,11 @@ export const createAccountUser =  async (name,username,email,phoneNumber,passwor
     "password":password,
     "description":Description,
     "userName":username,
-    "address":{"city":city,
-    "country":country,
-    "streetNumber":streetNumber,
-    "houseNumber":houseNumber
+    "address":{
+        "city":city,
+        "country":country,
+        "streetNumber":streetNumber,
+        "houseNumber":houseNumber
     }, 
     "CNIC":cnic}
     return await axios.post(`${Url}/user/register`,obj);
