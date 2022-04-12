@@ -15,8 +15,9 @@ function FormsDonation (props) {
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleInputPassword1" placeholder="Amount ($)"/>
+                            <p class="details">Card Details</p>
                         </div>
-                        <div class = "details">Card Details</div>
+                        
                         <div class="form-group">
                             {/* <label>Card Details</label> */}
                             <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="Name On Card"/>
@@ -29,8 +30,9 @@ function FormsDonation (props) {
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="CVC"/>
+                            <button type = "submit" class="buttons">Confirm Donation!</button>
                         </div>
-                        <button type = "submit" class="buttons">Confirm Donation!</button>
+                       
                     </form>
                 </div>
         );
@@ -50,6 +52,7 @@ function FormsDonation (props) {
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleInputPassword1" placeholder="Address (House No, St. Block, City, Country)"/>
+                            <p class="details1">Ration Details</p>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="Description"/>
@@ -79,6 +82,7 @@ function FormsDonation (props) {
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleInputPassword1" placeholder="Address (House No, St. Block, City, Country)"/>
+                            <p class="details1">Meal Details</p>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="Description"/>
