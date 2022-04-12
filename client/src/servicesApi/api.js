@@ -67,10 +67,7 @@ export const createRestUser = async (name,username,email,phoneNumber,paswword,ci
         "accountNum":accountNum, 
         "userName":username
         }
-    return await axios.post(`${Url}/rest/register`,obj,{ headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-    });
+    return await axios.post(`${Url}/rest/register`,obj);
 }
 
 export const userLogin = async (email,password) =>
