@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {restLogin, restRegister,forgetPassResCheckUser,forgetPassUpdatePassRes,changePassRes,viewRestProfile,viewRestStats, editProfileRest, mealDonation } from "../controller/restController";
+import {myRequestRest, restLogin, restRegister,forgetPassResCheckUser,forgetPassUpdatePassRes,changePassRes,viewRestProfile,viewRestStats, editProfileRest, mealDonation } from "../controller/restController";
 
 const router = Router();
 import multer from "multer";
@@ -13,6 +13,7 @@ router.route("/forgetPassU").post(forgetPassUpdatePassRes);
 router.route("/viewProfile").post(viewRestProfile);
 router.route("/statProfile").post(viewRestStats);
 router.route("/editProfileRest").post(editProfileRest);
+router.route("/myRequest").post(myRequestRest);
 //router.route("/mealDonation").post(mealDonation);
 router.post("/mealDonation",upload.single("image"),mealDonation);
 export default router;

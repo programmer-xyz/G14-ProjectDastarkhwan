@@ -7,6 +7,7 @@ import HandErr from "../utils/err.js";
 import {tokenMaker} from "../utils/tokenManager"
 import mongoose from "mongoose";
 
+
 //login 
 export const userLogin =  handleAsyncErr(async (req,res, next) =>{
     const {email, password} = req.body;
@@ -155,18 +156,20 @@ export const changePassUser = handleAsyncErr(async(req,res,next)=>{
 
 export const mealDonation = handleAsyncErr(async (req,res,next) =>{
     //user email and selected ngo will be sent from frontend
-
+    //console.log(req.body)
     let image = req.file.buffer;
-    const {address, description, email, ngoIdentifier} = req.body;
+    let {address, description, email, ngoIdentifier} = req.body;
 
     if( !address|| !description||!image){
         return next(new HandErr("some fields are missing", 401))
     }
+    address = JSON.parse(address);
     const userDonor = await User.findOne({email:email, isActive:true})
 
     const ngoSelected = await Ngo.findOne({email:ngoIdentifier, isActive:true})
-    if(!ngoSelected){
-        return next(new HandErr("Ngo is inactive", 401))
+    //console.log(ngoSelected)
+    if(!ngoSelected || !userDonor){
+        return next(new HandErr("Ngo/User is inactive", 401))
     }
    
     const donation = await Donation.insertMany({
@@ -362,4 +365,35 @@ export const editProfileUser = handleAsyncErr(async (req, res, next)=>{
         message:"Successfully updated user profile",
         body: user
     });
+});
+export const myRequestUser = handleAsyncErr(async(req,res,next)=>
+{
+    let {email} = req.body;
+    if(!!email)
+    {
+        let user = await User.findOne({'email':email,'isActive':true}).populate({path:'donations',populate:{
+            path: 'acceptedBy',
+            model: 'NGO',
+            select: 'name email userName address description phoneNumber contactEmail contactName contactNumber image'
+        }});
+        if(!!user)
+        {   
+            res.status(200).json({
+                success:true,
+                message:"Successfully found donations details",
+                body: user.donations
+            });
+            
+        }
+        else
+        {
+            return next(new HandErr("User is dosen't exist or is no longer active",400));
+        }
+        
+    }
+    else
+    {
+        return next(new HandErr("Email is missing",400))
+    }
+   
 });

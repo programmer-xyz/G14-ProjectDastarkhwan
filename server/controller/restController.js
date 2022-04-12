@@ -220,25 +220,56 @@ export const editProfileRest = handleAsyncErr(async (req, res, next)=>{
     });
 });
 
+export const myRequestRest = handleAsyncErr(async(req,res,next)=>
+{
+    let {email} = req.body;
+    if(!!email)
+    {
+        let rest = await Rest.findOne({'email':email,'isActive':true}).populate({path:'donations',populate:{
+            path: 'acceptedBy',
+            model: 'NGO',
+            select: 'name email userName address description phoneNumber contactEmail contactName contactNumber image'
+        }});
+        if(!!rest)
+        {   
+            res.status(200).json({
+                success:true,
+                message:"Successfully found donations details",
+                body: rest.donations
+            });
+            
+        }
+        else
+        {
+            return next(new HandErr("Restuarant is dosen't exist or is no longer active",400));
+        }
+        
+    }
+    else
+    {
+        return next(new HandErr("Email is missing",400))
+    }
+   
+});
 export const mealDonation = handleAsyncErr(async (req,res,next) =>{
     //user email and selected ngo will be sent from frontend
 
     let image = req.file.buffer;
-    const {address, description, email, ngoIdentifier} = req.body;
+    let {address, description, email, ngoIdentifier} = req.body;
 
     if( !address|| !description||!image){
         return next(new HandErr("some fields are missing", 401))
     }
     const userDonor = await Rest.findOne({email:email, isActive:true})
-
+    address = JSON.parse(address)
     const ngoSelected = await Ngo.findOne({email:ngoIdentifier,isActive:true})
     
-    if(!ngoSelected.isActive){
-        return next(new HandErr("Ngo is inactive", 401))
+    if(!ngoSelected || !userDonor){
+        return next(new HandErr("Ngo/user is inactive", 401))
     }
  
     const donation = await Donation.insertMany({
-        donatedByRest: userDonor._id,
+        donatedByRestaurant: userDonor._id,
         acceptedBy: ngoSelected._id,
         typeOfDonation:"meal",
         donataionComplete:false,

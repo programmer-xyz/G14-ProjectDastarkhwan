@@ -17,8 +17,8 @@ const resturantSchema = new mongoose.Schema({
     contactNumber:{type:String,required:true},
     contactName:{type:String,required:true},
     mealsDonated:{type:Number,required:true},
-    donations:[{type:Schema.Types.ObjectId, ref:'donation'}],
-    applicationId:{type:Schema.Types.ObjectId,ref:'application'},
+    donations:[{type:Schema.Types.ObjectId, ref:'Donation'}],
+    applicationId:{type:Schema.Types.ObjectId,ref:'Application'},
     image:{type:Buffer,default:null},
     descriptionOfImage:{type:String,default:null}
 

@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {userLogin, userRegister,forgetPassCheckUser,forgetPassUpdateUser,changePassUser, mealDonation, rationDonation, moneyDonation} from "../controller/userController";
-import {viewUserProfile, viewUserStats, editProfileUser} from "../controller/userController";
+import {viewUserProfile, viewUserStats, editProfileUser,myRequestUser} from "../controller/userController";
 const router = Router();
 import multer from "multer";
 const upload = multer();
@@ -19,5 +19,6 @@ router.route("/moneyDonation").post(moneyDonation);
 router.route("/viewProfile").post(viewUserProfile);
 router.route("/viewStats").post(viewUserStats);
 router.route("/editProfileUser").post( editProfileUser);
+router.route("/myRequest").post(myRequestUser);
 
 export default router;
