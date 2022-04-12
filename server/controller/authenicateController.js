@@ -5,6 +5,7 @@ import ngo from "../models/ngoSchema.mjs";
 import HandErr from "../utils/err.js";
 import { handleAsyncErr } from "../middleware/handleAsyncErr.js";
 import bcrypt from "bcrypt";
+import { sendEmail } from "../utils/emailSender.js";
 
 //test func not an api will be deleted later
 export const createAdmin = async (req,res) =>{
@@ -99,11 +100,24 @@ export const approvePost = handleAsyncErr(async(req, res, next) =>{
         });
     }
     const appObjNew = await application.findOneAndUpdate({email}, {approved: true, approvalStatus:"approved", isActive:false});
+    const message = `Welcome to desterkhawan`
+  try {
+    await sendEmail({
+      email: appObj.email,
+      subject: `Account has been approved`,
+      message,
+    });
 
     res.status(200).json({
-        success: true,
-        message: "user account approved",
-      });
+      success: true,
+      message: `Email sent to ${user.email} successfully`,
+    });
+  } catch (error) {
+    return next(new HandErr("Failed to send email", 400))
+
+  }
+
+    
 
 });
 
