@@ -100,3 +100,13 @@ label {
     left:-1%;
     position: relative;
 }
+.details1{
+    font-family: "Poppins";
+    font-size: 14px/21px;
+    letter-spacing: -0.66px;
+    color: #838D94;
+    position: relative;
+    left:-42%;
+    top:100%;
+    padding-left: 35px;
+}

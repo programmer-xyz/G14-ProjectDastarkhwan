@@ -82,9 +82,11 @@ function ControlledTabs(props) {
     {   
 
         return (
-            <div class='container12'>
-            <button onClick={()=>{handlClick(2)}} className="button orangeborder">{props.itemThree}</button>
-        </div>
+            <Tabs value={value}  onChange={handleChange}>
+                <Tab style={getStyle(value === 0)} label = {`${props.itemOne}`}>
+                </Tab>
+             </Tabs>
+
         );
     }
     else
