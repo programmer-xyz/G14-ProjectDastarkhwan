@@ -35,10 +35,10 @@ function Cards (props) {
             <hr class="hr"></hr>
             <div class="row">
                 <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                    <button class="buttons">Make Donations</button>
+                    <button class="buttonsCards">Make Donations</button>
                 </div>
                 <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                    <button class="buttons white">Past Requests</button>
+                    <button class="buttonsCards white">Past Requests</button>
                 </div>
             </div>
             </div>
@@ -81,10 +81,10 @@ function Cards (props) {
             <hr class="hr1"></hr>
             <div class="row">
                 <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                    <button class="buttons">Accept Donations</button>
+                    <button class="buttonsCards">Accept Donations</button>
                 </div>
                 <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                    <button class="buttons white">Past Requests</button>
+                    <button class="buttonsCards white">Past Requests</button>
                 </div>
             </div>
             </div>
@@ -127,13 +127,13 @@ function Cards (props) {
             <hr class="hr1"></hr>
             <div class="row">
                 <div class="col-lg-4 col-xs-12 col-md-12 col-sm-12">
-                    <button class="buttons">Make Donations</button>
+                    <button class="buttonsCards">Make Donations</button>
                 </div>
                 <div class="col-lg-4 col-xs-12 col-md-12 col-sm-12">
-                    <button class="buttons white">Past Requests</button>
+                    <button class="buttonsCards white">Past Requests</button>
                 </div>
                 <div class="col-lg-4 col-xs-12 col-md-12 col-sm-12">
-                    <button class="buttons white">Subscription</button>
+                    <button class="buttonsCards white">Subscription</button>
                 </div>
             </div>
             </div>

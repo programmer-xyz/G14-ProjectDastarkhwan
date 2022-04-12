@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-.container {
+.containerForm {
     background-color: white;
     width:auto !important;
     padding:30px;
@@ -51,12 +51,21 @@ label {
     cursor:pointer;
     width: 450px;
     height: 54px;
-    margin-bottom: 24px;
     margin-top: 10%;
-    margin-left: -40%;
+    left: -6%;
     position: relative;
 }
 
-.col-lg-6{
-    width: 39% !important;
+.newClass{
+
+    margin-top: auto;
+    margin-bottom: auto;
+}   
+
+.col1{
+    width: 20% ;
 }
+.col2{
+    width: 20%;
+}
+

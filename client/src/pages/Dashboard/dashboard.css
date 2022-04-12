@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.fullBody {
+    overflow: hidden;
+    background-color: #F7EAC9;
+    height: auto;
+}
+
+.row1 {
+    margin-top: 4%;
+    margin-bottom: 10%;
+}
+
+.row2 {
+    display: flex;
+    justify-content: left;
+}
+
+.nameUser {
+    font: normal normal normal 42px/109px Poppins;
+    color: #E76F51;
+}
+
+.welcome {
+    font: normal normal normal 22px/33px Poppins;
+    color: #264653;
+}
+
+.col {
+    display: flex;
+    justify-content: center;
+}

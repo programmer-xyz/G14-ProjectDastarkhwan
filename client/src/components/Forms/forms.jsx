@@ -3,7 +3,7 @@ function Forms (props) {
     if (props.User === 1){
         return(
                 <div class = "row newClass">
-                    <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
+                    <div class= "col-lg-6 col-xs-12 col-md-4 col-sm-12 col1">
                     <form>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name"/>
@@ -22,17 +22,19 @@ function Forms (props) {
                         </div>
                     </form>
                     </div>
-                    <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
+                    <div class= "col-lg-6 col-xs-12 col-md-4 col-sm-12 col2">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="CNIC"/>                        </div>
+                            <input type="text" class="form-control shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="CNIC"/>                        
+                        </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleInputPassword1" placeholder="Address (House No, St. Block, City, Country)"/>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="Description"/>
+                            <button type = "submit" class="buttons">SIGN UP!</button>
                         </div>
-                        <button type = "submit" class="buttons">SIGN UP!</button>
+                       
                     </form>
                     </div>
                 </div>

@@ -11,10 +11,10 @@ function Navbar() {
         var obj = {}
         if(e.target.value === "Home")
         {
-           obj = {
-               button1:true,
-               button2:false
-           }
+            obj = {
+                button1:true,
+                button2:false
+            }
 
         }
         else if (e.target.value ==="Profile")
@@ -27,9 +27,9 @@ function Navbar() {
         console.log("this is button",obj)
         setbuttonState(obj)
     }
-  return (
+return (
     <React.Fragment>
-        <AppBar sx={{background:'#FFFFFF'}} elevation={0}>
+        <AppBar sx={{background:'transparent', position: 'static'}} elevation={0}>
             <Toolbar>
                 <Tabs sx={{marginLeft:'auto'}}>
                     {console.log(button)}
@@ -40,7 +40,7 @@ function Navbar() {
             </Toolbar>
         </AppBar>
     </React.Fragment>
-  )
+)
 }
 
 export default Navbar;

@@ -3,7 +3,7 @@
     border: none;
     font: normal normal normal 16px/61px Poppins;
     margin:10px;
-    background:#fff;
+    background:transparent;
     cursor:pointer;
 }
 .buttons2{
@@ -11,11 +11,10 @@
     font: normal normal normal 12px/18px Poppins;
     color:#fff;
     border-radius: 10px;
-    border: 2px solid #fff;
+    border: none;
     padding: 5px 20px 5px 20px;
     margin-left: 10px;
     cursor:pointer;
-    
 }
 .orangeColor{
         color:#E76F51;
