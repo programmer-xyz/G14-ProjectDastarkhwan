@@ -18,3 +18,8 @@ export const createAccountUser =  async (name,username,email,phoneNumber,passwor
     return await axios.post(`${Url}/user/register`,obj),
 }
 
+export const createNgoUser =  async (name,username,email,phoneNumber,paswword,cnic,address,Description) =>
+{
+
+  
+}
