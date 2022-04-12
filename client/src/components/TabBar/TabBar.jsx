@@ -3,7 +3,7 @@ import font from './TabBar.scss'
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Box from '@mui/material/Box';
-import {withStyles} from "@material-ui/core/styles";
+
 
 // const StyledTab = withStyles(theme => ({
 //   root: {
