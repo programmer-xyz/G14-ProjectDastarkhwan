@@ -1,5 +1,6 @@
 import './forms.css';
-import {createNgoUser} from  '../../servicesApi/api.js';
+import {createNgoUser,createRestUser,createAccountUser} from  '../../servicesApi/api.js';
+
 
 import { useState } from 'react';
 
@@ -75,7 +76,7 @@ function Forms (props) {
     const handleForm2 = (e)=>{
         e.preventDefault();
         const {name, value} = e.target;
-        setUser2({...user3, [name]: value});
+        setUser2({...user2, [name]: value});
       
     }
 
@@ -131,6 +132,44 @@ function Forms (props) {
         })
     
     }
+    const onCreateUser = (e) =>
+    {
+        e.preventDefault();
+        let city = "lah"
+        let country = "pak"
+        let streetNumber= "user3.streetNumber"
+        let houseNumber= "user3.houseNumber"
+        createAccountUser(user1.name,user1.username,user1.email,user1.phoneNum,user1.pw,user1.cnic,city,country,streetNumber,houseNumber,user1.description).then(
+            (res)=>
+            {
+
+            }
+        )
+        .catch((err)=>
+        {
+            console.log(err)
+        })
+    }
+    const onCreateRest = (e) =>
+    {
+        e.preventDefault ();
+        let city = "lah"
+        let country = "pak"
+        let streetNumber= "user3.streetNumber"
+        let houseNumber= "user3.houseNumber"
+        createRestUser(user2.name,user2.username,user2.email,user2.phoneNum,user2.pw,city,country,streetNumber,houseNumber,user2.phoneNum2,user2.name2,user2.email2,user2.description).then
+        ((response)=>
+        {
+            if(response.data.success)
+            {
+                console.log(response);
+            }
+        }).catch((err)=>
+        {
+            console.log(err);
+        })
+        
+    }
     
 
     console.log(user3)
@@ -167,7 +206,7 @@ function Forms (props) {
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleDescription1" placeholder="Description" name= "description" value = {user1.description} onChange = {handleForm1}/>
-                            <button type = "submit" class="buttons" onClick={handleForm1}>SIGN UP!</button>
+                            <button type = "submit" class="buttons" onClick={onCreateUser}>SIGN UP!</button>
                         </div>
                        
                     </form>
@@ -213,7 +252,7 @@ function Forms (props) {
                         <div class="form-group">
                             <input type="email" class="form-control shadow-none" id="exampleCheck3" placeholder="Contact Email" name = "email2" value = {user2.email2} onChange = {handleForm2}/>
                         </div>
-                        <button type = "submit" class="buttons">SIGN UP!</button>
+                        <button type = "submit" class="buttons" onClick={onCreateRest}>SIGN UP!</button>
                     </form>
                     </div>
                 </div>
