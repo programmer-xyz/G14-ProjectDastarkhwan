@@ -2,6 +2,7 @@ import { BrowserRouter as Router , Routes, Route} from 'react-router-dom';
 import Login from './pages/loginpage/login.js';
 import Cards from './components/Cards/cards.jsx';
 import FooterPage from './components/Footer/footer.jsx';
+
 import RequestItems from './components/RequestItems/requestItems.jsx';
 import NavBar from './components/Navbar/Navbar.jsx'
 import image1 from './components/RequestItems/testImage.jpeg';
@@ -21,7 +22,9 @@ const App = () => {
             <div className="App">
                 <Routes> 
                     <Route path='/' element={<Login/>}/>
-                    <Route path="/Signup" element= {<Signup/>}/> 
+                    <Route path="/Signup" element= {<Signup/>}/>  
+                    <Route path = "/donationForms" element= {<DonationForms Resturant={true} Number = {2}/>} />
+                
                     <Route path='/Cards' element={<Cards Resturant={2} mealsDonated={10} ngosDonatedTo={10} monetaryDonations={20} mealDonations={40} rationDonations={10}/>}/>
                     <Route path="/footer" element={<FooterPage user={false}/>} />
                     <Route path="/NavBar" element = {<NavBar />} />
@@ -29,8 +32,7 @@ const App = () => {
                     <Route path = "/modals" element = {<Modals/>} />
                     <Route path ="/dashboard" element = {<Dashboard/>} />
                     <Route path ="/forms" element = {<FormsDonation User={1} />} />
-                    <Route path = "/donationForms" element= {<DonationForms  Number = {2}/>} />
-                    <Route path = "/loginforms" element = {<LoginForm />} />
+   
                 </Routes>
             </div>
         </Router>
