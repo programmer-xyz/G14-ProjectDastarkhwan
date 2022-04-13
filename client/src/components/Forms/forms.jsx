@@ -193,7 +193,7 @@ function Forms (props) {
                             <input type="text" class="form-control shadow-none" id="exampleNum2" placeholder="Phone Number" name = "phoneNum" value = {user2.phoneNum} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control shadow-none" id="examplePW2" placeholder="Password"name = "pw" value = {user2.pw} onChange = {handleForm2}/>
+                            <input type="password" class="form-control shadow-none" id="examplePW2" placeholder="Password" name = "pw" value = {user2.pw} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleCheck2" placeholder="Address (House No, St. Block, City, Country)" name = "address" value = {user2.address} onChange = {handleForm2}/>
