@@ -6,6 +6,8 @@ import ngo from "./routes/ngoRoutes";
 import rest from "./routes/restRoutes";
 import user from "./routes/userRoutes"
 import cookieParser from "cookie-parser";
+import cors from 'cors'
+
 //import multer from 'multer';
 // var form = multer()
 
@@ -21,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(form.array());
 // app.use(express.static('public'))
 app.use(cookieParser());
+app.use(cors());
 
 //admin
 app.use("/api/v1/admin", admin);
