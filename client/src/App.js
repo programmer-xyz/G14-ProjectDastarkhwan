@@ -2,16 +2,12 @@ import { BrowserRouter as Router , Routes, Route} from 'react-router-dom';
 import Login from './pages/loginpage/login.js';
 import Cards from './components/Cards/cards.jsx';
 import FooterPage from './components/Footer/footer.jsx';
-import TabBar from './components/TabBar/TabBar.jsx';
 import RequestItems from './components/RequestItems/requestItems.jsx';
 import NavBar from './components/Navbar/Navbar.jsx'
 import image1 from './components/RequestItems/testImage.jpeg';
 import Signup from './pages/Signup/signup';
 import './App.css';
 import Modals from './components/Modals/Modals.jsx'
-//import pages here and call then the way login has been called
-
-import Forms from './components/Forms/forms.jsx';
 import Dashboard from './pages/Dashboard/dashboard.jsx';
 
 import FormsDonation from './components/Forms/formsDonation.jsx';
@@ -33,7 +29,7 @@ const App = () => {
                     <Route path = "/modals" element = {<Modals/>} />
                     <Route path ="/dashboard" element = {<Dashboard/>} />
                     <Route path ="/forms" element = {<FormsDonation User={1} />} />
-                    <Route path = "donationForms" element= {<DonationForms Resturant={true} Number = {2}/>} />
+                    <Route path = "/donationForms" element= {<DonationForms  Number = {2}/>} />
                     <Route path = "/loginforms" element = {<LoginForm />} />
                 </Routes>
             </div>

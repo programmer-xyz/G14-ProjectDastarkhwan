@@ -6,16 +6,26 @@ import Cards2 from '../../components/ProfileCard/profileCard.jsx'
 function Dashboard (){
     return(
         <div className = 'fullBody'>
-            <div><NavBar></NavBar></div>
-            <div class = 'row1'>
-            <div class = 'nameUser'>Hello Jane!</div>
-            <div class = 'welcome'>Welcome to your Dashboard, here you can edit your personal info, see stats and make donations!</div>
+            <div>
+            <NavBar/>
             </div>
-            <div class = 'row2'>
+            <div className = 'nameUser'>
+            <h1>Hello Jane!</h1>
+            </div>
+            <div className = 'welcome'>
+            <p>Welcome to your Dashboard, here you can edit your personal info, see stats and make donations!</p>
+            </div>
+            <div className="ddiv">
+            <div className = "col1">
                 <Cards Resturant={2} mealsDonated={10} ngosDonatedTo={10} monetaryDonations={20} mealDonations={40} rationDonations={10}/>
-                <Cards2 class = "cards2"></Cards2>
             </div>
-            <div><Footer user={true}/></div>
+            <div className="column2">
+                <Cards2/>
+            </div>
+            </div>
+            <div className="column1">
+            <Footer user={true}/>
+            </div>
         </div>
     );
 }
