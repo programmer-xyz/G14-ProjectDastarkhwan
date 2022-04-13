@@ -16,7 +16,7 @@ function Dashboard (){
             <p>Welcome to your Dashboard, here you can edit your personal info, see stats and make donations!</p>
             </div>
             <div className="ddiv">
-            <div className = "col1">
+            <div className = "col12">
                 <Cards Resturant={2} mealsDonated={10} ngosDonatedTo={10} monetaryDonations={20} mealDonations={40} rationDonations={10}/>
             </div>
             <div className="column2">
