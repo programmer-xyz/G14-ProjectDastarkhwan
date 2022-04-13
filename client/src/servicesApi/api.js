@@ -23,7 +23,7 @@ export const createAccountUser =  async (name,username,email,phoneNumber,passwor
 
 export const createNgoUser =  async (name,username,email,phoneNumber,paswword,city,country,streetNumber,houseNumber,contactNum,contactName,contactEmail,accountNum,Description,file) =>
 {
-    console.log("here",file);
+    
     let formData = new FormData();
     formData.append("name",name);
     formData.append("email",email);
@@ -34,7 +34,7 @@ export const createNgoUser =  async (name,username,email,phoneNumber,paswword,ci
         "streetNumber":streetNumber,
         "houseNumber":houseNumber
     }
-    formData.append("address",addrss)
+    formData.append("address",JSON.stringify(addrss))
     formData.append("password",paswword)
     formData.append("description",Description)
     formData.append("contactNum",contactNum)

@@ -52,7 +52,7 @@ const  user3Init ={
     name2:"",
     email2:"",
     phoneNum2:"",
-    file:"",
+    file: null,
     bankAccount:""
 };
 
@@ -85,6 +85,21 @@ function Forms (props) {
         setUser3({...user3, [name]: value});
       
     }
+    const onFileChange = event => {
+    
+        // Update the state
+        //let file = event.target.files[0];
+        // let reader = new FileReader();
+        // reader.readAsDataURL(file);
+        // reader.onload = (e) =>
+        // {
+        //     // let formData = new FormData();
+        //     // formData.append("verifyDoc",e.target.result)
+        //     setUser3({...user3, file: e.target.result});
+        // }
+        setUser3({...user3, file: event.target.files[0]});
+      
+      };
 
     const onCreate = (e) =>{
  
@@ -99,7 +114,7 @@ function Forms (props) {
         let streetNumber= "user3.streetNumber"
         let houseNumber= "user3.houseNumber"
 
-        createNgoUser(user3.name,user3.username,user3.email, user3.phoneNum, user3.pw,user3.cnic, city, country,streetNumber, houseNumber,user3.description,user3.file).then((response)=>{
+        createNgoUser(user3.name,user3.username,user3.email, user3.phoneNum, user3.pw, city, country,streetNumber, houseNumber,user3.phoneNum2,user3.name2,user3.email2,user3.bankAccount,user3.description,user3.file).then((response)=>{
     
                 if(response.data.success)
                 {
@@ -247,7 +262,7 @@ function Forms (props) {
                         </div>
                         <div class="form-group">
                             <label>Add Certification Email</label>
-                            <input type="file" class="form-control shadow-none" id="exampleCheck5" placeholder="Add Certification Email" name = "file" value = {user3.file} onChange = {handleForm3}/>
+                            <input type="file" class="form-control shadow-none" id="exampleCheck5" placeholder="Add Certification Email"  onChange = {onFileChange}/>
                         </div>
                         <button type = "submit" class="buttons" onClick={onCreate}>SIGN UP!</button>
                     </form>
