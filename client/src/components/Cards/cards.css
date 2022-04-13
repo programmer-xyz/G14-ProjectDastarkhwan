@@ -1,20 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 .cards {
     background-color: white;
-    width:50% !important;
+    width:80% !important;
     padding:30px;
     border-radius: 14px;
     box-shadow: 10px 10px 10px 10px #00000014;
     padding: 40px 50px 93px 50px !important;
     text-align: left;
-
+    margin-left: 1% !important;
+    margin-right: 0 !important;
 }
 .headingS{
     top:2%;
     left:27%;
     font: normal normal normal 16px/61px Poppins;
 }
-.buttons{
+.buttonsCards{
     background: #264653;
     font: normal normal normal 14px/25px Poppins;
     color:#fff;
