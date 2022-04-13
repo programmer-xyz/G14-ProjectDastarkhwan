@@ -1,5 +1,6 @@
 import './formsDonation.css';
 import React from 'react';
+import { useState } from 'react';
 
 const user1Init ={
     ngo:"",
@@ -79,6 +80,7 @@ function FormsDonation (props) {
       
     }
 
+    
     if (props.User === 1){
         return(
                 <div class = "row newClass">
