@@ -1,7 +1,5 @@
 import './forms.css';
 import {createNgoUser,createRestUser,createAccountUser} from  '../../servicesApi/authenticationApi.js';
-
-
 import { useState } from 'react';
 
 const user1Init ={
@@ -61,7 +59,6 @@ const  user3Init ={
 
 
 function Forms (props) {
-
     const [user1, setUser1] = useState(user1Init);
     const [user2, setUser2] = useState(user2Init);
     const [user3, setUser3] = useState(user3Init);
@@ -145,7 +142,7 @@ function Forms (props) {
             {
                 if(res.data.success)
                 { 
-                    
+                    props.getState("User created succesfully,","success",true)
                 }
             }
         )
@@ -166,11 +163,16 @@ function Forms (props) {
         {
             if(response.data.success)
             {
+                props.getState("Resturant registration application created,","success",true);
                 console.log(response);
             }
-        }).catch((err)=>
+            else
+            {
+                console.log(response)
+            }
+        }).catch((err,response)=>
         {
-            console.log(err);
+            props.getState(err.response.data.message,"error",true);
         })
         
     }
