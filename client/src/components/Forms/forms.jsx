@@ -1,4 +1,6 @@
 import './forms.css';
+import {createNgoUser} from  '../../servicesApi/api.js';
+
 import { useState } from 'react';
 
 const user1Init ={
@@ -50,9 +52,12 @@ const  user3Init ={
     name2:"",
     email2:"",
     phoneNum2:"",
-    file:"",
+    file: null,
     bankAccount:""
 };
+
+
+
 
 function Forms (props) {
 
@@ -70,7 +75,7 @@ function Forms (props) {
     const handleForm2 = (e)=>{
         e.preventDefault();
         const {name, value} = e.target;
-        setUser2({...user2, [name]: value});
+        setUser2({...user3, [name]: value});
       
     }
 
@@ -80,8 +85,55 @@ function Forms (props) {
         setUser3({...user3, [name]: value});
       
     }
+    const onFileChange = event => {
+    
+        // Update the state
+        //let file = event.target.files[0];
+        // let reader = new FileReader();
+        // reader.readAsDataURL(file);
+        // reader.onload = (e) =>
+        // {
+        //     // let formData = new FormData();
+        //     // formData.append("verifyDoc",e.target.result)
+        //     setUser3({...user3, file: e.target.result});
+        // }
+        setUser3({...user3, file: event.target.files[0]});
+      
+      };
 
-    console.log(user1)
+    const onCreate = (e) =>{
+ 
+        e.preventDefault();
+        // let city = user3.city
+        // let country = user3.country
+        // let streetNumber= user3.streetNumber
+        // let houseNumber = user3.houseNumber
+
+        let city = "lah"
+        let country = "pak"
+        let streetNumber= "user3.streetNumber"
+        let houseNumber= "user3.houseNumber"
+
+        createNgoUser(user3.name,user3.username,user3.email, user3.phoneNum, user3.pw, city, country,streetNumber, houseNumber,user3.phoneNum2,user3.name2,user3.email2,user3.bankAccount,user3.description,user3.file).then((response)=>{
+    
+                if(response.data.success)
+                {
+                    console.log(response)
+                }
+                else{
+                    console.log("here")
+                }
+    
+        })
+        .catch((err)=>
+        {
+            console.log(err);
+        })
+    
+    }
+    
+
+    console.log(user3)
     if (props.User === 1){
         return(
                 <div class = "row newClass">
@@ -210,9 +262,9 @@ function Forms (props) {
                         </div>
                         <div class="form-group">
                             <label>Add Certification Email</label>
-                            <input type="file" class="form-control shadow-none" id="exampleCheck5" placeholder="Add Certification Email" name = "file" value = {user3.file} onChange = {handleForm3}/>
+                            <input type="file" class="form-control shadow-none" id="exampleCheck5" placeholder="Add Certification Email"  onChange = {onFileChange}/>
                         </div>
-                        <button type = "submit" class="buttons">SIGN UP!</button>
+                        <button type = "submit" class="buttons" onClick={onCreate}>SIGN UP!</button>
                     </form>
                     </div>
                 </div>

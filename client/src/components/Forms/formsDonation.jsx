@@ -1,6 +1,7 @@
 import './formsDonation.css';
 
 function FormsDonation (props) {
+    
     if (props.User === 1){
         return(
                 <div class = "row newClass">
