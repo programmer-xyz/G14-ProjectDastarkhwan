@@ -1,5 +1,6 @@
 import './forms.css';
 import {createNgoUser,createRestUser,createAccountUser} from  '../../servicesApi/api.js';
+import SnackBar from '../SnackBar/SnackBar';
 
 
 import { useState } from 'react';
@@ -65,6 +66,15 @@ function Forms (props) {
     const [user1, setUser1] = useState(user1Init);
     const [user2, setUser2] = useState(user2Init);
     const [user3, setUser3] = useState(user3Init);
+    const [open, setOpen] = useState(false);
+    const [message, setmsg] = useState("");
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+    
+        setOpen(false);
+      };
 
     const handleForm1 = (e)=>{
         e.preventDefault();
@@ -142,7 +152,11 @@ function Forms (props) {
         createAccountUser(user1.name,user1.username,user1.email,user1.phoneNum,user1.pw,user1.cnic,city,country,streetNumber,houseNumber,user1.description).then(
             (res)=>
             {
-
+                if(res.data.success)
+                {
+                    setOpen(true); 
+                    
+                }
             }
         )
         .catch((err)=>
@@ -211,7 +225,10 @@ function Forms (props) {
                        
                     </form>
                     </div>
+                    
+                    <SnackBar onClose={handleClose}  message = {msg} severity={sv} state={open}/>
                 </div>
+                
         );
     }
     else if (props.User === 2){
