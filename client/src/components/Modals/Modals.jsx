@@ -1,11 +1,7 @@
 import React from 'react';
 import Dialog from '@mui/material/Dialog';
 import  DialogContent  from '@mui/material/DialogContent';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
 import DialogActions from '@mui/material/DialogActions';
 import './Modals.scss';
 import { useNavigate } from "react-router-dom";
@@ -14,7 +10,6 @@ export default function Modals(prop)
   let naviagte = useNavigate();
   const {modelMsg,state,modalImage,actionMsg,route} = prop;
   const [open,setOpen] = React.useState(state);
-  const theme = useTheme();
 
   
   function handleClose(reason)

@@ -3,8 +3,16 @@ import React from 'react';
 import logo from '../../assets/MaskGroup2.png';
 import TabBar from '../../components/TabBar/TabBar.jsx';
 import LoginForm from '../../components/Forms/formslogin';
+import { useState } from 'react';
 
 function Login (){ 
+  const [selectedID,setID] = useState(1);
+    function GetSelectID(Id)
+    {
+        setID(Id+1);
+        
+
+    }
   return (
     <div className="loginbody">
     <div className="left-container">
@@ -16,7 +24,7 @@ function Login (){
       <p>Select whom you want to sign in as: </p>
     </div>
     <div className="tab-bar">
-      <TabBar itemOne = {"User"} itemTwo = {"Restuarant"} itemThree = {"NGO"}/>
+      <TabBar itemOne = {"User"} itemTwo = {"Restuarant"} itemThree = {"NGO"} getId={GetSelectID}/>
     </div>
     <div className="forgetPass">
       <a href='#'> Forget Password ? </a>

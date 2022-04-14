@@ -1,5 +1,5 @@
 import { BrowserRouter as Router , Routes, Route} from 'react-router-dom';
-import Login from './pages/loginpage/login.js';
+import Login from './pages/loginpage/login.jsx';
 import Cards from './components/Cards/cards.jsx';
 import FooterPage from './components/Footer/footer.jsx';
 import image2 from './assets/check-circle.svg';
@@ -14,7 +14,7 @@ import Dashboard from './pages/Dashboard/dashboard.jsx';
 import FormsDonation from './components/Forms/formsDonation.jsx';
 
 import DonationForms from './pages/donationsForms/donationForms.jsx';
-import LoginForm from './components/Forms/formslogin.jsx';
+
 const App = () => {
 
     return(
@@ -23,7 +23,7 @@ const App = () => {
                 <Routes> 
                     <Route path='/' element={<Login/>}/>
                     <Route path="/Signup" element= {<Signup/>}/>  
-                    <Route path = "/donationForms" element= {<DonationForms Resturant={true} Number = {2}/>} />
+                    <Route path = "/donationForms" element= {<DonationForms Resturant={false} Number = {2}/>} />
                 
                     <Route path='/Cards' element={<Cards Resturant={2} mealsDonated={10} ngosDonatedTo={10} monetaryDonations={20} mealDonations={40} rationDonations={10}/>}/>
                     <Route path="/footer" element={<FooterPage user={false}/>} />
