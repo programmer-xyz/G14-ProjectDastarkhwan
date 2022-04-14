@@ -11,14 +11,14 @@
 }
 .TabbarDiv{
     display: flex;
-    /* align-items: center; */
+    align-items: center;
     height: auto;
     width: auto;
     margin-top: 5%;
     position: relative;
     font: normal normal normal 32px/61px Poppins;
     color:#264653;
-    /* justify-content: center; */
+    justify-content: center;
 }
 
 .mazaydar{

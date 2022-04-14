@@ -69,7 +69,7 @@ export const createNgoUser =  async (name,username,email,phoneNumber,paswword,ci
     });
 }
 
-export const createRestUser = async (name,username,email,phoneNumber,paswword,city,country,streetNumber,houseNumber,contactNum,contactName,contactEmail,accountNum,Description)=>
+export const createRestUser = async (name,username,email,phoneNumber,paswword,city,country,streetNumber,houseNumber,contactNum,contactName,contactEmail,Description)=>
 {
     const obj = {
         "name":name, 
@@ -86,7 +86,6 @@ export const createRestUser = async (name,username,email,phoneNumber,paswword,ci
         "contactNum":contactNum, 
         "contactName":contactName, 
         "contactEmail":contactEmail,
-        "accountNum":accountNum, 
         "userName":username
         }
     return await axios.post(`${Url}/rest/register`,obj);

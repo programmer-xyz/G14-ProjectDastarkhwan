@@ -1,46 +1,66 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
+import React from 'react';
+import Dialog from '@mui/material/Dialog';
+import  DialogContent  from '@mui/material/DialogContent';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import { styled } from '@mui/material/styles';
+import DialogActions from '@mui/material/DialogActions';
+import './Modals.scss';
+import { useNavigate } from "react-router-dom";
+export default function Modals(prop)
+{
+  let naviagte = useNavigate();
+  const {modelMsg,state,modalImage,actionMsg,route} = prop;
+  const [open,setOpen] = React.useState(state);
+  const theme = useTheme();
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  borderRadius:'14px',
-  boxShadow: 24,
-  p: 4,
-};
+  
+  function handleClose(reason)
+  {
+    if (reason !== "backdropClick")
+    {
+      return 
+    }
+    setOpen(false);
+  }
+  // const Item = styled(Paper)(() => ({
+  //   backgroundColor: '#ffff',
 
+  // }));
+  function onClick()
+  {
+    setOpen(false);
+    naviagte(`/${route}`)
 
-export default function BasicModal() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  }
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
-      <Modal
+      <Dialog sx= {{borderRadius:"100px"}}
         open={open}
+        aria-labelledby="responsive-dialog-title"
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
-        </Box>
-      </Modal>
+        >
+        <Grid conatiner justifyContent={'center'} alignItem="center" >
+        <Grid item justifyContent={'center'} alignItem="center"  >
+        <DialogContent  sx={{display:"flex",justifyContent:"center", alignItem:"center"}}>
+           <img  src={modalImage} alt="Success assest tick"/>
+        </DialogContent>
+        </Grid>
+        <Grid item  justifyContent="center" alignItems="center">
+        <DialogContent sx={{paddingTop:"0",paddingBottom:"0"}}>
+          {modelMsg}
+        </DialogContent>
+        </Grid>
+        <Grid item  >
+          <DialogActions>
+          <button onClick={onClick} type = "submit" className="buttons1" >{actionMsg}</button>
+          </DialogActions>
+        </Grid>
+        </Grid>
+      </Dialog>
     </div>
   );
 }
