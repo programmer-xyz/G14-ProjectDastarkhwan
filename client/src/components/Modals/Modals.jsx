@@ -38,9 +38,9 @@ export default function Modals(prop)
         aria-labelledby="responsive-dialog-title"
         onClose={handleClose}
         >
-        <Grid conatiner justifyContent={'center'} alignItem="center" >
-        <Grid item justifyContent={'center'} alignItem="center"  >
-        <DialogContent  sx={{display:"flex",justifyContent:"center", alignItem:"center"}}>
+        <Grid container  justifyContent={'center'} alignItems="center" >
+        <Grid item justifyContent={'center'} alignItems="center"  >
+        <DialogContent  sx={{display:"flex",justifyContent:"center", alignItems:"center"}}>
            <img  src={modalImage} alt="Success assest tick"/>
         </DialogContent>
         </Grid>
