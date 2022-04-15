@@ -25,20 +25,20 @@ function profileCards(){
         <div>
         <Grid container direction = "row" alignContent = {'center'} alignItems = {'center'}  justifyContent={'center'} display="flex" sx = {{width:'400px',height:'400px'}}>
         <Grid item  sx = {{zIndex:'2'}}>
-            <CardMedia style={{height:'150px',width:'150px',backgroundColor:'transparent',postion:"relative",top:"50px"}}
+            <CardMedia style={{height:'150px',width:'150px',backgroundColor:'transparent',postion:"relative",top:"50px",left:"35px",right:"auto"}}
             component="img"
             image={testImage}
             alt="Abdul Muizz khan"
             sx = {{borderRadius:'50%',border:'5px solid #00000073'}}/>
         </Grid>
-        {/* <Grid item sx={{zIndex:'3',paddingRight:'10%',marginLeft:'45%',marginTop:'40%'}}>        
+        <Grid item sx={{zIndex:'3'}} >        
         <label htmlFor="icon-button-file">
         <Input accept="image/*" id="icon-button-file" type="file" />
-        <IconButton size="large" sx= {{color:'#E76F51'}} disableRipple color="primary" aria-label="upload picture" component="span">
+        <IconButton size="large" sx= {{color:'#E76F51',postion:"relative",top:"100px",right:"28px"}} disableRipple color="primary" aria-label="upload picture" component="span">
           <PhotoCamera />
         </IconButton>
         </label>
-        </Grid> */}
+        </Grid>
         <Grid container direction="column" sx = {{display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'transparent',zIndex:'1'}}>
         <Grid item  >
         <Card sx={{ maxWidth: '350px' ,maxHeight:'auto',justifyContent:'center',alignItems:'center'}}>
@@ -62,7 +62,7 @@ function profileCards(){
           </Grid>
           <Divider sx={{color:"#E76F51",margin:"5% 0 5% 0",}}/>
           <Grid item alignContent = {'center'} alignItems = {'center'}  justifyContent={'center'} display="flex" >
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" textAlign={'center'}>
             Lizards are a widespread group of squamate reptiles, with over 6,000
             species, ranging across all continents except Antarctica
           </Typography>
