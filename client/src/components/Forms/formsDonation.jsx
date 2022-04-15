@@ -1,6 +1,6 @@
 import './formsDonation.css';
 import React from 'react';
-import { useState } from 'react';
+import { useState,  useEffect } from 'react';
 import { findNgo } from  '../../servicesApi/donation.js';
 const user1Init ={
     ngo:"",
@@ -80,11 +80,30 @@ function FormsDonation (props) {
       
     }
 
+   const [ngo_lis, setNgoLis] = useState([]);
+
     const getNgos = async() =>{
-            //let ngos = await findNgo()
-            let city = 'lahore';
-            
+        let ngos = [];
+        let address = { "address":{"city": "karachi", "country": "Pakistan",  "streetNumber":"11",  "houseNumber":"1"}}
+        try{
+            console.log('hello');
+            ngos = await findNgo(address);
+            console.log('in func ')
+            console.log(ngos)
+            setNgoLis(ngos);
+           
+        }
+        catch(err){
+            console.log('error in calling api');
+        }
+
     }
+
+    useEffect(()=>{
+        getNgos();
+    }, [])
+
+    console.log(ngo_lis);
 
     if (props.User === 1){
         return(
@@ -93,9 +112,13 @@ function FormsDonation (props) {
                         <div class="form-group">
                             <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="ngo" value={user1.ngo} onChange={handleForm1}>
                                 <option selected>Select NGO</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                {
+                                    ngo_lis.map((ele) =>{
+                                       <option>{ele.name}</option>
+                                    
+                                    })
+                                }
+                                
                             </select>
                         </div>
                         <div class="form-group">
