@@ -25,7 +25,7 @@ const App = () => {
                     <Route path='/' element={<Login/>}/>
                     <Route path="/Signup" element= {<Signup/>}/>  
                     <Route path = "/donationForms" element= {<DonationForms Resturant={false} Number = {2}/>} />
-                    <Route path='/Cards' element={<Cards Resturant={2} mealsDonated={10} ngosDonatedTo={10} monetaryDonations={20} mealDonations={40} rationDonations={10}/>}/>
+                    <Route path='/Cards' element={<Cards Resturant={0} mealsDonated={10} ngosDonatedTo={10} monetaryDonations={20} mealDonations={40} rationDonations={10}/>}/>
                     <Route path="/footer" element={<FooterPage user={false}/>} />
                     <Route path="/NavBar" element = {<NavBar />} />
                     <Route path="/modelitems" element = {<RequestItems image={image1} name={"Abdul Muizz khan"} heading1={"Type"} heading2={"Date"} pargaraph1={"Meal Donations"} date={"7/03/4"} time={"10:47 am"} userRequests={false} NGOrequests={false} Resreq={true} buttonStat={1}/>} />

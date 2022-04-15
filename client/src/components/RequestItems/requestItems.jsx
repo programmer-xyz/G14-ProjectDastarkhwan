@@ -19,72 +19,72 @@ function RequestItems(props)
     {
         return (
             <div>
-                        <ListItem sx={{width: '100%', border:'1px solid #422F5F21', borderRadius:"25px", backgroundColor:"rgba(244, 162, 97, 0.17)",marginBottom:"20px"}}>
-                            <ListItemAvatar> 
-                            <Avatar sx={{width:"80px", height:"80px", marginRight:"20px"}}src ={props.image} alt ="User Image"/>
-                            {/* <img class= "image1" src={props.image} alt="here"/> */}
-                            </ListItemAvatar>
-                        <ListItemText primary={props.name} secondary={
-                            <React.Fragment>
-                                <Typography  sx={{ display: 'block' }}
-                                 component="span"
-                                variant="body2"
-                                color="text.primary">
-                                    {`${props.heading1}:  `}
-                                <Typography sx={{ display: 'inline' }}
-                                 component="span"
-                                variant="paragraph"
-                                color="text.primary">
-                                {`${props.pargaraph1}`} 
+                <ListItem sx={{width: '100%', border:'1px solid #422F5F21', borderRadius:"25px", backgroundColor:"rgba(244, 162, 97, 0.17)",marginBottom:"20px"}}>
+                    <ListItemAvatar> 
+                    <Avatar sx={{width:"80px", height:"80px", marginRight:"20px"}}src ={props.image} alt ="User Image"/>
+                    {/* <img class= "image1" src={props.image} alt="here"/> */}
+                    </ListItemAvatar>
+                <ListItemText primary={props.name} secondary={
+                    <React.Fragment>
+                        <Typography  sx={{ display: 'block' }}
+                            component="span"
+                        variant="body2"
+                        color="text.primary">
+                            {`${props.heading1}:  `}
+                        <Typography sx={{ display: 'inline' }}
+                            component="span"
+                        variant="paragraph"
+                        color="text.primary">
+                        {`${props.pargaraph1}`} 
 
-                                </Typography>
-                                </Typography> 
-                                <Typography  sx={{ display: 'block' }}
-                                 component="span"
-                                variant="body2"
-                                color="text.primary">
-                                    {`${props.heading2}:  `}
-                                <Typography sx={{ display: 'inline' }}
-                                 component="span"
-                                variant="paragraph"
-                                color="text.primary">
-                                {`${props.date} | ${props.time}`} 
+                        </Typography>
+                        </Typography> 
+                        <Typography  sx={{ display: 'block' }}
+                            component="span"
+                        variant="body2"
+                        color="text.primary">
+                            {`${props.heading2}:  `}
+                        <Typography sx={{ display: 'inline' }}
+                            component="span"
+                        variant="paragraph"
+                        color="text.primary">
+                        {`${props.date} | ${props.time}`} 
 
-                                </Typography>
-                                </Typography> 
+                        </Typography>
+                        </Typography> 
 
-                            </React.Fragment>
-                            
-                            
-                        }>
-                        </ListItemText>
-                        <Grid item display="flex" sx={{alignItems:"left",justifyContent:"flex-end"}}>
-                        <Button className='butClass' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
-                            {"&.MuiButtonBase-root:hover": {
-                                bgcolor: "#E76F51"
-                                },
-                                backgroundColor:"#E76F51",
-                                textColor:"#fff",
-                                color:"#fff",
-                                textAlign:"center",
-                                justifyContent:"center",
-                                alignItems:"center",
-                                fontSize:"10px",
-                                borderRadius:"30px"
-                                
-                                }} >
-                        <CheckIcon sx={{mr:"2"}}></CheckIcon>   
-                        Accept
-                        </Button>
-                        <ListItemButton  disableRipple sx={{"&.MuiButtonBase-root:hover": {
-                                bgcolor: "transparent"
+                    </React.Fragment>
                     
-                        }}}>
-                        <IoChevronForwardCircle size={30} color="#E76F51"/>
-                        </ListItemButton>
-                        </Grid>
-    
-                        </ListItem>
+                    
+                }>
+                </ListItemText>
+                <Grid item display="flex" sx={{alignItems:"left",justifyContent:"flex-end"}}>
+                <Button className='butClass' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
+                    {"&.MuiButtonBase-root:hover": {
+                        bgcolor: "#E76F51"
+                        },
+                        backgroundColor:"#E76F51",
+                        textColor:"#fff",
+                        color:"#fff",
+                        textAlign:"center",
+                        justifyContent:"center",
+                        alignItems:"center",
+                        fontSize:"10px",
+                        borderRadius:"30px"
+                        
+                        }} >
+                <CheckIcon sx={{mr:"2"}}></CheckIcon>   
+                Accept
+                </Button>
+                <ListItemButton  disableRipple sx={{"&.MuiButtonBase-root:hover": {
+                        bgcolor: "transparent"
+            
+                }}}>
+                <IoChevronForwardCircle size={30} color="#E76F51"/>
+                </ListItemButton>
+                </Grid>
+
+                </ListItem>
             </div>
             
             // <div class="container reqitem">
