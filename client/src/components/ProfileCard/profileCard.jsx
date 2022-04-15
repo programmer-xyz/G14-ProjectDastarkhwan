@@ -12,6 +12,8 @@ import {makeStyles} from '@mui/styles';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import { Grid } from '@mui/material';
+import Divider from '@mui/material/Divider';
+
 
 const Input = styled('input')({
     display: 'none',
@@ -23,13 +25,13 @@ function profileCards(){
         <div>
         <Grid container direction = "row" alignContent = {'center'} alignItems = {'center'}  justifyContent={'center'} display="flex" sx = {{width:'400px',height:'400px'}}>
         <Grid item sx = {{zIndex:'2'}}>
-            <CardMedia style={{height:'200px',width:'200px',backgroundColor:'transparent',marginTop:'-4%',marginLeft:'5%',position:'absolute'}}
+            <CardMedia style={{height:'150px',width:'150px',backgroundColor:'transparent',marginTop:'0',marginLeft:'10%',position:'absolute'}}
             component="img"
             image={testImage}
             alt="Abdul Muizz khan"
             sx = {{borderRadius:'50%',border:'5px solid #00000073'}}/>
         </Grid>
-        <Grid item sx={{zIndex:'3',marginTop:'8%',paddingRight:'10%',marginLeft:'45%',marginTop:'40%'}}>        
+        <Grid item sx={{zIndex:'3',paddingRight:'10%',marginLeft:'45%',marginTop:'40%'}}>        
         <label htmlFor="icon-button-file">
         <Input accept="image/*" id="icon-button-file" type="file" />
         <IconButton size="large" sx= {{color:'#E76F51'}} disableRipple color="primary" aria-label="upload picture" component="span">
@@ -39,17 +41,32 @@ function profileCards(){
         </Grid>
         <Grid container sx = {{display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'transparent',zIndex:'1'}}>
         <Grid item >
-        <Card sx={{ maxWidth: '421px' ,maxHeight:'auto',justifyContent:'center',alignItems:'center'}}>
+        <Card sx={{ maxWidth: '350px' ,maxHeight:'auto',justifyContent:'center',alignItems:'center'}}>
         <CardActionArea disableRipple sx={{'backgroundColor': '#2A9D8F33'}}>
         </CardActionArea>
-        <CardContent sx = {{marginTop:'10%'}}>
+        <CardContent sx = {{marginTop:'15%'}}>
+          <Grid item alignContent = {'center'} alignItems = {'center'}  justifyContent={'center'} display="flex" >
           <Typography gutterBottom variant="h6" component="div">
             Abdul Muizz khan
           </Typography>
+          </Grid>
+          <Grid item  alignContent = {'center'} alignItems = {'center'}  justifyContent={'center'} display="flex" >
+          <Typography variant="body2" color="text.secondary">
+            muiz@gmail.com
+          </Typography>
+          </Grid>
+          <Grid item alignContent = {'center'} alignItems = {'center'}  justifyContent={'center'} display="flex" >
+          <Typography variant="body2" color="text.secondary">
+            +9732-45678
+          </Typography>
+          </Grid>
+          <Divider sx={{color:"#E76F51",margin:"5% 0 5% 0",}}/>
+          <Grid item alignContent = {'center'} alignItems = {'center'}  justifyContent={'center'} display="flex" >
           <Typography variant="body2" color="text.secondary">
             Lizards are a widespread group of squamate reptiles, with over 6,000
             species, ranging across all continents except Antarctica
           </Typography>
+          </Grid>
         </CardContent>
         </Card>
         </Grid>
