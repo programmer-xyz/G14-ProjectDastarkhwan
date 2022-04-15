@@ -21,27 +21,28 @@ function profileCards(){
     // const classes = styles();
     return (
         <div>
-        <Card sx={{ maxWidth: '421px' ,maxHeight:'auto',justifyContent:'center',alignItems:'center'}}>
-        <CardActionArea disableRipple sx={{'backgroundColor': '#2A9D8F33'}}>
-        <Grid container sx = {{display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'transparent'}}>
-        <Grid item>
-        <CardMedia style={{height:'200px',width:'200px',marginBottom:'10%',backgroundColor:'transparent'}}
-          component="img"
-          image={testImage}
-          alt="Abdul Muizz khan"
-          sx = {{borderRadius:'50%',border:'5px solid #00000073'}}/>
+        <Grid container direction = "row" alignContent = {'center'} alignItems = {'center'}  justifyContent={'center'} display="flex" sx = {{width:'400px',height:'400px'}}>
+        <Grid item sx = {{zIndex:'2'}}>
+            <CardMedia style={{height:'200px',width:'200px',backgroundColor:'transparent',marginTop:'-4%',marginLeft:'5%',position:'absolute'}}
+            component="img"
+            image={testImage}
+            alt="Abdul Muizz khan"
+            sx = {{borderRadius:'50%',border:'5px solid #00000073'}}/>
         </Grid>
-        <Grid item>        
+        <Grid item sx={{zIndex:'3',marginTop:'8%',paddingRight:'10%',marginLeft:'45%',marginTop:'40%'}}>        
         <label htmlFor="icon-button-file">
         <Input accept="image/*" id="icon-button-file" type="file" />
-        <IconButton sx= {{}} disableRipple color="primary" aria-label="upload picture" component="span">
+        <IconButton size="large" sx= {{color:'#E76F51'}} disableRipple color="primary" aria-label="upload picture" component="span">
           <PhotoCamera />
         </IconButton>
         </label>
         </Grid>
-        </Grid>
+        <Grid container sx = {{display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'transparent',zIndex:'1'}}>
+        <Grid item >
+        <Card sx={{ maxWidth: '421px' ,maxHeight:'auto',justifyContent:'center',alignItems:'center'}}>
+        <CardActionArea disableRipple sx={{'backgroundColor': '#2A9D8F33'}}>
         </CardActionArea>
-        <CardContent>
+        <CardContent sx = {{marginTop:'10%'}}>
           <Typography gutterBottom variant="h6" component="div">
             Abdul Muizz khan
           </Typography>
@@ -50,8 +51,10 @@ function profileCards(){
             species, ranging across all continents except Antarctica
           </Typography>
         </CardContent>
-      
-    </Card>
+        </Card>
+        </Grid>
+        </Grid>
+        </Grid>
         </div>
     );
 }
