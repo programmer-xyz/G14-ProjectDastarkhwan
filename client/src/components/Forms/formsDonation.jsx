@@ -80,8 +80,10 @@ function FormsDonation (props) {
       
     }
 
-    const getNgos = async(city) =>{
+    const getNgos = async() =>{
             //let ngos = await findNgo()
+            let city = 'lahore';
+            
     }
 
     if (props.User === 1){
