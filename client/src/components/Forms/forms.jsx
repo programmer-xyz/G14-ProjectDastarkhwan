@@ -1,7 +1,5 @@
 import './forms.css';
 import {createNgoUser,createRestUser,createAccountUser} from  '../../servicesApi/authenticationApi.js';
-
-
 import { useState } from 'react';
 
 const user1Init ={
@@ -61,10 +59,10 @@ const  user3Init ={
 
 
 function Forms (props) {
-
     const [user1, setUser1] = useState(user1Init);
     const [user2, setUser2] = useState(user2Init);
     const [user3, setUser3] = useState(user3Init);
+
 
     const handleForm1 = (e)=>{
         e.preventDefault();
@@ -142,7 +140,10 @@ function Forms (props) {
         createAccountUser(user1.name,user1.username,user1.email,user1.phoneNum,user1.pw,user1.cnic,city,country,streetNumber,houseNumber,user1.description).then(
             (res)=>
             {
-
+                if(res.data.success)
+                { 
+                    props.getState("User created succesfully,","success",true)
+                }
             }
         )
         .catch((err)=>
@@ -162,11 +163,16 @@ function Forms (props) {
         {
             if(response.data.success)
             {
+                props.getState("Resturant registration application created,","success",true);
                 console.log(response);
             }
-        }).catch((err)=>
+            else
+            {
+                console.log(response)
+            }
+        }).catch((err,response)=>
         {
-            console.log(err);
+            props.getState(err.response.data.message,"error",true);
         })
         
     }
@@ -211,7 +217,9 @@ function Forms (props) {
                        
                     </form>
                     </div>
+                    
                 </div>
+                
         );
     }
     else if (props.User === 2){
@@ -232,7 +240,7 @@ function Forms (props) {
                             <input type="text" class="form-control shadow-none" id="exampleNum2" placeholder="Phone Number" name = "phoneNum" value = {user2.phoneNum} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control shadow-none" id="examplePW2" placeholder="Password"name = "pw" value = {user2.pw} onChange = {handleForm2}/>
+                            <input type="password" class="form-control shadow-none" id="examplePW2" placeholder="Password" name = "pw" value = {user2.pw} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleCheck2" placeholder="Address (House No, St. Block, City, Country)" name = "address" value = {user2.address} onChange = {handleForm2}/>

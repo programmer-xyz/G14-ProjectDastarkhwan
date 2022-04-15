@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-.container {
+.containerDonation {
     background-color: white;
     width:auto !important;
     padding:30px;
@@ -106,7 +106,7 @@ label {
     letter-spacing: -0.66px;
     color: #838D94;
     position: relative;
-    left:-42%;
+    left:-8%;
     top:100%;
     padding-left: 35px;
 }
