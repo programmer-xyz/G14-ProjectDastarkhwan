@@ -1,7 +1,7 @@
 import './formsDonation.css';
 import React from 'react';
 import { useState } from 'react';
-
+import { findNgo } from  '../../servicesApi/donation.js';
 const user1Init ={
     ngo:"",
     amount:"",
@@ -80,7 +80,10 @@ function FormsDonation (props) {
       
     }
 
-    
+    const getNgos = async(city) =>{
+            //let ngos = await findNgo()
+    }
+
     if (props.User === 1){
         return(
                 <div class = "row newClass">
