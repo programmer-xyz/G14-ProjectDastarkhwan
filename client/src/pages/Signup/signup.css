@@ -8,6 +8,9 @@
     display: flex;
     overflow-x: hidden;
     justify-content: center;
+    background-image: url('./Group6958.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .TabbarDiv{
     display: flex;
