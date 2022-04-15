@@ -3,7 +3,7 @@ import TabBar from '../../components/TabBar/TabBar.jsx';
 import NavBar from '../../components/Navbar/Navbar.jsx';
 import DForms from '../../components/Forms/formsDonation.jsx';
 import DImage from './Group-6952.png';
-
+import ResImage from './Mask_Group_620.png';
 function DonationForms (props)
 {
     console.log(props.Resturant)
@@ -26,7 +26,8 @@ function DonationForms (props)
                 {props.Resturant && <DForms User = {3}/>}
             </div>
             <div className="img-div">
-                <img className="imgClass" src={DImage}/>
+                {!props.Resturant && <img className="imgClass" src={DImage}/>}
+                {props.Resturant && <img className="imgClass" src={ResImage}/>}
             </div>
         </div>
     );
