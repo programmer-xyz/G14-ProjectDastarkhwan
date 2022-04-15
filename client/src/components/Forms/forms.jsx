@@ -1,4 +1,5 @@
 import './forms.css';
+import {createNgoUser,createRestUser,createAccountUser} from  '../../servicesApi/authenticationApi.js';
 import { useState } from 'react';
 
 const user1Init ={
@@ -50,15 +51,18 @@ const  user3Init ={
     name2:"",
     email2:"",
     phoneNum2:"",
-    file:"",
+    file: null,
     bankAccount:""
 };
 
-function Forms (props) {
 
+
+
+function Forms (props) {
     const [user1, setUser1] = useState(user1Init);
     const [user2, setUser2] = useState(user2Init);
     const [user3, setUser3] = useState(user3Init);
+
 
     const handleForm1 = (e)=>{
         e.preventDefault();
@@ -80,8 +84,101 @@ function Forms (props) {
         setUser3({...user3, [name]: value});
       
     }
+    const onFileChange = event => {
+    
+        // Update the state
+        //let file = event.target.files[0];
+        // let reader = new FileReader();
+        // reader.readAsDataURL(file);
+        // reader.onload = (e) =>
+        // {
+        //     // let formData = new FormData();
+        //     // formData.append("verifyDoc",e.target.result)
+        //     setUser3({...user3, file: e.target.result});
+        // }
+        setUser3({...user3, file: event.target.files[0]});
+      
+      };
 
-    console.log(user1)
+    const onCreate = (e) =>{
+ 
+        e.preventDefault();
+        // let city = user3.city
+        // let country = user3.country
+        // let streetNumber= user3.streetNumber
+        // let houseNumber = user3.houseNumber
+
+        let city = "lah"
+        let country = "pak"
+        let streetNumber= "user3.streetNumber"
+        let houseNumber= "user3.houseNumber"
+
+        createNgoUser(user3.name,user3.username,user3.email, user3.phoneNum, user3.pw, city, country,streetNumber, houseNumber,user3.phoneNum2,user3.name2,user3.email2,user3.bankAccount,user3.description,user3.file).then((response)=>{
+    
+                if(response.data.success)
+                {
+                    console.log(response)
+                }
+                else{
+                    console.log("here")
+                }
+    
+        })
+        .catch((err)=>
+        {
+            console.log(err);
+        })
+    
+    }
+    const onCreateUser = (e) =>
+    {
+        e.preventDefault();
+        let city = "lah"
+        let country = "pak"
+        let streetNumber= "user3.streetNumber"
+        let houseNumber= "user3.houseNumber"
+        createAccountUser(user1.name,user1.username,user1.email,user1.phoneNum,user1.pw,user1.cnic,city,country,streetNumber,houseNumber,user1.description).then(
+            (res)=>
+            {
+                if(res.data.success)
+                { 
+                    props.getState("User created succesfully,","success",true)
+                }
+            }
+        )
+        .catch((err)=>
+        {
+            console.log(err)
+        })
+    }
+    const onCreateRest = (e) =>
+    {
+        e.preventDefault ();
+        let city = "lah"
+        let country = "pak"
+        let streetNumber= "user3.streetNumber"
+        let houseNumber= "user3.houseNumber"
+        createRestUser(user2.name,user2.username,user2.email,user2.phoneNum,user2.pw,city,country,streetNumber,houseNumber,user2.phoneNum2,user2.name2,user2.email2,user2.description).then
+        ((response)=>
+        {
+            if(response.data.success)
+            {
+                props.getState("Resturant registration application created,","success",true);
+                console.log(response);
+            }
+            else
+            {
+                console.log(response)
+            }
+        }).catch((err,response)=>
+        {
+            props.getState(err.response.data.message,"error",true);
+        })
+        
+    }
+    
+
+    console.log(user3)
     if (props.User === 1){
         return(
                 <div class = "row newClass">
@@ -115,12 +212,14 @@ function Forms (props) {
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleDescription1" placeholder="Description" name= "description" value = {user1.description} onChange = {handleForm1}/>
-                            <button type = "submit" class="buttons" onClick={handleForm1}>SIGN UP!</button>
+                            <button type = "submit" class="buttons" onClick={onCreateUser}>SIGN UP!</button>
                         </div>
                        
                     </form>
                     </div>
+                    
                 </div>
+                
         );
     }
     else if (props.User === 2){
@@ -141,7 +240,7 @@ function Forms (props) {
                             <input type="text" class="form-control shadow-none" id="exampleNum2" placeholder="Phone Number" name = "phoneNum" value = {user2.phoneNum} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control shadow-none" id="examplePW2" placeholder="Password"name = "pw" value = {user2.pw} onChange = {handleForm2}/>
+                            <input type="password" class="form-control shadow-none" id="examplePW2" placeholder="Password" name = "pw" value = {user2.pw} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleCheck2" placeholder="Address (House No, St. Block, City, Country)" name = "address" value = {user2.address} onChange = {handleForm2}/>
@@ -161,7 +260,7 @@ function Forms (props) {
                         <div class="form-group">
                             <input type="email" class="form-control shadow-none" id="exampleCheck3" placeholder="Contact Email" name = "email2" value = {user2.email2} onChange = {handleForm2}/>
                         </div>
-                        <button type = "submit" class="buttons">SIGN UP!</button>
+                        <button type = "submit" class="buttons" onClick={onCreateRest}>SIGN UP!</button>
                     </form>
                     </div>
                 </div>
@@ -185,7 +284,7 @@ function Forms (props) {
                             <input type="text" class="form-control shadow-none" id="exampleCheck45" placeholder="Phone Number" name = "phoneNum" value = {user3.phoneNum} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control shadow-none" id="exampleCheck44" placeholder="Password" name = "pw" value = {user3.name} onChange = {handleForm3}/>
+                            <input type="password" class="form-control shadow-none" id="exampleCheck44" placeholder="Password" name = "pw" value = {user3.pw} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleCheck43" placeholder="Address (House No, St. Block, City, Country)" name = "address" value = {user3.address} onChange = {handleForm3}/>
@@ -210,9 +309,9 @@ function Forms (props) {
                         </div>
                         <div class="form-group">
                             <label>Add Certification Email</label>
-                            <input type="file" class="form-control shadow-none" id="exampleCheck5" placeholder="Add Certification Email" name = "file" value = {user3.file} onChange = {handleForm3}/>
+                            <input type="file" class="form-control shadow-none" id="exampleCheck5" placeholder="Add Certification Email"  onChange = {onFileChange}/>
                         </div>
-                        <button type = "submit" class="buttons">SIGN UP!</button>
+                        <button type = "submit" class="buttons" onClick={onCreate}>SIGN UP!</button>
                     </form>
                     </div>
                 </div>
