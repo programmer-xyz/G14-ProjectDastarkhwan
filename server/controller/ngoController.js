@@ -638,3 +638,21 @@ export const restRequestNgo = handleAsyncErr(async(req,res,next)=>
    
 });
 
+export const findNgo = handleAsyncErr(async(req,res,next)=>{
+    let add = req.body.address;
+    let city = add.city;
+    let cityNgos = await Ngo.find({'address.city' : city});
+
+    if(!cityNgos ){
+        return next(new HandErr("No NGOs in your area",400))
+    }
+
+    res.status(200).json({
+        success:true,
+        message:"Ngos returned",
+        body: cityNgos
+    });
+
+    console.log(cityNgos);
+
+});
