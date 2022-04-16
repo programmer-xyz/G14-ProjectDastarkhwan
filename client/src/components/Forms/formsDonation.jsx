@@ -90,7 +90,7 @@ function FormsDonation (props) {
             ngos = await findNgo(address);
             console.log('in func ')
             console.log(ngos)
-            setNgoLis(ngos);
+            setNgoLis(ngos.body);
            
         }
         catch(err){

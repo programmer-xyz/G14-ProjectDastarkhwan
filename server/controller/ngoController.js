@@ -640,6 +640,7 @@ export const restRequestNgo = handleAsyncErr(async(req,res,next)=>
 
 export const findNgo = handleAsyncErr(async(req,res,next)=>{
     let add = req.body.address;
+    console.log(`here ${req.body}`);
     let city = add.city;
     let cityNgos = await Ngo.find({'address.city' : city});
 
