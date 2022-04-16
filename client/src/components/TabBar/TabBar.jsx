@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import font from './TabBar.scss'
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
 import Box from '@mui/material/Box';
 
 
@@ -19,8 +19,8 @@ import Box from '@mui/material/Box';
 const tabStyle = {
     default_tab:{
         color: '#26465399',
-        backgroundColor: 'transparent',
         font: font.myFont,
+        backgroundColor:"transparent",
         borderBottom: " 1px solid #E4BF68",
     },
     active_tab:{
@@ -84,7 +84,7 @@ function ControlledTabs(props) {
 
         return (
             <Tabs value={value}  onChange={handleChange}>
-                <Tab style={getStyle(value === 0)} label = {`${props.itemOne}`}>
+                <Tab sx={getStyle(value === 0)} label = {`${props.itemOne}`}>
                 </Tab>
              </Tabs>
 
@@ -99,8 +99,8 @@ function ControlledTabs(props) {
         //     <button onClick={()=>{handlClick(2)}} className={"button"+(buttons.button3?" orangeborder": " noborder")}>{props.itemThree}</button>
         // </div>
         <Box sx={{ width: '100%' }}>
-        <Tabs value={value}  onChange={handleChange}>
-            <Tab style={getStyle(value === 0)} label = {`${props.itemOne}`}>
+        <Tabs value={value}  onChange={handleChange} TabIndicatorProps={{style:{backgroundColor:"#E76F51"}}}>
+            <Tab inkBarStyle = {{background:"#E76F51"}} style ={getStyle(value === 0)} label = {`${props.itemOne}`}>
             </Tab>
             <Tab style={getStyle(value === 1)} label = {`${props.itemTwo}`}>
             </Tab>

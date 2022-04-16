@@ -1,5 +1,6 @@
 import './formsProfile.css';
 import React from 'react';
+import { useState } from 'react';
 
 const user1Init ={
     name:"",
@@ -95,20 +96,20 @@ function FormsProfile (props) {
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-controlNew shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name" name="name" value={user1.name} onChange={handleForm1}/>
+                            <input type="text" class="form-controlNew shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name" name="name" value={user1.name} onChange={handleForm1} required/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-controlNew shadow-none" id="exampleInputPassword1" placeholder="Bio" name="bio" value={user1.bio} onChange={handleForm1}/>
+                            <input type="text" class="form-controlNew shadow-none" id="exampleInputPassword1" placeholder="Bio" name="bio" value={user1.bio} onChange={handleForm1} required/>
                         </div>
                     </form>
                     </div>
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-controlNew shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="User Name" name="userName" value={user1.username} onChange={handleForm1}/>
+                            <input type="text" class="form-controlNew shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="User Name" name="userName" value={user1.username} onChange={handleForm1} required/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-controlNew shadow-none" id="exampleInputPassword1" placeholder="CNIC" name="cnic" value={user1.cnic} onChange={handleForm1}/>
+                            <input type="text" class="form-controlNew shadow-none" id="exampleInputPassword1" placeholder="CNIC" name="cnic" value={user1.cnic} onChange={handleForm1} required/>
                         </div>
                     </form>
                     </div>
@@ -224,7 +225,7 @@ function FormsProfile (props) {
             </div>
         );
     }
-    else if (props.User == 3){
+    else if (props.User === 3){
         return (
             <div class = "container cardsNew">
                 <div class = "row newClass">

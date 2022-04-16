@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-.fullBody {
+/* .fullBody {
     background-color: #F7EAC9;
     flex-direction: column;
     width: 100vw;
@@ -10,7 +10,7 @@
     background-size: 50% auto;
     background-position-x: center;
     align-content: center;
-}
+} */
 
 /* .row1 {
     margin-top: 4%;
@@ -22,7 +22,7 @@
 
 
 
-
+/* 
 .column2{
     display:flex;
     position: relative;
@@ -81,7 +81,6 @@
         display: none;
     }
     .col12{
-        /* justify-content: center; */
         width: 100vw;
         left: 20%;
     }
@@ -125,4 +124,5 @@
     }
 }
 
-
+ */
+ 

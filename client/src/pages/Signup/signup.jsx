@@ -39,7 +39,7 @@ export default function Signup ()
         <h3>Sign Up</h3>
         </div>
         <div class="paragDiv">
-        <p>Select whom you want to Sign in as:</p>
+        <p>Choose who you want to sign up as: </p>
         </div>
         <div className='mazaydar'>
         <TabBar onChange={(e)=>{handleChange(e)}} itemOne={"User"} itemTwo={"Restuarant"} itemThree={"NGO"} Restuarant={false} getId={GetSelectID}/>
