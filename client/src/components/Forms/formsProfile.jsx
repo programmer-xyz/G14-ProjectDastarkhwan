@@ -225,7 +225,7 @@ function FormsProfile (props) {
             </div>
         );
     }
-    else if (props.User == 3){
+    else if (props.User === 3){
         return (
             <div class = "container cardsNew">
                 <div class = "row newClass">
