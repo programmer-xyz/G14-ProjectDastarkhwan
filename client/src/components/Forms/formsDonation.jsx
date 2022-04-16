@@ -86,7 +86,7 @@ function FormsDonation (props) {
             "houseNumber":"houseNumber"
         }
         let em = "rest4@gmail.com";
-        mealDonationRest( address,  user3.description, em,  user3.ngo,  user3.image).then((response)=>{
+        mealDonationRest( address,  user3.description, em,  user3.ngo,  user3.rationImagegi).then((response)=>{
     
                 if(response.data.success)
                 {
@@ -162,7 +162,7 @@ function FormsDonation (props) {
     }, [])
 
 console.log('here')
-  console.log(user1);
+  console.log(user3);
 
     //value={user1.ngo} onChange={handleForm1}
     if (props.User === 1){
