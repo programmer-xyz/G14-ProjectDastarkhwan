@@ -52,9 +52,7 @@ function RequestItems(props)
 
                         </Typography>
                         </Typography> 
-
-                    </React.Fragment>
-                    
+                    </React.Fragment>  
                     
                 }>
                 </ListItemText>

@@ -4,7 +4,7 @@ import bag from './Santa_Bag_1.svg';
 import Meals from './Group 6951.svg';
 import mealsforres from './Group 6831.svg';
 import ngodonated from './Group 6954.svg';
-import { Grid } from '@mui/material';
+import { Grid ,Box} from '@mui/material';
 
 function Cards (props) {
 
@@ -98,7 +98,6 @@ function Cards (props) {
     else if (props.Resturant === 2)
     {
         return(
-            <Grid container display="flex" sx = {{width:'auto',height:'auto'}} justifyContent={'center'} alignItems = {'center'}>
             <div class= "container cards">
             <h4 class="headingS">Summary</h4>
             <div class="row">
@@ -143,7 +142,6 @@ function Cards (props) {
                 </div>
             </div>
             </div>
-            </Grid>
         );
     }
 }
