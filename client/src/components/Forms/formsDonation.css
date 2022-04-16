@@ -96,6 +96,22 @@ label {
     width: 400px;
     height: 54px;
     margin-bottom: 24px;
+    margin-top: 5%;
+    left:auto;
+    position: relative;
+}
+.buttons90{
+    background: #264653;
+    font: normal normal normal 14px/25px Poppins;
+    color:#fff;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    padding: 5px 20px 5px 20px;
+    border:1px solid #264653; 
+    cursor:pointer;
+    width: 400px;
+    height: 54px;
+    margin-bottom: 24px;
     margin-top: 10%;
     left:5%;
     position: relative;

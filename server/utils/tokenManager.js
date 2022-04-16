@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import config from "../config/config";
 
-export const tokenMaker = (user, Code, res ) =>{
+export const tokenMaker = (user, Code, res) =>{
     const token = jwt.sign({ id: user._id }, config.JWT_KEY, {
         expiresIn: config.JWT_EXPIRE,
       });
@@ -11,12 +11,14 @@ export const tokenMaker = (user, Code, res ) =>{
         httpOnly: true,
        expires: life_date
     }
-
-    res.status(Code).cookie("token", token, cond).json({
-        success: true,
-        user,
-        token,
-      });
+    
+      res.status(Code).cookie("token", token, cond).json({
+          success: true,
+          user,
+          token,
+ 
+        });
+    
     
 }
 

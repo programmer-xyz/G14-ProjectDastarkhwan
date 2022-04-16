@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {ngoLogin, ngoRegister,forgetPassResCheckUser,forgetPassUpdatePassNgo,changePassNgo,deleteProfile} from "../controller/ngoController";
-import {restRequestNgo,userRequestNgo,myRequestNgo,viewNgoStats,viewNgoProfile,viewDonation,viewUserDonation,viewRestDonation,editProfileNgo,acceptDonation} from "../controller/ngoController";
+import {restRequestNgo,userRequestNgo,myRequestNgo,viewNgoStats,viewNgoProfile,viewDonation,viewUserDonation,viewRestDonation,editProfileNgo,acceptDonation, findNgoUser, findNgoRest} from "../controller/ngoController";
 import multer from "multer";
 const router = Router();
 const upload = multer();
@@ -22,5 +22,7 @@ router.route("/acceptDonation").post(acceptDonation);
 router.route("/myRequest").post(myRequestNgo);
 router.route("/myRequest/user").post(userRequestNgo);
 router.route("/myRequest/rest").post(restRequestNgo);
+router.route("/findNgoUser").post(findNgoUser);
+router.route("/findNgoRest").post(findNgoRest);
 // router.route("/test").post(test);
 export default router;

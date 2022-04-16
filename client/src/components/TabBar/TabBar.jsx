@@ -83,8 +83,8 @@ function ControlledTabs(props) {
     {   
 
         return (
-            <Tabs value={value}  onChange={handleChange}>
-                <Tab sx={getStyle(value === 0)} label = {`${props.itemOne}`}>
+            <Tabs value={value}  onChange={handleChange} TabIndicatorProps={{style:{backgroundColor:"#E76F51"}}}>
+                <Tab inkBarStyle = {{background:"#E76F51"}} style={getStyle(value === 0)} label = {`${props.itemOne}`}>
                 </Tab>
              </Tabs>
 
@@ -93,11 +93,6 @@ function ControlledTabs(props) {
     else
     {   
         return (
-        //     <div class='container1'>
-        //     <button onClick={()=>{handlClick(0)}} className={"button"+(buttons.button1?" orangeborder": " noborder")}>{props.itemOne}</button>
-        //     <button onClick={()=>{handlClick(1)}} className={"button"+(buttons.button2?" orangeborder": " noborder")}>{props.itemTwo}</button> 
-        //     <button onClick={()=>{handlClick(2)}} className={"button"+(buttons.button3?" orangeborder": " noborder")}>{props.itemThree}</button>
-        // </div>
         <Box sx={{ width: '100%' }}>
         <Tabs value={value}  onChange={handleChange} TabIndicatorProps={{style:{backgroundColor:"#E76F51"}}}>
             <Tab inkBarStyle = {{background:"#E76F51"}} style ={getStyle(value === 0)} label = {`${props.itemOne}`}>

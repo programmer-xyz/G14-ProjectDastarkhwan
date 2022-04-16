@@ -1,6 +1,9 @@
 import './formsDonation.css';
 import React from 'react';
-import { useState } from 'react';
+import { useState,  useEffect } from 'react';
+import { findNgoUser,findNgoRest, mealDonationRest } from  '../../servicesApi/donation.js';
+
+
 
 const user1Init ={
     ngo:"",
@@ -33,7 +36,7 @@ const  user2Init ={
     // city:"",
     // country:"",
     description:"",
-    rationImage: ""
+    rationImage:null
 };
 
 const  user3Init ={
@@ -50,7 +53,7 @@ const  user3Init ={
     // city:"",
     // country:"",
     description:"",
-    rationImage: ""
+    rationImage:null
 };
 
 function FormsDonation (props) {
@@ -73,6 +76,43 @@ function FormsDonation (props) {
       
     }
 
+    const mealDon = (e) =>{
+ 
+        e.preventDefault();
+        const address = {
+            "city":"lahore",
+            "country":"country",
+            "streetNumber":"streetNumber",
+            "houseNumber":"houseNumber"
+        }
+        let em = "rest4@gmail.com";
+        mealDonationRest( address,  user3.description, em,  user3.ngo,  user3.rationImagegi).then((response)=>{
+    
+                if(response.data.success)
+                {
+                    console.log(response)
+                }
+               
+        })
+        .catch((err)=>
+        {
+            console.log(err);
+        })
+    
+    }
+
+    const onFileChange3 = event => {
+        event.preventDefault()
+        setUser3({...user3, rationImage: event.target.files[0]});
+      
+      };
+
+      const onFileChange2 = event => {
+        event.preventDefault()
+        setUser2({...user2, rationImage: event.target.files[0]});
+      
+      };
+
     const handleForm3 = (e)=>{
         e.preventDefault();
         const {name, value} = e.target;
@@ -80,22 +120,71 @@ function FormsDonation (props) {
       
     }
 
-    
+   const [ngo_lis, setNgoLis] = useState([]);
+
+    const getNgos = async() =>{
+        let ngos = [];
+        //let address = {"city": "karachi", "country": "Pakistan",  "streetNumber":"11",  "houseNumber":"1"}
+        let role = "rest"; //get from local storage
+        let id_user  = "62386a881d8d6e8aeabe6d6f"; // get from local storage
+        
+
+        if(role === "user")
+        {
+            try{
+                console.log('hello');
+                ngos = await findNgoUser(id_user);
+            
+                setNgoLis(ngos.data.body);
+            
+            }
+            catch(err){
+                console.log('error in calling api');
+            }
+        }
+        else if (role === "rest"){
+            try{
+                console.log('hello');
+                ngos = await findNgoRest(id_user);
+            
+                setNgoLis(ngos.data.body);
+            
+            }
+            catch(err){
+                console.log('error in calling api');
+            }
+
+        }
+    }
+
+    useEffect(()=>{
+        getNgos();
+    }, [])
+
+console.log('here')
+  console.log(user3);
+
+    //value={user1.ngo} onChange={handleForm1}
     if (props.User === 1){
         return(
                 <div class = "row newClass">
                     <form>
                         <div class="form-group">
-                            <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="ngo" value={user1.ngo} onChange={handleForm1}>
-                                <option selected>Select NGO</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="ngo"  onChange={handleForm1}> 
+                                <option >Select NGO</option>
+                                {
+                                    ngo_lis.map((ele) =>
+                                        (
+                                       <option value = {ele.email}>{ele.name}</option>
+                                        )
+                                    )
+                                }
+                                
                             </select>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleInputPassword1" placeholder="Amount ($)" name="amount" value={user1.name} onChange={handleForm1}/>
-                            <p class="details">Card Details</p>
+                            <p class="details1">Card Details</p>
                         </div>
                         
                         <div class="form-group">
@@ -123,11 +212,15 @@ function FormsDonation (props) {
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <form>
                         <div class="form-group">
-                            <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="name" value={user2.ngo} onChange={handleForm2}>
-                                <option selected>Select NGO</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="name" onChange={handleForm2}>
+                                <option>Select NGO</option>
+                                {
+                                    ngo_lis.map((ele) =>
+                                        (
+                                       <option value = {ele.email}>{ele.name}</option>
+                                        )
+                                    )
+                                }
                             </select>
                         </div>
                         <div class="form-group">
@@ -135,13 +228,13 @@ function FormsDonation (props) {
                             <p class="details1">Ration Details</p>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="Description" name="descr" value={user2.description} onChange={handleForm2}/>
+                            <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="Description" name="description" value={user2.description} onChange={handleForm2}/>
                         </div>
                         <div class="form-group">
                             <label>Upload Ration Image</label>
-                            <input type="file" class="form-control shadow-none" id="exampleCheck1" placeholder="Add Ration Image" name="rationImg" value={user2.rationImage} onChange={handleForm2}/>
+                            <input type="file" class="form-control shadow-none" id="exampleCheck1" placeholder="Add Ration Image" name="rationImg" onChange={onFileChange2}/>
                         </div>
-                        <button type = "submit" class="buttons">Confirm Donation!</button>
+                        <button type = "submit" class="buttons90">Confirm Donation!</button>
                     </form>
                     </div>
                 </div>
@@ -153,11 +246,15 @@ function FormsDonation (props) {
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <form>
                         <div class="form-group">
-                            <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="ngo" value={user3.ngo} onChange={handleForm3}>
-                                <option selected>Select NGO</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="ngo" onChange={handleForm3}>
+                                <option>Select NGO</option>
+                                {
+                                    ngo_lis.map((ele) =>
+                                        (
+                                       <option value = {ele.email}>{ele.name}</option>
+                                        )
+                                    )
+                                }
                             </select>
                         </div>
                         <div class="form-group">
@@ -165,13 +262,13 @@ function FormsDonation (props) {
                             <p class="details1">Meal Details</p>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="Description" name="descr" value={user3.address} onChange={handleForm3}/>
+                            <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="Description" name="description" value={user3.description} onChange={handleForm3}/>
                         </div>
                         <div class="form-group">
                             <label>Upload Meal Image</label>
-                            <input type="file" class="form-control shadow-none" id="exampleCheck1" placeholder="Add Ration Image" name="rationImg" value={user3.rationImage} onChange={handleForm3}/>
+                            <input type="file" class="form-control shadow-none" id="exampleCheck1" placeholder="Add Ration Image" name="rationImg" onChange={onFileChange3}/>
                         </div>
-                        <button type = "submit" class="buttons">Confirm Donation!</button>
+                        <button type = "submit" class="buttons90" onClick = {mealDon}>Confirm Donation!</button>
                     </form>
                     </div>
                 </div>
