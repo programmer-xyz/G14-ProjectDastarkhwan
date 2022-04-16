@@ -1,7 +1,7 @@
 import './formsDonation.css';
 import React from 'react';
 import { useState,  useEffect } from 'react';
-import { findNgoUser,findNgoRest, mealDonationRest } from  '../../servicesApi/donation.js';
+import { findNgoUser,findNgoRest, mealDonationRest,mealDonationUser  } from  '../../servicesApi/donation.js';
 
 
 
@@ -88,7 +88,11 @@ function FormsDonation (props) {
             "streetNumber":"streetNumber",
             "houseNumber":"houseNumber"
         }
-        let em = "rest4@gmail.com";
+        let em = "amgio@lums.edu.pk";
+        let role = "user";
+
+        if(role === "rest")
+        {
         mealDonationRest( address,  user3.description, em,  user3.ngo,  user3.rationImage).then((response)=>{
     
                 if(response.data.success)
@@ -100,17 +104,89 @@ function FormsDonation (props) {
                 //         "actionMsg":"Back to Dashboard",
                 //         "route":"",
                 //     }
-                    props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","");
+                    props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/resturantDashboard");
 
-                }
-               
+                }  
         })
         .catch((err)=>
         {
             console.log(err);
         })
-    
     }
+    else if(role === "user"){
+        mealDonationUser( address,  user3.description, em,  user3.ngo,  user3.rationImage).then((response)=>{
+    
+            if(response.data.success)
+            {
+           
+                props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/userdashboard");
+
+            }  
+    })
+    .catch((err)=>
+    {
+        console.log(err);
+    })
+    }
+
+
+}
+   
+
+const rationDon = (e) =>{
+ 
+    e.preventDefault();
+    const address = {
+        "city":"lahore",
+        "country":"country",
+        "streetNumber":"streetNumber",
+        "houseNumber":"houseNumber"
+    }
+    let em = "amgio@lums.edu.pk";
+    let role = "user";
+
+    if(role === "rest")
+    {
+    mealDonationRest( address,  user3.description, em,  user3.ngo,  user3.rationImage).then((response)=>{
+
+            if(response.data.success)
+            {
+            //    const updatedStates= {
+            //         "modelMsg":
+            //         "state":true,
+            //         "success":true,
+            //         "actionMsg":"Back to Dashboard",
+            //         "route":"",
+            //     }
+                props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/resturantDashboard");
+
+            }  
+    })
+    .catch((err)=>
+    {
+        console.log(err);
+    })
+    }
+    else if(role === "user"){
+        mealDonationUser( address,  user3.description, em,  user3.ngo,  user3.rationImage).then((response)=>{
+
+            if(response.data.success)
+            {
+        
+                props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/userdashboard");
+
+            }  
+    })
+    .catch((err)=>
+    {
+        console.log(err);
+    })
+    }
+
+
+    }
+
+
 
     const onFileChange3 = event => {
         event.preventDefault()

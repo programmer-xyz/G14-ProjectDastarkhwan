@@ -24,6 +24,7 @@ const App = () => {
                     <Route path='/' element={<Login/>}/>
                     <Route path="/Signup" element= {<Signup/>}/>  
                     <Route path = "/userdonationForms" element= {<DonationForms Resturant={false}/>} />
+                    <Route path = "/restdonationForms" element= {<DonationForms Resturant={true}/>} />
                     <Route path = "/resturantdonationForms" element={<DonationForms Resturant={true}/>}/> 
                     <Route path="/adminlogin" element = {<AdminModalSignIn state = {true}/>} />
                     <Route path ="/userdashboard" element = {<Dashboard/>} />
