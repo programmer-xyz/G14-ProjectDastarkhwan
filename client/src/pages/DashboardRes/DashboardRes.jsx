@@ -13,7 +13,6 @@ const theme = createTheme({
         'Poppins',
         'Sans-Serif',
       ].join(','),
-      font:'normal normal normal 42px/109px Poppins',
     },});
 
 const theme1 = createTheme({

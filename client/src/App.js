@@ -17,6 +17,7 @@ import ProfileCards from './components/ProfileCard/profileCard.jsx';
 import ResDashboard from './pages/DashboardRes/DashboardRes.jsx';
 import ProfileForms from './components/Forms/formsProfile.jsx';
 import ResModals from './components/modalResturantDetails/modalResturantDetails.jsx';
+import NgoModals from './components/modelNGODetails/modelNGOdetails.jsx';
 
 const App = () => {
 
@@ -39,7 +40,8 @@ const App = () => {
                     <Route path="/ngoAcceptpage" element = {<NGOacceptpage />} />
                     <Route path = "/profileCard" element = {<ProfileCards />} />
                     <Route path ="/dashboardR" element = {<ResDashboard name={"Abdul Muizz khan"} />} />
-                    <Route path = "/resturantModal" element={<ResModals state = {true} />} />
+                    <Route path = "/resturantModal" element={<ResModals state = {true} donationType={"Meals donation"} date={"07/07/22"} time={"10:27am"} description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}/>} />
+                    <Route path = "/ngoModel" element = {<NgoModals state={true} email={"muizz481@gmail.com"} phoneNumber={'1231343421-2'} address={"512 f2 johar town lahore"} accountNumber={"23134211-3"} description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'} pointOfCName={"James Charles"} pointOfCEmail={"James charles"} pointOfCNumber={"1232441"}/>} />
                 </Routes>
             </div>
         </Router>
