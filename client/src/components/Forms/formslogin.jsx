@@ -1,6 +1,7 @@
 import './formslogin.css';
 import { useState } from 'react';
 import {userLogin, ngoLogin , restLogin } from '../../servicesApi/authenticationApi';
+//import {useNavigate,  createSearchParams} from 'react-router-dom';
 
 const user1Init ={
   
@@ -11,7 +12,7 @@ const user1Init ={
   
 
 function LoginForm(prop){
-   
+    //let navigate = useNavigate();
     const [user1, setUser1] = useState(user1Init);
 
     const handleForm1 = (e)=>{
@@ -30,7 +31,9 @@ function LoginForm(prop){
             {
                     if(response.data.success)
                     {
-                        console.log(response)
+                        localStorage.setItem('user_id',response.data.user._id);
+                        localStorage.setItem('role','user');
+                        console.log(response);
                     }
                     else{
                         console.log("here")
