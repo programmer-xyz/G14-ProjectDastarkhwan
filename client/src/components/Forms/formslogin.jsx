@@ -1,7 +1,7 @@
 import './formslogin.css';
 import { useState } from 'react';
 import {userLogin, ngoLogin , restLogin } from '../../servicesApi/authenticationApi';
-//import {useNavigate,  createSearchParams} from 'react-router-dom';
+import {useNavigate,  createSearchParams} from 'react-router-dom';
 
 const user1Init ={
   
@@ -12,7 +12,7 @@ const user1Init ={
   
 
 function LoginForm(prop){
-    //let navigate = useNavigate();
+    let navigate = useNavigate();
     const [user1, setUser1] = useState(user1Init);
 
     const handleForm1 = (e)=>{
@@ -33,6 +33,7 @@ function LoginForm(prop){
                     {
                         localStorage.setItem('user_id',response.data.user._id);
                         localStorage.setItem('role','user');
+                        navigate("/dashboard" );
                         console.log(response);
                     }
                     else{

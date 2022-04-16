@@ -86,7 +86,7 @@ function FormsDonation (props) {
             "houseNumber":"houseNumber"
         }
         let em = "rest4@gmail.com";
-        mealDonationRest( address,  user3.description, em,  user3.ngo,  user3.rationImagegi).then((response)=>{
+        mealDonationRest( address,  user3.description, em,  user3.ngo,  user3.rationImage).then((response)=>{
     
                 if(response.data.success)
                 {
