@@ -23,6 +23,6 @@ router.route("/myRequest").post(myRequestNgo);
 router.route("/myRequest/user").post(userRequestNgo);
 router.route("/myRequest/rest").post(restRequestNgo);
 router.route("/findNgoUser").post(findNgoUser);
-router.route("/findNgoUser").post(findNgoRest);
+router.route("/findNgoRest").post(findNgoRest);
 // router.route("/test").post(test);
 export default router;
