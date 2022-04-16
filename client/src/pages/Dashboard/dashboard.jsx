@@ -34,7 +34,7 @@ function Dashboard (props){
             <NavBar />
             </Grid>
             </Grid>
-            <Grid container >
+            <Grid container alignContent={'center'} justifyContent={'center'} sx ={{marginTop:'4%'}}>
                 <Grid item>
                 <ThemeProvider theme={theme}>
                 <Typography sx = {{display:'inline-block',letterSpacing:'-1.97px'}} component="span" variant="h3" color="#E76F51">
@@ -43,7 +43,7 @@ function Dashboard (props){
                 </ThemeProvider>
                 </Grid>
             </Grid>
-            <Grid container direction="column" display="flex" sx={{marginBottom:'10%'}}>
+            <Grid container alignContent={'center'} justifyContent={'center'} display="flex" sx={{marginBottom:'15%'}}>
             <Grid item>
                 <ThemeProvider theme={theme1}>
                 <Typography sx = {{display:'inline-block'}} component="span" variant="h5" color="black">
