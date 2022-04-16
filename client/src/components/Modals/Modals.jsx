@@ -4,55 +4,67 @@ import  DialogContent  from '@mui/material/DialogContent';
 import Grid from '@mui/material/Grid';
 import DialogActions from '@mui/material/DialogActions';
 import './Modals.scss';
-import { useNavigate } from "react-router-dom";
+import checkImg from "../../assets/check-circle.svg";
+import alertImg from "../../assets/Icon ionic-ios-alert.svg"
+import Button from '@mui/material/Button'
 export default function Modals(prop)
 {
-  let naviagte = useNavigate();
-  const {modelMsg,state,modalImage,actionMsg,route} = prop;
-  const [open,setOpen] = React.useState(state);
+  const {modelMsg,state,success,actionMsg,handleClose,onClick} = prop;
 
   
-  function handleClose(reason)
-  {
-    if (reason !== "backdropClick")
-    {
-      return 
-    }
-    setOpen(false);
-  }
+  
   // const Item = styled(Paper)(() => ({
   //   backgroundColor: '#ffff',
 
   // }));
-  function onClick()
-  {
-    setOpen(false);
-    naviagte(`/${route}`)
-
-  }
+ 
 
   return (
     <div>
       <Dialog sx= {{borderRadius:"100px"}}
-        open={open}
+        open={state}
         aria-labelledby="responsive-dialog-title"
         onClose={handleClose}
         >
         <Grid container  justifyContent={'center'} alignItems="center" >
         <Grid item justifyContent={'center'} alignItems="center"  >
         <DialogContent  sx={{display:"flex",justifyContent:"center", alignItems:"center"}}>
-           <img  src={modalImage} alt="Success assest tick"/>
+           <img  src={success?checkImg:alertImg} alt="Success assest tick"/>
         </DialogContent>
         </Grid>
         <Grid item  justifyContent="center" alignItems="center">
         <DialogContent sx={{paddingTop:"0",paddingBottom:"0"}}>
           {modelMsg}
         </DialogContent>
+
         </Grid>
-        <Grid item  >
+        <Grid container justifyContent="center" alignItems="center" >
+        <Grid item justifyContent="center" alignItems="center">
           <DialogActions>
-          <button onClick={onClick} type = "submit" className="buttons1" >{actionMsg}</button>
+            
+          <Button onClick={onClick} variant="contained" size="medium" disableRipple aria-label=""  sx={ 
+                    {"&.MuiButtonBase-root:hover": {
+                        bgcolor: "#264653"
+                        },
+                        marginTop:"20px",
+                        marginBottom:"20px",
+                        height:"10vh",
+                        width:"20vw",
+                        backgroundColor:"#264653",
+                        textColor:"#fff",
+                        color:"#fff",
+                        textAlign:"center",
+                        justifyContent:"center",
+                        alignItems:"center",
+                        font:"normal normal medium 16px/25px Poppins",
+                        borderRadius:"8px"
+                        
+                        }} >
+ 
+                {actionMsg}
+                </Button>
           </DialogActions>
+        </Grid>
         </Grid>
         </Grid>
       </Dialog>
