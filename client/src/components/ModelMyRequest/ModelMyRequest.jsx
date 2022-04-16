@@ -8,11 +8,19 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useNavigate } from "react-router-dom";
 import RequestItem from "../RequestItems/requestItems.jsx"
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import Typography from '@mui/material/Typography';
 import image1 from '../../components/RequestItems/testImage.jpeg';
-import { height } from '@mui/system';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 // {/* <RequestItems image={image1} name={"Abdul Muizz khan"} heading1={"Type"} heading2={"Date"} pargaraph1={"Meal Donations"} date={"7/03/4"} time={"10:47 am"} userRequests={true} NGOrequests={false} Resreq={true} buttonStat={0}/>} */}
+const theme = createTheme({
+  typography: {
+  fontFamily: [
+      'Poppins',
+      'Sans-Serif',
+  ].join(','),
+  color:'#264653',
+  },});
+
 var templist = [{
     image: image1,
     name:"Abdul Muizz khan",
@@ -48,7 +56,44 @@ var templist = [{
     NGOrequests: true,
     buttonStat:1
 
-}]
+},
+{
+  image: image1,
+  name:"Abdul Muizz khan",
+  heading1:"Type",
+  heading2:"Date",
+  pargaraph1:"Meal donations",
+  date:"7/03/04",
+  time:"10:47am",
+  NGOrequests: true,
+  buttonStat:1
+
+},
+{
+  image: image1,
+  name:"Abdul Muizz khan",
+  heading1:"Type",
+  heading2:"Date",
+  pargaraph1:"Meal donations",
+  date:"7/03/04",
+  time:"10:47am",
+  NGOrequests: true,
+  buttonStat:1
+
+},
+{
+  image: image1,
+  name:"Abdul Muizz khan",
+  heading1:"Type",
+  heading2:"Date",
+  pargaraph1:"Meal donations",
+  date:"7/03/04",
+  time:"10:47am",
+  NGOrequests: true,
+  buttonStat:1
+
+}
+]
 export default function Modals(prop)
 {
   let naviagte = useNavigate();
@@ -64,10 +109,6 @@ export default function Modals(prop)
     }
     setOpen(false);
   }
-  // const Item = styled(Paper)(() => ({
-  //   backgroundColor: '#ffff',
-
-  // }));
   function onClick()
   {
     setOpen(false);
@@ -77,30 +118,50 @@ export default function Modals(prop)
 
   return (
     <div>
-      <Dialog sx= {{borderRadius:"100px"}}
+      <Dialog fullScreen = {true} PaperProps={{ sx: { borderRadius: "10px", width: "60%", height: "auto" } }}
         open={open}
         aria-labelledby="responsive-dialog-title"
         onClose={handleClose}
         >
-        <DialogTitle>My Request</DialogTitle>
+        <Grid container alignItems={'center'} justifyContent="center">
+    <Grid item display="flex">
+    <ThemeProvider theme = {theme}>
+    <Typography  sx={{ display: 'block'}}
+    component="span"
+    variant="h6"
+    color="#264653">
+        {` My Requests `}
+    </Typography>
+    </ThemeProvider>
+    </Grid>
+    </Grid>
         <Grid container  justifyContent={'center'} alignItems="center" >
-        <Grid item justifyContent={'center'} alignItems="center"  >
-        <DialogContent  sx={{display:"flex",justifyContent:"center", alignItems:"center"}}>
-        <Typography>
-            {"Lorem Ipsum is simply dummy text of the printing and typesetting industry."}
-        </Typography>
-        </DialogContent>
-        </Grid>
-        <List sx={{width:'100%', height:'100%'}}>
+        <Grid item display="flex">
+    <ThemeProvider theme = {theme}>
+    <Typography  sx={{ display: 'block'}}
+    component="span"
+    variant="h6"
+    color="#264653">
+        {` Find requests placed by you below `}
+    </Typography>
+    </ThemeProvider>
+    </Grid>
+        <List sx={{width:'100%',height:'100%',overflow:'auto',maxHeight:"500px",'&::-webkit-scrollbar': {
+    width: '0.5rem',
+    },
+    '&::-webkit-scrollbar-track': {
+    boxShadow: 'inset 0 0 6px rgba(231, 111, 81, 1)',
+    webkitBoxShadow: 'inset 0 0 6px rgba(231, 111, 81, 1)'
+    },
+    '&::-webkit-scrollbar-thumb': {
+    backgroundColor: '#E76F51',
+    borderRadius:'4px',
+    outline: '1px solid slategrey'
+    }}}>
         {templist.map(item =>(
-            <RequestItem image={item.image} name={item.name} heading1={item.heading1} heading2={item.heading2} pargaraph1={item.pargaraph1} date={item.date} time={item.time} userRequests={false} NGOrequests={item.NGOrequests} Resreq={false} buttonStat={0}/>
+            <RequestItem image={item.image} name={item.name} heading1={item.heading1} heading2={item.heading2} pargaraph1={item.pargaraph1} date={item.date} time={item.time} userRequests={true} NGOrequests={false} buttonStat={1}/>
         ))}
         </List>
-        <Grid item  >
-          <DialogActions>
-          <button onClick={onClick} type = "submit" className="buttons1" >{actionMsg}</button>
-          </DialogActions>
-        </Grid>
         </Grid>
       </Dialog>
     </div>

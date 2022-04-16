@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.main {
+    overflow: hidden;
+    background: #FCEEE1;
+    background-image: url('./output-onlinepngtools1.png');
+    background-repeat: no-repeat;
+    background-size: 50% auto;
+    background-position-x: center;
+    align-content: center;
+    height: auto;
+}
+.nameUserDash {
+    font: normal normal normal 42px/109px Poppins;
+    color: #E76F51;
+    display:flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 10%;
+}
+.welcomeDash {
+    font: normal normal normal 22px/33px Poppins;
+    color: #264653;
+    display:flex;
+    position: relative;
+    top:5%;
+    justify-content: center;
+    margin-bottom: 5%;
+}

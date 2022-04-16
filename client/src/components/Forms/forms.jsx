@@ -176,8 +176,6 @@ function Forms (props) {
         })
         
     }
-    
-
     console.log(user3)
     if (props.User === 1){
         return(

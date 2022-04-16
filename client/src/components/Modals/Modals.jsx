@@ -10,8 +10,6 @@ export default function Modals(prop)
   let naviagte = useNavigate();
   const {modelMsg,state,modalImage,actionMsg,route} = prop;
   const [open,setOpen] = React.useState(state);
-
-  
   function handleClose(reason)
   {
     if (reason !== "backdropClick")
@@ -20,17 +18,11 @@ export default function Modals(prop)
     }
     setOpen(false);
   }
-  // const Item = styled(Paper)(() => ({
-  //   backgroundColor: '#ffff',
-
-  // }));
   function onClick()
   {
     setOpen(false);
     naviagte(`/${route}`)
-
   }
-
   return (
     <div>
       <Dialog sx= {{borderRadius:"100px"}}
@@ -41,7 +33,7 @@ export default function Modals(prop)
         <Grid container  justifyContent={'center'} alignItems="center" >
         <Grid item justifyContent={'center'} alignItems="center"  >
         <DialogContent  sx={{display:"flex",justifyContent:"center", alignItems:"center"}}>
-           <img  src={modalImage} alt="Success assest tick"/>
+          <img  src={modalImage} alt="Success assest tick"/>
         </DialogContent>
         </Grid>
         <Grid item  justifyContent="center" alignItems="center">
