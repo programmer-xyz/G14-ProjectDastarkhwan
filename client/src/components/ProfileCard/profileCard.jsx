@@ -18,12 +18,11 @@ const Input = styled('input')({
   });
 
 function profileCards(){
-    // const classes = styles();
     return (
         <div>
         <Grid container direction = "row" alignContent = {'center'} alignItems = {'center'}  justifyContent={'center'} display="flex" sx = {{width:'400px',height:'400px'}}>
         <Grid item  sx = {{zIndex:'2'}}>
-            <CardMedia style={{height:'150px',width:'150px',backgroundColor:'transparent',postion:"relative",top:"50px",left:"35px",right:"auto"}}
+            <CardMedia style={{height:'150px',width:'150px',backgroundColor:'transparent',postion:"relative",top:"10px",left:"50px",right:"auto"}}
             component="img"
             image={testImage}
             alt="Abdul Muizz khan"

@@ -9,7 +9,6 @@ import NGOacceptpage from './pages/ngoacceptpage/ngoacceptpage.jsx';
 import ResDashboard from './pages/DashboardRes/DashboardRes.jsx';
 import ResModals from './components/modalResturantDetails/modalResturantDetails.jsx';
 import NgoModals from './components/modelNGODetails/modelNGOdetails.jsx';
-
 import ProfileCards from './components/ProfileCard/profileCard.jsx';
 import Modals from './components/Modals/SignOutModal.jsx';
 import ModalNGO from './components/ModalNGO/ModalNGO.jsx';
@@ -35,6 +34,7 @@ const App = () => {
                     <Route path = "/ngoModel" element = {<NgoModals state={true} email={"muizz481@gmail.com"} phoneNumber={'1231343421-2'} address={"512 f2 johar town lahore"} accountNumber={"23134211-3"} description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'} pointOfCName={"James Charles"} pointOfCEmail={"James charles"} pointOfCNumber={"1232441"}/>} />
                     <Route path="/ModalNGO" element = {<ModalNGO state={true}/>} />
                     <Route path="/forgotpassword" element = {<ForgotPass />} />
+                    <Route path="/profileCards" element = {<ProfileCards />} />
                 </Routes>
             </div>
         </Router>

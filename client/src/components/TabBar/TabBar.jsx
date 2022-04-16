@@ -84,7 +84,7 @@ function ControlledTabs(props) {
 
         return (
             <Tabs value={value}  onChange={handleChange} TabIndicatorProps={{style:{backgroundColor:"#E76F51"}}}>
-                <Tab inkBarStyle = {{background:"#E76F51"}} style={getStyle(value === 0)} label = {`${props.itemOne}`}>
+                <Tab inkBarStyle = {{background:"#E76F51"}} style={getStyle(value === 0)} label = {`${props.itemOne}`} sx ={{textTransform:'none'}} >
                 </Tab>
              </Tabs>
 
@@ -95,11 +95,11 @@ function ControlledTabs(props) {
         return (
         <Box sx={{ width: '100%' }}>
         <Tabs value={value}  onChange={handleChange} TabIndicatorProps={{style:{backgroundColor:"#E76F51"}}}>
-            <Tab inkBarStyle = {{background:"#E76F51"}} style ={getStyle(value === 0)} label = {`${props.itemOne}`}>
+            <Tab inkBarStyle = {{background:"#E76F51"}} style ={getStyle(value === 0)} label = {`${props.itemOne}`} sx ={{textTransform:'none'}}>
             </Tab>
-            <Tab style={getStyle(value === 1)} label = {`${props.itemTwo}`}>
+            <Tab style={getStyle(value === 1)} label = {`${props.itemTwo}`} sx ={{textTransform:'none'}}>
             </Tab>
-            <Tab style={getStyle(value === 2)} label = {`${props.itemThree}`}>
+            <Tab style={getStyle(value === 2)} label = {`${props.itemThree}`} sx ={{textTransform:'none'}}>
             </Tab>
         </Tabs>
         </Box>

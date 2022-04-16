@@ -113,25 +113,21 @@ function NGOacceptpage(props){
             <Grid container display="flex" alignItems={'center'} justifyContent="center">
             <Grid container alignItems={'center'} justifyContent="center">
             <Grid item display="flex">
-            <ThemeProvider theme = {theme}>
-            <Typography  sx={{ display: 'block'}}
+            <Typography  sx={{ display: 'block',font: 'normal normal normal 32px/61px Poppins'}}
             component="span"
             variant="h3">
             {"Requests"}
             </Typography>
-            </ThemeProvider>
             </Grid>
             </Grid>
             <Grid container alignItems={'center'} justifyContent="center" >
             <Grid item display={"flex"}>
-            <ThemeProvider theme = {theme}>
-            <Typography sx={{ display: 'block' }}
+            <Typography sx={{ display: 'block',font: 'normal normal normal 18px/27px Poppins'}}
             component="span"
             variant="h6"
             color="#264653">
             {"Filter requests using tabs below"}
             </Typography>
-            </ThemeProvider>
             </Grid>
             </Grid>
             <Grid item>
