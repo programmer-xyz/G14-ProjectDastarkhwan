@@ -160,6 +160,7 @@ export const changePassUser = handleAsyncErr(async(req,res,next)=>{
 export const mealDonation = handleAsyncErr(async (req,res,next) =>{
     //user email and selected ngo will be sent from frontend
     //console.log(req.body)
+   
     let image = req.file.buffer;
     let {address, description, email, ngoIdentifier} = req.body;
 
