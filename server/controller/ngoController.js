@@ -662,26 +662,26 @@ export const findNgoUser = handleAsyncErr(async(req,res,next)=>{
 
 });
 
-// export const findNgoRest = handleAsyncErr(async(req,res,next)=>{
-//     let user_id = req.body._id;
-//     let userObj = await Rest.findOne({_id: user_id});
+export const findNgoRest = handleAsyncErr(async(req,res,next)=>{
+    let user_id = req.body._id;
+    let userObj = await Rest.findOne({_id: user_id});
 
-//     let add = userObj.address;
-//     console.log(`here ${add}`);
-//     let city = add.city;
+    let add = userObj.address;
+    console.log(`here ${add}`);
+    let city = add.city;
 
-//     let cityNgos = await Ngo.find({'address.city' : city});
+    let cityNgos = await Ngo.find({'address.city' : city});
 
-//     if(!cityNgos ){
-//         return next(new HandErr("No NGOs in your area",400))
-//     }
+    if(!cityNgos ){
+        return next(new HandErr("No NGOs in your area",400))
+    }
 
-//     res.status(200).json({
-//         success:true,
-//         message:"Ngos returned",
-//         body: cityNgos
-//     });
+    res.status(200).json({
+        success:true,
+        message:"Ngos returned",
+        body: cityNgos
+    });
 
-//     console.log(cityNgos);
+    console.log(cityNgos);
 
-// });
+});
