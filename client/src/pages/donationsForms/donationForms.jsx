@@ -6,19 +6,52 @@ import DImage from './Group-6952.png';
 import ResImage from './Mask_Group_620.png';
 import React from 'react';
 import { useState } from 'react';
+import Modals from '../../components/Modals/Modals.jsx';
+import { useNavigate } from "react-router-dom";
 
 function DonationForms (props)
 {
+    let naviagte = useNavigate();
+    const [modelMsg,setModalMsg] = useState("");
+    const [modalState,setModalState] = useState(false);
+    const [modalSucces,setSucces] = useState(false);
+    const [modalactionMsg,setactionMsg] = useState('');
+    const[modalroute,setroute] = useState('');
     const [selectedID,setID] = useState(1);
+
     function GetSelectID(Id)
     {
         setID(Id+1);
         
 
     }
+    function handleClose(reason)
+    {
+        if (reason !== "backdropClick")
+        {
+        return 
+        }
+       
+        setModalState(false);
+    }
+    function onClick()
+    {
+    setModalState(false);
+    naviagte(`/${modalroute}`)
+
+    }
+    function getStates(modelMsg,state,success,actionMsg,route)
+    {
+       setModalMsg(modelMsg);
+       setSucces(success);
+       setactionMsg(actionMsg);
+       setroute(route);
+       setModalState(state);
+    }
     console.log(props.Resturant)
     return (
         <div className={"parentdiv"+(props.Resturant?" restaurantback":" userback")}>
+            <Modals modelMsg={modelMsg} state={modalState} success={modalSucces} actionMsg={modalactionMsg} onClick={onClick} handleClose={handleClose} />
             <NavBar />
             <div className="Fheading">
                 <h3>Make a Donation</h3>
@@ -32,14 +65,16 @@ function DonationForms (props)
 
             </div>
             <div className = "formDiv">
-                {!props.Resturant && <DForms User={selectedID} />}
-                {props.Resturant && <DForms User = {3}/>}
+                {!props.Resturant && <DForms User={selectedID} getS={getStates} />}
+                {props.Resturant && <DForms User = {3} getS={getStates}/>}
             </div>
             <div className="img-div">
                 {!props.Resturant && <img className="imgClass" src={DImage}/>}
                 {props.Resturant && <img className="imgClass" src={ResImage}/>}
             </div>
         </div>
+       
+        
     );
 }
 

@@ -56,11 +56,14 @@ const  user3Init ={
     rationImage:null
 };
 
+
 function FormsDonation (props) {
 
     const [user1, setUser1] = useState(user1Init);
     const [user2, setUser2] = useState(user2Init);
     const [user3, setUser3] = useState(user3Init);
+    
+    
 
     const handleForm1 = (e)=>{
         e.preventDefault();
@@ -90,7 +93,15 @@ function FormsDonation (props) {
     
                 if(response.data.success)
                 {
-                    console.log(response)
+                //    const updatedStates= {
+                //         "modelMsg":
+                //         "state":true,
+                //         "success":true,
+                //         "actionMsg":"Back to Dashboard",
+                //         "route":"",
+                //     }
+                    props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","");
+
                 }
                
         })
@@ -159,6 +170,7 @@ function FormsDonation (props) {
 
     useEffect(()=>{
         getNgos();
+
     }, [])
 
 console.log('here')
@@ -266,7 +278,7 @@ console.log('here')
                         </div>
                         <div class="form-group">
                             <label>Upload Meal Image</label>
-                            <input type="file" class="form-control shadow-none" id="exampleCheck1" placeholder="Add Ration Image" name="rationImg" onChange={onFileChange3}/>
+                            <input type="file" class="form-control shadow-none" id="exampleCheck1" placeholder="Add Ration Image" name="rationImage" onChange={onFileChange3}/>
                         </div>
                         <button type = "submit" class="buttons" onClick = {mealDon}>Confirm Donation!</button>
                     </form>
