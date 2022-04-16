@@ -196,7 +196,7 @@ console.log('here')
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleInputPassword1" placeholder="Amount ($)" name="amount" value={user1.name} onChange={handleForm1}/>
-                            <p class="details">Card Details</p>
+                            <p class="details1">Card Details</p>
                         </div>
                         
                         <div class="form-group">
@@ -246,7 +246,7 @@ console.log('here')
                             <label>Upload Ration Image</label>
                             <input type="file" class="form-control shadow-none" id="exampleCheck1" placeholder="Add Ration Image" name="rationImg" onChange={onFileChange2}/>
                         </div>
-                        <button type = "submit" class="buttons">Confirm Donation!</button>
+                        <button type = "submit" class="buttons90">Confirm Donation!</button>
                     </form>
                     </div>
                 </div>
@@ -280,7 +280,7 @@ console.log('here')
                             <label>Upload Meal Image</label>
                             <input type="file" class="form-control shadow-none" id="exampleCheck1" placeholder="Add Ration Image" name="rationImage" onChange={onFileChange3}/>
                         </div>
-                        <button type = "submit" class="buttons" onClick = {mealDon}>Confirm Donation!</button>
+                        <button type = "submit" class="buttons90" onClick = {mealDon}>Confirm Donation!</button>
                     </form>
                     </div>
                 </div>

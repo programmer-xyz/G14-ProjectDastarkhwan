@@ -4,7 +4,7 @@ import Cards from '../../components/Cards/cards.jsx';
 import Cards2 from '../../components/ProfileCard/profileCard.jsx';
 import { Grid,Typography,Box} from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import image2 from '../../assets/output-onlinepngtools1.png'
+import image2 from '../../assets/output-onlinepngtools1.png';
 
 const theme = createTheme({
     typography: {

@@ -8,6 +8,7 @@ import React from 'react';
 import { useState } from 'react';
 import Modals from '../../components/Modals/Modals.jsx';
 import { useNavigate } from "react-router-dom";
+import Rationpic from '../../assets/Rationpic.png';
 
 function DonationForms (props)
 {
@@ -57,7 +58,7 @@ function DonationForms (props)
                 <h3>Make a Donation</h3>
             </div>
             <div className= "Fparagraph">
-                <p>select what type of donation you want to make</p>
+                <p>Choose what type of donation you want to make</p>
             </div>
             <div className="tabbardiv">
                {!props.Resturant && <TabBar itemOne = {"Monetary"} itemTwo = {"Ration"} itemThree = {"Meals"} getId={GetSelectID}/>}
@@ -69,7 +70,9 @@ function DonationForms (props)
                 {props.Resturant && <DForms User = {3} getS={getStates}/>}
             </div>
             <div className="img-div">
-                {!props.Resturant && <img className="imgClass" src={DImage}/>}
+                {!props.Resturant && selectedID ===1 && <img className="imgClass" src={DImage} alt="Dimage"/>}
+                {!props.Resturant && selectedID ===2 && <img className="imgClass" src={Rationpic} alt="rationpic"/>}
+                {!props.Resturant && selectedID ===3 && <img className="imgClass" src={ResImage} alt="resimage"/>}
                 {props.Resturant && <img className="imgClass" src={ResImage}/>}
             </div>
         </div>
