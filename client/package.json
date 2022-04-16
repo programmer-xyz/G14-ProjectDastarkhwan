@@ -30,8 +30,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "env-cmd -f ./src/config/development.env react-scripts start",
-    "prod": "env-cmd -f ./src/config/production.env react-scripts start",
+    "dev": "env-cmd -f .development.env react-scripts start",
+    "prod": "env-cmd -f .production.env react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
