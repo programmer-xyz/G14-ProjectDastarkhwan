@@ -19,6 +19,8 @@ import Modals from './components/Modals/SignOutModal.jsx';
 import ModalNGO from './components/ModalNGO/ModalNGO.jsx';
 import ForgotPass from './pages/ForgotPassword/forgotPass.jsx';
 import AdminModalSignIn from './components/Modals/modalAdminSignIn.jsx';
+import FormsOfPorfile from './components/Forms/formsProfile.jsx';
+import ModalAccepted from './components/Modals/modalAccepted.jsx';
 
 const App = () => {
 
@@ -37,7 +39,7 @@ const App = () => {
                     <Route path ="/dashboard" element = {<Dashboard/>} />
                     <Route path ="/forms" element = {<FormsDonation User={1} />} />
                     <Route path = "/donationForms" element= {<DonationForms  Resturant = {false} Number = {1}/>} />
-                    {/* <Route path = "/loginforms" element = {<LoginForm />} /> */}
+                    <Route path = "/newForms" element = {<FormsOfPorfile User ={1} />} />
                     <Route path="/ngoAcceptpage" element = {<NGOacceptpage />} />
                     <Route path = "/profileCard" element = {<ProfileCards />} />
                     <Route path = "/Admin" element = {<DashAdmin/>} />
@@ -45,6 +47,7 @@ const App = () => {
                     <Route path="/ModalNGO" element = {<ModalNGO state={true}/>} />
                     <Route path="/forgotpassword" element = {<ForgotPass />} />
                     <Route path="/adminlogin" element = {<AdminModalSignIn state = {true}/>} />
+                    <Route path="/accepted" element = {<ModalAccepted state = {true}/>} />
                 </Routes>
             </div>
         </Router>
