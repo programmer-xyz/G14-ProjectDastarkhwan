@@ -40,7 +40,7 @@ label {
     color:#838D94;
 }
 
-.buttons{
+.buttonsForms{
     background: #264653;
     font: normal normal normal 14px/25px Poppins;
     color:#fff;
@@ -53,6 +53,21 @@ label {
     height: 54px;
     margin-top: 10%;
     left: -6%;
+    position: relative;
+}
+
+.buttonsForms1{
+    background: #264653;
+    font: normal normal normal 14px/25px Poppins;
+    color:#fff;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    padding: 5px 20px 5px 20px;
+    border:1px solid #264653; 
+    cursor:pointer;
+    width: 450px;
+    height: 54px;
+    margin-top: 10%;
     position: relative;
 }
 

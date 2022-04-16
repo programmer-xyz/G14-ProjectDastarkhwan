@@ -32,19 +32,8 @@ function Login () {
     <div className="tab-bar">
       <TabBar itemOne = {"User"} itemTwo = {"Restuarant"} itemThree = {"NGO"} getId={GetSelectID}/>
     </div>
-    <div className="forgetPass">
-      <a href='#'> Forget Password ? </a>
-    </div>
     <div className="Loginform">
         <LoginForm user={selectedID}/>
-    </div>
-    <div className='signup'>
-      <p>Dont have an account ?</p>
-      <a href='#'> Sign Up </a>
-    </div>
-    <div className="admin-login">
-      <p>Do you want to sign in as Admin ?</p>
-      <button className="adminmodel">Admin</button>
     </div>
     </div>
     </div>

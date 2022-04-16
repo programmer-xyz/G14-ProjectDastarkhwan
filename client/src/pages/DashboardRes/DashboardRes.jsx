@@ -25,7 +25,7 @@ const theme1 = createTheme({
 
 function Dashboard (props){
     return(
-       <Box sx = {{spacing: "0",backgroundColor:'rgba(42, 157, 143, 0.1)',paddingLeft:'5%',backgroundImage:`url(${image2})`,backgroundRepeat:'no-repeat',backgroundPositionX:'center',backgroundSize:'50% auto'}}>
+    <Box sx = {{spacing: "0",backgroundColor:'rgba(42, 157, 143, 0.1)',paddingLeft:'5%',backgroundImage:`url(${image2})`,backgroundRepeat:'no-repeat',backgroundPositionX:'center',backgroundSize:'50% auto'}}>
         <Grid  container direction="row" display="flex" sx={{width:'100%', height:'100%'}}>
             <Grid container sx={{margin:"0%"}}>
             <Grid item sx={{width:"100vw", height:"100%" ,padding:"0% 0% 4% 0%"}}>
@@ -50,11 +50,11 @@ function Dashboard (props){
                 </ThemeProvider>
             </Grid>
             </Grid>
-            <Grid container display="flex" direction="row-reverse" sx ={{height:"50%"}} columns={2}>
-            <Grid item sx = {{width:'100%',height:'25%'}}>
-             <Cards Resturant={0} mealsDonated={10} ngosDonatedTo={10}/>
+            <Grid container display="flex"  sx ={{height:"50%"}} columns={2}>
+            <Grid item sx = {{width:'70%',height:'25%'}}>
+            <Cards Resturant={0} mealDonations={10} rationDonations={20}/>
             </Grid>
-            <Grid item sx={{width:'25%',height:'100%',position:"relative",bottom:"640px"}}>
+            <Grid item sx = {{width:'30%', height:'25%'}}>
             <Cards2 />
             </Grid>
             </Grid>

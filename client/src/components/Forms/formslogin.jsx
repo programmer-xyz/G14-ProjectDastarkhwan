@@ -4,12 +4,12 @@ import {userLogin, ngoLogin , restLogin } from '../../servicesApi/authentication
 import {useNavigate,  createSearchParams} from 'react-router-dom';
 
 const user1Init ={
-  
+
     email:"",
     pw:"",
-   
-  };
-  
+
+};
+
 
 function LoginForm(prop){
     let navigate = useNavigate();
@@ -19,7 +19,7 @@ function LoginForm(prop){
         e.preventDefault();
         const {name, value} = e.target;
         setUser1({...user1, [name]: value});
-      
+    
     }
 
 
@@ -85,22 +85,24 @@ function LoginForm(prop){
             })
         
         }
-
-    }
-     
-
-        return(
-        <div className ="form">
-        <form action="/">
-        <input type = "email" placeholder = "Email" className="input1" name ="email" value={user1.email} onChange = {handleForm1}/>
-        <p>&nbsp;</p>
-        <input type = "password" placeholder = "Password" className="input1" name ="pw" value={user1.pw} onChange = {handleForm1}/>
-        <p>&nbsp;</p>
-        <button className = "sign-in" type = "submit" onClick = {onLogin}> SIGN IN</button>
-        </form>
-        </div>
-        )
-
-
 }
+    return (
+    <div className ="form">
+    <form action="/">
+    <input type = "email" placeholder = "Email" className="input1" name ="email" value={user1.email} onChange = {handleForm1}/>
+    <p>&nbsp;</p>
+    <input type = "password" placeholder = "Password" className="input1" name ="pw" value={user1.pw} onChange = {handleForm1}/>
+    <div className="forgetPass">
+        <a href='#'> Forget Password ? </a>
+    </div>
+    <button className = "sign-in" type = "submit" onClick = {onLogin}> SIGN IN</button>
+    <div className='signup'>
+        <p>Dont have an account ?  <a href='#'> Sign Up </a> </p>
+    </div>
+    <div className="admin-login">
+        <p>Do you want to sign in as Admin ? <button className="adminmodel">Admin</button> </p>
+    </div>
+    </form>
+    </div>
+);}
 export default LoginForm;

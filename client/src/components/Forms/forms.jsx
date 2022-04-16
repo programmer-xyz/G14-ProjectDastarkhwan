@@ -206,9 +206,8 @@ function Forms (props) {
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleDescription1" placeholder="Description" name= "description" value = {user1.description} onChange = {handleForm1}/>
-                            <button type = "submit" class="buttons" onClick={onCreateUser}>SIGN UP!</button>
+                            <button type = "submit" class="buttonsForms" onClick={onCreateUser}>SIGN UP!</button>
                         </div>
-                       
                     </form>
                     </div>
                     
@@ -254,7 +253,7 @@ function Forms (props) {
                         <div class="form-group">
                             <input type="email" class="form-control shadow-none" id="exampleCheck3" placeholder="Contact Email" name = "email2" value = {user2.email2} onChange = {handleForm2}/>
                         </div>
-                        <button type = "submit" class="buttons" onClick={onCreateRest}>SIGN UP!</button>
+                        <button type = "submit" class="buttonsForms1" onClick={onCreateRest}>SIGN UP!</button>
                     </form>
                     </div>
                 </div>
@@ -305,7 +304,7 @@ function Forms (props) {
                             <label>Add Certification Email</label>
                             <input type="file" class="form-control shadow-none" id="exampleCheck5" placeholder="Add Certification Email"  onChange = {onFileChange}/>
                         </div>
-                        <button type = "submit" class="buttons" onClick={onCreate}>SIGN UP!</button>
+                        <button type = "submit" class="buttonsForms1" onClick={onCreate}>SIGN UP!</button>
                     </form>
                     </div>
                 </div>
