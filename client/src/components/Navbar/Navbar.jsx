@@ -28,7 +28,7 @@ function Navbar() {
         setbuttonState(obj)
     }
 return (
-        <AppBar sx={{flexGrow:0, background:'transparent',postion:"static",width:"100%",alignContent:"right",alignItems:"right"}} elevation={0}>
+        <AppBar sx={{flexGrow:1, background:'transparent',postion:"fixed",width:"100%",alignContent:"right",alignItems:"right"}} elevation={0}>
             <Toolbar sx={{justifyContent:"right",alignItems:"right"}}>
                 
                     <Box sx={{justifyContent:"right",alignItems:"right"}}>
