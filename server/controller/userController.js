@@ -11,18 +11,21 @@ import mongoose from "mongoose";
 //login 
 export const userLogin =  handleAsyncErr(async (req,res, next) =>{
     const {email, password} = req.body;
+    console.log(req.body);
 
     if(!email || !password){
        
         return next(new HandErr("email or password missing", 400))
     }
     const user = await User.findOne({email}); 
-    let pw = user.password;
+    
 
     if(!user){
        
         return next(new HandErr("Wrong email or password", 401));
     }
+
+    let pw = user.password;
     if(!user.isActive){
         return next(new HandErr("User not exist", 401));
     }

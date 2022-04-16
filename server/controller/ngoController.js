@@ -18,13 +18,14 @@ export const ngoLogin =  handleAsyncErr(async (req,res, next) =>{
         return next(new HandErr("email or password missing", 400))
     }
     const user = await Ngo.findOne({email}); //.select("+password");
-    let pw = user.password;
+   
 
     if(!user){
        
         return next(new HandErr("Wrong userName or password", 401));
     }
     
+    let pw = user.password;
     if(!user.isActive){
         return next(new HandErr("User not exist", 401));
     }

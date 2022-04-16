@@ -10,9 +10,10 @@ const user1Init ={
   };
   
 
-function LoginForm(props){
+function LoginForm(prop){
    
     const [user1, setUser1] = useState(user1Init);
+
     const handleForm1 = (e)=>{
         e.preventDefault();
         const {name, value} = e.target;
@@ -21,10 +22,10 @@ function LoginForm(props){
     }
 
 
-    const onLogin = (e, prop) =>{
- 
+    const onLogin = (e) =>{
+        
         e.preventDefault();
-        if(prop === 1){
+        if(prop.user === 1){
             userLogin(user1.email, user1.pw).then((response)=>
             {
                     if(response.data.success)
@@ -43,7 +44,7 @@ function LoginForm(props){
         
         }
 
-        if(prop === 2){
+        if(prop.user === 2){
             restLogin(user1.email, user1.pw).then((response)=>
             {
                     if(response.data.success)
@@ -62,7 +63,7 @@ function LoginForm(props){
         
         }
 
-        if(prop === 3){
+        if(prop.user === 3){
             ngoLogin(user1.email, user1.pw).then((response)=>
             {
                     if(response.data.success)
@@ -91,7 +92,7 @@ function LoginForm(props){
         <p>&nbsp;</p>
         <input type = "password" placeholder = "Password" className="input1" name ="pw" value={user1.pw} onChange = {handleForm1}/>
         <p>&nbsp;</p>
-        <button className = "sign-in" type = "submit"> SIGN IN</button>
+        <button className = "sign-in" type = "submit" onClick = {onLogin}> SIGN IN</button>
         </form>
         </div>
         )
