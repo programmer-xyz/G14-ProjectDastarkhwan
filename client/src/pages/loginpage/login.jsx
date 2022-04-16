@@ -4,40 +4,20 @@ import logo from '../../assets/MaskGroup2.png';
 import TabBar from '../../components/TabBar/TabBar.jsx';
 import LoginForm from '../../components/Forms/formslogin';
 import { useState } from 'react';
-import {userLogin, ngoLogin , restLogin } from '../../servicesApi/authenticationApi';
 
 
 function Login () { 
 
 
   const [selectedID,setID] = useState(1);
+
     function GetSelectID(Id)
     {
         setID(Id+1);
         
     }
 
-    const onCreate = (e) =>{
- 
-      e.preventDefault();
-   
-  //     userLogin(user3.email, user3.pw).then((response)=>
-  //     {
-  //             if(response.data.success)
-  //             {
-  //                 console.log(response)
-  //             }
-  //             else{
-  //                 console.log("here")
-  //             }
-  
-  //     })
-  //     .catch((err)=>
-  //     {
-  //         console.log(err);
-  //     })
-  
-  // }
+    
 
   return (
     <div className="loginbody">
@@ -56,7 +36,7 @@ function Login () {
       <a href='#'> Forget Password ? </a>
     </div>
     <div className="Loginform">
-        <LoginForm />
+        <LoginForm user={selectedID}/>
     </div>
     <div className='signup'>
       <p>Dont have an account ?</p>
@@ -85,5 +65,5 @@ function Login () {
   );
   
 }
-}
+
 export default Login;

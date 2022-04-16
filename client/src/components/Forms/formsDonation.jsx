@@ -122,15 +122,15 @@ function FormsDonation (props) {
         getNgos();
     }, [])
 
-    console.log('here');
-    console.log(ngo_lis);
-
+console.log('here')
+  console.log(setUser1)
+    //value={user1.ngo} onChange={handleForm1}
     if (props.User === 1){
         return(
                 <div class = "row newClass">
                     <form>
                         <div class="form-group">
-                            <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="ngo" value={user1.ngo} onChange={handleForm1}>
+                            <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="ngo" value={user1.ngo} onChange={handleForm1}> 
                                 <option selected>Select NGO</option>
                                 {
                                     ngo_lis.map((ele) =>
