@@ -90,7 +90,7 @@ function FormsDonation (props) {
         let id_user  = "624146de183745fea3ae01ee"; // get from local storage
     
 
-        if(role == "rest")
+        if(role == "user")
         {
             try{
                 console.log('hello');
@@ -174,9 +174,13 @@ function FormsDonation (props) {
                         <div class="form-group">
                             <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="name" value={user2.ngo} onChange={handleForm2}>
                                 <option selected>Select NGO</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                {
+                                    ngo_lis.map((ele) =>
+                                        (
+                                       <option>{ele.name}</option>
+                                        )
+                                    )
+                                }
                             </select>
                         </div>
                         <div class="form-group">
@@ -204,9 +208,13 @@ function FormsDonation (props) {
                         <div class="form-group">
                             <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="ngo" value={user3.ngo} onChange={handleForm3}>
                                 <option selected>Select NGO</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                {
+                                    ngo_lis.map((ele) =>
+                                        (
+                                       <option>{ele.name}</option>
+                                        )
+                                    )
+                                }
                             </select>
                         </div>
                         <div class="form-group">
