@@ -129,7 +129,7 @@ function FormsDonation (props) {
         let id_user  = "62386a881d8d6e8aeabe6d6f"; // get from local storage
         
 
-        if(role == "user")
+        if(role === "user")
         {
             try{
                 console.log('hello');
@@ -142,7 +142,7 @@ function FormsDonation (props) {
                 console.log('error in calling api');
             }
         }
-        else if (role == "rest"){
+        else if (role === "rest"){
             try{
                 console.log('hello');
                 ngos = await findNgoRest(id_user);
