@@ -152,7 +152,10 @@ export const viewApplications = handleAsyncErr(async(req, res, next) =>{
 
 });
 
-
+export const startApp = handleAsyncErr(async(req, res, next) =>
+{
+    res.send("Server is running");
+});
 
 
 

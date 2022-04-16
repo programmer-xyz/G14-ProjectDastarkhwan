@@ -5,14 +5,20 @@ import TabBar from '../../components/TabBar/TabBar.jsx';
 import LoginForm from '../../components/Forms/formslogin';
 import { useState } from 'react';
 
-function Login (){ 
+
+function Login () { 
+
+
   const [selectedID,setID] = useState(1);
+
     function GetSelectID(Id)
     {
         setID(Id+1);
         
-
     }
+
+    
+
   return (
     <div className="loginbody">
     <div className="left-container">
@@ -27,7 +33,7 @@ function Login (){
       <TabBar itemOne = {"User"} itemTwo = {"Restuarant"} itemThree = {"NGO"} getId={GetSelectID}/>
     </div>
     <div className="Loginform">
-        <LoginForm />
+        <LoginForm user={selectedID}/>
     </div>
     </div>
     </div>

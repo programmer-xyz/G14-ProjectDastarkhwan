@@ -16,12 +16,14 @@ export const restLogin =  handleAsyncErr(async (req,res, next) =>{
         return next(new HandErr("email or password missing", 400))
     }
     const user = await Rest.findOne({email}); 
-    let pw = user.password;
+  
 
     if(!user){
        
         return next(new HandErr("Wrong email or password", 401));
     }
+
+    let pw = user.password;
     if(!user.isActive){
         return next(new HandErr("User not exist", 401));
     }
@@ -253,8 +255,10 @@ export const myRequestRest = handleAsyncErr(async(req,res,next)=>
 });
 export const mealDonation = handleAsyncErr(async (req,res,next) =>{
     //user email and selected ngo will be sent from frontend
-
+    console.log(req.body);
+    console.log(req.file);
     let image = req.file.buffer;
+   
     let {address, description, email, ngoIdentifier} = req.body;
 
     if( !address|| !description||!image){

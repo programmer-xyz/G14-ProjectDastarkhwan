@@ -4,6 +4,7 @@ import bag from './Santa_Bag_1.svg';
 import Meals from './Group 6951.svg';
 import mealsforres from './Group 6831.svg';
 import ngodonated from './Group 6954.svg';
+import { Grid ,Box} from '@mui/material';
 
 function Cards (props) {
 
@@ -127,7 +128,7 @@ function Cards (props) {
             <hr class="hr1"></hr>
             <div class="row">
                 <div class="col-lg-4 col-xs-12 col-md-12 col-sm-12">
-                    <button class="buttonsCards">Make Donations</button>
+                    <button class="buttonsCards" >Make Donations</button>
                 </div>
                 <div class="col-lg-4 col-xs-12 col-md-12 col-sm-12">
                     <button class="buttonsCards white">Past Requests</button>

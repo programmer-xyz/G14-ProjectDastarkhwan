@@ -84,7 +84,24 @@ label {
     color:#838D94;
 }
 
-.buttons{
+.buttonsDonations{
+    background: #264653;
+    font: normal normal normal 14px/25px Poppins;
+    color:#fff;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    padding: 5px 20px 5px 20px;
+    border:1px solid #264653; 
+    cursor:pointer;
+    width: 400px;
+    height: 54px;
+    margin-bottom: 24px;
+    margin-top: 5%;
+    left:auto;
+    position: relative;
+}
+
+.buttonsDonations1{
     background: #264653;
     font: normal normal normal 14px/25px Poppins;
     color:#fff;
@@ -97,9 +114,10 @@ label {
     height: 54px;
     margin-bottom: 24px;
     margin-top: 10%;
-    left:5%;
+    left:7%;
     position: relative;
 }
+
 .details1{
     font-family: "Poppins";
     font-size: 14px/21px;

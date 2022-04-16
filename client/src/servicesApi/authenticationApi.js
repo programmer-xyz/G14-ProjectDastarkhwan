@@ -1,9 +1,10 @@
 import axios from 'axios';
 
 const Url = "http://localhost:8080/api/v1";
-console.log(Url)
+
 export const createAccountUser =  async (name,username,email,phoneNumber,password,cnic,city,country,streetNumber,houseNumber,Description) =>
 {
+    console.log("api url",process.env.REACT_APP_API_URL);
     const obj = {"name":name, 
     "email":email, 
     "phoneNumber":phoneNumber, 
@@ -17,7 +18,6 @@ export const createAccountUser =  async (name,username,email,phoneNumber,passwor
         "houseNumber":houseNumber
     }, 
     "CNIC":cnic}
-    console.log(Url)
     return await axios.post(`${Url}/user/register`,obj);
 }
 
@@ -118,3 +118,4 @@ export const restLogin = async (email,password) =>
     }
     return await axios.post(`${Url}/rest/login`,obj);
 }
+

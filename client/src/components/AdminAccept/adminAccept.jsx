@@ -1,4 +1,4 @@
-import './ngoacceptpage.scss'
+import './adminAccept.scss'
 import Grid from "@mui/material/Grid";
 import RequestItems from '../../components/RequestItems/requestItems.jsx';
 import TabBar from '../../components/TabBar/TabBar.jsx';
@@ -7,8 +7,6 @@ import React from 'react';
 import { List } from '@mui/material';
 import image1 from '../../components/RequestItems/testImage.jpeg';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Navbar from '../../components/Navbar/Navbar';
-
 
 const theme = createTheme({
     typography: {
@@ -104,31 +102,15 @@ var templist = [{
 
 }]
 
-function NGOacceptpage(props){
+function AdminAcceptpage(props){
         return (
             <div className="yello">
             <Grid sx ={{marginBottom:"2%"}}>
-            <Navbar />
             </Grid>
             <Grid container display="flex" alignItems={'center'} justifyContent="center">
             <Grid container alignItems={'center'} justifyContent="center">
-            <Grid item display="flex">
-            <Typography  sx={{ display: 'block',font: 'normal normal normal 32px/61px Poppins'}}
-            component="span"
-            variant="h3">
-            {"Requests"}
-            </Typography>
-            </Grid>
             </Grid>
             <Grid container alignItems={'center'} justifyContent="center" >
-            <Grid item display={"flex"}>
-            <Typography sx={{ display: 'block',font: 'normal normal normal 18px/27px Poppins'}}
-            component="span"
-            variant="h6"
-            color="#264653">
-            {"Filter requests using tabs below"}
-            </Typography>
-            </Grid>
             </Grid>
             <Grid item>
             <TabBar itemOne = {"All"} itemTwo = {"Restuarants"} itemThree = {"Users"}/>
@@ -155,4 +137,4 @@ function NGOacceptpage(props){
             </div>
             );
 }
-export default NGOacceptpage;
+export default AdminAcceptpage;
