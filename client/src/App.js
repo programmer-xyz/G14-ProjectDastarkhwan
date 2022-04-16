@@ -17,6 +17,10 @@ import AdminModalSignIn from './components/Modals/modalAdminSignIn.jsx';
 import ResturantDetailModal from './components/modalResD/modelResD.jsx';
 import Modalsmyrequest from './components/ModelMyRequest/ModelMyRequest.jsx';
 
+import FormsOfPorfile from './components/Forms/formsProfile.jsx';
+import ModalAccepted from './components/Modals/modalAccepted.jsx';
+import UserProfile from './pages/UserProfile/userprofile.jsx';
+import ResProfile from './pages/resProfile/resProfile.jsx';
 const App = () => {
 
     return(
@@ -25,7 +29,19 @@ const App = () => {
                 <Routes> 
                     <Route path='/' element={<Login/>}/>
                     <Route path="/Signup" element= {<Signup/>}/>  
+                    <Route path = "/donationForms" element= {<DonationForms Resturant={false} Number = {2}/>} />
+                    <Route path ="/dashboard" element = {<Dashboard/>} />
+                    <Route path = "/donationForms" element= {<DonationForms  Resturant = {false} Number = {1}/>} />
+                    <Route path = "/newForms" element = {<FormsOfPorfile User ={1} />} />
+                    <Route path="/ngoAcceptpage" element = {<NGOacceptpage />} />
+                    <Route path = "/profileCard" element = {<ProfileCards />} />
+                    <Route path = "/Admin" element = {<DashAdmin/>} />
+                    <Route path="/ModalNGO" element = {<ModalNGO state={true}/>} />
+                    <Route path="/forgotpassword" element = {<ForgotPass />} />
+                    <Route path="/adminlogin" element = {<AdminModalSignIn state = {true}/>} />
+                    <Route path="/accepted" element = {<ModalAccepted state = {true}/>} />
                     <Route path = "/userdonationForms" element= {<DonationForms Resturant={false}/>} />
+                    <Route path = "/restdonationForms" element= {<DonationForms Resturant={true}/>} />
                     <Route path = "/resturantdonationForms" element={<DonationForms Resturant={true}/>}/> 
                     <Route path="/adminlogin" element = {<AdminModalSignIn state = {true}/>} />
                     <Route path ="/userdashboard" element = {<Dashboard/>} />
@@ -40,6 +56,8 @@ const App = () => {
                     <Route path = "/modelResDetails" element ={<ResturantDetailModal state={true} email={"muizz481@gmail.com"} phoneNumber={'1231343421-2'} address={"512 f2 johar town lahore"} accountNumber={"23134211-3"} description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'} pointOfCName={"James Charles"} pointOfCEmail={"Jamescharles@gmail.com"} pointOfCNumber={"1232441"}/>} />
                     <Route path="/signoutModal" element={<Modals state={true} modelMsg={"Are you sure you want to sign out"} actionMsg={"cancel"} actionMsg2={"sign out"}/>} />
                     <Route path = "/myRequests" element = {<Modalsmyrequest state={true} User={0}/>} />
+                    <Route path="/userprofile" element = {<UserProfile />} />
+                    <Route path="/resprofile" element = {<ResProfile />} />
                 </Routes>
             </div>
         </Router>

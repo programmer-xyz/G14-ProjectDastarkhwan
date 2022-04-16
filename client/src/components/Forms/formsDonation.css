@@ -84,7 +84,7 @@ label {
     color:#838D94;
 }
 
-.buttons{
+.buttonsDonations{
     background: #264653;
     font: normal normal normal 14px/25px Poppins;
     color:#fff;
@@ -100,7 +100,8 @@ label {
     left:auto;
     position: relative;
 }
-.buttons90{
+
+.buttonsDonations1{
     background: #264653;
     font: normal normal normal 14px/25px Poppins;
     color:#fff;
@@ -113,9 +114,10 @@ label {
     height: 54px;
     margin-bottom: 24px;
     margin-top: 10%;
-    left:5%;
+    left:7%;
     position: relative;
 }
+
 .details1{
     font-family: "Poppins";
     font-size: 14px/21px;

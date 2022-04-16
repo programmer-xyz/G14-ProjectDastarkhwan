@@ -1,5 +1,4 @@
 .sign-in {
-    margin-top: 10%;
     width: 450px;
     height: 54px;
     background: #264653 0% 0% no-repeat padding-box;
@@ -10,13 +9,12 @@
     align-items: center;
     font: normal normal 600 16px/25px Poppins;
     color: #FFFFFF;
+    margin-bottom: 1%;
 }
 .form{
     display: inline-block;
 }
 .input1{
-    top: 383px;
-    left: 142px;
     width: 435px;
     height: 54px;
     font: normal normal normal 14px/21px Poppins;
@@ -29,4 +27,4 @@
     background: #FFF4D7 0% 0% no-repeat padding-box;
     border-radius: 10px;
     opacity: 0.55;
-  }
+}
