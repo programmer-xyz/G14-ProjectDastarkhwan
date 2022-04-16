@@ -85,7 +85,7 @@
     top:-2.9%;
     letter-spacing: -0.75px;
 }
-.Accept
+.Accept     
 {
     font-family: "Poppins";
     font-size: 14/25px;
@@ -95,7 +95,7 @@
     border: none;
     padding: 1% 8% 1% 8%;
     background-color: #E76F51;
-    color:white;
+    color:white;        
 }
 .expired{
     background-color: rgba(160, 160, 160, 0.2);
