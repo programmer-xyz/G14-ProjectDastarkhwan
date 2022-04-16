@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import { AppBar,Tabs,Toolbar} from '@mui/material';
+import { AppBar,Toolbar,Box} from '@mui/material';
 import './Navbar.css'
 
 function Navbar() {
@@ -28,18 +28,18 @@ function Navbar() {
         setbuttonState(obj)
     }
 return (
-    <React.Fragment>
-        <AppBar sx={{background:'transparent', position: 'static'}} elevation={0}>
-            <Toolbar>
-                <Tabs sx={{marginLeft:'auto'}}>
-                    {console.log(button)}
+        <AppBar sx={{flexGrow:0, background:'transparent',postion:"static",width:"100%",alignContent:"right",alignItems:"right"}} elevation={0}>
+            <Toolbar sx={{justifyContent:"right",alignItems:"right"}}>
+                
+                    <Box sx={{justifyContent:"right",alignItems:"right"}}>
                     <button onClick={(e)=>{handleClick(e)}} className = {"buttons1"+(button.button1?" orangeColor":" greenColor")} value="Home">Home</button>
                     <button onClick={(e)=>{handleClick(e)}} className = {"buttons1"+(button.button2?" orangeColor":" greenColor")} value="Profile">Profile</button>
-                </Tabs>
-                <button className="buttons2" type="submit">Sign Out</button>
+                    <button className="buttons2" type="submit">Sign Out</button>
+                    </Box>
+                
+                
             </Toolbar>
         </AppBar>
-    </React.Fragment>
 )
 }
 
