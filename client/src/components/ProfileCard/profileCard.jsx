@@ -41,7 +41,7 @@ function profileCards(){
         </Grid>
         <Grid container direction="column" sx = {{display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'transparent',zIndex:'1'}}>
         <Grid item  >
-        <Card sx={{ maxWidth: '350px' ,maxHeight:'auto',justifyContent:'center',alignItems:'center'}}>
+        <Card sx={{ maxWidth: '350px' ,height:'532px',justifyContent:'center',alignItems:'center'}}>
         <CardActionArea disableRipple sx={{'backgroundColor': '#2A9D8F33'}}>
         </CardActionArea>
         <CardContent sx = {{marginTop:'18%'}}>
@@ -63,8 +63,7 @@ function profileCards(){
           <Divider sx={{color:"#E76F51",margin:"5% 0 5% 0",}}/>
           <Grid item alignContent = {'center'} alignItems = {'center'}  justifyContent={'center'} display="flex" >
           <Typography variant="body2" color="text.secondary" textAlign={'center'}>
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.
           </Typography>
           </Grid>
         </CardContent>
