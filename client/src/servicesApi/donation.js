@@ -58,12 +58,13 @@ export const mealDonationRest =  async (address, description, email, ngoIdentifi
     return await axios.post(`${Url}/rest/mealDonation`,obj);
 }
 
-export const findNgo =  async (address) =>{
+export const findNgoUser =  async (_id) =>{
     const obj = {
 
-    "address":address 
+    "_id":_id 
 
 }
 
-    return await axios.post(`${Url}/ngo/findNgo`,obj);
+    return await axios.post(`${Url}/ngo/findNgoUser`,obj);
 }
+

@@ -1,7 +1,7 @@
 import './formsDonation.css';
 import React from 'react';
 import { useState,  useEffect } from 'react';
-import { findNgo } from  '../../servicesApi/donation.js';
+import { findNgoUser } from  '../../servicesApi/donation.js';
 
 const user1Init ={
     ngo:"",
@@ -89,7 +89,7 @@ function FormsDonation (props) {
         
         try{
             console.log('hello');
-            ngos = await findNgo(address);
+            ngos = await findNgoUser(address);
             //console.log('in func ')
             // console.log(ngos.body);
             setNgoLis(ngos.data.body);
