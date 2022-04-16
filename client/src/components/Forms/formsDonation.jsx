@@ -1,7 +1,7 @@
 import './formsDonation.css';
 import React from 'react';
 import { useState,  useEffect } from 'react';
-import { findNgoUser,findNgoRest, mealDonationRest,mealDonationUser  } from  '../../servicesApi/donation.js';
+import { findNgoUser,findNgoRest, mealDonationRest,mealDonationUser ,rationDonationUser,moneyDonationUser } from  '../../servicesApi/donation.js';
 
 
 
@@ -145,9 +145,9 @@ const rationDon = (e) =>{
     let em = "amgio@lums.edu.pk";
     let role = "user";
 
-    if(role === "rest")
+    if(role === "user")
     {
-    mealDonationRest( address,  user3.description, em,  user3.ngo,  user3.rationImage).then((response)=>{
+        rationDonationUser( address,  user3.description, em,  user3.ngo,  user3.rationImage).then((response)=>{
 
             if(response.data.success)
             {
@@ -167,22 +167,7 @@ const rationDon = (e) =>{
         console.log(err);
     })
     }
-    else if(role === "user"){
-        mealDonationUser( address,  user3.description, em,  user3.ngo,  user3.rationImage).then((response)=>{
-
-            if(response.data.success)
-            {
-        
-                props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/userdashboard");
-
-            }  
-    })
-    .catch((err)=>
-    {
-        console.log(err);
-    })
-    }
-
+    
 
     }
 
@@ -322,7 +307,7 @@ console.log('here')
                             <label>Upload Ration Image</label>
                             <input type="file" class="form-control shadow-none" id="exampleCheck1" placeholder="Add Ration Image" name="rationImg" onChange={onFileChange2}/>
                         </div>
-                        <button type = "submit" class="buttons90">Confirm Donation!</button>
+                        <button type = "submit" class="buttons90" onClick = {rationDon}>Confirm Donation!</button>
                     </form>
                     </div>
                 </div>

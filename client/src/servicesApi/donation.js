@@ -16,17 +16,16 @@ export const mealDonationUser =  async (address, description, email, ngoIdentifi
 }
 
 export const rationDonationUser =  async (address, description, email, ngoIdentifier, image) =>{
-    const obj = {
-
-    "email":email, 
-    "description":description,
-    "ngoIdentifier": ngoIdentifier,
-    "image":image,
-    "address":address 
-
-}
-
-    return await axios.post(`${Url}/user/rationDonation`,obj);
+    console.log("image:",image);
+    let formData = new FormData();
+    formData.append( "email",email);
+    formData.append("description", description);
+    formData.append( "ngoIdentifier", ngoIdentifier);
+    formData.append("address",JSON.stringify(address));
+    formData.append("image",image)
+    return await axios.post(`${Url}/user/rationDonation`,formData ,{ headers: {
+        'Content-Type': 'multipart/form-data'
+      }});
 }
 
 export const moneyDonationUser =  async (email, ngoIdentifier, amount, cardNum) =>{
