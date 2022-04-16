@@ -16,6 +16,7 @@ import NGOacceptpage from './pages/ngoacceptpage/ngoacceptpage.jsx';
 import ProfileCards from './components/ProfileCard/profileCard.jsx';
 import ResDashboard from './pages/DashboardRes/DashboardRes.jsx';
 import ProfileForms from './components/Forms/formsProfile.jsx';
+import ResModals from './components/modalResturantDetails/modalResturantDetails.jsx';
 
 const App = () => {
 
@@ -38,6 +39,7 @@ const App = () => {
                     <Route path="/ngoAcceptpage" element = {<NGOacceptpage />} />
                     <Route path = "/profileCard" element = {<ProfileCards />} />
                     <Route path ="/dashboardR" element = {<ResDashboard name={"Abdul Muizz khan"} />} />
+                    <Route path = "/resturantModal" element={<ResModals state = {true} />} />
                 </Routes>
             </div>
         </Router>
