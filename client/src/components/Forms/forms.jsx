@@ -117,19 +117,18 @@ function Forms (props) {
     
                 if(response.data.success)
                 {
+                    props.getState("NGO created succesfully,","success",true)
                     console.log(response)
                 }
-                else{
-                    console.log("here")
-                }
-    
+                
         })
         .catch((err)=>
         {
-            console.log(err);
+            props.getState(err.response.data.message,"error",true);
         })
     
     }
+
     const onCreateUser = (e) =>
     {
         e.preventDefault();
@@ -148,7 +147,7 @@ function Forms (props) {
         )
         .catch((err)=>
         {
-            console.log(err)
+            props.getState(err.response.data.message,"error",true);
         })
     }
     const onCreateRest = (e) =>
@@ -166,10 +165,7 @@ function Forms (props) {
                 props.getState("Resturant registration application created,","success",true);
                 console.log(response);
             }
-            else
-            {
-                console.log(response)
-            }
+          
         }).catch((err,response)=>
         {
             props.getState(err.response.data.message,"error",true);

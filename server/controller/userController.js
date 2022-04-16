@@ -11,18 +11,21 @@ import mongoose from "mongoose";
 //login 
 export const userLogin =  handleAsyncErr(async (req,res, next) =>{
     const {email, password} = req.body;
+    console.log(req.body);
 
     if(!email || !password){
        
         return next(new HandErr("email or password missing", 400))
     }
     const user = await User.findOne({email}); 
-    let pw = user.password;
+    
 
     if(!user){
        
         return next(new HandErr("Wrong email or password", 401));
     }
+
+    let pw = user.password;
     if(!user.isActive){
         return next(new HandErr("User not exist", 401));
     }
@@ -157,6 +160,7 @@ export const changePassUser = handleAsyncErr(async(req,res,next)=>{
 export const mealDonation = handleAsyncErr(async (req,res,next) =>{
     //user email and selected ngo will be sent from frontend
     //console.log(req.body)
+   
     let image = req.file.buffer;
     let {address, description, email, ngoIdentifier} = req.body;
 
@@ -366,6 +370,7 @@ export const editProfileUser = handleAsyncErr(async (req, res, next)=>{
         body: user
     });
 });
+
 export const myRequestUser = handleAsyncErr(async(req,res,next)=>
 {
     let {email} = req.body;
