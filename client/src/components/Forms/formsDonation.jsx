@@ -158,7 +158,7 @@ const rationDon = (e) =>{
             //         "actionMsg":"Back to Dashboard",
             //         "route":"",
             //     }
-                props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/resturantDashboard");
+                props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/userdashboard");
 
             }  
     })
@@ -186,7 +186,7 @@ const rationDon = (e) =>{
                 //         "actionMsg":"Back to Dashboard",
                 //         "route":"",
                 //     }
-                    props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/resturantDashboard");
+                    props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/userdashboard");
     
                 }  
         })
