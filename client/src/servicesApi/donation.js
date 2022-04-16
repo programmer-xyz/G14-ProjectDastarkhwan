@@ -65,5 +65,5 @@ export const findNgo =  async (address) =>{
 
 }
 
-    return await axios.get(`${Url}/ngo/findNgo`,obj);
+    return await axios.post(`${Url}/ngo/findNgo`,obj);
 }

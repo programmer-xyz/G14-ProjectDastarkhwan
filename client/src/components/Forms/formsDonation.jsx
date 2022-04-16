@@ -2,6 +2,7 @@ import './formsDonation.css';
 import React from 'react';
 import { useState,  useEffect } from 'react';
 import { findNgo } from  '../../servicesApi/donation.js';
+
 const user1Init ={
     ngo:"",
     amount:"",
@@ -84,13 +85,14 @@ function FormsDonation (props) {
 
     const getNgos = async() =>{
         let ngos = [];
-        let address = { "address":{"city": "karachi", "country": "Pakistan",  "streetNumber":"11",  "houseNumber":"1"}}
+        let address = {"city": "karachi", "country": "Pakistan",  "streetNumber":"11",  "houseNumber":"1"}
+        
         try{
             console.log('hello');
             ngos = await findNgo(address);
-            console.log('in func ')
-            console.log(ngos)
-            setNgoLis(ngos.body);
+            //console.log('in func ')
+            // console.log(ngos.body);
+            setNgoLis(ngos.data.body);
            
         }
         catch(err){
@@ -103,6 +105,7 @@ function FormsDonation (props) {
         getNgos();
     }, [])
 
+    console.log('here');
     console.log(ngo_lis);
 
     if (props.User === 1){
@@ -113,10 +116,11 @@ function FormsDonation (props) {
                             <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="ngo" value={user1.ngo} onChange={handleForm1}>
                                 <option selected>Select NGO</option>
                                 {
-                                    ngo_lis.map((ele) =>{
+                                    ngo_lis.map((ele) =>
+                                        (
                                        <option>{ele.name}</option>
-                                    
-                                    })
+                                        )
+                                    )
                                 }
                                 
                             </select>

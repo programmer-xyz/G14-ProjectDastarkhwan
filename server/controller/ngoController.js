@@ -638,10 +638,14 @@ export const restRequestNgo = handleAsyncErr(async(req,res,next)=>
    
 });
 
-export const findNgo = handleAsyncErr(async(req,res,next)=>{
-    let add = req.body.address;
-    console.log(`here ${req.body}`);
+export const findNgoUser = handleAsyncErr(async(req,res,next)=>{
+    let user_id = req.body._id;
+    let userObj = await User.findOne({_id: user_id});
+
+    let add = userObj.address;
+    console.log(`here ${add}`);
     let city = add.city;
+
     let cityNgos = await Ngo.find({'address.city' : city});
 
     if(!cityNgos ){
@@ -657,3 +661,27 @@ export const findNgo = handleAsyncErr(async(req,res,next)=>{
     console.log(cityNgos);
 
 });
+
+// export const findNgoRest = handleAsyncErr(async(req,res,next)=>{
+//     let user_id = req.body._id;
+//     let userObj = await Rest.findOne({_id: user_id});
+
+//     let add = userObj.address;
+//     console.log(`here ${add}`);
+//     let city = add.city;
+
+//     let cityNgos = await Ngo.find({'address.city' : city});
+
+//     if(!cityNgos ){
+//         return next(new HandErr("No NGOs in your area",400))
+//     }
+
+//     res.status(200).json({
+//         success:true,
+//         message:"Ngos returned",
+//         body: cityNgos
+//     });
+
+//     console.log(cityNgos);
+
+// });
