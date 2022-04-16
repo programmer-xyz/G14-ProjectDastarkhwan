@@ -68,3 +68,12 @@ export const findNgoUser =  async (_id) =>{
     return await axios.post(`${Url}/ngo/findNgoUser`,obj);
 }
 
+export const findNgoRest =  async (_id) =>{
+    const obj = {
+
+    "_id":_id 
+
+}
+
+    return await axios.post(`${Url}/ngo/findNgoRest`,obj);
+}

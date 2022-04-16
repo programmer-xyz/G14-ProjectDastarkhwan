@@ -1,7 +1,7 @@
 import './formsDonation.css';
 import React from 'react';
 import { useState,  useEffect } from 'react';
-import { findNgoUser } from  '../../servicesApi/donation.js';
+import { findNgoUser,findNgoRest  } from  '../../servicesApi/donation.js';
 
 const user1Init ={
     ngo:"",
@@ -85,20 +85,37 @@ function FormsDonation (props) {
 
     const getNgos = async() =>{
         let ngos = [];
-        let address = {"city": "karachi", "country": "Pakistan",  "streetNumber":"11",  "houseNumber":"1"}
-        
-        try{
-            console.log('hello');
-            ngos = await findNgoUser(address);
-            //console.log('in func ')
-            // console.log(ngos.body);
-            setNgoLis(ngos.data.body);
-           
-        }
-        catch(err){
-            console.log('error in calling api');
-        }
+        //let address = {"city": "karachi", "country": "Pakistan",  "streetNumber":"11",  "houseNumber":"1"}
+        let role = "rest"; //get from local storage
+        let id_user  = "624146de183745fea3ae01ee"; // get from local storage
+    
 
+        if(role == "rest")
+        {
+            try{
+                console.log('hello');
+                ngos = await findNgoUser(id_user);
+            
+                setNgoLis(ngos.data.body);
+            
+            }
+            catch(err){
+                console.log('error in calling api');
+            }
+        }
+        else if (role == "rest"){
+            try{
+                console.log('hello');
+                ngos = await findNgoUser(id_user);
+            
+                setNgoLis(ngos.data.body);
+            
+            }
+            catch(err){
+                console.log('error in calling api');
+            }
+
+        }
     }
 
     useEffect(()=>{
