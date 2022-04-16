@@ -147,7 +147,7 @@ const rationDon = (e) =>{
 
     if(role === "user")
     {
-        rationDonationUser( address,  user3.description, em,  user3.ngo,  user3.rationImage).then((response)=>{
+        rationDonationUser( address,  user2.description, em,  user2.ngo,  user2.rationImage).then((response)=>{
 
             if(response.data.success)
             {
@@ -168,10 +168,36 @@ const rationDon = (e) =>{
     })
     }
     
-
     }
 
+    const moneyDon = (e) =>{
+        e.preventDefault();
+        let role = "user";
+        if(role === "user")
+        {
+            moneyDonationUser (user1.email, user1.ngoIdentifier, user1.amount, user1.cardNum).then((response)=>{
 
+                if(response.data.success)
+                {
+                //    const updatedStates= {
+                //         "modelMsg":
+                //         "state":true,
+                //         "success":true,
+                //         "actionMsg":"Back to Dashboard",
+                //         "route":"",
+                //     }
+                    props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/resturantDashboard");
+    
+                }  
+        })
+        .catch((err)=>
+        {
+            console.log(err);
+        })
+        }
+    }
+
+    
 
     const onFileChange3 = event => {
         event.preventDefault()
@@ -272,7 +298,7 @@ console.log('here')
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="CVC" name="cvc" value={user1.cvc} onChange={handleForm1}/>
-                            <button type = "submit" class="buttons">Confirm Donation!</button>
+                            <button type = "submit" class="buttons" onClick={moneyDon }>Confirm Donation!</button>
                         </div>
                        
                     </form>
