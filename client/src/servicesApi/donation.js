@@ -46,7 +46,7 @@ export const moneyDonationUser =  async (email, ngoIdentifier, amount, cardNum) 
 //restaurant donation 
 
 export const mealDonationRest =  async (address, description, email, ngoIdentifier, image) =>{
-
+    console.log("image:",image);
     let formData = new FormData();
     formData.append( "email",email);
     formData.append("description", description);
