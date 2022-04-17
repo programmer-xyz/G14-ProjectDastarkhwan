@@ -4,7 +4,8 @@ import admin from "./routes/adminRoutes";
 import midErr from "./middleware/basicErr";
 import ngo from "./routes/ngoRoutes";
 import rest from "./routes/restRoutes";
-import user from "./routes/userRoutes"
+import user from "./routes/userRoutes";
+import auth from "./routes/authRoutes"
 import cookieParser from "cookie-parser";
 import cors from 'cors'
 
@@ -26,10 +27,12 @@ app.use(cookieParser());
 app.use(cors());
 
 //admin
+
 app.use("/api/v1/admin", admin);
 app.use("/api/v1/ngo", ngo);
 app.use("/api/v1/user", user);
 app.use("/api/v1/rest", rest);
+app.use("/api/v1/auth", auth);
 ///middleware err this must always be at the end 
 app.use(midErr);
 

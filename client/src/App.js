@@ -22,7 +22,13 @@ import ResProfile from './pages/resProfile/resProfile.jsx';
 import NGODashboard from './pages/DashboardNGO/dashNGO.jsx';
 import NgoProfile from './pages/ngoProfile/ngoProfile.jsx';
 import Modals from './components/Modals/SignOutModal.jsx'
+
+//import {UseLoginUser} from "./customHooks/LoginHook";
+
 const App = () => {
+
+    // let role = "user";
+    // const {user, initial} = UseLoginUser(role);
 
     return(
         <Router>

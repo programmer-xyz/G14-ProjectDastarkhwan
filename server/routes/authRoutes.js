@@ -3,7 +3,7 @@ import {isAuthenticatedUser} from "../middleware/auth";
 const router = Router();
 
 
-router.route("/isLoggedin").post(isAuthenticatedUser);
+router.route("/isLoggedin").get(isAuthenticatedUser);
 
 
 export default router;
