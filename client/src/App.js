@@ -25,7 +25,7 @@ import Modals from './components/Modals/SignOutModal.jsx'
 
 // import { UserInfo } from './customHooks/userInfo.js';
 // import {UseLoginUser} from "./customHooks/LoginHook";
-// import PrivateRoute from './components/RestrictedRoute/restrictedRoute.js';
+//import PrivateRoute from './components/RestrictedRoute/restrictedRoute.js';
 
 const App = () => {
 
@@ -54,6 +54,7 @@ const App = () => {
                     <Route path ="/userdashboard" element = {<Dashboard/>} />
                     <Route path = "/adminDashboard" element = {<DashAdmin/>} />
                     <Route path = "/ngoDashboard" element = {<NGODashboard/>}/>
+
                     {/* add Dashboard button routes here */}
                     <Route path="/ngoRequestAcceptPage" element = {<NGOacceptpage />} />
                     <Route path = "/myRequests" element = {<Modalsmyrequest state={true} User={0}/>} />
@@ -68,8 +69,8 @@ const App = () => {
             
                 </Routes>
 
-                {/* <PrivateRoute path="/adminDashboard" component={DashAdmin}/> */}
-                
+                {/* <PrivateRoute path="/userdonationForms"  component={Resturant => <DonationForms {...Resturant}/>}/>
+                <PrivateRoute path="/adminDashboard" component={DashAdmin}/> */}
             </div>
             {/* </UserInfo.Provider> */}
         </Router>
