@@ -8,18 +8,9 @@ import { findNgoUser,findNgoRest, mealDonationRest,mealDonationUser ,rationDonat
 const user1Init ={
     ngo:"",
     amount:"",
-    nameOnCard:"",
-    cardNumber:"",
-    expiryDate:"",
-    cvc:"",
-    cnic:"",
-    address:"",
-    // HouseNo:"",
-    // stBlock:"",
-    // city:"",
-    // country:"",
-    description:"",
-    rationImage: ""
+
+    cardNumber:""
+   
 };
 
 const  user2Init ={
@@ -104,7 +95,7 @@ function FormsDonation (props) {
                 //         "actionMsg":"Back to Dashboard",
                 //         "route":"",
                 //     }
-                    props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/resturantDashboard");
+                    props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","resturantDashboard");
 
                 }  
         })
@@ -119,7 +110,7 @@ function FormsDonation (props) {
             if(response.data.success)
             {
            
-                props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/userdashboard");
+                props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","userdashboard");
 
             }  
     })
@@ -158,7 +149,7 @@ const rationDon = (e) =>{
             //         "actionMsg":"Back to Dashboard",
             //         "route":"",
             //     }
-                props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/userdashboard");
+                props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","userdashboard");
 
             }  
     })
@@ -172,10 +163,12 @@ const rationDon = (e) =>{
 
     const moneyDon = (e) =>{
         e.preventDefault();
+        let em = "amgio@lums.edu.pk";
+  
         let role = "user";
         if(role === "user")
         {
-            moneyDonationUser (user1.email, user1.ngoIdentifier, user1.amount, user1.cardNum).then((response)=>{
+            moneyDonationUser (em, user1.ngo, user1.amount, user1.cardNumber).then((response)=>{
 
                 if(response.data.success)
                 {
@@ -186,7 +179,7 @@ const rationDon = (e) =>{
                 //         "actionMsg":"Back to Dashboard",
                 //         "route":"",
                 //     }
-                    props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/userdashboard");
+                    props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","userdashboard");
     
                 }  
         })
@@ -261,7 +254,7 @@ const rationDon = (e) =>{
     }, [])
 
 console.log('here')
-console.log(user3);
+  console.log(user2);
 
     //value={user1.ngo} onChange={handleForm1}
     if (props.User === 1){
@@ -281,24 +274,25 @@ console.log(user3);
                                 
                             </select>
                         </div>
-                        <div class="form-group2">
-                            <input type="text" class="form-control shadow-none" id="exampleInputPassword1" placeholder="Amount ($)" name="amount" value={user1.name} onChange={handleForm1}/>
+                        <div class="form-group">
+                            <input type="text" class="form-control shadow-none" id="exampleInputPassword1" placeholder="Amount ($)" name="amount" value={user1.amount} onChange={handleForm1}/>
                             <p class="details1">Card Details</p>
                         </div>
                         
                         <div class="form-group">
                             {/* <label>Card Details</label> */}
-                            <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="Name On Card" name="nameCard" value={user1.nameOnCard} onChange={handleForm1}/>
+                            <input type="text" class="form-control shadow-none" id="namecard" placeholder="Name On Card" name="nameCard"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="Card Number" name="numCard" value={user1.cardNumber} onChange={handleForm1}/>
+                            <input type="text" class="form-control shadow-none" id="numcard" placeholder="Card Number" name="cardNumber" value={user1.cardNumber} onChange={handleForm1}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="Expiry Date" name="expDate" value={user1.expiryDate} onChange={handleForm1}/>
+                            <input type="text" class="form-control shadow-none" id="expdate" placeholder="Expiry Date" name="expDate" />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="CVC" name="cvc" value={user1.cvc} onChange={handleForm1}/>
-                            <button type = "submit" class="buttonsDonations" onClick={moneyDon }>Confirm Donation!</button>
+                            <input type="text" class="form-control shadow-none" id="cvc" placeholder="CVC" />
+                            <button type = "submit" class="buttonsDonations"  onClick={moneyDon }>Confirm Donation!</button>
+
                         </div>
                        
                     </form>
@@ -311,7 +305,7 @@ console.log(user3);
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <form>
                         <div class="form-group">
-                            <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="name" onChange={handleForm2}>
+                            <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="ngo" onChange={handleForm2}>
                                 <option>Select NGO</option>
                                 {
                                     ngo_lis.map((ele) =>

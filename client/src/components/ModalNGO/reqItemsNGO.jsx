@@ -1,11 +1,9 @@
 import './reqItemsNGO.css';
-import {IoChevronForwardCircle}  from 'react-icons/io5';
 import Grid from '@mui/material/Grid';
 import ListItem from '@mui/material/ListItem';
 import Avatar  from '@mui/material/Avatar';
 import ListItemAvatar  from '@mui/material/ListItemAvatar';
 import ListItemText from '@mui/material/ListItemText';
-import ListItemButton from '@mui/material/ListItemButton';
 import React from 'react';
 import { Typography } from '@mui/material';
 import Button from '@mui/material/Button';
@@ -32,6 +30,11 @@ const theme = createTheme({
 
 function RequestItemsNGO(props)
 {
+    function sentId()
+    {
+        props.click(props.email);
+    }
+
         return (
             <div>
                 <ListItem sx={{width: '100%', border:'1px solid #422F5F21', borderRadius:"25px", backgroundColor:"#fff",marginBottom:"20px"}}>
@@ -53,7 +56,7 @@ function RequestItemsNGO(props)
                     </ThemeProvider>
                 <Grid item display="flex" sx={{alignItems:"left",justifyContent:"flex-end"}}>
                 <ThemeProvider theme = {theme}>
-                <Button className='butClass2' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
+                <Button onClick={sentId} className='butClass2' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
                     {"&.MuiButtonBase-root:hover": {
                         bgcolor: "#264653"
                         },

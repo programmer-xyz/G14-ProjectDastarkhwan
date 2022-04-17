@@ -7,6 +7,7 @@ import {tokenMaker} from "../utils/tokenManager"
 import Ngo from "../models/ngoSchema.mjs"
 import Donation from "../models/donationsSchema.mjs";
 
+
 //login 
 export const restLogin =  handleAsyncErr(async (req,res, next) =>{
     const {email, password} = req.body;
@@ -76,7 +77,7 @@ export const restRegister = handleAsyncErr(async (req, res, next) =>{
         approvalStatus: "inProgress",
         approved: false
     });
-    //tokenMaker(user, 201, res);
+   
     res.status(200).json({
         success: true,
         message: "user added to app table",
@@ -188,9 +189,10 @@ export const viewRestStats = handleAsyncErr(async (req,res,next)=>
     {
         return next(new HandErr("email is missing",400));
     }
-    let restStats = await Rest.findOne({'email':email, 'isActive':true},{"mealDonated":1});
+    let restStats = await Rest.findOne({'email':email, 'isActive':true},{"dotionsListed":{$size:"$donations"},"mealsDonated":1});
     if(!!restStats)
     {
+        
         res.status(200).json({
             success:true,
             message:"Successfully found resturant stats",
@@ -227,10 +229,10 @@ export const myRequestRest = handleAsyncErr(async(req,res,next)=>
     let {email} = req.body;
     if(!!email)
     {
-        let rest = await Rest.findOne({'email':email,'isActive':true}).populate({path:'donations',populate:{
+        let rest = await Rest.findOne({'email':email,'isActive':true}).populate({path:'donations',select: 'createdAt acceptBy typeOfDonation isActive donataionComplete',populate:{
             path: 'acceptedBy',
             model: 'NGO',
-            select: 'name email userName address description phoneNumber contactEmail contactName contactNumber image'
+            select: 'name description image'
         }});
         if(!!rest)
         {   

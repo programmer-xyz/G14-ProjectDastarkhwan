@@ -5,79 +5,79 @@ import { Typography } from '@mui/material';
 import React, { useEffect,useState } from 'react';
 import { List } from '@mui/material';
 import image1 from '../../components/RequestItems/testImage.jpeg';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import {createTheme } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import { useNavigate } from "react-router-dom";
 import { findNgoUser,findNgoRest } from  '../../servicesApi/donation.js';
 
-const theme = createTheme({
-    typography: {
-    fontFamily: [
-        'Poppins',
-        'Sans-Serif',
-    ].join(','),
-    color:'#264653',
-    },});
+// const theme = createTheme({
+//     typography: {
+//     fontFamily: [
+//         'Poppins',
+//         'Sans-Serif',
+//     ].join(','),
+//     color:'#264653',
+//     },});
 
-var templist = [{
-    image: image1,
-    name:"Al Khair Foundation",
-    pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
-    NGOrequests: true,
-    // buttonStat:1
+// var templist = [{
+//     image: image1,
+//     name:"Al Khair Foundation",
+//     pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
+//     NGOrequests: true,
+//     // buttonStat:1
 
-},
-{
-    image: image1,
-    name:"Academy for Educational Developement",
-    pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
-    NGOrequests: true,
-    // buttonStat:1
+// },
+// {
+//     image: image1,
+//     name:"Academy for Educational Developement",
+//     pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
+//     NGOrequests: true,
+//     // buttonStat:1
 
-},
-{
-    image: image1,
-    name:"RNGB Foundation",
-    pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
-    NGOrequests: true,
-    // buttonStat:1
+// },
+// {
+//     image: image1,
+//     name:"RNGB Foundation",
+//     pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
+//     NGOrequests: true,
+//     // buttonStat:1
 
-},
-{
-    image: image1,
-    name:"Al Khair Foundation",
-    pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
-    NGOrequests: true,
-    // buttonStat:1
+// },
+// {
+//     image: image1,
+//     name:"Al Khair Foundation",
+//     pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
+//     NGOrequests: true,
+//     // buttonStat:1
 
-},
-{
-    image: image1,
-    name:"Academy for Educational Developement",
-    pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
-    NGOrequests: true,
-    // buttonStat:1
+// },
+// {
+//     image: image1,
+//     name:"Academy for Educational Developement",
+//     pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
+//     NGOrequests: true,
+//     // buttonStat:1
 
-},
-{
-    image: image1,
-    name:"RNGB Foundation",
-    pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
-    NGOrequests: true,
-    // buttonStat:1
+// },
+// {
+//     image: image1,
+//     name:"RNGB Foundation",
+//     pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
+//     NGOrequests: true,
+//     // buttonStat:1
 
-},
-]
+// },
+// ]
 
 export default function ModalNGO(prop){
     let naviagte = useNavigate();
     const [ngo_lis, setNgoLis] = useState([]);
-    const {onClick,state,handleClose,route} = prop;
+    const {onClick,state,handleClose,role,id_user} = prop;
     const getNgos = async() =>{
         let ngos = [];
         //let address = {"city": "karachi", "country": "Pakistan",  "streetNumber":"11",  "houseNumber":"1"}
-        let role = "rest"; //get from local storage
-        let id_user  = "62386a881d8d6e8aeabe6d6f"; // get from local storage
+        // let role = "rest"; //get from local storage
+        // let id_user  = "62386a881d8d6e8aeabe6d6f"; // get from local storage
         
 
         if(role === "user")
@@ -171,7 +171,7 @@ export default function ModalNGO(prop){
     outline: '1px solid slategrey'
     }}}>
     {ngo_lis.map(item =>(
-        <RequestItemsNGO image={item.image} name={item.name} description={item.description}/>
+        <RequestItemsNGO click={prop.onC} email={item.email} image={item.image} name={item.name} description={item.description}/>
     ))}
     </List>
     </Grid>
