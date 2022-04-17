@@ -1,6 +1,7 @@
 import './forms.css';
 import {createNgoUser,createRestUser,createAccountUser} from  '../../servicesApi/authenticationApi.js';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const user1Init ={
     name:"",
@@ -63,7 +64,7 @@ function Forms (props) {
     const [user2, setUser2] = useState(user2Init);
     const [user3, setUser3] = useState(user3Init);
 
-
+    const navigate =  useNavigate();
     const handleForm1 = (e)=>{
         e.preventDefault();
         const {name, value} = e.target;
@@ -126,7 +127,7 @@ function Forms (props) {
         {
             props.getState(err.response.data.message,"error",true);
         })
-    
+        //navigate('/')
     }
 
     const onCreateUser = (e) =>
@@ -149,6 +150,7 @@ function Forms (props) {
         {
             props.getState(err.response.data.message,"error",true);
         })
+        //navigate('/')
     }
     const onCreateRest = (e) =>
     {
@@ -162,7 +164,7 @@ function Forms (props) {
         {
             if(response.data.success)
             {
-                props.getState("Resturant registration application created,","success",true);
+                props.getState("Resturant registration application created,","success",true, '/');
                 console.log(response);
             }
           
@@ -170,7 +172,7 @@ function Forms (props) {
         {
             props.getState(err.response.data.message,"error",true);
         })
-        
+        //navigate('/')
     }
     console.log(user3)
     if (props.User === 1){

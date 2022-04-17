@@ -34,7 +34,8 @@ function Dashboard (props){
     let navigate = useNavigate();
     const[userStat,setUserStats] = useState({})
     const [state,setState] = useState(false);
-    const [email,setEmail] = useState ('adeel@gmail.com');
+    const [email, setEmail] = useState ('');
+    
     function handleClose(reason)
     {
         setState(false);
@@ -49,7 +50,7 @@ function Dashboard (props){
         navigate('/userdonationForms');
 
     }
-    async function getUserStats ()
+    async function getUserStats (email)
     {
       try
       {
@@ -65,10 +66,11 @@ function Dashboard (props){
     }
 
     //    let s = UseLoginUser();
-
+    console.log(localStorage.getItem('email'))
     useEffect( ()=>{
-        getUserStats();
-
+       
+        setEmail(localStorage.getItem('email'));
+        getUserStats(localStorage.getItem('email'));
     }, []);
 
     return(
