@@ -21,9 +21,11 @@ import UserProfile from './pages/UserProfile/userprofile.jsx';
 import ResProfile from './pages/resProfile/resProfile.jsx';
 import NGODashboard from './pages/DashboardNGO/dashNGO.jsx';
 import NgoProfile from './pages/ngoProfile/ngoProfile.jsx';
-import Modals from './components/Modals/SignOutModal.jsx'
-const App = () => {
+import Modals from './components/Modals/SignOutModal.jsx';
+import ModalAddress from './components/Modals/modalAddress.jsx';
+import NewPass from './pages/NewPassword/newPassword.jsx';
 
+const App = () => {
     return(
         <Router>
             <div className="App">
@@ -42,7 +44,14 @@ const App = () => {
                     {/* add dashboard routes here */}
                     <Route path ="/resturantDashboard" element = {<ResDashboard name={"Abdul Muizz khan"} />} />
                     <Route path ="/userdashboard" element = {<Dashboard/>} />
+                    <Route path = "/ngodashboard" element = {<NGODashboard/>} />
                     <Route path = "/adminDashboard" element = {<DashAdmin/>} />
+
+                    {/* add profile routes here */}
+                    <Route path = "/userprofile" element = {<UserProfile/>} />
+                    <Route path = "/resprofile" element = {<ResProfile/>} />
+                    <Route path = "/ngoprofile" element = {<NgoProfile/>} />
+
                     <Route path = "/ngoDashboard" element = {<NGODashboard/>}/>
                     {/* add Dashboard button routes here */}
                     <Route path="/ngoRequestAcceptPage" element = {<NGOacceptpage />} />
@@ -55,7 +64,9 @@ const App = () => {
                     <Route path="/profileCards" element = {<ProfileCards />} />
                     <Route path = "/modelResDetails" element ={<ResturantDetailModal state={true} email={"muizz481@gmail.com"} phoneNumber={'1231343421-2'} address={"512 f2 johar town lahore"} accountNumber={"23134211-3"} description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'} pointOfCName={"James Charles"} pointOfCEmail={"Jamescharles@gmail.com"} pointOfCNumber={"1232441"}/>} />
                     
-                   
+
+                    <Route path = "/address" element = {<ModalAddress state = {true}/>} />
+                    <Route path = "/newpass" element = {<NewPass />} />
                 </Routes>
             </div>
         </Router>

@@ -1,6 +1,8 @@
 import './forms.css';
 import {createNgoUser,createRestUser,createAccountUser} from  '../../servicesApi/authenticationApi.js';
 import { useState } from 'react';
+import ModalAddress from '../Modals/modalAddress';
+import { useNavigate } from 'react-router-dom';
 
 const user1Init ={
     name:"",
@@ -58,50 +60,48 @@ const  user3Init ={
 
 
 
+
 function Forms (props) {
     const [user1, setUser1] = useState(user1Init);
     const [user2, setUser2] = useState(user2Init);
     const [user3, setUser3] = useState(user3Init);
+    const [modalState,setModalState] = useState(false);
+    const [Addressset,setAddressState] = useState("Address (House No, St. Block, City, Country)")
+    const [Addressset1,setAddressState1] = useState("Address (House No, St. Block, City, Country)")
+    const [Addressset2,setAddressState2] = useState("Address (House No, St. Block, City, Country)")
+    // const [address,setAddress] = useState(Address);
+
+
 
 
     const handleForm1 = (e)=>{
         e.preventDefault();
         const {name, value} = e.target;
         setUser1({...user1, [name]: value});
-      
+
     }
 
     const handleForm2 = (e)=>{
         e.preventDefault();
         const {name, value} = e.target;
         setUser2({...user2, [name]: value});
-      
+
     }
 
     const handleForm3 = (e)=>{
         e.preventDefault();
         const {name, value} = e.target;
         setUser3({...user3, [name]: value});
-      
+
     }
     const onFileChange = event => {
     
-        // Update the state
-        //let file = event.target.files[0];
-        // let reader = new FileReader();
-        // reader.readAsDataURL(file);
-        // reader.onload = (e) =>
-        // {
-        //     // let formData = new FormData();
-        //     // formData.append("verifyDoc",e.target.result)
-        //     setUser3({...user3, file: e.target.result});
-        // }
         setUser3({...user3, file: event.target.files[0]});
-      
-      };
+    
+    };
 
     const onCreate = (e) =>{
- 
+
         e.preventDefault();
         // let city = user3.city
         // let country = user3.country
@@ -165,33 +165,81 @@ function Forms (props) {
                 props.getState("Resturant registration application created,","success",true);
                 console.log(response);
             }
-          
+
         }).catch((err,response)=>
         {
             props.getState(err.response.data.message,"error",true);
         })
         
     }
-    console.log(user3)
+
+    function handleClose(reason)
+    {
+        if (reason !== "backdropClick")
+        {
+        
+        } else {
+            setModalState(false);
+
+        }
+    }
+    function getinfo(address)
+    {
+        let z = "";
+        console.log(address);
+        setModalState(false);
+        for (const key in address){
+            if(z===""){
+                z=z+address[key];
+            }
+            else {
+                z=z+" , "+address[key];
+            }
+        }
+        console.log("This is z,",z);
+        if(props.User === 1)
+        {
+            
+            setAddressState(z);
+
+        }
+        else if (props.User === 2)
+        {
+            setAddressState1(z);
+        }
+        else if (props.User === 3)
+        {
+            setAddressState2(z);
+        }
+
+    }
+
+    function openModal (e){
+        e.preventDefault();
+
+        setModalState(true);
+    }
+
     if (props.User === 1){
         return(
                 <div class = "row newClass">
+                    <ModalAddress state = {modalState} handleClose = {handleClose} onClick3 = {getinfo} User={1}/>
                     <div class= "col-lg-6 col-xs-12 col-md-4 col-sm-12 col1">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputUser1" aria-describedby="emailHelp" placeholder="Name" name ="name" value={user1.name} onChange = {handleForm1}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputUser1" aria-describedby="emailHelp" placeholder="Name" name ="name" value={user1.name} onChange = {handleForm1}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputUserName1" placeholder="User Name" name= "username" value = {user1.username} onChange = {handleForm1}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputUserName1" placeholder="User Name" name= "username" value = {user1.username} onChange = {handleForm1}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleEmail1" placeholder="Email" name="email" value = {user1.email} onChange = {handleForm1}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleEmail1" placeholder="Email" name="email" value = {user1.email} onChange = {handleForm1}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleNum1" placeholder="Phone Number" name="phoneNum" value = {user1.phoneNum} onChange = {handleForm1}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleNum1" placeholder="Phone Number" name="phoneNum" value = {user1.phoneNum} onChange = {handleForm1}/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control shadow-none" id="examplePW1" placeholder="Password" name= "pw" value = {user1.pw} onChange = {handleForm1}/>
+                            <input type="password" class="form-control input3 shadow-none" id="examplePW1" placeholder="Password" name= "pw" value = {user1.pw} onChange = {handleForm1}/>
                         </div>
                     </form>
                     </div>
@@ -199,13 +247,13 @@ function Forms (props) {
                     <div class= "col-lg-6 col-xs-12 col-md-4 col-sm-12 col2">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputCnic1" aria-describedby="emailHelp" placeholder="CNIC" name= "cnic" value = {user1.cnic} onChange = {handleForm1}/>                        
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputCnic1" aria-describedby="emailHelp" placeholder="CNIC" name= "cnic" value = {user1.cnic} onChange = {handleForm1}/>                        
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputAddress1" placeholder="Address (House No, St. Block, City, Country)" name= "address" value = {user1.address} onChange = {handleForm1}/>
+                            <input onClick = {openModal} type="text" class="form-control input3 shadow-none" id="exampleInputAddress1" placeholder={`${Addressset}`} name= "address" value = {user1.address} onChange={handleForm1}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleDescription1" placeholder="Description" name= "description" value = {user1.description} onChange = {handleForm1}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleDescription1" placeholder="Description" name= "description" value = {user1.description} onChange = {handleForm1}/>
                             <button type = "submit" class="buttonsForms" onClick={onCreateUser}>SIGN UP!</button>
                         </div>
                     </form>
@@ -218,40 +266,41 @@ function Forms (props) {
     else if (props.User === 2){
         return (
             <div class = "row newClass">
+                <ModalAddress state = {modalState} handleClose = {handleClose} onClick3 = {getinfo} User={2}/>
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputName2" aria-describedby="emailHelp" placeholder="Name" name = "name" value = {user2.name} onChange = {handleForm2}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputName2" aria-describedby="emailHelp" placeholder="Name" name = "name" value = {user2.name} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputUserName2" placeholder="User Name" name = "username" value = {user2.username} onChange = {handleForm2}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputUserName2" placeholder="User Name" name = "username" value = {user2.username} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleemail2" placeholder="Email" name = "email" value = {user2.email} onChange = {handleForm2}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleemail2" placeholder="Email" name = "email" value = {user2.email} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleNum2" placeholder="Phone Number" name = "phoneNum" value = {user2.phoneNum} onChange = {handleForm2}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleNum2" placeholder="Phone Number" name = "phoneNum" value = {user2.phoneNum} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control shadow-none" id="examplePW2" placeholder="Password" name = "pw" value = {user2.pw} onChange = {handleForm2}/>
+                            <input type="password" class="form-control input3 shadow-none" id="examplePW2" placeholder="Password" name = "pw" value = {user2.pw} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck2" placeholder="Address (House No, St. Block, City, Country)" name = "address" value = {user2.address} onChange = {handleForm2}/>
+                            <input type="text" onClick = {openModal} class="form-control input3 shadow-none" id="exampleCheck2" placeholder={`${Addressset1}`} name = "address" value = {user2.address} onChange = {handleForm2}/>
                         </div>
                     </form>
                     </div>
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputEmail3" aria-describedby="emailHelp" placeholder="Description" name = "description" value = {user2.description} onChange = {handleForm2}/>                        </div>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputEmail3" aria-describedby="emailHelp" placeholder="Description" name = "description" value = {user2.description} onChange = {handleForm2}/>                        </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputPassword3" placeholder="Contact Name" name = "name2" value = {user2.name2} onChange = {handleForm2}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputPassword3" placeholder="Contact Name" name = "name2" value = {user2.name2} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck3" placeholder="Contact Number" name = "phoneNum2" value = {user2.phoneNum2} onChange = {handleForm2}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleCheck3" placeholder="Contact Number" name = "phoneNum2" value = {user2.phoneNum2} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control shadow-none" id="exampleCheck3" placeholder="Contact Email" name = "email2" value = {user2.email2} onChange = {handleForm2}/>
+                            <input type="email" class="form-control input3 shadow-none" id="exampleCheck3" placeholder="Contact Email" name = "email2" value = {user2.email2} onChange = {handleForm2}/>
                         </div>
                         <button type = "submit" class="buttonsForms1" onClick={onCreateRest}>SIGN UP!</button>
                     </form>
@@ -262,47 +311,48 @@ function Forms (props) {
     else if (props.User === 3){
         return (
             <div class = "row newClass">
+                <ModalAddress state = {modalState} handleClose = {handleClose} onClick3 = {getinfo} User={3} />
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputEmail42" aria-describedby="emailHelp" placeholder="Name" name = "name" value = {user3.name} onChange = {handleForm3}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputEmail42" aria-describedby="emailHelp" placeholder="Name" name = "name" value = {user3.name} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputPassword41" placeholder="User Name" name = "username" value = {user3.username} onChange = {handleForm3}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputPassword41" placeholder="User Name" name = "username" value = {user3.username} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck46" placeholder="Email" name = "email" value = {user3.email} onChange = {handleForm3}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleCheck46" placeholder="Email" name = "email" value = {user3.email} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck45" placeholder="Phone Number" name = "phoneNum" value = {user3.phoneNum} onChange = {handleForm3}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleCheck45" placeholder="Phone Number" name = "phoneNum" value = {user3.phoneNum} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control shadow-none" id="exampleCheck44" placeholder="Password" name = "pw" value = {user3.pw} onChange = {handleForm3}/>
+                            <input type="password" class="form-control input3 shadow-none" id="exampleCheck44" placeholder="Password" name = "pw" value = {user3.pw} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck43" placeholder="Address (House No, St. Block, City, Country)" name = "address" value = {user3.address} onChange = {handleForm3}/>
+                            <input type="text" onClick = {openModal} class="form-control input3 shadow-none" id="exampleCheck43" placeholder={`${Addressset2}`} name = "address" value = {user3.address} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck42" placeholder="Account Number" name = "bankAccount" value = {user3.bankAccount} onChange = {handleForm3}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleCheck42" placeholder="Account Number" name = "bankAccount" value = {user3.bankAccount} onChange = {handleForm3}/>
                         </div>
                     </form>
                     </div>
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12 ">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputEmail5" aria-describedby="emailHelp" placeholder="Description" name = "description" value = {user3.description} onChange = {handleForm3}/>                        </div>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputEmail5" aria-describedby="emailHelp" placeholder="Description" name = "description" value = {user3.description} onChange = {handleForm3}/>                        </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputPassword5" placeholder="Contact Name" name = "name2" value = {user3.name2} onChange = {handleForm3}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputPassword5" placeholder="Contact Name" name = "name2" value = {user3.name2} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck52" placeholder="Contact Number" name = "phoneNum2" value = {user3.phoneNum2} onChange = {handleForm3}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleCheck52" placeholder="Contact Number" name = "phoneNum2" value = {user3.phoneNum2} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control shadow-none" id="exampleCheck51" placeholder="Contact Email" name = "email2" value = {user3.email2} onChange = {handleForm3}/>
+                            <input type="email" class="form-control input3 shadow-none" id="exampleCheck51" placeholder="Contact Email" name = "email2" value = {user3.email2} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
                             <label>Add Certification Email</label>
-                            <input type="file" class="form-control shadow-none" id="exampleCheck5" placeholder="Add Certification Email"  onChange = {onFileChange}/>
+                            <input type="file" class="form-control input3 shadow-none" id="exampleCheck5" placeholder="Add Certification Email"  onChange = {onFileChange}/>
                         </div>
                         <button type = "submit" class="buttonsForms1" onClick={onCreate}>SIGN UP!</button>
                     </form>

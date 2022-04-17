@@ -10,25 +10,11 @@ import { makeStyles } from '@material-ui/core/styles';
 export default function SignOutModals(prop)
 {
 let naviagte = useNavigate();
-const {modelMsg,state,modalImage,actionMsg,actionMsg2,route} = prop;
-const [open,setOpen] = React.useState(state);
-function handleClose(reason)
-{
-if (reason !== "backdropClick")
-{
-    return 
-}
-setOpen(false);
-}
-function onClick()
-{
-setOpen(false);
-naviagte(`/${route}`)
-}
+const {modelMsg,state,actionMsg,actionMsg2,route,handleClose,onClick,onClick2} = prop;
 return (
 <div>
     <Dialog PaperProps={{ sx: { width: "572px", height: "214px" } }}
-    open={open}
+    open={state}
     aria-labelledby="responsive-dialog-title"
     onClose={handleClose}
     >
@@ -40,7 +26,7 @@ return (
     <Grid item>
         <DialogActions sx = {{justifyContent:"center", alignItems:"center",}}>
         <button onClick={onClick} type = "submit" className="buttonsSignOut2">{actionMsg}</button>
-        <button onClick={onClick} type = "submit" className="buttonsSignOut" >{actionMsg2}</button>
+        <button onClick={onClick2} type = "submit" className="buttonsSignOut" >{actionMsg2}</button>
         </DialogActions>
     </Grid>
     </Dialog>
