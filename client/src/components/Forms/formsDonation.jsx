@@ -9,7 +9,7 @@ const user1Init ={
     ngo:"",
     amount:"",
 
-    cardNumber:"",
+    cardNumber:""
    
 };
 
@@ -95,7 +95,7 @@ function FormsDonation (props) {
                 //         "actionMsg":"Back to Dashboard",
                 //         "route":"",
                 //     }
-                    props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/resturantDashboard");
+                    props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","resturantDashboard");
 
                 }  
         })
@@ -110,7 +110,7 @@ function FormsDonation (props) {
             if(response.data.success)
             {
            
-                props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/userdashboard");
+                props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","userdashboard");
 
             }  
     })
@@ -149,7 +149,7 @@ const rationDon = (e) =>{
             //         "actionMsg":"Back to Dashboard",
             //         "route":"",
             //     }
-                props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/userdashboard");
+                props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","userdashboard");
 
             }  
     })
@@ -168,7 +168,7 @@ const rationDon = (e) =>{
         let role = "user";
         if(role === "user")
         {
-            moneyDonationUser (em, user1.ngo, user1.amount, user1.cardNum).then((response)=>{
+            moneyDonationUser (em, user1.ngo, user1.amount, user1.cardNumber).then((response)=>{
 
                 if(response.data.success)
                 {
@@ -179,7 +179,7 @@ const rationDon = (e) =>{
                 //         "actionMsg":"Back to Dashboard",
                 //         "route":"",
                 //     }
-                    props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/userdashboard");
+                    props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","userdashboard");
     
                 }  
         })
@@ -275,7 +275,7 @@ console.log('here')
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputPassword1" placeholder="Amount ($)" name="amount" value={user1.name} onChange={handleForm1}/>
+                            <input type="text" class="form-control shadow-none" id="exampleInputPassword1" placeholder="Amount ($)" name="amount" value={user1.amount} onChange={handleForm1}/>
                             <p class="details1">Card Details</p>
                         </div>
                         
@@ -284,13 +284,13 @@ console.log('here')
                             <input type="text" class="form-control shadow-none" id="namecard" placeholder="Name On Card" name="nameCard"/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="numcard" placeholder="Card Number" name="numCard" value={user1.cardNumber} onChange={handleForm1}/>
+                            <input type="text" class="form-control shadow-none" id="numcard" placeholder="Card Number" name="cardNumber" value={user1.cardNumber} onChange={handleForm1}/>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="expdate" placeholder="Expiry Date" name="expDate" />
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="cvc" placeholder="CVC" name="cvc" value={user1.cvc} onChange={handleForm1}/>
+                            <input type="text" class="form-control shadow-none" id="cvc" placeholder="CVC" />
                             <button type = "submit" class="buttons" onClick={moneyDon }>Confirm Donation!</button>
                         </div>
                        
