@@ -85,7 +85,7 @@ function Cards (props) {
             <hr class="hr1"></hr>
             <div class="row">
                 <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                    <button class="buttonsCards">Accept Donations</button>
+                    <button class="buttonsCards" onClick={props.openDM}>Accept Donations</button>
                 </div>
                 <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <button class="buttonsCards white" onClick={openRequestModel}>Past Requests</button>
