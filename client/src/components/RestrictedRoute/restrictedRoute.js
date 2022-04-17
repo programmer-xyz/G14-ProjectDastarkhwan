@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Navigate} from 'react-router-dom';
+import { Route, Navigate,Routes} from 'react-router-dom';
 //import { useNavigate } from 'react-router-dom';
 
 export default function PrivateRoute(props) {   
@@ -13,7 +13,11 @@ export default function PrivateRoute(props) {
 
     
       if(session_token!==null){
-        return ( <Route {...rest} render={(props) => (<Component {...props}/>)}/>)
+        return ( 
+      
+        <Route {...rest} render={(props) => (<Component {...props}/>)}/>
+ 
+        )
         } else {
           return <Navigate to='/'/> 
         }

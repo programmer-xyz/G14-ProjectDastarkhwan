@@ -26,7 +26,8 @@ import { useState } from 'react';
 
 // import { UserInfo } from './customHooks/userInfo.js';
 // import {UseLoginUser} from "./customHooks/LoginHook";
-//import PrivateRoute from './components/RestrictedRoute/restrictedRoute.js';
+import PrivateRoute from './components/RestrictedRoute/restrictedRoute.js';
+import { Switch } from '@mui/material';
 
 const App = () => {
     const [userType, setUserType] = useState(''); // user, admin, ngo, rest
