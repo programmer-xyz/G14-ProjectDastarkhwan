@@ -256,12 +256,12 @@ export const deleteProfile = handleAsyncErr(async (req,res,next)=>
 export const viewDonation = handleAsyncErr(async (req,res,next)=>
 {
     let {ngoId} = req.body
+    console.log("Here is the ngo id",ngoId);
     if(!!ngoId)
     {
         var id = mongoose.Types.ObjectId(ngoId);
         //validate NGO
         var response = await Ngo.findOne({'_id': id, 'isActive': true})
-        console.log(response)
         if(!response)
         {
             return next(new HandErr("NGO with this id dosen't exist or has been deleted",401));
@@ -285,7 +285,7 @@ export const viewDonation = handleAsyncErr(async (req,res,next)=>
                      as: 'restDetails'
                   }
             },
-            { $match: { acceptedBy:id }},
+            { $match: { acceptedBy:id,isActive:true}},
             { $project : {userDetails:
             {
                 password:0,
@@ -315,11 +315,7 @@ export const viewDonation = handleAsyncErr(async (req,res,next)=>
         }
         else
         {
-            res.status(200).json({
-                success:false,
-                message:"No pending donations to accept",
-                data: donations
-            });
+            return next(new HandErr("No pending request to show",400));
         }
 
     }
@@ -351,7 +347,7 @@ export const viewUserDonation= handleAsyncErr(async (req,res,next)=>{
                     as: 'userDetails'
                  }
             },
-            { $match: { acceptedBy:id ,donatedByRestaurant:null}},
+            { $match: { acceptedBy:id ,donatedByRestaurant:null,isActive:true}},
             { $project : {userDetails:
             {
                 password:0,
@@ -373,11 +369,7 @@ export const viewUserDonation= handleAsyncErr(async (req,res,next)=>{
         }
         else
         {
-            res.status(200).json({
-                success:false,
-                message:"No pending donations to accept",
-                data: donations
-            });
+            return next(new HandErr("No pending request to show",400));
         }
 
     }
@@ -409,7 +401,7 @@ export const viewRestDonation = handleAsyncErr(async (req,res,next)=>
                     as: 'restDetails'
                  }
             },
-            { $match: { acceptedBy:id ,donatedByUser:null}},
+            { $match: { acceptedBy:id ,donatedByUser:null,isActive:true}},
             { $project : {restDetails:
             {
                 password:0,
@@ -429,11 +421,7 @@ export const viewRestDonation = handleAsyncErr(async (req,res,next)=>
         }
         else
         {
-            res.status(200).json({
-                success:false,
-                message:"No pending donations to accept",
-                data: donations
-            });
+            return next(new HandErr("No pending request to show",400));
         }
     }
     else
@@ -576,7 +564,6 @@ export const userRequestNgo = handleAsyncErr(async(req,res,next)=>
         match:{'donatedByRestaurant':null},
         populate:{
             path: 'donatedByUser',
-            
             model: 'User',
             select: 'name email userName address description phoneNumber'
         }
@@ -685,4 +672,36 @@ export const findNgoRest = handleAsyncErr(async(req,res,next)=>{
 
     console.log(cityNgos);
 
+});
+
+export const deleteProfileNgo = handleAsyncErr(async(req,res,next)=>{
+
+    let {email} = req.body;
+    if (!!email)   
+    {
+        const filter = {email:email,isActive:true}
+        const update = {$set:{"isActive":false,"donationsAccepted.$.isActive":false}}
+        let ngo_obj = await Ngo.findOneAndUpdate(filter,update,{
+            new:true
+        });
+        if(!!ngo_obj)
+        {
+            res.status(200).json({
+                success:true,
+                message:"successfully deleted profile",
+                body:ngo_obj
+            })
+        }
+        else
+        {
+            return next(new HandErr("NGO dosen't exist or is no longer active",400));
+        }
+        
+
+    }
+    else
+    {
+        return next(new HandErr("Could not delete profile as email id was not found",400));
+    }
+    
 });
