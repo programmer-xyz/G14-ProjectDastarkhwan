@@ -5,8 +5,10 @@ import Cards2 from '../../components/ProfileCard/profileCard.jsx';
 import { Grid,Typography,Box} from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import image2 from '../../assets/ResturantbackgroundImage.png';
-
-
+import {useState,useEffect} from 'react';
+import {myStats} from '../../servicesApi/DashboardResturant.js';
+import { useNavigate } from "react-router-dom";
+import Modalsmyrequest from "../../components/ModelMyRequest/ModelMyRequest.jsx";
 const theme = createTheme({
     typography: {
       fontFamily: [
@@ -24,8 +26,47 @@ const theme1 = createTheme({
     },});
 
 function Dashboard (props){
+    let naviagte = useNavigate();
+    const[userStat,setUserStats] = useState({})
+    const [state,setState] = useState(false);
+    const [route,setRoute] = useState ('');
+    const [email,setEmail] = useState ('rest4@gmail.com');
+    function handleClose(reason)
+    {
+        setState(false);
+    }
+    function onClick()
+    {
+        setState(false);
+        naviagte(`/${route}`)
+    }
+    async function getUserStats ()
+    {
+      try
+      {
+          
+          let res = await myStats(email)
+          setUserStats(res.data.body);
+          console.log(userStat);
+        }
+        catch (err)
+        {
+            console.log(err)
+        }
+    }
+    useEffect( ()=>{
+        getUserStats();
+
+    }, [])
+    function getModelStatus(open)
+    {
+        setState(open);
+    }
+
+
     return(
     <Box sx = {{spacing: "0",backgroundColor:'rgba(42, 157, 143, 0.1)',paddingLeft:'5%',backgroundImage:`url(${image2})`,backgroundRepeat:'no-repeat',backgroundPositionX:'center',backgroundSize:'50% auto'}}>
+        <Modalsmyrequest User= {1} handleClose={handleClose} state={state} email={email}/>
         <Grid  container direction="row" display="flex" sx={{width:'100%', height:'100%'}}>
             <Grid container sx={{margin:"0%"}}>
             <Grid item sx={{width:"100vw", height:"100%" ,padding:"0% 0% 4% 0%"}}>
@@ -52,7 +93,7 @@ function Dashboard (props){
             </Grid>
             <Grid container display="flex"  sx ={{height:"50%"}} columns={2}>
             <Grid item sx = {{width:'70%',height:'25%'}}>
-            <Cards Resturant={0} mealDonations={10} rationDonations={20}/>
+            <Cards Resturant={0} mealsDonated={userStat.mealsDonated} ngosDonatedTo={userStat.dotionsListed} openRequst={getModelStatus} />
             </Grid>
             <Grid item sx = {{width:'30%', height:'25%'}}>
             <Cards2 />

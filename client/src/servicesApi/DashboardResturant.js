@@ -10,3 +10,12 @@ export const myRequests  = async (email) =>{
     return await axios.post(`${Url}/myRequest`,obj);
 }
 
+export const myStats = async (email) =>
+{
+    let obj = {
+        email:email
+    }
+    return await axios.post(`${Url}/statProfile`,obj);
+    
+}
+

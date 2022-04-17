@@ -188,9 +188,10 @@ export const viewRestStats = handleAsyncErr(async (req,res,next)=>
     {
         return next(new HandErr("email is missing",400));
     }
-    let restStats = await Rest.findOne({'email':email, 'isActive':true},{"mealDonated":1});
+    let restStats = await Rest.findOne({'email':email, 'isActive':true},{"dotionsListed":{$size:"$donations"},"mealsDonated":1});
     if(!!restStats)
     {
+        
         res.status(200).json({
             success:true,
             message:"Successfully found resturant stats",
