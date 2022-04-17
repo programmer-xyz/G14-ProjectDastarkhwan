@@ -21,14 +21,15 @@ import UserProfile from './pages/UserProfile/userprofile.jsx';
 import ResProfile from './pages/resProfile/resProfile.jsx';
 import NGODashboard from './pages/DashboardNGO/dashNGO.jsx';
 import NgoProfile from './pages/ngoProfile/ngoProfile.jsx';
-import Modals from './components/Modals/SignOutModal.jsx'
+import Modals from './components/Modals/SignOutModal.jsx';
+import { useState } from 'react';
 
 // import { UserInfo } from './customHooks/userInfo.js';
 // import {UseLoginUser} from "./customHooks/LoginHook";
 //import PrivateRoute from './components/RestrictedRoute/restrictedRoute.js';
 
 const App = () => {
-
+    const [userType, setUserType] = useState(''); // user, admin, ngo, rest
     // let role = "user";
     // const {loggedState} = UseLoginUser();
 
@@ -39,24 +40,24 @@ const App = () => {
                 <Routes> 
              
                     {/* // add authentication routes here login /signup/forget/change/logout */}
-                    <Route path='/' element={<Login/>}/>
-                    <Route path="/adminlogin" element = {<AdminModalSignIn state = {true}/>} />
+                    <Route path='/' element={<Login setUserType={setUserType}/>}/>
+                    <Route path="/adminlogin" element = {<AdminModalSignIn setUserType={setUserType} state = {true}/>} />
                     <Route path="/Signup" element= {<Signup/>}/> 
                     <Route path="/forgotpassword" element = {<ForgotPass />} />
                     <Route path="/signoutModal" element={<Modals state={true} modelMsg={"Are you sure you want to sign out"} actionMsg={"cancel"} actionMsg2={"sign out"}/>} />
                     
                     {/* add donation routes here  */}
-                    <Route path = "/userdonationForms" element= {<DonationForms Resturant={false}/>} />
-                    <Route path = "/resturantdonationForms" element={<DonationForms Resturant={true}/>}/> 
+                    <Route path = "/userdonationForms" element= {userType === 'user' ? <DonationForms setUserType={setUserType} Resturant={false}/> : <Login setUserType={setUserType}/>} />
+                    <Route path = "/resturantdonationForms" element={userType === 'rest' ? <DonationForms setUserType={setUserType} Resturant={true}/> : <Login setUserType={setUserType}/>}/> 
 
                     {/* add dashboard routes here */}
-                    <Route path ="/resturantDashboard" element = {<ResDashboard name={"Abdul Muizz khan"} />} />
-                    <Route path ="/userdashboard" element = {<Dashboard/>} />
-                    <Route path = "/adminDashboard" element = {<DashAdmin/>} />
-                    <Route path = "/ngoDashboard" element = {<NGODashboard/>}/>
+                    <Route path ="/resturantDashboard" element = {userType === 'rest' ? <ResDashboard setUserType={setUserType} name={"Abdul Muizz khan"} /> : <Login setUserType={setUserType}/>} />
+                    <Route path ="/userdashboard" element = {userType === 'user' ? <Dashboard setUserType={setUserType}/> : <Login setUserType={setUserType}/>} />
+                    <Route path = "/adminDashboard" element = {userType === 'admin' ? <DashAdmin setUserType={setUserType}/> : <Login setUserType={setUserType}/>} />
+                    <Route path = "/ngoDashboard" element = {userType === 'ngo' ? <NGODashboard setUserType={setUserType}/> : <Login setUserType={setUserType}/>}/>
 
                     {/* add Dashboard button routes here */}
-                    <Route path="/ngoRequestAcceptPage" element = {<NGOacceptpage />} />
+                    <Route path="/ngoRequestAcceptPage" element = {userType === 'ngo' ? <NGOacceptpage setUserType={setUserType} /> : <Login setUserType={setUserType}/>} />
                     <Route path = "/myRequests" element = {<Modalsmyrequest state={true} User={0}/>} />
 
                     {/* add models routes and cards etc here*/}
@@ -69,7 +70,7 @@ const App = () => {
             
                 </Routes>
 
-                {/* <PrivateRoute path="/userdonationForms"  component={Resturant => <DonationForms {...Resturant}/>}/>
+                {/* <PrivateRoute path="/userdonationForms"  component={Resturant => <DonationForms setUserType={setUserType} {...Resturant}/>}/>
                 <PrivateRoute path="/adminDashboard" component={DashAdmin}/> */}
             </div>
             {/* </UserInfo.Provider> */}

@@ -19,7 +19,7 @@ const theme = createTheme({
 
 export default function AdminModalSignIn(props){
     let naviagte = useNavigate();
-    const {modelMsg,state,modalImage,actionMsg,route} = props;
+    const {modelMsg,state,modalImage,actionMsg,route,setUserType} = props;
     const [open,setOpen] = React.useState(state);
 
     
@@ -62,7 +62,7 @@ export default function AdminModalSignIn(props){
         </Grid>
         <p>&nbsp;</p>
         <Grid container display="flex" alignItems={'center'} justifyContent="center">
-            <LoginForm user = {4} isAdmin={true}/>
+            <LoginForm setUserType={setUserType} user = {4} isAdmin={true}/>
         </Grid>
         <p>&nbsp;</p>
         <Grid container display="flex" alignItems={'center'} justifyContent="center">

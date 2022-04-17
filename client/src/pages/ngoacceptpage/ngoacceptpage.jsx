@@ -7,7 +7,7 @@ import React from 'react';
 import { List } from '@mui/material';
 import image1 from '../../components/RequestItems/testImage.jpeg';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Navbar from '../../components/Navbar/Navbar';
+import NavBar from '../../components/Navbar/Navbar';
 import {useState,useEffect} from 'react';
 import { makeRequestNgo,makeRequestNgoUser,makeRequestRestNgo } from '../../servicesApi/ngoAcceptpage';
 import { useNavigate } from 'react-router-dom';
@@ -204,7 +204,7 @@ function NGOacceptpage(props){
         return (
             <div className="yello">
             <Grid sx ={{marginBottom:"2%"}}>
-            <Navbar />
+            <NavBar setUserType={props.setUserType}/>
             </Grid>
             <Grid container display="flex" alignItems={'center'} justifyContent="center" sx={{backgroundColor:'#FEF6EF'}}>
             <Grid container alignItems={'center'} justifyContent="center">

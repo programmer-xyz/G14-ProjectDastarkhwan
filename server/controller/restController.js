@@ -48,8 +48,8 @@ export const restLogin =  handleAsyncErr(async (req,res, next) =>{
 
 export const restRegister = handleAsyncErr(async (req, res, next) =>{
     const {name, email, phoneNumber, password,description, contactNum, contactName, contactEmail, userName,address} = req.body;
-    console.log(req.body);
-    console.log(contactName);
+    //console.log(req.body);
+    //console.log(contactName);
     if(!name || !email || !phoneNumber || !password || !description || !contactNum || !contactName || !contactEmail|| !userName || !address){
         return next(new HandErr("some fields are missing enter again!", 400))
     }
@@ -120,7 +120,7 @@ export const forgetPassUpdatePassRes = handleAsyncErr(async(req,res,next)=>{
     let hashPass = await bcrypt.hash(newPassword,12);
     let update = {password:hashPass};
     let updatedRest = await Rest.findOneAndUpdate(filter,update,{new:true});
-    console.log(updatedRest);
+    //console.log(updatedRest);
     if (updatedRest)
     {
         res.status(200).json({
@@ -145,7 +145,7 @@ export const changePassRes = handleAsyncErr(async(req,res,next)=>{
     let hashPass = await bcrypt.hash(newPassword,12);
     let update = {password:hashPass};
     let updatedRest = await Ngo.findOneAndUpdate(filter,update,{new:true});
-    console.log(updatedRest);
+    //console.log(updatedRest);
     if (updatedRest)
     {
         res.status(200).json({
@@ -162,13 +162,13 @@ export const changePassRes = handleAsyncErr(async(req,res,next)=>{
 export const viewRestProfile = handleAsyncErr(async (req,res,next)=>
 {
     let {email} = req.body
-    console.log(email)
+    //console.log(email)
     if(!email)
     {
         return next(new HandErr("email is missing",400));
     }
     let restProfile = await Rest.findOne({'email':email, 'isActive':true},{password:0});
-    console.log(restProfile)
+    //console.log(restProfile)
     if(!!restProfile)
     {
         res.status(200).json({
@@ -258,8 +258,8 @@ export const myRequestRest = handleAsyncErr(async(req,res,next)=>
 });
 export const mealDonation = handleAsyncErr(async (req,res,next) =>{
     //user email and selected ngo will be sent from frontend
-    console.log(req.body);
-    console.log(req.file);
+    //console.log(req.body);
+    //console.log(req.file);
     let image = req.file.buffer;
    
     let {address, description, email, ngoIdentifier} = req.body;
@@ -315,7 +315,7 @@ export const deleteProfile = handleAsyncErr(async (req,res,next)=>
                     const deleteNgo = await Rest.findOneAndUpdate({'email':email, 'isActive': true},{"isActive":false})
                     const ids = deleteNgo._id;
                     const deactivate = await Donation.updateMany({ "donatedByRestaurant":  ids }, { "$set": { "isActive": "false" }})
-                    console.log(deactivate)
+                    //console.log(deactivate)
                 }
                 catch (error)
                 {

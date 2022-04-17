@@ -11,7 +11,7 @@ import mongoose from "mongoose";
 //login 
 export const userLogin =  handleAsyncErr(async (req,res, next) =>{
     const {email, password} = req.body;
-    console.log(req.body);
+    //console.log(req.body);
 
     if(!email || !password){
        
@@ -49,7 +49,7 @@ export const userLogin =  handleAsyncErr(async (req,res, next) =>{
 
 export const userRegister = handleAsyncErr(async (req, res, next) =>{
     const {name, email, phoneNumber, password,description,userName,address, CNIC} = req.body;
-    console.log(req.body);
+    //console.log(req.body);
    
     if(!name || !email || !phoneNumber || !password || !description ||!CNIC || !userName || !address){
         return next(new HandErr("some fields are missing enter again!", 400))
@@ -94,7 +94,7 @@ export const forgetPassCheckUser = handleAsyncErr(async(req,res,next)=>{
     
     // here we will first find the user 
     const userobj = await User.findOne({email});
-    console.log(userobj);
+    //console.log(userobj);
     if (!userobj)
     {
         return next(new HandErr("No user found with the specific email",401))
@@ -199,7 +199,7 @@ export const mealDonation = handleAsyncErr(async (req,res,next) =>{
 
 export const rationDonation = handleAsyncErr(async (req,res,next) =>{
     //user email and selected ngo will be sent from frontend
-    console.log(req.body);
+    //console.log(req.body);
     let image = req.file.buffer;
   
     let {address, description, email, ngoIdentifier} = req.body;
@@ -278,7 +278,7 @@ export const viewUserProfile = handleAsyncErr(async (req,res,next)=>
         return next(new HandErr("email is missing",400));
     }
     let user = await User.findOne({'email':email, 'isActive':true},{password:0});
-    console.log(user)
+    //console.log(user)
     if(!!user)
     {
         res.status(200).json({
@@ -388,7 +388,7 @@ export const deleteProfile = handleAsyncErr(async (req,res,next)=>
                     const deleteNgo = await User.findOneAndUpdate({'email':email, 'isActive': true},{"isActive":false})
                     const ids = deleteNgo._id;
                     const deactivate = await Donation.updateMany({ "donatedByUser":  ids }, { "$set": { "isActive": false }})
-                    console.log(deactivate)
+                    //console.log(deactivate)
                 }
                 catch (error)
                 {

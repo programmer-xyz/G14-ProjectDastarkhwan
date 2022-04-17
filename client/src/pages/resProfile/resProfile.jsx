@@ -32,7 +32,7 @@ function resProfile (props){
         <Grid  container direction="row" display="flex" sx={{width:'100%', height:'100%'}}>
             <Grid container sx={{margin:"0%"}}>
             <Grid item sx={{width:"100vw", height:"100%" ,padding:"0% 0% 4% 0%"}}>
-            <NavBar />
+            <NavBar setUserType={props.setUserType}/>
             </Grid>
             </Grid>
             <Grid container alignContent={'center'} justifyContent={'center'} sx ={{marginTop:'4%'}}>

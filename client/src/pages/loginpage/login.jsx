@@ -6,7 +6,7 @@ import LoginForm from '../../components/Forms/formslogin';
 import { useState } from 'react';
 
 
-function Login () { 
+function Login ({setUserType}) { 
 
 
   const [selectedID,setID] = useState(1);
@@ -33,7 +33,7 @@ function Login () {
       <TabBar itemOne = {"User"} itemTwo = {"Restuarant"} itemThree = {"NGO"} getId={GetSelectID}/>
     </div>
     <div className="Loginform">
-        <LoginForm user={selectedID} isAdmin={false}/>
+        <LoginForm setUserType={setUserType} user={selectedID} isAdmin={false}/>
     </div>
     </div>
     </div>

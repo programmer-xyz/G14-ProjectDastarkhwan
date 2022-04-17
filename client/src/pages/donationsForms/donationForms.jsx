@@ -53,7 +53,7 @@ function DonationForms (props)
     return (
         <div className={"parentdiv"+(props.Resturant?" restaurantback":" userback")}>
             <Modals modelMsg={modelMsg} state={modalState} success={modalSucces} actionMsg={modalactionMsg} onClick={onClick} handleClose={handleClose} />
-            <NavBar />
+            <NavBar setUserType={props.setUserType}/>
             <div className="Fheading">
                 <h3>Make a Donation</h3>
             </div>

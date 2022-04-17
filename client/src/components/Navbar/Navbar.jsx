@@ -3,7 +3,7 @@ import { AppBar,Toolbar,Box} from '@mui/material';
 import './Navbar.css'
 import {useNavigate} from 'react-router-dom';
 
-function Navbar() {
+function Navbar({setUserType}) {
 
     let navigate = useNavigate();
     const [button,setbuttonState] = useState({
@@ -37,6 +37,7 @@ function Navbar() {
         localStorage.removeItem('user_id');
         localStorage.removeItem('email');
         localStorage.removeItem('role');
+        setUserType('');
         navigate("/");
     
     }
