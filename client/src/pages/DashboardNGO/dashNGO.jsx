@@ -32,6 +32,7 @@ function NGODashboard (props){
     const [email,setemail] = useState('ngo2@gmail.com');
     const [userStat,setUserStats] = useState({});
     const [state,setState] = useState(false);
+
     function onClick()
     {
         //setStateDonation(false);
@@ -43,7 +44,7 @@ function NGODashboard (props){
       try
       {
           
-          let res = await myProfile(email)
+          let res = await myProfile(localStorage.getItem('email'));
           setUserStats(res.data.body);
           console.log(userStat);
         }
