@@ -1,33 +1,20 @@
+import { handleAsyncErr } from "./handleAsyncErr";
 import jwt from 'jsonwebtoken';
-import { handleAsyncErr } from "../middleware/handleAsyncErr.js";
+import HandErr from "../utils/err";
+// const User = require("../models/userModel");
+import config from "../config/config";
 
-
-const protect = handleAsyncErr (async (req, res, next) => {
-  let token
-
-  if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith('Bearer')
-  ) {
-    try {
-      // Get token from header
-      token = req.headers.authorization.split(' ')[1]
-
-      // Verify token
-      const decoded = jwt.verify(token, process.env.JWT_SECRET)
-      next();
-      
-    } catch (error) {
-      console.log(error)
-      res.status(401)
-      throw new Error('Not authorized')
-    }
-  }
+export const isAuthenticatedUser = handleAsyncErr(async (req, res, next) => {
+  const { token } = req.cookies;
 
   if (!token) {
-    res.status(401)
-    throw new Error('Not authorized, no token')
+    return next(new HandErr("Please Login to access this resource", 401));
   }
-})
+  console.log(config.JWT_SECRET);
+  const decodedData = jwt.verify(token, config.JWT_SECRET);
 
-module.exports = { protect }
+  //req.user = await User.findById(decodedData.id);
+
+  next();
+});
+
