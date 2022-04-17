@@ -33,7 +33,7 @@ function Login () {
       <TabBar itemOne = {"User"} itemTwo = {"Restuarant"} itemThree = {"NGO"} getId={GetSelectID}/>
     </div>
     <div className="Loginform">
-        <LoginForm user={selectedID}/>
+        <LoginForm user={selectedID} isAdmin={false}/>
     </div>
     </div>
     </div>
