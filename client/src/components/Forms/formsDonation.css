@@ -56,6 +56,7 @@
 
 .form-select {
     /* background: #FFFFFF 0% 0% no-repeat padding-box; */
+    background-color: rgba(233, 196, 106, 0.2) !important;
     position:relative;
     color: #838D94;
     width: 450px;
