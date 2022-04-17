@@ -237,7 +237,7 @@ export default function ModalAccepted(prop)
     outline: '1px solid slategrey'
     }}}>
         {filteredReq.map(item =>(
-            <RequestItem image={`data:image/jpeg;base64,${item.image}`} name={item.name} heading1={"Type"} heading2={"Date"} pargaraph1={item.pargaraph1} date={item.date} time={item.time} userRequests={true} NGOrequests={false} buttonStat={3}/>
+            <RequestItem image={`data:image/jpeg;base64,${item.image}`} name={item.name} heading1={"Type"} heading2={"Date"} pargaraph1={item.pargaraph1} date={getDate(item.date)} time={returnTime(item.time)} userRequests={true} NGOrequests={false} buttonStat={3}/>
         ))}
         </List>
         </Grid>

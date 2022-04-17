@@ -17,9 +17,9 @@ const theme = createTheme({
     color:'#264653',
     },});
 
-export default function AdminModalSignIn(prop){
+export default function AdminModalSignIn(props){
     let naviagte = useNavigate();
-    const {modelMsg,state,modalImage,actionMsg,route} = prop;
+    const {modelMsg,state,modalImage,actionMsg,route} = props;
     const [open,setOpen] = React.useState(state);
 
     
@@ -39,36 +39,36 @@ export default function AdminModalSignIn(prop){
     }
     return (
     <div>
-    <Dialog PaperProps={{ sx: { borderRadius: "10px", width: "90%", height: "auto",overflowX:"hidden"} }}
-        open={open}
-        aria-labelledby="responsive-dialog-title"
-        onClose={handleClose}>
-    <p>&nbsp;</p>
-    <Grid container display="flex" alignItems={'center'} justifyContent="center">
-        <img className = "logoimg" src= {logo}/>
-    </Grid>
-    <p>&nbsp;</p>
-    <Grid container alignItems={'center'} justifyContent="center">
-    <Grid item display="flex">
-    <ThemeProvider theme = {theme}>
-    <Typography  sx={{ display: 'block'}}
-    component="span"
-    variant="h6"
-    color="#E76F51">
-        {` Welcome, please Sign In `}
-    </Typography>
-    </ThemeProvider>
-    </Grid>
-    </Grid>
-    <p>&nbsp;</p>
-    <Grid container display="flex" alignItems={'center'} justifyContent="center">
-        <LoginForm></LoginForm>
-    </Grid>
-    <p>&nbsp;</p>
-    <Grid container display="flex" alignItems={'center'} justifyContent="center">
+        <Dialog PaperProps={{ sx: { borderRadius: "10px", width: "90%", height: "auto",overflowX:"hidden"} }}
+            open={open}
+            aria-labelledby="responsive-dialog-title"
+            onClose={handleClose}>
+        <p>&nbsp;</p>
+        <Grid container display="flex" alignItems={'center'} justifyContent="center">
+            <img className = "logoimg" src= {logo}/>
         </Grid>
         <p>&nbsp;</p>
-    </Dialog>
-    </div>
+        <Grid container alignItems={'center'} justifyContent="center">
+        <Grid item display="flex">
+        <ThemeProvider theme = {theme}>
+        <Typography  sx={{ display: 'block'}}
+        component="span"
+        variant="h6"
+        color="#E76F51">
+            {` Welcome, please Sign In `}
+        </Typography>
+        </ThemeProvider>
+        </Grid>
+        </Grid>
+        <p>&nbsp;</p>
+        <Grid container display="flex" alignItems={'center'} justifyContent="center">
+            <LoginForm user = {4} isAdmin={true}/>
+        </Grid>
+        <p>&nbsp;</p>
+        <Grid container display="flex" alignItems={'center'} justifyContent="center">
+            </Grid>
+            <p>&nbsp;</p>
+        </Dialog>
+        </div>
     );
 }

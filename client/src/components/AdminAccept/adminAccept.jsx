@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import RequestItems from '../../components/RequestItems/requestItems.jsx';
 import TabBar from '../../components/TabBar/TabBar.jsx';
 import { Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { List } from '@mui/material';
 import image1 from '../../components/RequestItems/testImage.jpeg';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -103,15 +103,68 @@ var templist = [{
 
 }]
 
+function getDate(date)
+{
+  let today = new Date(date);
+  const yyyy = today.getFullYear();
+  let mm = today.getMonth() + 1; // Months start at 0!
+  let dd = today.getDate();
+
+  if (dd < 10) dd = '0' + dd;
+  if (mm < 10) mm = '0' + mm;
+
+  let finalDate = dd + '/' + mm + '/' + yyyy;
+  return finalDate;
+}
+
+function returnTime (date)
+{
+  let today = new Date(date);
+  let hours = today.getHours();
+  let minutes = today.getMinutes();
+  let finalTime = hours + ":" +minutes;
+  return finalTime;
+}
+
+
 function AdminAcceptpage(props){
 
-        const [selectedID,getSelectedID] = useState(1);
+        const [selectedID,setID] = useState(1);
         const [requestAdmin,setrequestAdmin] = useState([]);
- 
+        const [resturantList,setResturantList] = useState([]);
+        const [ngoList,setngoList] = useState([]);
 
+        const Adminrequests = async() =>{
+            try {
+                var listofReq = await viewApplicationadminDashboard();
+
+                var listofRes = listofReq.data.apps.filter((ele)=>{
+                    return ele.accountType === "restaurant";
+                });
+                var listofNgo = listofReq.data.apps.filter((ele)=>{
+                    return ele.accountType === "ngo";
+                });
+                console.log(listofRes);
+                console.log(listofNgo);
+                setResturantList(listofRes);
+                setngoList(listofNgo);
+                setrequestAdmin(listofReq.data.apps);
+            }
+            catch(err){
+                console.log(err);
+            }
+        }
+        function getselectId (id)
+        {
+            setID(id+1)
+        }
+        useEffect (()=>{
+            
+            Adminrequests();
+        },[])
 
         return (
-            <div className="yello">
+            <div className="yello1">
             <Grid sx ={{marginBottom:"2%"}}>
             </Grid>
             <Grid container display="flex" alignItems={'center'} justifyContent="center">
@@ -120,7 +173,7 @@ function AdminAcceptpage(props){
             <Grid container alignItems={'center'} justifyContent="center" >
             </Grid>
             <Grid item>
-            <TabBar itemOne = {"All"} itemTwo = {"Restuarants"} itemThree = {"Users"}/>
+            <TabBar itemOne = {"All"} itemTwo = {"Restuarants"} itemThree = {"NGO"} getId={getselectId}/>
             </Grid>
             <Grid container display={"flex"} alignItems={'center'} justifyContent="center">
             <List sx={{width:'75%',height:'100%',overflow:'auto',maxHeight:"500px",'&::-webkit-scrollbar': {
@@ -135,9 +188,18 @@ function AdminAcceptpage(props){
             borderRadius:'4px',
             outline: '1px solid slategrey'
             }}}>
-            {templist.map(item =>(
-                    <RequestItems image={item.image} name={item.name} heading1={item.heading1} heading2={item.heading2} pargaraph1={item.pargaraph1} date={item.date} time={item.time} userRequests={false} NGOrequests={item.NGOrequests} Resreq={false} buttonStat={1}/>
+            {requestAdmin.length!==0 && selectedID === 1 && requestAdmin.map(item =>(
+                 <RequestItems image={`data:image/jpeg;base64,${item.image}`} name={item.name} description={item.description} adminRequests ={true} buttonStat={1}/>
             ))}
+            {resturantList.length!==0 && selectedID === 2 && resturantList.map(item =>(
+                <RequestItems image={`data:image/jpeg;base64,${item.image}`} name={item.name}  description={item.description}  adminRequests={true} buttonStat={1}/>
+            ))}
+            {ngoList.length!==0 && selectedID === 3 && ngoList.map(item =>(
+                <RequestItems image={`data:image/jpeg;base64,${item.image}`} name={item.name} description={item.description}  adminRequests={true} buttonStat={1}/>
+            ))}
+            {requestAdmin.length===0 && selectedID === 1 && <Typography display="flex" sx={{alignContent:'center',justifyContent:'center',font: 'normal normal normal 42px/109px Poppins'}} component="span" variant="h3">{"No requests to show at the momment"}</Typography>}
+            {resturantList.length===0 && selectedID === 2 && <Typography display="flex" sx={{alignContent:'center',justifyContent:'center',font: 'normal normal normal 42px/109px Poppins'}} component="span" variant="h3">{"No requests to show at the momment"}</Typography>}
+            {ngoList.length===0 && selectedID === 3 && <Typography display="flex" sx={{alignContent:'center',justifyContent:'center',font: 'normal normal normal 42px/109px Poppins'}} component="span" variant="h3">{"No requests to show at the momment"}</Typography>}
             </List>
             </Grid>
             </Grid>
