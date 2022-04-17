@@ -6,6 +6,7 @@ import HandErr from "../utils/err.js";
 import { handleAsyncErr } from "../middleware/handleAsyncErr.js";
 import bcrypt from "bcrypt";
 import { sendEmail } from "../utils/emailSender.js";
+import {tokenMaker} from "../utils/tokenManager"
 
 //test func not an api will be deleted later
 export const createAdmin = async (req,res) =>{
@@ -42,11 +43,12 @@ export const adminLogin = handleAsyncErr(async (req,res, next) =>{
     //boolCheck = user.password == password ? true : false; //add bcrypt here
 
     if(boolCheck){
-        res.status(200).json({
-            success: true,
-            message: "user logged in",
-            user
-          });
+        tokenMaker(user, 201, res);
+        // res.status(200).json({
+        //     success: true,
+        //     message: "user logged in",
+        //     user
+        //   });
     }
     else{
         return next(new HandErr("Password entered wrong", 401));
@@ -78,6 +80,7 @@ export const approvePost = handleAsyncErr(async(req, res, next) =>{
             applicationId: appObj._id,
             isActive: true
         });
+
     }
     else if (appObj.accountType == "ngo"){
         const ngoObj = await ngo.create({
@@ -100,24 +103,31 @@ export const approvePost = handleAsyncErr(async(req, res, next) =>{
         });
     }
     const appObjNew = await application.findOneAndUpdate({email}, {approved: true, approvalStatus:"approved", isActive:false});
+    
+    
     const message = `Welcome to desterkhawan`
-  try {
-    await sendEmail({
-      email: appObj.email,
-      subject: `Account has been approved`,
-      message,
-    });
 
     res.status(200).json({
-      success: true,
-      message: `Email sent to ${user.email} successfully`,
+        success: true,
+        message: `Application approved`,
     });
-  } catch (error) {
-    return next(new HandErr("Failed to send email", 400))
 
-  }
 
-    
+//   try {
+//     await sendEmail({
+//       email: appObj.email,
+//       subject: `Account has been approved`,
+//       message,
+//     });
+
+//     res.status(200).json({
+//       success: true,
+//       message: `Email sent to ${user.email} successfully`,
+//     });
+//   } catch (error) {
+//     return next(new HandErr("Failed to send email", 400))
+
+//   }
 
 });
 

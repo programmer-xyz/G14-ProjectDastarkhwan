@@ -7,6 +7,7 @@ import {tokenMaker} from "../utils/tokenManager"
 import Ngo from "../models/ngoSchema.mjs"
 import Donation from "../models/donationsSchema.mjs";
 
+
 //login 
 export const restLogin =  handleAsyncErr(async (req,res, next) =>{
     const {email, password} = req.body;
@@ -76,7 +77,7 @@ export const restRegister = handleAsyncErr(async (req, res, next) =>{
         approvalStatus: "inProgress",
         approved: false
     });
-    //tokenMaker(user, 201, res);
+   
     res.status(200).json({
         success: true,
         message: "user added to app table",
