@@ -11,6 +11,10 @@ function Cards (props) {
     {
         props.openRequst(true);
     }
+    function openDonationModel()
+    {
+        props.openDM(true);
+    }
     if(props.Resturant === 0)
     {
         return(
@@ -39,7 +43,7 @@ function Cards (props) {
             <hr class="hr"></hr>
             <div class="row">
                 <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                    <button class="buttonsCards">Make Donations</button>
+                    <button class="buttonsCards" onClick={openDonationModel}>Make Donations</button>
                 </div>
                 <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <button class="buttonsCards white" onClick={openRequestModel}>Past Requests</button>

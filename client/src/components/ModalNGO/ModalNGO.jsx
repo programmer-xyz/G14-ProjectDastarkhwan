@@ -72,12 +72,12 @@ var templist = [{
 export default function ModalNGO(prop){
     let naviagte = useNavigate();
     const [ngo_lis, setNgoLis] = useState([]);
-    const {onClick,state,handleClose,route} = prop;
+    const {onClick,state,handleClose,role,id_user} = prop;
     const getNgos = async() =>{
         let ngos = [];
         //let address = {"city": "karachi", "country": "Pakistan",  "streetNumber":"11",  "houseNumber":"1"}
-        let role = "rest"; //get from local storage
-        let id_user  = "62386a881d8d6e8aeabe6d6f"; // get from local storage
+        // let role = "rest"; //get from local storage
+        // let id_user  = "62386a881d8d6e8aeabe6d6f"; // get from local storage
         
 
         if(role === "user")
@@ -171,7 +171,7 @@ export default function ModalNGO(prop){
     outline: '1px solid slategrey'
     }}}>
     {ngo_lis.map(item =>(
-        <RequestItemsNGO image={item.image} name={item.name} description={item.description}/>
+        <RequestItemsNGO click={prop.onC} email={item.email} image={item.image} name={item.name} description={item.description}/>
     ))}
     </List>
     </Grid>
