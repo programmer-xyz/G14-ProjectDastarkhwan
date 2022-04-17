@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import config from "../config/config";
 
 export const tokenMaker = (user, Code, res) =>{
-    const token = jwt.sign({ id: user._id }, config.JWT_KEY, {
+    const token = jwt.sign({ id: user._id }, config.JWT_SECRET, {
         expiresIn: config.JWT_EXPIRE,
       });
       //conv to ms

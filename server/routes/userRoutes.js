@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {userLogin, userRegister,forgetPassCheckUser,forgetPassUpdateUser,changePassUser, mealDonation, rationDonation, moneyDonation} from "../controller/userController";
+
 import {deleteProfile,viewUserProfile, viewUserStats, editProfileUser,myRequestUser} from "../controller/userController";
 const router = Router();
 import multer from "multer";
@@ -18,7 +19,7 @@ router.post("/rationDonation",upload.single("image"),rationDonation);
 router.route("/moneyDonation").post(moneyDonation);
 router.route("/viewProfile").post(viewUserProfile);
 router.route("/viewStats").post(viewUserStats);
-router.route("/editProfileUser").post( editProfileUser);
+router.route("/editProfileUser").post(editProfileUser);
 router.route("/myRequest").post(myRequestUser);
 
 router.route('/deleteProfile').post(deleteProfile)
