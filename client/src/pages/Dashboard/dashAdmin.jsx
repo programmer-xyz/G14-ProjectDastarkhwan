@@ -2,7 +2,10 @@ import './dashAdmin.css';
 import CardContent from '@mui/material/CardContent';
 import NavBar from '../../components/Navbar/Navbar.jsx'
 import AdminAcceptpage from '../../components/AdminAccept/adminAccept.jsx';
+
 function dashAdmin (){
+
+
     return (
         <div className = "main">
         <NavBar/>

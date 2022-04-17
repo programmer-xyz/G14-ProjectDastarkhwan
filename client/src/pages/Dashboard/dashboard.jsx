@@ -79,7 +79,7 @@ function Dashboard (props){
                 <Grid item>
                 <ThemeProvider theme={theme}>
                 <Typography sx = {{display:'inline-block',letterSpacing:'-1.97px'}} component="span" variant="h3" color="#E76F51">
-                {`Hello ${props.name} !`}
+                {`Hello ${userStat.name} !`}
                 </Typography>
                 </ThemeProvider>
                 </Grid>

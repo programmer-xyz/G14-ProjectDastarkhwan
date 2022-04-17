@@ -8,7 +8,8 @@ import { List } from '@mui/material';
 import image1 from '../../components/RequestItems/testImage.jpeg';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { viewApplicationadminDashboard } from '../../servicesApi/authenticationApi';
-
+import ModalRes from '../../components/modalResD/modelResD.jsx';
+import ModalNgo from '../../components/modelNGODetails/modelNGOdetails';
 const theme = createTheme({
     typography: {
     fontFamily: [
@@ -133,7 +134,38 @@ function AdminAcceptpage(props){
         const [requestAdmin,setrequestAdmin] = useState([]);
         const [resturantList,setResturantList] = useState([]);
         const [ngoList,setngoList] = useState([]);
-
+        const [openRes,setopenRes] = useState(false);
+        const [openNgo,setopenNgo] = useState(false);
+        const [details,setdetails] = useState({});
+        function handleClose(reason)
+        {
+            if (reason !== "backdropClick")
+            {
+                 return 
+            }
+            setopenRes(false);
+            setopenNgo(false);
+        }
+        function onclick()
+        {
+            console.log("called")
+            setopenRes(false);
+            setopenNgo(false);
+        }
+        function getModelStatus(open,details)
+        {
+            console.log(details)
+            setdetails(details);
+            if(details.accountType==='restaurant')
+            {
+                setopenRes(open);
+            }
+            else
+            {
+                setopenNgo(open);
+            }
+            
+        }
         const Adminrequests = async() =>{
             try {
                 var listofReq = await viewApplicationadminDashboard();
@@ -165,6 +197,8 @@ function AdminAcceptpage(props){
 
         return (
             <div className="yello1">
+            <ModalRes details={details} state={openRes} handleClose={handleClose} onclick={onclick}/>
+            <ModalNgo details={details} state={openNgo} handleClose={handleClose} onclick={onclick}/>
             <Grid sx ={{marginBottom:"2%"}}>
             </Grid>
             <Grid container display="flex" alignItems={'center'} justifyContent="center">
@@ -189,13 +223,13 @@ function AdminAcceptpage(props){
             outline: '1px solid slategrey'
             }}}>
             {requestAdmin.length!==0 && selectedID === 1 && requestAdmin.map(item =>(
-                 <RequestItems image={`data:image/jpeg;base64,${item.image}`} name={item.name} description={item.description} adminRequests ={true} buttonStat={1}/>
+                 <RequestItems userDeatils={item} image={`data:image/jpeg;base64,${item.image}`} name={item.name} description={item.description} adminRequests ={true} buttonStat={1} openRequst={getModelStatus}/>
             ))}
             {resturantList.length!==0 && selectedID === 2 && resturantList.map(item =>(
-                <RequestItems image={`data:image/jpeg;base64,${item.image}`} name={item.name}  description={item.description}  adminRequests={true} buttonStat={1}/>
+                <RequestItems userDeatils={item}  image={`data:image/jpeg;base64,${item.image}`} name={item.name}  description={item.description}  adminRequests={true} buttonStat={1} openRequst={getModelStatus}/>
             ))}
             {ngoList.length!==0 && selectedID === 3 && ngoList.map(item =>(
-                <RequestItems image={`data:image/jpeg;base64,${item.image}`} name={item.name} description={item.description}  adminRequests={true} buttonStat={1}/>
+                <RequestItems userDeatils={item} image={`data:image/jpeg;base64,${item.image}`} name={item.name} description={item.description}  adminRequests={true} buttonStat={1} openRequst={getModelStatus}/>
             ))}
             {requestAdmin.length===0 && selectedID === 1 && <Typography display="flex" sx={{alignContent:'center',justifyContent:'center',font: 'normal normal normal 42px/109px Poppins'}} component="span" variant="h3">{"No requests to show at the momment"}</Typography>}
             {resturantList.length===0 && selectedID === 2 && <Typography display="flex" sx={{alignContent:'center',justifyContent:'center',font: 'normal normal normal 42px/109px Poppins'}} component="span" variant="h3">{"No requests to show at the momment"}</Typography>}

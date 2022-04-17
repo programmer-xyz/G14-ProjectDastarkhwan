@@ -14,7 +14,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import {acceptDonation} from  '../../servicesApi/DashboardNgo.js';
 import { useState } from 'react';
 import ModelResD from '../../components/modalResturantDetails/modalResturantDetails.jsx';
-
+import {acceptApplication} from '../../servicesApi/DashboardAdmin.js'
 const theme = createTheme({
     typography: {
     fontFamily: [
@@ -34,9 +34,29 @@ const theme = createTheme({
     color:'#264653',
     },});
 
+
+
+
 function RequestItems(props)
 {
     const [state,SetState] = useState(false)
+    async function accept()
+    {
+       try
+       {
+        console.log(props.userDeatils.email)
+        let res = await acceptApplication(props.userDeatils.email);
+        if(res.data.succesful)
+        {
+            console.log(res.data);
+        }
+       }
+       catch (err)
+       {
+            console.log(err);
+       }
+       
+    }
     async function takeDonation ()
     {
         SetState(false);
@@ -57,6 +77,11 @@ function RequestItems(props)
     function  onClick()
     {
         takeDonation()
+    }
+    function changeStatus()
+    {
+       
+        props.openRequst(true,props.userDeatils);
     }
 
 
@@ -306,7 +331,7 @@ function RequestItems(props)
                     </ThemeProvider>
                 <Grid item display="flex" sx={{alignItems:"left",justifyContent:"flex-end"}}>
                 <ThemeProvider theme = {theme}>
-                <Button className='butClass' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
+                <Button onClick={accept} className='butClass' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
                     {"&.MuiButtonBase-root:hover": {
                         bgcolor: "#E76F51"
                         },
@@ -320,14 +345,14 @@ function RequestItems(props)
                         borderRadius:"30px"
                         
                         }} >
-                <CheckIcon sx={{mr:"2"}}></CheckIcon>   
+                <CheckIcon  sx={{mr:"2"}}></CheckIcon>   
                 Accept
                 </Button>
                 </ThemeProvider>
                 <ListItemButton  disableRipple sx={{"&.MuiButtonBase-root:hover": {
                         bgcolor: "transparent"
                 }}}>
-                <IoChevronForwardCircle size={30} color="#E76F51"/>
+                <IoChevronForwardCircle onClick={changeStatus} size={30} color="#E76F51"/>
                 </ListItemButton>
                 </Grid>
                 </ListItem>
