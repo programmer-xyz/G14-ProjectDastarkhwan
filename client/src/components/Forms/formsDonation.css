@@ -25,7 +25,7 @@
     background: transparent 0% no-repeat padding-box;;
 }
 
-.form-group {
+.form-group2 {
     /* background: #FFFFFF 0% 0% no-repeat padding-box; */
     /* align-items: center; */
     position:relative;
@@ -34,7 +34,7 @@
     border-radius: 10px;
     margin-bottom: 30px;
     padding: 25px;
-    color: #838D94;
+    color: #838D94 !important;
     font-family: "Poppins";
     font-size: 14px/21px;
     letter-spacing: -0.66px;
@@ -71,8 +71,8 @@
     box-shadow: none;
 }
 
-form .form-control{
-    background-color: #FFFFFF 0% 0% no-repeat padding-box;
+form .form-control2{
+    background-color: #FFFFFF 0% 0% no-repeat padding-box !important;
     border-color: #FFFFFF;
     box-shadow: none;
     box-sizing: none;
@@ -84,7 +84,7 @@ label {
     color:#838D94;
 }
 
-.buttons{
+.buttonsDonations{
     background: #264653;
     font: normal normal normal 14px/25px Poppins;
     color:#fff;
@@ -100,7 +100,8 @@ label {
     left:auto;
     position: relative;
 }
-.buttons90{
+
+.buttonsDonations1{
     background: #264653;
     font: normal normal normal 14px/25px Poppins;
     color:#fff;
@@ -113,9 +114,10 @@ label {
     height: 54px;
     margin-bottom: 24px;
     margin-top: 10%;
-    left:5%;
+    left:7%;
     position: relative;
 }
+
 .details1{
     font-family: "Poppins";
     font-size: 14px/21px;

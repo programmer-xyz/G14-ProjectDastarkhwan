@@ -1,10 +1,11 @@
-import './dashboard.css';
+import './userprofile.scss';
 import NavBar from '../../components/Navbar/Navbar.jsx';
 import Cards from '../../components/Cards/cards.jsx';
 import Cards2 from '../../components/ProfileCard/profileCard.jsx';
 import { Grid,Typography,Box} from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import image2 from '../../assets/output-onlinepngtools1.png';
+import FormsProfile from '../../components/Forms/formsProfile';
 
 const theme = createTheme({
     typography: {
@@ -25,7 +26,7 @@ const theme1 = createTheme({
         color:'#264653'
     },});
 
-function Dashboard (props){
+function userProfile (props){
     return(
     <Box sx = {{spacing: "0",backgroundColor:'rgba(233, 196, 106, 0.1)',paddingLeft:'5%',backgroundImage:`url(${image2})`,backgroundRepeat:'no-repeat',backgroundPositionX:'center',backgroundSize:'50% auto'}}>
         <Grid  container direction="row" display="flex" sx={{width:'100%', height:'100%'}}>
@@ -52,11 +53,11 @@ function Dashboard (props){
                 </ThemeProvider>
             </Grid>
             </Grid>
-            <Grid container direction ="row" display="flex"  sx ={{height:"50%",marginBottom:'10%'}}>
-            <Grid container item xs ={9} sx = {{width:'100%',height:'100%'}}>
-            <Cards Resturant={2} mealDonations={10} rationDonations={20} monetaryDonations={30}/>
+            <Grid container direction="row" display="flex"  sx ={{height:"50%",marginBottom:'10%'}}>
+            <Grid container item xs ={9} sx = {{width:'100%',height:'100%',marginRight:'-2.5%'}}>
+            <FormsProfile User = {1}/>
             </Grid>
-            <Grid container item xs={3} sx = {{width:'100%', height:'100%'}}>
+            <Grid container item xs ={3} sx = {{width:'100%', height:'100%'}}>
             <Cards2 Resturant={false} name={"Abdul Muizz khan"} email={"muizz481@gmail.com"} number={"0304-4923899"} description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.'}/>
             </Grid>
             </Grid>
@@ -64,4 +65,4 @@ function Dashboard (props){
         </Box>
     );
 }
-export default Dashboard;
+export default userProfile;

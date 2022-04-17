@@ -4,7 +4,7 @@ $my-fontFamily: normal normal normal 19px/25px Poppins;
 }
 .buttonsSignOut{
     background: #264653;
-    font: normal normal medium 16px/25px Poppins;
+    font: normal normal medium 16px/25px Poppins !important;
     color:#fff;
     border-radius: 10px;
     border: 2px solid #fff;
@@ -17,7 +17,7 @@ $my-fontFamily: normal normal normal 19px/25px Poppins;
 
 .buttonsSignOut2{
     background: #fff;
-    font: normal normal medium 16px/25px Poppins;
+    font: normal normal medium 16px/25px Poppins !important;
     color:#264653;
     border-radius: 10px;
     border: 2px solid #264653;

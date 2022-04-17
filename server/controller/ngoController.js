@@ -641,13 +641,13 @@ export const restRequestNgo = handleAsyncErr(async(req,res,next)=>
 
 export const findNgoUser = handleAsyncErr(async(req,res,next)=>{
     let user_id = req.body._id;
-    let userObj = await User.findOne({_id: user_id});
+    let userObj = await User.findOne({_id: user_id, isActive:true});
 
     let add = userObj.address;
     console.log(`here ${add}`);
     let city = add.city;
 
-    let cityNgos = await Ngo.find({'address.city' : city});
+    let cityNgos = await Ngo.find({'address.city' : city, isActive:true});
 
     if(!cityNgos ){
         return next(new HandErr("No NGOs in your area",400))
@@ -665,13 +665,13 @@ export const findNgoUser = handleAsyncErr(async(req,res,next)=>{
 
 export const findNgoRest = handleAsyncErr(async(req,res,next)=>{
     let user_id = req.body._id;
-    let userObj = await Rest.findOne({_id: user_id});
+    let userObj = await Rest.findOne({_id: user_id, isActive:true});
 
     let add = userObj.address;
     console.log(`here ${add}`);
     let city = add.city;
 
-    let cityNgos = await Ngo.find({'address.city' : city});
+    let cityNgos = await Ngo.find({'address.city' : city, isActive:true});
 
     if(!cityNgos ){
         return next(new HandErr("No NGOs in your area",400))

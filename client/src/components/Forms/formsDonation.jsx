@@ -1,7 +1,7 @@
 import './formsDonation.css';
 import React from 'react';
 import { useState,  useEffect } from 'react';
-import { findNgoUser,findNgoRest, mealDonationRest } from  '../../servicesApi/donation.js';
+import { findNgoUser,findNgoRest, mealDonationRest,mealDonationUser ,rationDonationUser,moneyDonationUser } from  '../../servicesApi/donation.js';
 
 
 
@@ -88,7 +88,11 @@ function FormsDonation (props) {
             "streetNumber":"streetNumber",
             "houseNumber":"houseNumber"
         }
-        let em = "rest4@gmail.com";
+        let em = "amgio@lums.edu.pk";
+        let role = "user";
+
+        if(role === "rest")
+        {
         mealDonationRest( address,  user3.description, em,  user3.ngo,  user3.rationImage).then((response)=>{
     
                 if(response.data.success)
@@ -100,17 +104,100 @@ function FormsDonation (props) {
                 //         "actionMsg":"Back to Dashboard",
                 //         "route":"",
                 //     }
-                    props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","");
+                    props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/resturantDashboard");
 
-                }
-               
+                }  
         })
         .catch((err)=>
         {
             console.log(err);
         })
+    }
+    else if(role === "user"){
+        mealDonationUser( address,  user3.description, em,  user3.ngo,  user3.rationImage).then((response)=>{
+    
+            if(response.data.success)
+            {
+           
+                props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/userdashboard");
+
+            }  
+    })
+    .catch((err)=>
+    {
+        console.log(err);
+    })
+    }
+
+
+}
+   
+
+const rationDon = (e) =>{
+ 
+    e.preventDefault();
+    const address = {
+        "city":"lahore",
+        "country":"country",
+        "streetNumber":"streetNumber",
+        "houseNumber":"houseNumber"
+    }
+    let em = "amgio@lums.edu.pk";
+    let role = "user";
+
+    if(role === "user")
+    {
+        rationDonationUser( address,  user2.description, em,  user2.ngo,  user2.rationImage).then((response)=>{
+
+            if(response.data.success)
+            {
+            //    const updatedStates= {
+            //         "modelMsg":
+            //         "state":true,
+            //         "success":true,
+            //         "actionMsg":"Back to Dashboard",
+            //         "route":"",
+            //     }
+                props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/userdashboard");
+
+            }  
+    })
+    .catch((err)=>
+    {
+        console.log(err);
+    })
+    }
     
     }
+
+    const moneyDon = (e) =>{
+        e.preventDefault();
+        let role = "user";
+        if(role === "user")
+        {
+            moneyDonationUser (user1.email, user1.ngoIdentifier, user1.amount, user1.cardNum).then((response)=>{
+
+                if(response.data.success)
+                {
+                //    const updatedStates= {
+                //         "modelMsg":
+                //         "state":true,
+                //         "success":true,
+                //         "actionMsg":"Back to Dashboard",
+                //         "route":"",
+                //     }
+                    props.getS("Thank you! You have successfully made a Donation",true,true,"Back to Dashboard","/userdashboard");
+    
+                }  
+        })
+        .catch((err)=>
+        {
+            console.log(err);
+        })
+        }
+    }
+
+    
 
     const onFileChange3 = event => {
         event.preventDefault()
@@ -174,7 +261,7 @@ function FormsDonation (props) {
     }, [])
 
 console.log('here')
-  console.log(user3);
+console.log(user3);
 
     //value={user1.ngo} onChange={handleForm1}
     if (props.User === 1){
@@ -182,19 +269,19 @@ console.log('here')
                 <div class = "row newClass">
                     <form>
                         <div class="form-group">
-                            <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="ngo"  onChange={handleForm1}> 
+                            <select class="form-select shadow-none"  placeholder="NGO" name="ngo"  onChange={handleForm1}> 
                                 <option >Select NGO</option>
                                 {
                                     ngo_lis.map((ele) =>
                                         (
-                                       <option value = {ele.email}>{ele.name}</option>
+                                        <option value = {ele.email}>{ele.name}</option>
                                         )
                                     )
                                 }
                                 
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group2">
                             <input type="text" class="form-control shadow-none" id="exampleInputPassword1" placeholder="Amount ($)" name="amount" value={user1.name} onChange={handleForm1}/>
                             <p class="details1">Card Details</p>
                         </div>
@@ -211,7 +298,7 @@ console.log('here')
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="CVC" name="cvc" value={user1.cvc} onChange={handleForm1}/>
-                            <button type = "submit" class="buttons">Confirm Donation!</button>
+                            <button type = "submit" class="buttonsDonations" onClick={moneyDon }>Confirm Donation!</button>
                         </div>
                        
                     </form>
@@ -246,7 +333,7 @@ console.log('here')
                             <label>Upload Ration Image</label>
                             <input type="file" class="form-control shadow-none" id="exampleCheck1" placeholder="Add Ration Image" name="rationImg" onChange={onFileChange2}/>
                         </div>
-                        <button type = "submit" class="buttons90">Confirm Donation!</button>
+                        <button type = "submit" class="buttonsDonations1" onClick = {rationDon}>Confirm Donation!</button>
                     </form>
                     </div>
                 </div>
@@ -263,7 +350,7 @@ console.log('here')
                                 {
                                     ngo_lis.map((ele) =>
                                         (
-                                       <option value = {ele.email}>{ele.name}</option>
+                                        <option value = {ele.email}>{ele.name}</option>
                                         )
                                     )
                                 }
@@ -280,7 +367,7 @@ console.log('here')
                             <label>Upload Meal Image</label>
                             <input type="file" class="form-control shadow-none" id="exampleCheck1" placeholder="Add Ration Image" name="rationImage" onChange={onFileChange3}/>
                         </div>
-                        <button type = "submit" class="buttons90" onClick = {mealDon}>Confirm Donation!</button>
+                        <button type = "submit" class="buttonsDonations1" onClick = {mealDon}>Confirm Donation!</button>
                     </form>
                     </div>
                 </div>

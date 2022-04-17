@@ -39,7 +39,7 @@ return (
     </Grid>
     <Grid item>
         <DialogActions sx = {{justifyContent:"center", alignItems:"center",}}>
-        <button onClick={onClick} type = "submit" className="buttonsSignOut2" >{actionMsg}</button>
+        <button onClick={onClick} type = "submit" className="buttonsSignOut2">{actionMsg}</button>
         <button onClick={onClick} type = "submit" className="buttonsSignOut" >{actionMsg2}</button>
         </DialogActions>
     </Grid>

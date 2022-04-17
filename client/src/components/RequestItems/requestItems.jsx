@@ -159,7 +159,7 @@ function RequestItems(props)
                         justifyContent:"center",
                         alignItems:"center",
                         fontSize:"14/25px",
-                        borderRadius:"10px",
+                        borderRadius:"25px",
                         width: "218px",
                         height: "50px"
                         }} >
@@ -176,7 +176,7 @@ function RequestItems(props)
                         justifyContent:"center",
                         alignItems:"center",
                         fontSize:"14/25px",
-                        borderRadius:"10px",
+                        borderRadius:"25px",
                         width: "218px",
                         height: "50px"
                         }} >
@@ -193,11 +193,45 @@ function RequestItems(props)
                         justifyContent:"center",
                         alignItems:"center",
                         fontSize:"14/25px",
-                        borderRadius:"10px",
+                        borderRadius:"25px",
                         width: "218px",
                         height: "50px"
                         }} >
                 Completed
+                </Button>}
+                {props.buttonStat === 3 && <Button className='butClass2' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
+                    {"&.MuiButtonBase-root:hover": {
+                        bgcolor: "rgba(42, 157, 143, 0.4)"
+                        },
+                        backgroundColor:"rgba(42, 157, 143, 0.2)",
+                        textColor:"#fff",
+                        color:"#2A9D8F",
+                        textAlign:"center",
+                        justifyContent:"center",
+                        alignItems:"center",
+                        fontSize:"14/25px",
+                        borderRadius:"25px",
+                        width: "218px",
+                        height: "50px"
+                        }} >
+                Accepted
+                </Button>}
+                {props.buttonStat === 4 && <Button className='butClass2' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
+                    {"&.MuiButtonBase-root:hover": {
+                        bgcolor: "rgba(42, 157, 143, 0.4)"
+                        },
+                        backgroundColor:"#E76F51",
+                        textColor:"#fff",
+                        color:"#fff",
+                        textAlign:"center",
+                        justifyContent:"center",
+                        alignItems:"center",
+                        fontSize:"14/25px",
+                        borderRadius:"25px",
+                        width: "218px",
+                        height: "50px"
+                        }} >
+                Rejected
                 </Button>}
                 </ThemeProvider>
                 </Grid>
