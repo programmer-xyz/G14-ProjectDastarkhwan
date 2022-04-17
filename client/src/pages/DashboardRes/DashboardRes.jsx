@@ -107,7 +107,7 @@ function Dashboard (props){
             <Cards  openDM={onClick} Resturant={0} mealsDonated={userStat.mealsDonated} ngosDonatedTo={userStat?.donations?.length} openRequst={getModelStatus} />
             </Grid>
             <Grid container item xs ={3} sx = {{width:'100%', height:'100%'}}>
-            <Cards2 Resturant={true} name={userStat.name} email={userStat.email} number={userStat.phoneBumber} description={userStat.description}/>
+            <Cards2 Resturant={true} name={userStat.name} email={userStat.email} number={userStat.phoneNumber} description={userStat.description}/>
             </Grid>
             </Grid>
         </Grid>
