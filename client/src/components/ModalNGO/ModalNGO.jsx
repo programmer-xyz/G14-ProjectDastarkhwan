@@ -2,12 +2,13 @@ import './ModalNGO.scss'
 import Grid from "@mui/material/Grid";
 import RequestItemsNGO from '../../components/ModalNGO/reqItemsNGO.jsx';
 import { Typography } from '@mui/material';
-import React from 'react';
+import React, { useEffect,useState } from 'react';
 import { List } from '@mui/material';
 import image1 from '../../components/RequestItems/testImage.jpeg';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import { useNavigate } from "react-router-dom";
+import { findNgoUser,findNgoRest } from  '../../servicesApi/donation.js';
 
 const theme = createTheme({
     typography: {
@@ -70,28 +71,69 @@ var templist = [{
 
 export default function ModalNGO(prop){
     let naviagte = useNavigate();
-    const {modelMsg,state,modalImage,actionMsg,route} = prop;
-    const [open,setOpen] = React.useState(state);
+    const [ngo_lis, setNgoLis] = useState([]);
+    const {onClick,state,handleClose,route} = prop;
+    const getNgos = async() =>{
+        let ngos = [];
+        //let address = {"city": "karachi", "country": "Pakistan",  "streetNumber":"11",  "houseNumber":"1"}
+        let role = "rest"; //get from local storage
+        let id_user  = "62386a881d8d6e8aeabe6d6f"; // get from local storage
+        
+
+        if(role === "user")
+        {
+            try{
+                console.log('hello');
+                ngos = await findNgoUser(id_user);
+            
+                setNgoLis(ngos.data.body);
+            
+            }
+            catch(err){
+                console.log('error in calling api');
+            }
+        }
+        else if (role === "rest"){
+            try{
+                console.log('hello');
+                ngos = await findNgoRest(id_user);
+            
+                setNgoLis(ngos.data.body);
+            
+            }
+            catch(err){
+                console.log('error in calling api');
+            }
+
+        }
+    }
+
+    useEffect(()=>{
+        getNgos();
+
+    }, [])
+
+    //const [open,setOpen] = React.useState(state);
 
     
-    function handleClose(reason)
-    {
-        if (reason !== "backdropClick")
-        {
-        return 
-        }
-        setOpen(false);
-    }
-    function onClick()
-    {
-        setOpen(false);
-        naviagte(`/${route}`)
+    // function handleClose(reason)
+    // {
+    //     if (reason !== "backdropClick")
+    //     {
+    //     return 
+    //     }
+    //     setOpen(false);
+    // }
+    // function onClick()
+    // {
+    //     setOpen(false);
+    //     naviagte(`/${route}`)
 
-    }
+    // }
     return (
     <div>
     <Dialog fullScreen = {true} PaperProps={{ sx: { borderRadius: "10px", width: "90%", height: "auto" } }}
-        open={open}
+        open={state}
         aria-labelledby="responsive-dialog-title"
         onClose={handleClose}>
             <Grid container display="flex" alignItems={'center'} justifyContent="center">
@@ -132,7 +174,7 @@ export default function ModalNGO(prop){
     borderRadius:'4px',
     outline: '1px solid slategrey'
     }}}>
-    {templist.map(item =>(
+    {ngo_lis.map(item =>(
         <RequestItemsNGO image={item.image} name={item.name} heading1={item.heading1} heading2={item.heading2} pargaraph1={item.pargaraph1} date={item.date} time={item.time} userRequests={false} NGOrequests={item.NGOrequests} Resreq={false} buttonStat={1}/>
     ))}
     </List>

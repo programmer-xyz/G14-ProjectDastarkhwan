@@ -30,7 +30,7 @@ function DonationForms (props)
     {
         if (reason !== "backdropClick")
         {
-        return 
+             return 
         }
        
         setModalState(false);
