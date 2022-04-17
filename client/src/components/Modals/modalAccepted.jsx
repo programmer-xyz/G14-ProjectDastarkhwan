@@ -168,7 +168,7 @@ export default function ModalAccepted(prop)
             }
         }catch(err){
             console.log(err)
-            naviagte("/");
+            naviagte("/ngoDashboard");
         } 
     }
     function GetSelectedID (id)
