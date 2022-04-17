@@ -12,11 +12,11 @@ import Button from '@mui/material/Button';
 import CheckIcon from '@mui/icons-material/Check';
 import { IoIosCloseCircle } from "react-icons/io";
 import CloseIcon from '@mui/icons-material/Close';
-
+import {acceptApplication,rejectApplication} from '../../servicesApi/DashboardAdmin.js'
 
 function ResturantDetailModal(props)
 {
-//   let naviagte = useNavigate();
+  let naviagte = useNavigate();
   const {state,onclick,handleClose} = props;
   
  
@@ -26,6 +26,58 @@ function ResturantDetailModal(props)
   //   naviagte(`/${route}`)
 
   // }
+  async function accept(email)
+        {
+            try
+            {
+            let res = await acceptApplication(email);
+            if(res.data.succesful)
+            {
+                console.log(res.data);
+                alert(res.data.msg);
+                onclick();
+                naviagte('/adminDashboard')
+            }
+            }
+            catch (err)
+            {
+                console.log(err);
+                alert(err);
+                onclick();
+                naviagte('/adminDashboard')
+            }
+            
+        }
+    async function reject(email)
+    {
+        try
+            {
+            let res = await rejectApplication(email);
+            if(res.data.succesful)
+            {
+                console.log(res.data);
+                alert(res.data.msg);
+                onclick();
+                naviagte('/adminDashboard')
+
+            }
+            }
+            catch (err)
+            {
+                console.log(err);
+                alert(err);
+                onclick();
+                naviagte('/adminDashboard')
+            }
+    }
+   function acp()
+   {
+       accept(props.details.email);
+   }
+   function ecp()
+   {
+       reject(props.details.email)
+   }
 
   return (
     <div>
@@ -121,7 +173,7 @@ function ResturantDetailModal(props)
         <Grid container item xs={6} sx ={{width:'100%',height:'100%',overflowY:'hidden'}} justifyContent={'right'} alignContent={'right'}>
         <DialogContent alignContent={'right'} justifyContent={'right'}>
         <DialogActions sx ={{position:'relative',top:'90%'}}>
-        <Button variant="outlined" size="medium" disableRipple aria-label=""  sx={ 
+        <Button onClick={ecp} variant="outlined" size="medium" disableRipple aria-label=""  sx={ 
                     {"&.MuiButtonBase-root:hover": {
                         bgcolor: "#fff",
                         borderColor:'#E76F51',
@@ -139,7 +191,7 @@ function ResturantDetailModal(props)
                 <CloseIcon size={25} sx = {{mr:"2"}}></CloseIcon>
                 Reject
         </Button>
-        <Button className='butClass' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
+        <Button onClick={acp} className='butClass' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
                     {"&.MuiButtonBase-root:hover": {
                         bgcolor: "#E76F51",
                         boxShadow:"none"

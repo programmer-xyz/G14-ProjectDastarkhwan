@@ -15,6 +15,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import taxImage from "../../assets/exampletaximage.png";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Fontpoppins from './modelNGOdetails.scss';
+import {acceptApplication,rejectApplication} from '../../servicesApi/DashboardAdmin.js'
+
 
 const theme = createTheme({
     typography: {
@@ -31,6 +33,58 @@ function NgoModals(props)
   let naviagte = useNavigate();
   const {handleClose,state,onclick} = props;
     console.log(props.details);
+    async function accept(email)
+    {
+        try
+        {
+        let res = await acceptApplication(email);
+        if(res.data.succesful)
+        {
+            console.log(res.data);
+            alert(res.data.msg);
+            onclick();
+            naviagte('/adminDashboard')
+        }
+        }
+        catch (err)
+        {
+            console.log(err);
+            alert(err);
+            onclick();
+            naviagte('/adminDashboard')
+        }
+        
+    }
+async function reject(email)
+{
+    try
+        {
+        let res = await rejectApplication(email);
+        if(res.data.succesful)
+        {
+            console.log(res.data);
+            alert(res.data.msg);
+            onclick();
+            naviagte('/adminDashboard')
+
+        }
+        }
+        catch (err)
+        {
+            console.log(err);
+            alert(err);
+            onclick();
+            naviagte('/adminDashboard')
+        }
+}
+    function acp()
+    {
+    accept(props.details.email);
+    }
+    function ecp()
+    {
+    reject(props.details.email)
+    }
 
   
   // function handleClose(reason)
@@ -143,7 +197,7 @@ function NgoModals(props)
         <DialogContent alignContent={'right'} justifyContent={'right'}>
         <img className = "imageProp" src = {`data:image/jpeg;base64,$${props?.details?.registerationDoc}`} alt={'ngo certificate unavaiable'}/>
         <DialogActions sx ={{position:'relative',top:'180px'}}>
-        <Button variant="outlined" size="medium" disableRipple aria-label=""  sx={ 
+        <Button  onClick={ecp} variant="outlined" size="medium" disableRipple aria-label=""  sx={ 
                     {"&.MuiButtonBase-root:hover": {
                         bgcolor: "#fff",
                         borderColor:'#E76F51',
@@ -161,7 +215,7 @@ function NgoModals(props)
                 <CloseIcon size={25} sx = {{mr:"2"}}></CloseIcon>
                 Reject
                 </Button>
-                <Button variant="contained" size="medium" disableRipple sx={ 
+                <Button  onClick={acp} variant="contained" size="medium" disableRipple sx={ 
                     {"&.MuiButtonBase-root:hover": {
                         bgcolor: "#E76F51",
                         boxShadow:'none',

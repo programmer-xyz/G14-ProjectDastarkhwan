@@ -10,6 +10,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { viewApplicationadminDashboard } from '../../servicesApi/authenticationApi';
 import ModalRes from '../../components/modalResD/modelResD.jsx';
 import ModalNgo from '../../components/modelNGODetails/modelNGOdetails';
+import {acceptApplication} from '../../servicesApi/DashboardAdmin.js';
 const theme = createTheme({
     typography: {
     fontFamily: [
@@ -137,6 +138,30 @@ function AdminAcceptpage(props){
         const [openRes,setopenRes] = useState(false);
         const [openNgo,setopenNgo] = useState(false);
         const [details,setdetails] = useState({});
+
+        async function accept(email)
+        {
+            try
+            {
+            console.log(props.userDeatils.email)
+            console.log("here",email);
+            let res = await acceptApplication(email);
+            if(res.data.succesful)
+            {
+                console.log(res.data);
+            }
+            }
+            catch (err)
+            {
+                console.log(err);
+                alert(err);
+            }
+            
+        }
+        function  onClickAccpt(email)
+        {
+            accept(email);
+        }
         function handleClose(reason)
         {
             if (reason !== "backdropClick")
@@ -197,7 +222,7 @@ function AdminAcceptpage(props){
 
         return (
             <div className="yello1">
-            <ModalRes details={details} state={openRes} handleClose={handleClose} onclick={onclick}/>
+            <ModalRes onClickAcp={onClickAccpt} details={details} state={openRes} handleClose={handleClose} onclick={onclick}/>
             <ModalNgo details={details} state={openNgo} handleClose={handleClose} onclick={onclick}/>
             <Grid sx ={{marginBottom:"2%"}}>
             </Grid>
