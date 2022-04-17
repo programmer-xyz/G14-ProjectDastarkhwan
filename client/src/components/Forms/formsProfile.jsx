@@ -1,12 +1,15 @@
 import './formsProfile.css';
 import React from 'react';
 import {useState} from 'react';
+import { changeResProfile } from '../../servicesApi/DashboardResturant';
+import { changeProfile } from '../../servicesApi/DashboardUser';
+import { changeNGOProfile } from '../../servicesApi/DashboardNgo';
 
 const user1Init ={
     name:"",
-    bio:"",
+    description:"",
     username:"",
-    email:"",
+    id:"",
     phoneNum:"",
     currPw:"",
     newPw:"",
@@ -16,39 +19,33 @@ const user1Init ={
     // stBlock:"",
     // city:"",
     // country:"",
-    description:""
 };
 
 const  user2Init ={
     name:"",
-    bio:"",
+    description:"",
     username:"",
-    email:"",
     phoneNum:"",
     currPw:"",
     newPw:"",
-    cnic:"",
     address:"",
     pocName:"",
     pocPhoneNum:"",
     pocEmail:"",
+    id:"",
     // HouseNo:"",
     // stBlock:"",
     // city:"",
     // country:"",
-    description:"",
-    accountNum:""
 };
 
 const  user3Init ={
     name:"",
-    bio:"",
-    username:"",
-    email:"",
+    description:"",
+    id:"",
     phoneNum:"",
     currPw:"",
     newPw:"",
-    cnic:"",
     address:"",
     pocName:"",
     pocPhoneNum:"",
@@ -57,7 +54,6 @@ const  user3Init ={
     // stBlock:"",
     // city:"",
     // country:"",
-    description:"",
     accountNum:""
 };
 
@@ -82,6 +78,24 @@ function FormsProfile (props) {
         e.preventDefault();
         const {name, value} = e.target;
         setUser3({...user3, [name]: value});
+    }
+
+    const changeProfile0 = (e) => {
+        e.preventDefault();
+        user1Init.id = localStorage.getItem('email');
+        changeProfile(user1Init.name,user1Init.username,user1Init.phoneNum,user1Init.cnic,user1Init.description,user1Init.address,user1Init.id);
+    }
+
+    const changeProfile2 = (e) => {
+        e.preventDefault();
+        user2Init.id = localStorage.getItem('email');
+        changeResProfile(user2Init.name,user2Init.username,user2Init.phoneNum,user2Init.description,user2Init.address,user2Init.id, user2Init.pocName, user2Init.pocEmail, user2Init.pocPhoneNum);
+    }
+
+    const changeProfile3 = (e) => {
+        e.preventDefault();
+        user3Init.id = localStorage.getItem('email');
+        changeNGOProfile(user3Init.name,user3Init.username,user3Init.accountNum, user3Init.description,user3Init.address,user3Init.id,user3Init.pocName,user3Init.pocEmail,user3Init.pocPhoneNum);
     }
 
     console.log(user1)
@@ -123,13 +137,6 @@ function FormsProfile (props) {
                         </div>
                     </form>
                     </div>
-                    <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control input2 shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" name="email" value={user1.email} onChange={handleForm1}/>
-                        </div>
-                    </form>
-                    </div>
                     <p>&nbsp;</p>
                     <hr></hr>
                     <label>Password Settings</label>
@@ -146,7 +153,7 @@ function FormsProfile (props) {
                         <div class="form-group">
                             <input type="text" class="form-control input2 shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="New Password" name="newPw" value={user1.newPw} onChange={handleForm1}/>
                         </div>
-                        <button class = "buttonsNew">Save Changes</button>
+                        <button onClick={changeProfile0} class = "buttonsNew">Save Changes</button>
                     </form>
                     </div>
                 </div>
@@ -224,7 +231,7 @@ function FormsProfile (props) {
                         <div class="form-group">
                             <input type="text" class="form-control input2 shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="New Password" name="newPw" value={user2.newPw} onChange={handleForm2}/>
                         </div>
-                        <button class = "buttonsNew">Save Changes</button>
+                        <button onClick={changeProfile2} class = "buttonsNew">Save Changes</button>
                     </form>
                     </div>
                 </div>
@@ -266,13 +273,6 @@ function FormsProfile (props) {
                         </div>
                     </form>
                     </div>
-                    <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" class="form-control input2 shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" name="email" value={user3.email} onChange={handleForm3}/>
-                        </div>
-                    </form>
-                    </div>
                     <br></br>
                     <p>&nbsp;</p>
                     <hr></hr>
@@ -310,7 +310,7 @@ function FormsProfile (props) {
                         <div class="form-group">
                             <input type="text" class="form-control input2 shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="New Password" name="newPw" value={user3.newPw} onChange={handleForm3}/>
                         </div>
-                        <button class = "buttonsNew">Save Changes</button>
+                        <button onClick={changeProfile3} class = "buttonsNew">Save Changes</button>
                     </form>
                     </div>
                 </div>
