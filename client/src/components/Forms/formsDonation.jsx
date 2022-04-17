@@ -104,6 +104,8 @@ function FormsDonation (props) {
         })
         .catch((err)=>
         {
+            props.getS("There is an error in youe donation!",true, true,"Back to Dashboard","resturantDashboard");
+
             console.log(err);
         })
     }
@@ -119,6 +121,8 @@ function FormsDonation (props) {
     })
     .catch((err)=>
     {
+        props.getS("There is an error in youe donation!",true, false,"Back to Dashboard","resturantDashboard");
+
         console.log(err);
     })
     }
@@ -158,6 +162,8 @@ const rationDon = (e) =>{
     })
     .catch((err)=>
     {
+        props.getS("There is an error in youe donation!",true, false,"Back to Dashboard","resturantDashboard");
+
         console.log(err);
     })
     }
@@ -188,6 +194,8 @@ const rationDon = (e) =>{
         })
         .catch((err)=>
         {
+            props.getS("There is an error in youe donation!",true, false,"Back to Dashboard","resturantDashboard");
+
             console.log(err);
         })
         }

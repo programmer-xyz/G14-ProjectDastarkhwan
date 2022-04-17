@@ -25,7 +25,8 @@ import Modals from './components/Modals/SignOutModal.jsx'
 
 // import { UserInfo } from './customHooks/userInfo.js';
 // import {UseLoginUser} from "./customHooks/LoginHook";
-//import PrivateRoute from './components/RestrictedRoute/restrictedRoute.js';
+import PrivateRoute from './components/RestrictedRoute/restrictedRoute.js';
+import { Switch } from '@mui/material';
 
 const App = () => {
 
@@ -46,7 +47,7 @@ const App = () => {
                     <Route path="/signoutModal" element={<Modals state={true} modelMsg={"Are you sure you want to sign out"} actionMsg={"cancel"} actionMsg2={"sign out"}/>} />
                     
                     {/* add donation routes here  */}
-                    <Route path = "/userdonationForms" element= {<DonationForms Resturant={false}/>} />
+                    <Route path = "/userdonationForms" element= {<DonationForms Resturant={false}/>} /> 
                     <Route path = "/resturantdonationForms" element={<DonationForms Resturant={true}/>}/> 
 
                     {/* add dashboard routes here */}
@@ -68,9 +69,9 @@ const App = () => {
                     
             
                 </Routes>
-
-                {/* <PrivateRoute path="/userdonationForms"  component={Resturant => <DonationForms {...Resturant}/>}/>
-                <PrivateRoute path="/adminDashboard" component={DashAdmin}/> */}
+               
+            
+           
             </div>
             {/* </UserInfo.Provider> */}
         </Router>
