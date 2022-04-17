@@ -93,8 +93,6 @@ return (
                     <button onClick = {(e) => HandleClick(props,e)} className = {"buttons1"+(button.button2?" orangeColor":" greenColor")} value="Profile">Profile</button>
                     <button onClick = {openModal} className="buttons2" type="submit">Sign Out</button>
                     </Box>
-                
-                
             </Toolbar>
         </AppBar>
 )

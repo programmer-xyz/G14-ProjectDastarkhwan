@@ -52,6 +52,7 @@ const App = () => {
                     <Route path = "/resprofile" element = {<ResProfile/>} />
                     <Route path = "/ngoprofile" element = {<NgoProfile/>} />
 
+                    <Route path = "/ngoDashboard" element = {<NGODashboard/>}/>
                     {/* add Dashboard button routes here */}
                     <Route path="/ngoRequestAcceptPage" element = {<NGOacceptpage />} />
                     <Route path = "/myRequests" element = {<Modalsmyrequest state={true} User={0}/>} />

@@ -32,7 +32,7 @@ function RequestItemsNGO(props)
 {
     function sentId()
     {
-        props.click(props.email);
+        props.click(props.email,props.name);
     }
 
         return (

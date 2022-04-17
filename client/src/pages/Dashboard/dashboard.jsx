@@ -5,7 +5,10 @@ import Cards2 from '../../components/ProfileCard/profileCard.jsx';
 import { Grid,Typography,Box} from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import image2 from '../../assets/output-onlinepngtools1.png';
-
+import {useState,useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
+import Modalsmyrequest from "../../components/ModelMyRequest/ModelMyRequest.jsx";
+import {myProfile} from  '../../servicesApi/DashboardUser.js';
 const theme = createTheme({
     typography: {
     fontFamily: [
@@ -26,8 +29,46 @@ const theme1 = createTheme({
     },});
 
 function Dashboard (props){
+    let navigate = useNavigate();
+    const[userStat,setUserStats] = useState({})
+    const [state,setState] = useState(false);
+    const [email,setEmail] = useState ('adeel@gmail.com');
+    function handleClose(reason)
+    {
+        setState(false);
+    }
+    function getModelStatus(open)
+    {
+        setState(open);
+    }
+    function onClick()
+    {
+        //setStateDonation(false);
+        navigate('/userdonationForms');
+
+    }
+    async function getUserStats ()
+    {
+      try
+      {
+          
+          let res = await myProfile(email)
+          setUserStats(res.data.body);
+          console.log(userStat);
+        }
+        catch (err)
+        {
+            console.log(err)
+        }
+    }
+    useEffect( ()=>{
+        getUserStats();
+
+    }, []);
+
     return(
     <Box sx = {{spacing: "0",backgroundColor:'rgba(233, 196, 106, 0.1)',paddingLeft:'5%',backgroundImage:`url(${image2})`,backgroundRepeat:'no-repeat',backgroundPositionX:'center',backgroundSize:'50% auto'}}>
+        <Modalsmyrequest User= {0} handleClose={handleClose} state={state} email={email}/>
         <Grid  container direction="row" display="flex" sx={{width:'100%', height:'100%'}}>
             <Grid container sx={{margin:"0%"}}>
             <Grid item sx={{width:"100vw", height:"100%" ,padding:"0% 0% 4% 0%"}}>
@@ -54,10 +95,10 @@ function Dashboard (props){
             </Grid>
             <Grid container direction ="row" display="flex"  sx ={{height:"50%",marginBottom:'10%'}}>
             <Grid container item xs ={9} sx = {{width:'100%',height:'100%'}}>
-            <Cards Resturant={2} mealDonations={10} rationDonations={20} monetaryDonations={30}/>
+            <Cards openDM={onClick} Resturant={2} mealDonations={userStat.mealDonated} rationDonations={userStat.rationDonated} monetaryDonations={userStat.amountDonated} openRequst={getModelStatus}/>
             </Grid>
             <Grid container item xs={3} sx = {{width:'100%', height:'100%'}}>
-            <Cards2 Resturant={false} name={"Abdul Muizz khan"} email={"muizz481@gmail.com"} number={"0304-4923899"} description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.'}/>
+            <Cards2 Resturant={false} name={userStat.name} email={userStat.email} number={userStat.phoneNumber} description={userStat.description}/>
             </Grid>
             </Grid>
         </Grid>
