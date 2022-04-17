@@ -9,7 +9,7 @@ function DashAdmin (){
 
     // let navigate = useNavigate();
     // let role = "admin";
-    let s = UseLoginUser();
+    
     
     return (
         <div className = "main">

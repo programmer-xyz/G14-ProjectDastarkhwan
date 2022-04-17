@@ -9,6 +9,8 @@ import {useState,useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
 import Modalsmyrequest from "../../components/ModelMyRequest/ModelMyRequest.jsx";
 import {myProfile} from  '../../servicesApi/DashboardUser.js';
+import {UseLoginUser} from "../../customHooks/LoginHook";
+
 const theme = createTheme({
     typography: {
     fontFamily: [
@@ -61,6 +63,9 @@ function Dashboard (props){
             console.log(err)
         }
     }
+
+    //    let s = UseLoginUser();
+
     useEffect( ()=>{
         getUserStats();
 

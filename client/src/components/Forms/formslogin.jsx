@@ -79,8 +79,8 @@ function LoginForm(prop){
                     {
                         localStorage.setItem('user_id',response.data.user._id);
                         localStorage.setItem('email',response.data.user.email);
-                        localStorage.setItem('role','rest');
-                        navigate("/resturantDashboard" );
+                        localStorage.setItem('role','ngo');
+                        navigate("/ngoDashboard");
                         console.log(response)
                     }
                     else{

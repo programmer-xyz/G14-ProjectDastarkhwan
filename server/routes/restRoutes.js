@@ -1,6 +1,5 @@
 import { Router } from "express";
-import {myRequestRest, restLogin, restRegister,forgetPassResCheckUser,forgetPassUpdatePassRes,changePassRes,viewRestProfile,viewRestStats, editProfileRest, mealDonation } from "../controller/restController";
-import {isAuthenticatedUser} from "../middleware/auth";
+
 import {deleteProfile,myRequestRest, restLogin, restRegister,forgetPassResCheckUser,forgetPassUpdatePassRes,changePassRes,viewRestProfile,viewRestStats, editProfileRest, mealDonation } from "../controller/restController";
 
 const router = Router();

@@ -23,9 +23,9 @@ import NGODashboard from './pages/DashboardNGO/dashNGO.jsx';
 import NgoProfile from './pages/ngoProfile/ngoProfile.jsx';
 import Modals from './components/Modals/SignOutModal.jsx'
 
-import { UserInfo } from './customHooks/userInfo.js';
-import {UseLoginUser} from "./customHooks/LoginHook";
-import PrivateRoute from './components/RestrictedRoute/restrictedRoute.js';
+// import { UserInfo } from './customHooks/userInfo.js';
+// import {UseLoginUser} from "./customHooks/LoginHook";
+// import PrivateRoute from './components/RestrictedRoute/restrictedRoute.js';
 
 const App = () => {
 
