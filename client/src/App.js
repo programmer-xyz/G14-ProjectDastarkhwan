@@ -9,14 +9,19 @@ import NGOacceptpage from './pages/ngoacceptpage/ngoacceptpage.jsx';
 import ResDashboard from './pages/DashboardRes/DashboardRes.jsx';
 import ResModals from './components/modalResturantDetails/modalResturantDetails.jsx';
 import NgoModals from './components/modelNGODetails/modelNGOdetails.jsx';
-import ProfileCards from './components/ProfileCard/profileCard.jsx';
-import Modals from './components/Modals/SignOutModal.jsx';
 import ModalNGO from './components/ModalNGO/ModalNGO.jsx';
 import ForgotPass from './pages/ForgotPassword/forgotPass.jsx';
 import AdminModalSignIn from './components/Modals/modalAdminSignIn.jsx';
 import ResturantDetailModal from './components/modalResD/modelResD.jsx';
 import Modalsmyrequest from './components/ModelMyRequest/ModelMyRequest.jsx';
-
+import ProfileCards from './components/ProfileCard/profileCard.jsx';
+import FormsOfPorfile from './components/Forms/formsProfile.jsx';
+import ModalAccepted from './components/Modals/modalAccepted.jsx';
+import UserProfile from './pages/UserProfile/userprofile.jsx';
+import ResProfile from './pages/resProfile/resProfile.jsx';
+import NGODashboard from './pages/DashboardNGO/dashNGO.jsx';
+import NgoProfile from './pages/ngoProfile/ngoProfile.jsx';
+import Modals from './components/Modals/SignOutModal.jsx'
 const App = () => {
 
     return(

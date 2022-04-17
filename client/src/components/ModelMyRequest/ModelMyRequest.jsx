@@ -123,15 +123,13 @@ var templist = [{
 export default function Modalsmyrequest(props)
 {
   let naviagte = useNavigate();
-  const {modelMsg,state,modalImage,actionMsg,route} = props;
-  const [open,setOpen] = React.useState(state);
+  const {handleClose,state,email} = props;
   const [myReq,setMyReq] = useState([]);
 
   const getMyrequestsRes = async () =>{
 
     if(props.User === 1)
     {
-      let email = "rest4@gmail.com";
       myRequests(email).then((response)=>{
         console.log("The data is :",response.data.body)
         setMyReq(response.data.body)
@@ -140,8 +138,7 @@ export default function Modalsmyrequest(props)
       });
     }
     else {
-      let email1 = "amgio@lums.edu.pk";
-      myRequestsUser(email1).then((response)=>{
+      myRequestsUser(email).then((response)=>{
         console.log("The data is :",response.data.body)
         setMyReq(response.data.body)
       }).catch((err)=>{
@@ -171,26 +168,13 @@ export default function Modalsmyrequest(props)
       return 1;
     }
   }
-  function handleClose(reason)
-  {
-    if (reason !== "backdropClick")
-    {
-      return 
-    }
-    setOpen(false);
-  }
-  function onClick()
-  {
-    setOpen(false);
-    naviagte(`/${route}`)
-
-  }
+  
   if(props.User === 1)
   {
     return (
       <div>
         <Dialog fullScreen = {true} PaperProps={{ sx: { borderRadius: "10px", width: "60%", height: "auto" } }}
-          open={open}
+          open={state}
           aria-labelledby="responsive-dialog-title"
           onClose={handleClose}
           >
@@ -243,7 +227,7 @@ export default function Modalsmyrequest(props)
     return (
       <div>
         <Dialog fullScreen = {true} PaperProps={{ sx: { borderRadius: "10px", width: "60%", height: "auto" } }}
-          open={open}
+          open={state}
           aria-labelledby="responsive-dialog-title"
           onClose={handleClose}
           >

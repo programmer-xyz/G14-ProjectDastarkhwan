@@ -262,12 +262,12 @@ console.log('here')
                 <div class = "row newClass">
                     <form>
                         <div class="form-group">
-                            <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="ngo"  onChange={handleForm1}> 
+                            <select class="form-select shadow-none"  placeholder="NGO" name="ngo"  onChange={handleForm1}> 
                                 <option >Select NGO</option>
                                 {
                                     ngo_lis.map((ele) =>
                                         (
-                                       <option value = {ele.email}>{ele.name}</option>
+                                        <option value = {ele.email}>{ele.name}</option>
                                         )
                                     )
                                 }
@@ -291,7 +291,8 @@ console.log('here')
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control shadow-none" id="cvc" placeholder="CVC" />
-                            <button type = "submit" class="buttons" onClick={moneyDon }>Confirm Donation!</button>
+                            <button type = "submit" class="buttonsDonations"  onClick={moneyDon }>Confirm Donation!</button>
+
                         </div>
                        
                     </form>
@@ -326,7 +327,7 @@ console.log('here')
                             <label>Upload Ration Image</label>
                             <input type="file" class="form-control shadow-none" id="exampleCheck1" placeholder="Add Ration Image" name="rationImg" onChange={onFileChange2}/>
                         </div>
-                        <button type = "submit" class="buttons90" onClick = {rationDon}>Confirm Donation!</button>
+                        <button type = "submit" class="buttonsDonations1" onClick = {rationDon}>Confirm Donation!</button>
                     </form>
                     </div>
                 </div>
@@ -343,7 +344,7 @@ console.log('here')
                                 {
                                     ngo_lis.map((ele) =>
                                         (
-                                       <option value = {ele.email}>{ele.name}</option>
+                                        <option value = {ele.email}>{ele.name}</option>
                                         )
                                     )
                                 }
@@ -360,7 +361,7 @@ console.log('here')
                             <label>Upload Meal Image</label>
                             <input type="file" class="form-control shadow-none" id="exampleCheck1" placeholder="Add Ration Image" name="rationImage" onChange={onFileChange3}/>
                         </div>
-                        <button type = "submit" class="buttons90" onClick = {mealDon}>Confirm Donation!</button>
+                        <button type = "submit" class="buttonsDonations1" onClick = {mealDon}>Confirm Donation!</button>
                     </form>
                     </div>
                 </div>
