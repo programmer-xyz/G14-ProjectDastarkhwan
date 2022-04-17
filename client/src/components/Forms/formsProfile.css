@@ -1,16 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-.cardsNew {
-    background-color: white;
-    width:auto !important;
-    height:100vh !important;
-    padding:30px;
-    border-radius: 14px;
-    box-shadow: 10px 10px 10px 10px #00000014;
-    padding: 40px 50px 93px 50px !important;
-    text-align: left;
-}
-
 label {
     float: left;
     padding-left: 10px;

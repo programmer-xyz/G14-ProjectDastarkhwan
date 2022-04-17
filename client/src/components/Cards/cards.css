@@ -2,6 +2,7 @@
 .cards {
     background-color: white;
     width:80% !important;
+    height: 100% !important;
     padding:30px;
     border-radius: 14px;
     box-shadow: 10px 10px 10px 10px #00000014;
