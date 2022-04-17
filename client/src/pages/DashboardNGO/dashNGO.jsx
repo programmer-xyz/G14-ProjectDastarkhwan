@@ -29,7 +29,7 @@ const theme1 = createTheme({
 function NGODashboard (props){
     let navigate = useNavigate();
 
-    const [email,setemail] = useState('ngo2@gmail.com');
+    const [email,setemail] = useState(localStorage.getItem('email'));
     const [userStat,setUserStats] = useState({});
     const [state,setState] = useState(false);
     function onClick()

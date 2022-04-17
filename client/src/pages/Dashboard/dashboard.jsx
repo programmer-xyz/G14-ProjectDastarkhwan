@@ -32,7 +32,7 @@ function Dashboard (props){
     let navigate = useNavigate();
     const[userStat,setUserStats] = useState({})
     const [state,setState] = useState(false);
-    const [email,setEmail] = useState ('adeel@gmail.com');
+    const [email,setEmail] = useState (localStorage.getItem('email'));
     function handleClose(reason)
     {
         setState(false);

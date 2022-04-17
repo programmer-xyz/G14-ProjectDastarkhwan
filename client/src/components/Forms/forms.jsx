@@ -124,7 +124,7 @@ function Forms (props) {
                 {
                     props.getState("NGO created succesfully,","success",true)
                     console.log(response);
-                    useNavigate("/")
+                    navigate("/")
                 }
                 
         })
@@ -153,7 +153,7 @@ function Forms (props) {
                 if(res.data.success)
                 { 
                     props.getState("User created succesfully,","success",true);
-                    useNavigate("/")
+                    navigate("/")
                 }
             }
         )

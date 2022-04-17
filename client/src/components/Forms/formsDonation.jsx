@@ -2,6 +2,7 @@ import './formsDonation.css';
 import React from 'react';
 import { useState,  useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import ModalAddress from '../Modals/modalAddress';
 import { findNgoUser,findNgoRest, mealDonationRest,mealDonationUser ,rationDonationUser,moneyDonationUser } from  '../../servicesApi/donation.js';
 
 
@@ -57,6 +58,10 @@ function FormsDonation (props) {
     const [searchParams] = useSearchParams();
     const[ role,setRole] = useState("rest");
     const [email,setEmail] = useState("rest4@gmail.com");
+    const [modalState,setModalState] = useState(false);
+    const [Addressset,setAddressState] = useState("Address (House No, St. Block, City, Country)")
+    const [Addressset1,setAddressState1] = useState("Address (House No, St. Block, City, Country)")
+    const [Addressset2,setAddressState2] = useState("Address (House No, St. Block, City, Country)")
 
     console.log(searchParams);
     
@@ -79,10 +84,10 @@ function FormsDonation (props) {
         
         e.preventDefault();
         const address = {
-            "city":"lahore",
-            "country":"country",
-            "streetNumber":"streetNumber",
-            "houseNumber":"houseNumber"
+            "city":Addressset2.city,
+            "country":Addressset2.country,
+            "streetNumber":Addressset2.street,
+            "houseNumber":Addressset2.houseNo
         }     
         
         if(role === "rest")
@@ -130,11 +135,12 @@ function FormsDonation (props) {
 const rationDon = (e) =>{
  
     e.preventDefault();
+    console.log(Addressset1)
     const address = {
-        "city":"lahore",
-        "country":"country",
-        "streetNumber":"streetNumber",
-        "houseNumber":"houseNumber"
+        "city": Addressset1.city,
+        "country":Addressset1.country,
+        "streetNumber":Addressset.street,
+        "houseNumber":Addressset.houseNo
     }
     let em = "amgio@lums.edu.pk";
     let role = "user";
@@ -213,6 +219,52 @@ const rationDon = (e) =>{
         setUser3({...user3, [name]: value});
       
     }
+    function handleClose(reason)
+    {
+        if (reason !== "backdropClick")
+        {
+        
+        } else {
+            setModalState(false);
+
+        }
+    }
+    function getinfo(address)
+    {
+        let z = "";
+        console.log(address);
+        setModalState(false);
+        for (const key in address){
+            if(z===""){
+                z=z+address[key];
+            }
+            else {
+                z=z+" , "+address[key];
+            }
+        }
+        console.log("This is z,",z);
+        if(props.User === 1)
+        {
+            
+            setAddressState(address);
+
+        }
+        else if (props.User === 2)
+        {
+            setAddressState1(address);
+        }
+        else if (props.User === 3)
+        {
+            setAddressState2(address);
+        }
+
+    }
+
+    function openModal (e){
+        e.preventDefault();
+
+        setModalState(true);
+    }
 
    const [ngo_lis, setNgoLis] = useState([]);
 
@@ -256,13 +308,14 @@ const rationDon = (e) =>{
 
     }, [])
 
-console.log('here')
+   console.log('here')
   console.log(user2);
 
     //value={user1.ngo} onChange={handleForm1}
     if (props.User === 1){
         return(
                 <div class = "row newClass">
+                 {/* <ModalAddress state = {modalState} handleClose = {handleClose} onClick3 = {getinfo} User={1}/> */}
                     <form>
                         <div class="form-group2">
                             <select class="form-select shadow-none"  placeholder="NGO" name="ngo"  onChange={handleForm1}> 
@@ -307,6 +360,7 @@ console.log('here')
             <div class = "row newClass">
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <form>
+                    <ModalAddress state = {modalState} handleClose = {handleClose} onClick3 = {getinfo} User={2}/>
                         <div class="form-group2">
                             <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="ngo" onChange={handleForm2}>
                                 <option>Select NGO</option>
@@ -320,7 +374,7 @@ console.log('here')
                             </select>
                         </div>
                         <div class="form-group2">
-                            <input type="text" class="form-control input5 shadow-none" id="exampleInputPassword1" placeholder="Address (House No, St. Block, City, Country)" name="address" value={user2.address} onChange={handleForm2}/>
+                            <input onClick={openModal} type="text" class="form-control input5 shadow-none" id="exampleInputPassword1" placeholder={`${Addressset1}`} name="address" value={user2.address} onChange={handleForm2}/>
                             <p class="details1">Ration Details</p>
                         </div>
                         <div class="form-group2">
@@ -341,6 +395,7 @@ console.log('here')
             <div class = "row newClass">
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <form>
+                    <ModalAddress state = {modalState} handleClose = {handleClose} onClick3 = {getinfo} User={3}/>
                         <div class="form-group2">
                             <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="ngo" onChange={handleForm3}>
                                 <option>Select NGO</option>
@@ -354,7 +409,7 @@ console.log('here')
                             </select>
                         </div>
                         <div class="form-group2">
-                            <input type="text" class="form-control input5 shadow-none" id="exampleInputPassword1" placeholder="Address (House No, St. Block, City, Country)" name="address" value={user3.address} onChange={handleForm3}/>
+                            <input type="text" class="form-control input5 shadow-none" id="exampleInputPassword1" placeholder={`${Addressset2}`}  name="address" value={user3.address} onChange={handleForm3}/>
                             <p class="details1">Meal Details</p>
                         </div>
                         <div class="form-group2">
