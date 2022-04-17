@@ -25,7 +25,7 @@
     background: transparent 0% no-repeat padding-box;;
 }
 
-.form-group {
+.form-group2 {
     /* background: #FFFFFF 0% 0% no-repeat padding-box; */
     /* align-items: center; */
     position:relative;
@@ -34,7 +34,7 @@
     border-radius: 10px;
     margin-bottom: 30px;
     padding: 25px;
-    color: #838D94;
+    color: #838D94 !important;
     font-family: "Poppins";
     font-size: 14px/21px;
     letter-spacing: -0.66px;
@@ -71,8 +71,8 @@
     box-shadow: none;
 }
 
-form .form-control{
-    background-color: #FFFFFF 0% 0% no-repeat padding-box;
+form .form-control2{
+    background-color: #FFFFFF 0% 0% no-repeat padding-box !important;
     border-color: #FFFFFF;
     box-shadow: none;
     box-sizing: none;
