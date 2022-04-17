@@ -114,7 +114,8 @@ export const forgetPassResCheckUser = handleAsyncErr(async(req,res,next)=>{
 
 export const forgetPassUpdatePassNgo = handleAsyncErr(async(req,res,next)=>{
     const {email,newPassword} = req.body;
-    if (!email || !newPassword)
+    console.log(email,newPassword)
+    if (!!email || !!newPassword)
     {
         return next(new HandErr("email or new Password is missing",400));
     }
