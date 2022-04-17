@@ -39,7 +39,7 @@ function RequestItems(props)
             <div>
                 <ListItem sx={{width: '100%', border:'1px solid #422F5F21', borderRadius:"25px", backgroundColor:"rgba(244, 162, 97, 0.17)",marginBottom:"20px"}}>
                     <ListItemAvatar> 
-                    <Avatar sx={{width:"80px", height:"80px", marginRight:"20px"}}src ={props.image} alt ="User Image"/>
+                    <Avatar sx={{width:"80px", height:"80px", marginRight:"20px"}} src = {props.image} alt ="User Image"/>
                     {/* <img class= "image1" src={props.image} alt="here"/> */}
                     </ListItemAvatar>
                     <ThemeProvider theme = {theme}>

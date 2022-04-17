@@ -130,6 +130,27 @@ function returnTime (date)
   return finalTime;
 }
 
+function getName(item)
+
+{
+    if(!!item.userDetails)
+    {
+        if (item.userDetails.length!==0)
+        {
+            console.log(item.userDetails[0])
+            return item.userDetails[0].name;
+        }
+    }
+    else if (!!item.restDetails)
+    {
+        if (item.restDetails.length!==0)
+        {
+            console.log(item.restDetails[0].name);
+            return item.restDetails[0].name;
+        }
+    }
+     
+}
 
 function NGOacceptpage(props){
 
@@ -208,7 +229,7 @@ function NGOacceptpage(props){
             <TabBar itemOne = {"All"} itemTwo = {"Restuarants"} itemThree = {"Users"} getId={GetSelectedID} />
             </Grid>
             <Grid container display={"flex"} alignItems={'center'} justifyContent="center">
-            <List sx={{width:'75%',height:'100%',overflow:'auto',maxHeight:"500px",'&::-webkit-scrollbar': {
+            <List sx={{width:'75%',height:'100%',overflow:'auto',maxHeight:"100vh",'&::-webkit-scrollbar': {
             width: '0.5rem',
             },
             '&::-webkit-scrollbar-track': {
@@ -221,7 +242,7 @@ function NGOacceptpage(props){
             outline: '1px solid slategrey'
             }}}>
             {ngorequests.length!==0 && ngorequests.map(item =>(
-                    <RequestItems image={item.image} name={item.name} heading1={item.heading1} heading2={item.heading2} pargaraph1={item.pargaraph1} date={item.date} time={item.time} userRequests={false} NGOrequests={true} Resreq={false} buttonStat={1}/>
+                    <RequestItems image={`data:image/jpeg;base64,${item.image}`} name={getName(item)} heading1={"Type"} heading2={"Date"} pargaraph1={`${item.typeOfDonation} donation`} date={getDate(item.createdAt)} time={returnTime(item.createdAt)} userRequests={false} NGOrequests={true} Resreq={false} buttonStat={1}/>
             ))}
             {ngorequests.length===0 && <Typography display="flex" sx={{alignContent:'center',justifyContent:'center',font: 'normal normal normal 42px/109px Poppins'}} component="span" variant="h3">{"No requests to show at the momment"}</Typography>}
             </List>

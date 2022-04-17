@@ -119,3 +119,7 @@ export const restLogin = async (email,password) =>
     return await axios.post(`${Url}/rest/login`,obj);
 }
 
+export const viewApplicationadminDashboard = async () =>{
+
+    return await axios.get(`${Url}/admin/viewApplications`)
+}

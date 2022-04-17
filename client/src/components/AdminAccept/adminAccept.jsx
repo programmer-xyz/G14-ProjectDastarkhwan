@@ -3,10 +3,11 @@ import Grid from "@mui/material/Grid";
 import RequestItems from '../../components/RequestItems/requestItems.jsx';
 import TabBar from '../../components/TabBar/TabBar.jsx';
 import { Typography } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import { List } from '@mui/material';
 import image1 from '../../components/RequestItems/testImage.jpeg';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { viewApplicationadminDashboard } from '../../servicesApi/authenticationApi';
 
 const theme = createTheme({
     typography: {
@@ -103,6 +104,12 @@ var templist = [{
 }]
 
 function AdminAcceptpage(props){
+
+        const [selectedID,getSelectedID] = useState(1);
+        const [requestAdmin,setrequestAdmin] = useState([]);
+ 
+
+
         return (
             <div className="yello">
             <Grid sx ={{marginBottom:"2%"}}>
