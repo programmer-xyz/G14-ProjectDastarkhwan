@@ -31,7 +31,6 @@ function Dashboard (props){
     const[userStat,setUserStats] = useState({})
     const [state,setState] = useState(false);
     const [stateDonation,setStateDonation] = useState(false);
-    const [route,setRoute] = useState ('');
     const [email,setEmail] = useState ('rest4@gmail.com');
     const [userId,setUserId] = useState ('62386a881d8d6e8aeabe6d6f')
     function handleClose(reason)
@@ -69,10 +68,6 @@ function Dashboard (props){
     function getModelStatus(open)
     {
         setState(open);
-    }
-    function getDonationModelStatus(open)
-    {
-        setStateDonation(open);
     }
 
     return(
