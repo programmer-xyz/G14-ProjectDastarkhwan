@@ -7,9 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 function DashAdmin (){
 
-    let navigate = useNavigate();
-    let role = "admin";
-    let s = UseLoginUser(role);
+    // let navigate = useNavigate();
+    // let role = "admin";
+    let s = UseLoginUser();
     
     return (
         <div className = "main">

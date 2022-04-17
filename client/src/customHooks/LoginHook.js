@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useCallback } from 'react';
 
 import {checkLoggedIn} from "../servicesApi/authenticationApi";
 import { useNavigate } from 'react-router-dom';
@@ -33,45 +33,13 @@ import { useNavigate } from 'react-router-dom';
 //     }
 // }
 
-
-
-// export function UseLoginUser(role) {
-//     let navigate = useNavigate();
-
-//    const [user, setUser] = useState(false);
-
-//     useEffect(() => {
-//     async function findLoggedinUser() {
-
-//             checkLoggedIn(role).then(res => {
-
-//                 if(res.data.login ===false){
-//                     navigate("/");
-//                 }
-
-//             setUser(res.data.login)
-          
-
-//         }).catch(err => {
-
-//             console.log(err);
-//         });
-//     }
-
-//     findLoggedinUser();
-
-//     }, []);
-//     return {
-//        user
-//     }
-// }
-
+let d = 0;
 
 export function UseLoginUser() {
     let navigate = useNavigate();
 
    const [user, setUser] = useState(false);
-   const [userData, setUserData] = useState(null);
+
     useEffect(() => {
     async function findLoggedinUser() {
 
@@ -82,7 +50,7 @@ export function UseLoginUser() {
                 }
 
             setUser(res.data.login)
-        
+          
 
         }).catch(err => {
 
@@ -97,3 +65,38 @@ export function UseLoginUser() {
        user
     }
 }
+
+let d2 = 0;
+// export function UseLoginUser() {
+    
+
+//    const [user, setUser] = useState(false);
+
+//    const updateUser = useCallback(() => {
+//     async function findLoggedinUser() {
+
+//         checkLoggedIn().then(res => {
+//             updateUser()
+        
+//         setUser(res.data.login)
+    
+
+//             }).catch(err => {
+
+//                 console.log(err);
+//             });
+//         }
+
+//     findLoggedinUser();
+
+//   }, []);
+
+
+//     useEffect(() => {
+//         updateUser();
+
+//     }, [updateUser]);
+//     return {
+//        user
+//     }
+// }
