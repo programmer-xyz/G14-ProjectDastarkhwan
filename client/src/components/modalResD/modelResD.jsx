@@ -10,17 +10,14 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import CheckIcon from '@mui/icons-material/Check';
-import monalImage from '../../assets/gernal-view-of-the-outdoor.jpg';
 import { IoIosCloseCircle } from "react-icons/io";
 import CloseIcon from '@mui/icons-material/Close';
-
+import {acceptApplication,rejectApplication} from '../../servicesApi/DashboardAdmin.js'
 
 function ResturantDetailModal(props)
 {
   let naviagte = useNavigate();
-  const {state,onClick,handleClose} = props;
-
-
+  const {state,onclick,handleClose} = props;
   
  
   // function onClick()
@@ -29,6 +26,58 @@ function ResturantDetailModal(props)
   //   naviagte(`/${route}`)
 
   // }
+  async function accept(email)
+        {
+            try
+            {
+            let res = await acceptApplication(email);
+            if(res.data.succesful)
+            {
+                console.log(res.data);
+                alert(res.data.msg);
+                onclick();
+                naviagte('/adminDashboard')
+            }
+            }
+            catch (err)
+            {
+                console.log(err);
+                alert(err);
+                onclick();
+                naviagte('/adminDashboard')
+            }
+            
+        }
+    async function reject(email)
+    {
+        try
+            {
+            let res = await rejectApplication(email);
+            if(res.data.succesful)
+            {
+                console.log(res.data);
+                alert(res.data.msg);
+                onclick();
+                naviagte('/adminDashboard')
+
+            }
+            }
+            catch (err)
+            {
+                console.log(err);
+                alert(err);
+                onclick();
+                naviagte('/adminDashboard')
+            }
+    }
+   function acp()
+   {
+       accept(props.details.email);
+   }
+   function ecp()
+   {
+       reject(props.details.email)
+   }
 
   return (
     <div>
@@ -39,7 +88,7 @@ function ResturantDetailModal(props)
         >
         <DialogTitle sx = {{textAlign:'center',font: 'normal normal normal 24px/35px Poppins',color:'#E76F51'}}>Restuarant Details
         <Box display="flex" justifyContent={'right'} sx ={{position:'relative',top:'-35px'}}>
-        <button onClick = {onClick} className="buttonClass1"> <IoIosCloseCircle size={30} color="#F4A261"/></button>
+        <button onClick = {onclick} className="buttonClass1"> <IoIosCloseCircle size={30} color="#F4A261"/></button>
         </Box>
         </DialogTitle>
         <Grid container justifyContent={'center'} alignItems="center" direction="row" >
@@ -47,7 +96,7 @@ function ResturantDetailModal(props)
         <DialogContent>
         <React.Fragment>
             <Typography sx = {{display:'flex',paddingBottom:"2%",font:'normal normal normal 24px/35px Poppins'}} component="span" variant="h6" color={"#E76F51"}>
-                {'Monal Resturant'} 
+                {props.details.name} 
             </Typography>
             <Typography  sx={{ display: 'flex',paddingBottom:"2%",font: 'normal normal 300 16px/25px Poppins'}}
                 component="span"
@@ -58,7 +107,7 @@ function ResturantDetailModal(props)
                 component="span"
             variant="paragraph"
             color="#264653">
-            {`${props.email}`} 
+            {`${props.details.email}`} 
             </Typography>
             </Typography> 
             <Typography  sx={{ display: 'flex',paddingBottom:"2%",font: 'normal normal 300 16px/25px Poppins'}}
@@ -71,7 +120,7 @@ function ResturantDetailModal(props)
                 component="span"
             variant="paragraph"
             color="#264653">
-            {` ${props.phoneNumber}`} 
+            {` ${props.details.phoneNumber}`} 
             </Typography>
             </Typography> 
             <Typography  sx={{ display: 'flex',paddingBottom:"2%",font: 'normal normal 300 16px/25px Poppins'}}
@@ -84,7 +133,7 @@ function ResturantDetailModal(props)
                 component="span"
             variant="paragraph"
             color="#264653">
-            {` ${props.address}`} 
+            {` ${JSON.stringify(props.details.address)}`} 
             </Typography>
             </Typography> 
             <Typography  sx={{ display: 'flex',paddingBottom:"2%",font: 'normal normal 300 16px/25px Poppins'}}
@@ -97,26 +146,26 @@ function ResturantDetailModal(props)
                 component="span"
             variant="paragraph"
             color="#264653">
-            {` ${props.accountNumber} `} 
+            {` ${props?.details?.bankAccount} `} 
             </Typography>
             </Typography> 
             <Typography sx = {{display:'flex',paddingTop:'2%',font: 'normal normal 300 16px/25px Poppins'}} component="span" variannt="h5" color="#E76F51">
             {'Description: '}
             </Typography>
             <Typography sx = {{display:'flex',paddingTop:'2%',font: 'normal normal 300 14px/21px Poppins'}} component="span" variannt="paragraph" color="#264653">
-            {` ${props.description}`}
+            {` ${props?.details?.description}`}
             </Typography>
             <Typography sx = {{display:'flex',paddingTop:'2%',font: 'normal normal 300 16px/25px Poppins'}} component="span" variannt="h5" color="#E76F51">
             {'Point of Contact info: '}
             </Typography>
             <Typography sx = {{display:'flex',paddingTop:'2%',font:'normal normal 300 16px/25px Poppins'}} component="span" variannt="h5" color="#264653">
-            {` ${props.pointOfCName}`}
+            {` ${props.details.contactName}`}
             </Typography>
             <Typography sx = {{display:'flex',paddingTop:'2%',font:'normal normal 300 16px/25px Poppins'}} component="span" variannt="h5" color="#264653">
-            {` ${props.pointOfCEmail}`}
+            {` ${props.details.contactEmail}`}
             </Typography>
             <Typography sx = {{display:'flex',paddingTop:'2%',font:'normal normal 300 16px/25px Poppins'}} component="span" variannt="h5" color="#264653">
-            {` ${props.pointOfCNumber}`}
+            {` ${props.details.contactNumber}`}
             </Typography>
         </React.Fragment>     
         </DialogContent>
@@ -124,7 +173,7 @@ function ResturantDetailModal(props)
         <Grid container item xs={6} sx ={{width:'100%',height:'100%',overflowY:'hidden'}} justifyContent={'right'} alignContent={'right'}>
         <DialogContent alignContent={'right'} justifyContent={'right'}>
         <DialogActions sx ={{position:'relative',top:'90%'}}>
-        <Button variant="outlined" size="medium" disableRipple aria-label=""  sx={ 
+        <Button onClick={ecp} variant="outlined" size="medium" disableRipple aria-label=""  sx={ 
                     {"&.MuiButtonBase-root:hover": {
                         bgcolor: "#fff",
                         borderColor:'#E76F51',
@@ -142,7 +191,7 @@ function ResturantDetailModal(props)
                 <CloseIcon size={25} sx = {{mr:"2"}}></CloseIcon>
                 Reject
         </Button>
-        <Button className='butClass' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
+        <Button onClick={acp} className='butClass' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
                     {"&.MuiButtonBase-root:hover": {
                         bgcolor: "#E76F51",
                         boxShadow:"none"

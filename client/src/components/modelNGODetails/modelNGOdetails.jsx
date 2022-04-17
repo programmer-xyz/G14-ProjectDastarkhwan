@@ -15,6 +15,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import taxImage from "../../assets/exampletaximage.png";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Fontpoppins from './modelNGOdetails.scss';
+import {acceptApplication,rejectApplication} from '../../servicesApi/DashboardAdmin.js'
+
 
 const theme = createTheme({
     typography: {
@@ -29,35 +31,87 @@ const theme = createTheme({
 function NgoModals(props)
 {
   let naviagte = useNavigate();
-  const {modelMsg,state,modalImage,actionMsg,route} = props;
-  const [open,setOpen] = React.useState(state);
+  const {handleClose,state,onclick} = props;
+    console.log(props.details);
+    async function accept(email)
+    {
+        try
+        {
+        let res = await acceptApplication(email);
+        if(res.data.succesful)
+        {
+            console.log(res.data);
+            alert(res.data.msg);
+            onclick();
+            naviagte('/adminDashboard')
+        }
+        }
+        catch (err)
+        {
+            console.log(err);
+            alert(err);
+            onclick();
+            naviagte('/adminDashboard')
+        }
+        
+    }
+async function reject(email)
+{
+    try
+        {
+        let res = await rejectApplication(email);
+        if(res.data.succesful)
+        {
+            console.log(res.data);
+            alert(res.data.msg);
+            onclick();
+            naviagte('/adminDashboard')
+
+        }
+        }
+        catch (err)
+        {
+            console.log(err);
+            alert(err);
+            onclick();
+            naviagte('/adminDashboard')
+        }
+}
+    function acp()
+    {
+    accept(props.details.email);
+    }
+    function ecp()
+    {
+    reject(props.details.email)
+    }
 
   
-  function handleClose(reason)
-  {
-    if (reason !== "backdropClick")
-    {
-      return 
-    }
-    setOpen(false);
-  }
-  function onClick()
-  {
-    setOpen(false);
-    naviagte(`/${route}`)
+  // function handleClose(reason)
+  // {
+  //   if (reason !== "backdropClick")
+  //   {
+  //     return 
+  //   }
+  //   setOpen(false);
+  // }
+  // function onClick()
+  // {
+  //   setOpen(false);
+  //   naviagte(`/${route}`)
 
-  }
+  // }
 
   return (
     <div>
       <Dialog fullScreen={true} PaperProps={{ sx: { width: "850px", height: "730px",borderRadius:'10px' }}}
-        open={open}
+        open={state}
         aria-labelledby="responsive-dialog-title"
         onClose={handleClose}
         >
         <DialogTitle sx = {{textAlign:'center','font':Fontpoppins.myFont,color:'#E76F51'}}> NGO Details
         <Box display="flex" justifyContent={'right'} sx ={{position:'relative',top:'-35px',paddingBottom:"0px"}}>
-        <button className="buttonClass1"> <IoIosCloseCircle size={30} color="#F4A261"/></button>
+        <button onClick={onclick}className="buttonClass1"> <IoIosCloseCircle size={30} color="#F4A261"/></button>
         </Box>
         </DialogTitle>
         <Grid container justifyContent={'center'} alignItems="center" direction="row" >
@@ -65,7 +119,7 @@ function NgoModals(props)
         <DialogContent>
         <React.Fragment>
             <Typography sx = {{display:'flex',paddingBottom:"2%",font:'normal normal normal 24px/35px Poppins'}} component="span" variant="h6" color={"#E76F51"}>
-                {'Al Khair Foundation'} 
+                {props.details.name} 
             </Typography>
             <Typography  sx={{ display: 'flex',paddingBottom:"2%",font: 'normal normal 300 16px/25px Poppins'}}
                 component="span"
@@ -76,7 +130,7 @@ function NgoModals(props)
                 component="span"
             variant="paragraph"
             color="#264653">
-            {`${props.email}`} 
+            {`${props.details.email}`} 
             </Typography>
             </Typography> 
             <Typography  sx={{ display: 'flex',paddingBottom:"2%",font: 'normal normal 300 16px/25px Poppins'}}
@@ -89,7 +143,7 @@ function NgoModals(props)
                 component="span"
             variant="paragraph"
             color="#264653">
-            {` ${props.phoneNumber}`} 
+            {` ${props.details.phoneNumber}`} 
             </Typography>
             </Typography> 
             <Typography  sx={{ display: 'flex',paddingBottom:"2%",font: 'normal normal 300 16px/25px Poppins'}}
@@ -102,7 +156,7 @@ function NgoModals(props)
                 component="span"
             variant="paragraph"
             color="#264653">
-            {` ${props.address}`} 
+            {` ${JSON.stringify(props.details.address)}`} 
             </Typography>
             </Typography> 
             <Typography  sx={{ display: 'flex',paddingBottom:"2%",font: 'normal normal 300 16px/25px Poppins'}}
@@ -115,35 +169,35 @@ function NgoModals(props)
                 component="span"
             variant="paragraph"
             color="#264653">
-            {` ${props.accountNumber} `} 
+            {` ${props.details.bankAccount} `} 
             </Typography>
             </Typography> 
             <Typography sx = {{display:'flex',paddingTop:'2%',font: 'normal normal 300 16px/25px Poppins'}} component="span" variannt="h5" color="#E76F51">
             {'Description: '}
             </Typography>
             <Typography sx = {{display:'flex',paddingTop:'2%',font: 'normal normal 300 14px/21px Poppins'}} component="span" variannt="paragraph" color="#264653">
-            {` ${props.description}`}
+            {` ${props.details.description}`}
             </Typography>
             <Typography sx = {{display:'flex',paddingTop:'2%',font: 'normal normal 300 16px/25px Poppins'}} component="span" variannt="h5" color="#E76F51">
             {'Point of Contact info: '}
             </Typography>
             <Typography sx = {{display:'flex',paddingTop:'2%',font:'normal normal 300 16px/25px Poppins'}} component="span" variannt="h5" color="#264653">
-            {` ${props.pointOfCName}`}
+            {` ${props.details.contactName}`}
             </Typography>
             <Typography sx = {{display:'flex',paddingTop:'2%',font:'normal normal 300 16px/25px Poppins'}} component="span" variannt="h5" color="#264653">
-            {` ${props.pointOfCEmail}`}
+            {` ${props.details.contactEmail}`}
             </Typography>
             <Typography sx = {{display:'flex',paddingTop:'2%',font:'normal normal 300 16px/25px Poppins'}} component="span" variannt="h5" color="#264653">
-            {` ${props.pointOfCNumber}`}
+            {` ${props.details.contactNumber}`}
             </Typography>
         </React.Fragment>     
         </DialogContent>
         </Grid>
         <Grid container item xs={6} sx ={{width:'100%',height:'100%',overflowY:'hidden'}} justifyContent={'right'} alignContent={'right'}>
         <DialogContent alignContent={'right'} justifyContent={'right'}>
-        <img className = "imageProp" src = {taxImage}/>
+        <img className = "imageProp" src = {`data:image/jpeg;base64,$${props?.details?.registerationDoc}`} alt={'ngo certificate unavaiable'}/>
         <DialogActions sx ={{position:'relative',top:'180px'}}>
-        <Button variant="outlined" size="medium" disableRipple aria-label=""  sx={ 
+        <Button  onClick={ecp} variant="outlined" size="medium" disableRipple aria-label=""  sx={ 
                     {"&.MuiButtonBase-root:hover": {
                         bgcolor: "#fff",
                         borderColor:'#E76F51',
@@ -161,7 +215,7 @@ function NgoModals(props)
                 <CloseIcon size={25} sx = {{mr:"2"}}></CloseIcon>
                 Reject
                 </Button>
-                <Button variant="contained" size="medium" disableRipple sx={ 
+                <Button  onClick={acp} variant="contained" size="medium" disableRipple sx={ 
                     {"&.MuiButtonBase-root:hover": {
                         bgcolor: "#E76F51",
                         boxShadow:'none',

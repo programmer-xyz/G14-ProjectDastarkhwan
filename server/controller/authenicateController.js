@@ -11,7 +11,7 @@ import {tokenMaker} from "../utils/tokenManager"
 //test func not an api will be deleted later
 export const createAdmin = async (req,res) =>{
     const {userName, password} = req.body;
-    console.log(userName)
+    //console.log(userName)
     //const admin2 = await admin.create(req.body);
     //console.log(admin2)
     res.status(201).json({
@@ -20,7 +20,7 @@ export const createAdmin = async (req,res) =>{
     let pw = await bcrypt.hash(password, 12);
     const ad = new Admin({userName, password : pw});
     ad.save().then(() =>{
-        console.log('RO made')
+        //console.log('RO made')
     }).catch(err => console.log(`ro not made \n ${err}`))
 }
 

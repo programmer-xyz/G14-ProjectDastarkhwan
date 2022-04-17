@@ -9,7 +9,7 @@ export const rejectApplication = ()=>
 {
     /* automated rjection of application if number of days for application is greater or equal to 3 days */
     cron.schedule('* * * * *', async function(){
-        console.log("here")
+        //console.log("here")
         const response = await application.updateMany(
             {"createdAt": {
             $lte: new Date((new Date().getTime() - (3 * 24 * 60 * 60 * 1000))),
@@ -21,6 +21,6 @@ export const rejectApplication = ()=>
         }
     )
      
-        console.log(response);
+        //console.log(response);
     })
 }

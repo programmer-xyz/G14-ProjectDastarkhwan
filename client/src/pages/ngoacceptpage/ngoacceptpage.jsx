@@ -7,7 +7,7 @@ import React from 'react';
 import { List } from '@mui/material';
 import image1 from '../../components/RequestItems/testImage.jpeg';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Navbar from '../../components/Navbar/Navbar';
+import NavBar from '../../components/Navbar/Navbar';
 import {useState,useEffect} from 'react';
 import { makeRequestNgo,makeRequestNgoUser,makeRequestRestNgo } from '../../servicesApi/ngoAcceptpage';
 import { useNavigate } from 'react-router-dom';
@@ -190,6 +190,7 @@ function NGOacceptpage(props){
             }
         }catch(err){
             console.log(err)
+            setNgoRequests([]);
         } 
     }
     function GetSelectedID (id)
@@ -203,7 +204,7 @@ function NGOacceptpage(props){
         return (
             <div className="yello">
             <Grid sx ={{marginBottom:"2%"}}>
-            <Navbar />
+            <NavBar setUserType={props.setUserType}/>
             </Grid>
             <Grid container display="flex" alignItems={'center'} justifyContent="center" sx={{backgroundColor:'#FEF6EF'}}>
             <Grid container alignItems={'center'} justifyContent="center">
@@ -244,7 +245,9 @@ function NGOacceptpage(props){
             {ngorequests.length!==0 && ngorequests.map(item =>(
                     <RequestItems donationId={item._id} userDetails={item} image={`data:image/jpeg;base64,${item.image}`} name={getName(item)} heading1={"Type"} heading2={"Date"} pargaraph1={`${item.typeOfDonation} donation`} date={getDate(item.createdAt)} time={returnTime(item.createdAt)} userRequests={false} NGOrequests={true} Resreq={false} buttonStat={1}/>
             ))}
-            {ngorequests.length===0 && <Typography display="flex" sx={{alignContent:'center',justifyContent:'center',font: 'normal normal normal 42px/109px Poppins'}} component="span" variant="h3">{"No requests to show at the momment"}</Typography>}
+            {ngorequests.length===0 && selectedID === 1 && <Typography display="flex" sx={{alignContent:'center',justifyContent:'center',font: 'normal normal normal 42px/109px Poppins'}} component="span" variant="h3">{"No requests to show at the momment"}</Typography>}
+            {ngorequests.length===0 && selectedID === 2 && <Typography display="flex" sx={{alignContent:'center',justifyContent:'center',font: 'normal normal normal 42px/109px Poppins'}} component="span" variant="h3">{"No requests to show at the momment"}</Typography>}
+            {ngorequests.length===0 && selectedID === 3 && <Typography display="flex" sx={{alignContent:'center',justifyContent:'center',font: 'normal normal normal 42px/109px Poppins'}} component="span" variant="h3">{"No requests to show at the momment"}</Typography>}
             </List>
             </Grid>
             </Grid>

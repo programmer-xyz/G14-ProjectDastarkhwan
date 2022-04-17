@@ -79,14 +79,14 @@ function Dashboard (props){
         <Grid  container direction="row" display="flex" sx={{width:'100%', height:'100%'}}>
             <Grid container sx={{margin:"0%"}}>
             <Grid item sx={{width:"100vw", height:"100%" ,padding:"0% 0% 4% 0%"}}>
-            <NavBar />
+            <NavBar setUserType={props.setUserType}/>
             </Grid>
             </Grid>
             <Grid container alignContent={'center'} justifyContent={'center'} sx ={{marginTop:'4%'}}>
                 <Grid item>
                 <ThemeProvider theme={theme}>
                 <Typography sx = {{display:'inline-block',letterSpacing:'-1.97px'}} component="span" variant="h3" color="#E76F51">
-                {`Hello ${props.name} !`}
+                {`Hello ${userStat.name} !`}
                 </Typography>
                 </ThemeProvider>
                 </Grid>

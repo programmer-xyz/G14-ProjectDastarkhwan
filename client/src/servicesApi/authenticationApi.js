@@ -131,3 +131,13 @@ export const viewApplicationadminDashboard = async () =>{
 
     return await axios.get(`${Url}/admin/viewApplications`)
 }
+
+export const adminLoginform = async (userName,password) =>{
+    let obj = {
+        userName:userName,
+        password:password
+    }
+
+    return await axios.post(`${Url}/admin/login`,obj);
+    
+}

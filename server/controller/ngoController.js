@@ -97,7 +97,7 @@ export const forgetPassResCheckUser = handleAsyncErr(async(req,res,next)=>{
     
     // here we will first find the user 
     const ngoobj = await Ngo.findOne({email});
-    console.log(ngoobj);
+    //console.log(ngoobj);
     if (!ngoobj)
     {
         return next(new HandErr("No user found with the specific email",401))
@@ -145,7 +145,7 @@ export const changePassNgo = handleAsyncErr(async(req,res,next)=>{
     let hashPass = await bcrypt.hash(newPassword,12);
     let update = {password:hashPass};
     let updatedNgo = await Ngo.findOneAndUpdate(filter,update,{new:true});
-    console.log(updatedNgo);
+    //console.log(updatedNgo);
     if (updatedNgo)
     {
         res.status(200).json({
@@ -163,13 +163,13 @@ export const changePassNgo = handleAsyncErr(async(req,res,next)=>{
 export const viewNgoProfile = handleAsyncErr(async (req,res,next)=>
 {
     let {email} = req.body
-    console.log(email)
+    //console.log(email)
     if(!email)
     {
         return next(new HandErr("email is missing",400));
     }
     let ngoProfile = await Ngo.findOne({'email':email, 'isActive':true},{password:0});
-    console.log(ngoProfile)
+   // console.log(ngoProfile)
     if(!!ngoProfile)
     {
         res.status(200).json({
@@ -228,7 +228,7 @@ export const deleteProfile = handleAsyncErr(async (req,res,next)=>
                     const deleteNgo = await Ngo.findOneAndUpdate({'email':email, 'isActive': true},{"isActive":false})
                     const ids = deleteNgo._id;
                     const deactivate = await donation.updateMany({ "acceptedBy":  ids }, { "$set": { "isActive": "false" }})
-                    console.log(deactivate)
+                    //console.log(deactivate)
                 }
                 catch (error)
                 {
@@ -258,7 +258,7 @@ export const deleteProfile = handleAsyncErr(async (req,res,next)=>
 export const viewDonation = handleAsyncErr(async (req,res,next)=>
 {
     let {ngoId} = req.body
-    console.log("Here is the ngo id",ngoId);
+    //console.log("Here is the ngo id",ngoId);
     if(!!ngoId)
     {
         var id = mongoose.Types.ObjectId(ngoId);
@@ -334,7 +334,7 @@ export const viewUserDonation= handleAsyncErr(async (req,res,next)=>{
         var id = mongoose.Types.ObjectId(ngoId);
         //validate NGO
         var response = await Ngo.findOne({'_id': id, 'isActive': true})
-        console.log(response)
+        //console.log(response)
         if(!response)
         {
             return next(new HandErr("NGO with this id dosen't exist or has been deleted",401));
@@ -388,7 +388,7 @@ export const viewRestDonation = handleAsyncErr(async (req,res,next)=>
         var id = mongoose.Types.ObjectId(ngoId);
         //validate NGO
         var response = await Ngo.findOne({'_id': id, 'isActive': true})
-        console.log(response)
+        //console.log(response)
         if(!response)
         {
             return next(new HandErr("NGO with this id dosen't exist or has been deleted",401));
@@ -633,7 +633,7 @@ export const findNgoUser = handleAsyncErr(async(req,res,next)=>{
     let userObj = await User.findOne({_id: user_id, isActive:true});
 
     let add = userObj.address;
-    console.log(`here ${add}`);
+    //console.log(`here ${add}`);
     let city = add.city;
 
     let cityNgos = await Ngo.find({'address.city' : city, isActive:true});
@@ -648,7 +648,7 @@ export const findNgoUser = handleAsyncErr(async(req,res,next)=>{
         body: cityNgos
     });
 
-    console.log(cityNgos);
+    //console.log(cityNgos);
 
 });
 
@@ -657,7 +657,7 @@ export const findNgoRest = handleAsyncErr(async(req,res,next)=>{
     let userObj = await Rest.findOne({_id: user_id, isActive:true});
 
     let add = userObj.address;
-    console.log(`here ${add}`);
+    //console.log(`here ${add}`);
     let city = add.city;
 
     let cityNgos = await Ngo.find({'address.city' : city, isActive:true});
@@ -672,7 +672,7 @@ export const findNgoRest = handleAsyncErr(async(req,res,next)=>{
         body: cityNgos
     });
 
-    console.log(cityNgos);
+    //console.log(cityNgos);
 
 });
 
