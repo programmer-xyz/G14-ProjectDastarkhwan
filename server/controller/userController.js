@@ -5,7 +5,7 @@ import { handleAsyncErr } from "../middleware/handleAsyncErr.js";
 import bcrypt from "bcrypt";
 import HandErr from "../utils/err.js";
 import {tokenMaker} from "../utils/tokenManager"
-import mongoose from "mongoose";
+
 
 
 //login 
@@ -232,44 +232,6 @@ export const rationDonation = handleAsyncErr(async (req,res,next) =>{
         donation
       });
 })
-
-// export const moneyDonation = handleAsyncErr(async (req,res,next) =>{
-//     //user email and selected ngo will be sent from frontend
-//     const {email, ngoIdentifier, amount, cardNum} = req.body;
-   
-//     if( !amount|| !cardNum ||!email ){
-//         return next(new HandErr("some fields are missing", 401))
-//     }
-//     ////
-//     const userDonor = await User.findOne({email:email,isActive:true})
-//     if(!userDonor){
-//         return next(new HandErr("user not exist", 401))
-//     }
-//     let ad = await userDonor.amountDonated
-//     let user1 = await User.findByIdAndUpdate(userDonor._id, {amountDonated: ad + amount,  bankAccount: cardNum})
-//     /////
-//    //{monetaryFundsAccepted:}
-//     const ngoSelected = await Ngo.findOne({email:ngoIdentifier,isActive:true}) 
-//     let aa = await ngoSelected.monetaryFundsAccepted
-//     let ngoR = await User.findOneAndUpdate({email:email}, {monetaryFundsAccepted: aa + amount,lastUpdated:Date.now()})
-
-//     if(!ngoSelected.isActive){
-//         return next(new HandErr("Ngo is inactive", 401))
-//     }
-//     const donation = Donation.create({
-//         donatedByUser: userDonor._id,
-//         acceptedBy: ngoSelected._id,
-//         typeOfDonation:"monetary",
-//         donataionComplete:false,
-//         amount: amount
-//     });
-
-//     res.status(200).json({
-//         success: true,
-//         message: "donation made to ngo",
-//         donation
-//       });
-// })
 
 export const moneyDonation = handleAsyncErr(async (req,res,next) =>{
     //user email and selected ngo will be sent from frontend

@@ -32,8 +32,9 @@ function LoginForm(prop){
                     if(response.data.success)
                     {
                         localStorage.setItem('user_id',response.data.user._id);
+                        localStorage.setItem('email',response.data.user.email);
                         localStorage.setItem('role','user');
-                        navigate("/dashboard" );
+                        navigate("/userdashboard" );
                         console.log(response);
                     }
                     else{
@@ -53,6 +54,10 @@ function LoginForm(prop){
             {
                     if(response.data.success)
                     {
+                        localStorage.setItem('user_id',response.data.user._id);
+                        localStorage.setItem('email',response.data.user.email);
+                        localStorage.setItem('role','rest');
+                        navigate("/resturantDashboard" );
                         console.log(response)
                     }
                     else{
@@ -72,6 +77,10 @@ function LoginForm(prop){
             {
                     if(response.data.success)
                     {
+                        localStorage.setItem('user_id',response.data.user._id);
+                        localStorage.setItem('email',response.data.user.email);
+                        localStorage.setItem('role','rest');
+                        navigate("/resturantDashboard" );
                         console.log(response)
                     }
                     else{
