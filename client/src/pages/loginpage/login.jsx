@@ -27,7 +27,7 @@ function Login () {
     <h3 >Sign In</h3>
     </div>
     <div className="paragraphL">
-      <p>Select whom you want to sign in as: </p>
+    <p>Select whom you want to sign in as: </p>
     </div>
     <div className="tab-bar">
       <TabBar itemOne = {"User"} itemTwo = {"Restuarant"} itemThree = {"NGO"} getId={GetSelectID}/>

@@ -154,7 +154,7 @@ function LoginForm(prop){
                 </div>
                 <button className = "sign-in" type = "submit" onClick = {onLogin}> SIGN IN</button>
                 <div className='signup'>
-                    <p>Dont have an account ?  <a href='#'> Sign Up </a> </p>
+                    <p>Dont have an account ?  <a href='/Signup'> Sign Up </a> </p>
                 </div>
                 <div className="admin-login">
                     <p>Do you want to sign in as Admin ? <button className="adminmodel">Admin</button> </p>
@@ -176,7 +176,7 @@ function LoginForm(prop){
                 </div>
                 <button className = "sign-in" type = "submit" onClick = {onLogin}> SIGN IN</button>
                 <div className='signup'>
-                    <p>Dont have an account ?  <a href='#'> Sign Up </a> </p>
+                    <p>Dont have an account ?  <a href='/Signup'> Sign Up </a> </p>
                 </div>
                 <div className="admin-login">
                     <p>Do you want to sign in as Admin ? <button className="adminmodel">Admin</button> </p>
@@ -198,7 +198,7 @@ function LoginForm(prop){
                 </div>
                 <button className = "sign-in" type = "submit" onClick = {onLogin}> SIGN IN</button>
                 <div className='signup'>
-                    <p>Dont have an account ?  <a href='#'> Sign Up </a> </p>
+                    <p>Dont have an account ?  <a href='/Signup'> Sign Up </a> </p>
                 </div>
                 <div className="admin-login">
                     <p>Do you want to sign in as Admin ? <button className="adminmodel">Admin</button> </p>

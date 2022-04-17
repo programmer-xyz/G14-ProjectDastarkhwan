@@ -108,10 +108,14 @@ function Forms (props) {
         // let streetNumber= user3.streetNumber
         // let houseNumber = user3.houseNumber
 
-        let city = "lah"
-        let country = "pak"
-        let streetNumber= "user3.streetNumber"
-        let houseNumber= "user3.houseNumber"
+        let city =  Addressset2.city;
+        console.log(city);
+        let country = Addressset2.country;
+        console.log(country);
+        let streetNumber= Addressset2.street;
+        console.log(streetNumber)
+        let houseNumber= Addressset2.houseNo;
+        console.log(houseNumber)
 
         createNgoUser(user3.name,user3.username,user3.email, user3.phoneNum, user3.pw, city, country,streetNumber, houseNumber,user3.phoneNum2,user3.name2,user3.email2,user3.bankAccount,user3.description,user3.file).then((response)=>{
     
@@ -132,10 +136,15 @@ function Forms (props) {
     const onCreateUser = (e) =>
     {
         e.preventDefault();
-        let city = "lah"
-        let country = "pak"
-        let streetNumber= "user3.streetNumber"
-        let houseNumber= "user3.houseNumber"
+        console.log(Addressset);
+        let city = Addressset.city;
+        console.log(city);
+        let country = Addressset.country;
+        console.log(country);
+        let streetNumber= Addressset.street;
+        console.log(streetNumber);
+        let houseNumber= Addressset.houseNo;
+        console.log(houseNumber);
         createAccountUser(user1.name,user1.username,user1.email,user1.phoneNum,user1.pw,user1.cnic,city,country,streetNumber,houseNumber,user1.description).then(
             (res)=>
             {
@@ -153,10 +162,15 @@ function Forms (props) {
     const onCreateRest = (e) =>
     {
         e.preventDefault ();
-        let city = "lah"
-        let country = "pak"
-        let streetNumber= "user3.streetNumber"
-        let houseNumber= "user3.houseNumber"
+        console.log(Addressset1);
+        let city =  Addressset1.city;
+        console.log(city);
+        let country = Addressset1.country
+        console.log(country);
+        let streetNumber= Addressset1.street;
+        console.log(streetNumber);
+        let houseNumber=  Addressset1.houseNo;
+        console.log(houseNumber);
         createRestUser(user2.name,user2.username,user2.email,user2.phoneNum,user2.pw,city,country,streetNumber,houseNumber,user2.phoneNum2,user2.name2,user2.email2,user2.description).then
         ((response)=>
         {
@@ -200,16 +214,16 @@ function Forms (props) {
         if(props.User === 1)
         {
             
-            setAddressState(z);
+            setAddressState(address);
 
         }
         else if (props.User === 2)
         {
-            setAddressState1(z);
+            setAddressState1(address);
         }
         else if (props.User === 3)
         {
-            setAddressState2(z);
+            setAddressState2(address);
         }
 
     }
