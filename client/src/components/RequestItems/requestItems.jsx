@@ -13,6 +13,8 @@ import Button from '@mui/material/Button';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import {acceptDonation} from  '../../servicesApi/DashboardNgo.js';
 import { useState } from 'react';
+import ModelResD from '../../components/modalResturantDetails/modalResturantDetails.jsx';
+
 const theme = createTheme({
     typography: {
     fontFamily: [
@@ -37,6 +39,7 @@ function RequestItems(props)
     const [state,SetState] = useState(false)
     async function takeDonation ()
     {
+        SetState(false);
         try
         {
             console.log(props.donationId)
@@ -56,14 +59,29 @@ function RequestItems(props)
         takeDonation()
     }
 
+
     function openModel()
     {
         SetState(true);
     }
+    function handleClose(reason)
+    {
+         if (reason !== "backdropClick")
+         {
+         return 
+         }
+         SetState(false);
+     }
+     function onClickModelClose()
+     {
+        SetState(false);
+     }
     if(props.NGOrequests)
     {
         return (
             <div>
+
+                <ModelResD userD={props.userDetails}callFun={takeDonation} onClick ={onClickModelClose}handleClose={handleClose} state ={state}/> 
                 <ListItem sx={{width: '100%', border:'1px solid #422F5F21', borderRadius:"25px", backgroundColor:"rgba(244, 162, 97, 0.17)",marginBottom:"20px"}}>
                     <ListItemAvatar> 
                     <Avatar sx={{width:"80px", height:"80px", marginRight:"20px"}} src = {props.image} alt ="User Image"/>
@@ -104,7 +122,7 @@ function RequestItems(props)
                     </ThemeProvider>
                 <Grid item display="flex" sx={{alignItems:"left",justifyContent:"flex-end"}}>
                 <ThemeProvider theme = {theme}>
-                <Button onClick={onClick}className='butClass' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
+                <Button onClick={onClick} className='butClass' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
                     {"&.MuiButtonBase-root:hover": {
                         bgcolor: "#E76F51"
                         },
