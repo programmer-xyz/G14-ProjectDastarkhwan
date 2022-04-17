@@ -133,3 +133,5 @@ export const adminLoginform = async (userName,password) =>{
     return await axios.post(`${Url}/admin/login`,obj);
     
 }
+
+// export const    

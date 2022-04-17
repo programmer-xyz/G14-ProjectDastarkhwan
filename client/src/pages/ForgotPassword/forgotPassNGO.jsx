@@ -4,7 +4,7 @@ import logo from '../../assets/MaskGroup2.png';
 import ForgotForm from '../../components/Forms/forgotPassform.jsx';
 import { useState } from 'react';
 
-function ForgotPass (props){ 
+function ForgotPassNGO (props){ 
 const [selectedID,setID] = useState(1);
 
 return (
@@ -19,7 +19,7 @@ return (
 </div>
 <p>&nbsp;</p>
 <div className="Loginform">
-    <ForgotForm User = {1}/>
+    <ForgotForm User = {3}/>
 </div>
 <div className="admin-login">
     <p>Feeling Lucky?</p>
@@ -43,4 +43,4 @@ return (
 </div>
 );
 }
-export default ForgotPass;
+export default ForgotPassNGO;

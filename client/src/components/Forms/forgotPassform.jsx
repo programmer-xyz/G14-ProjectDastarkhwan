@@ -1,13 +1,24 @@
 import './formslogin.css';
+import {useState} from 'react';
 
-function ForgotForm(){
+
+const initialState = {
+    email:""
+}
+function ForgotForm(props){
+
+    const [email,setEmail] = useState(initialState);
+    function handleClick()
+    {
+
+    }
     return (
     <div className ="form">
     <form action="/">
-    <input type = "email" placeholder = "Email" className="input1"/>
+    <input type = "email" placeholder = "Email" className="input1" value={initialState.email}/>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
-    <button className = "sign-in" type = "submit">Submit</button>
+    <button className = "sign-in" onClick={handleClick}>Submit</button>
     </form>
     </div>
 );

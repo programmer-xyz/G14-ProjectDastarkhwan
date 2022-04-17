@@ -89,8 +89,8 @@ function LoginForm(prop){
                     {
                         localStorage.setItem('user_id',response.data.user._id);
                         localStorage.setItem('email',response.data.user.email);
-                        localStorage.setItem('role','rest');
-                        navigate("/resturantDashboard" );
+                        localStorage.setItem('role','ngo');
+                        navigate("/ngodashboard" );
                         console.log(response)
                     }
                     else{
@@ -141,25 +141,73 @@ function LoginForm(prop){
     }
     else if (prop.isAdmin === false)
     {
-        return (
-            <div className ="form">
-            <form action="/">
-            <input type = "email" placeholder = "Email" className="input1" name ="email" value={user1.email} onChange = {handleForm1}/>
-            <p>&nbsp;</p>
-            <input type = "password" placeholder = "Password" className="input1" name ="pw" value={user1.pw} onChange = {handleForm1}/>
-            <div className="forgetPass">
-                <a href='#'> Forget Password ? </a>
-            </div>
-            <button className = "sign-in" type = "submit" onClick = {onLogin}> SIGN IN</button>
-            <div className='signup'>
-                <p>Dont have an account ?  <a href='#'> Sign Up </a> </p>
-            </div>
-            <div className="admin-login">
-                <p>Do you want to sign in as Admin ? <button className="adminmodel">Admin</button> </p>
-            </div>
-            </form>
-            </div>
-        );
+        if(prop.user === 1)
+        {
+            return (
+                <div className ="form">
+                <form action="/">
+                <input type = "email" placeholder = "Email" className="input1" name ="email" value={user1.email} onChange = {handleForm1}/>
+                <p>&nbsp;</p>
+                <input type = "password" placeholder = "Password" className="input1" name ="pw" value={user1.pw} onChange = {handleForm1}/>
+                <div className="forgetPass">
+                    <a href='/forgotPassword/user'> Forget Password ? </a>
+                </div>
+                <button className = "sign-in" type = "submit" onClick = {onLogin}> SIGN IN</button>
+                <div className='signup'>
+                    <p>Dont have an account ?  <a href='#'> Sign Up </a> </p>
+                </div>
+                <div className="admin-login">
+                    <p>Do you want to sign in as Admin ? <button className="adminmodel">Admin</button> </p>
+                </div>
+                </form>
+                </div>
+            );
+        }
+        else if(prop.user === 2)
+        {
+            return (
+                <div className ="form">
+                <form action="/">
+                <input type = "email" placeholder = "Email" className="input1" name ="email" value={user1.email} onChange = {handleForm1}/>
+                <p>&nbsp;</p>
+                <input type = "password" placeholder = "Password" className="input1" name ="pw" value={user1.pw} onChange = {handleForm1}/>
+                <div className="forgetPass">
+                    <a href='/forgotPassword/resturant'> Forget Password ? </a>
+                </div>
+                <button className = "sign-in" type = "submit" onClick = {onLogin}> SIGN IN</button>
+                <div className='signup'>
+                    <p>Dont have an account ?  <a href='#'> Sign Up </a> </p>
+                </div>
+                <div className="admin-login">
+                    <p>Do you want to sign in as Admin ? <button className="adminmodel">Admin</button> </p>
+                </div>
+                </form>
+                </div>
+            );
+        }
+        else if(prop.user === 3)
+        {
+            return (
+                <div className ="form">
+                <form action="/">
+                <input type = "email" placeholder = "Email" className="input1" name ="email" value={user1.email} onChange = {handleForm1}/>
+                <p>&nbsp;</p>
+                <input type = "password" placeholder = "Password" className="input1" name ="pw" value={user1.pw} onChange = {handleForm1}/>
+                <div className="forgetPass">
+                    <a href='/forgotPassword/ngo'> Forget Password ? </a>
+                </div>
+                <button className = "sign-in" type = "submit" onClick = {onLogin}> SIGN IN</button>
+                <div className='signup'>
+                    <p>Dont have an account ?  <a href='#'> Sign Up </a> </p>
+                </div>
+                <div className="admin-login">
+                    <p>Do you want to sign in as Admin ? <button className="adminmodel">Admin</button> </p>
+                </div>
+                </form>
+                </div>
+            );
+        }
+        
     }
     
 ;}
