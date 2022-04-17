@@ -119,11 +119,11 @@ export const restLogin = async (email,password) =>
     return await axios.post(`${Url}/rest/login`,obj);
 }
 
-export const checkLoggedIn = async (role) =>
+export const checkLoggedIn = async () =>
 {
-    const obj = 
-    {
-        "role":role
-    }
-    return await axios.post(`${Url}/auth/isLoggedin`);
+    // const obj = 
+    // {
+    //     "role":role
+    // }
+    return await axios.get(`${Url}/auth/isLoggedin`);
 }

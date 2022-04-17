@@ -35,22 +35,54 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-export function UseLoginUser(role) {
+// export function UseLoginUser(role) {
+//     let navigate = useNavigate();
+
+//    const [user, setUser] = useState(false);
+
+//     useEffect(() => {
+//     async function findLoggedinUser() {
+
+//             checkLoggedIn(role).then(res => {
+
+//                 if(res.data.login ===false){
+//                     navigate("/");
+//                 }
+
+//             setUser(res.data.login)
+          
+
+//         }).catch(err => {
+
+//             console.log(err);
+//         });
+//     }
+
+//     findLoggedinUser();
+
+//     }, []);
+//     return {
+//        user
+//     }
+// }
+
+
+export function UseLoginUser() {
     let navigate = useNavigate();
 
    const [user, setUser] = useState(false);
-
+   const [userData, setUserData] = useState(null);
     useEffect(() => {
     async function findLoggedinUser() {
 
-            checkLoggedIn(role).then(res => {
+            checkLoggedIn().then(res => {
 
                 if(res.data.login ===false){
                     navigate("/");
                 }
 
             setUser(res.data.login)
-          
+        
 
         }).catch(err => {
 
