@@ -62,6 +62,7 @@ const  user3Init ={
 
 
 function Forms (props) {
+    let navigate = useNavigate();
     const [user1, setUser1] = useState(user1Init);
     const [user2, setUser2] = useState(user2Init);
     const [user3, setUser3] = useState(user3Init);
@@ -122,7 +123,8 @@ function Forms (props) {
                 if(response.data.success)
                 {
                     props.getState("NGO created succesfully,","success",true)
-                    console.log(response)
+                    console.log(response);
+                    useNavigate("/")
                 }
                 
         })
@@ -150,7 +152,8 @@ function Forms (props) {
             {
                 if(res.data.success)
                 { 
-                    props.getState("User created succesfully,","success",true)
+                    props.getState("User created succesfully,","success",true);
+                    useNavigate("/")
                 }
             }
         )
@@ -177,7 +180,9 @@ function Forms (props) {
             if(response.data.success)
             {
                 props.getState("Resturant registration application created,","success",true);
+                
                 console.log(response);
+                navigate("/")
             }
 
         }).catch((err,response)=>
