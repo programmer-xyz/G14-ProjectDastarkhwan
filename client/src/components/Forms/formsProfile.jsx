@@ -157,7 +157,7 @@ function FormsProfile (props) {
         return (
             <div class ="container cards">
                 <div class = "row newClass">
-                <label>User Info</label>
+                <label>Resturant Info</label>
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <form>
                         <div class="form-group">

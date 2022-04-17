@@ -261,7 +261,7 @@ const rationDon = (e) =>{
     }, [])
 
 console.log('here')
-  console.log(user3);
+console.log(user3);
 
     //value={user1.ngo} onChange={handleForm1}
     if (props.User === 1){
@@ -269,19 +269,19 @@ console.log('here')
                 <div class = "row newClass">
                     <form>
                         <div class="form-group">
-                            <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="ngo"  onChange={handleForm1}> 
+                            <select class="form-select shadow-none"  placeholder="NGO" name="ngo"  onChange={handleForm1}> 
                                 <option >Select NGO</option>
                                 {
                                     ngo_lis.map((ele) =>
                                         (
-                                       <option value = {ele.email}>{ele.name}</option>
+                                        <option value = {ele.email}>{ele.name}</option>
                                         )
                                     )
                                 }
                                 
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group2">
                             <input type="text" class="form-control shadow-none" id="exampleInputPassword1" placeholder="Amount ($)" name="amount" value={user1.name} onChange={handleForm1}/>
                             <p class="details1">Card Details</p>
                         </div>

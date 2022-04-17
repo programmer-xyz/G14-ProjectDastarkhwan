@@ -57,7 +57,7 @@ function Cards (props) {
                 <div class= "col-lg-4 col-xs-12 col-md-12 col-sm-12">
                     <div class="card first">
                         <div class="card-body">
-                            <h5 class="card-title">Monetary Donations</h5>
+                            <h5 class="card-title">Monetary Donations Accepted</h5>
                             <p class="card-text">${props.monetaryDonations}</p>
                             <img alt="image2" class = "Res1" src={dollar} />
                         </div>
@@ -66,7 +66,7 @@ function Cards (props) {
                 <div class= "col-lg-4 col-md-12 col-sm-12">
                 <div class="card second">
                         <div class="card-body">
-                            <h5 class="card-title">Ration Donations</h5>
+                            <h5 class="card-title">Ration Donations Accepted</h5>
                             <p class="card-text">{props.rationDonations}</p>
                             <img alt="image3" class = "Res1" src={bag}/>
                         </div>
@@ -75,7 +75,7 @@ function Cards (props) {
                 <div class= "col-lg-4 col-md-12 col-sm-12">
                 <div class="card third" >
                         <div class="card-body">
-                            <h5 class="card-title">Meals Donations</h5>
+                            <h5 class="card-title">Meals Donations Accepted</h5>
                             <p class="card-text">{props.mealDonations}</p>
                             <img alt="image4" class = "Res1" src={Meals}/>
                         </div>
