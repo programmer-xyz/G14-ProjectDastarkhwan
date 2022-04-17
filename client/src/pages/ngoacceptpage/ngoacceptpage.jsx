@@ -221,7 +221,7 @@ function NGOacceptpage(props){
             outline: '1px solid slategrey'
             }}}>
             {ngorequests.length!==0 && ngorequests.map(item =>(
-                    <RequestItems image={item.image} name={item.name} heading1={item.heading1} heading2={item.heading2} pargaraph1={item.pargaraph1} date={item.date} time={item.time} userRequests={false} NGOrequests={item.NGOrequests} Resreq={false} buttonStat={1}/>
+                    <RequestItems image={item.image} name={item.name} heading1={item.heading1} heading2={item.heading2} pargaraph1={item.pargaraph1} date={item.date} time={item.time} userRequests={false} NGOrequests={true} Resreq={false} buttonStat={1}/>
             ))}
             {ngorequests.length===0 && <Typography display="flex" sx={{alignContent:'center',justifyContent:'center',font: 'normal normal normal 42px/109px Poppins'}} component="span" variant="h3">{"No requests to show at the momment"}</Typography>}
             </List>
