@@ -316,7 +316,6 @@ export const viewUserStats = handleAsyncErr(async (req,res,next)=>
 });
 
 export const editProfileUser = handleAsyncErr(async (req, res, next)=>{
- 
     const {name, userName, phoneNumber, cnic, description, address, _id} = req.body;
     let editObj = {name: name, userName:userName, phoneNumber:phoneNumber,  cnic:cnic, description:description, address:address, lastUpdated:Date.now()}
 
@@ -364,24 +363,16 @@ export const myRequestUser = handleAsyncErr(async(req,res,next)=>
     {
         return next(new HandErr("Email is missing",400))
     }
-   
 });
 
 export const deleteProfile = handleAsyncErr(async (req,res,next)=>
 {
-    let {email,password} = req.body;
-    if(!!email && !!password)
+    let {email} = req.body;
+    if(!!email)
     {
         let ngoProfile = await User.findOne({'email':email, 'isActive': true});
         if(!!ngoProfile)
         {
-            let boolCheck  = await bcrypt.compare(password, ngoProfile.password);
-            if(!boolCheck)
-            {
-                return next(new HandErr("InValid Password",400));
-            }
-            else
-            {
                 const session = await mongoose.startSession();
                 session.startTransaction();
                 try{
@@ -401,7 +392,6 @@ export const deleteProfile = handleAsyncErr(async (req,res,next)=>
                     success:true,
                     message:"User has been deleted"
                 });
-            }
             
         }
         else

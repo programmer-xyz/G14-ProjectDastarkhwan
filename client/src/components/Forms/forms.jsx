@@ -71,7 +71,7 @@ function Forms (props) {
     const [Addressset2,setAddressState2] = useState("Address (House No, St. Block, City, Country)")
     // const [address,setAddress] = useState(Address);
 
-
+    const navigation = useNavigate();
 
 
     const handleForm1 = (e)=>{
@@ -126,7 +126,7 @@ function Forms (props) {
         {
             props.getState(err.response.data.message,"error",true);
         })
-    
+        navigation ('/');
     }
 
     const onCreateUser = (e) =>
@@ -149,6 +149,7 @@ function Forms (props) {
         {
             props.getState(err.response.data.message,"error",true);
         })
+        navigation ('/');
     }
     const onCreateRest = (e) =>
     {
@@ -170,7 +171,7 @@ function Forms (props) {
         {
             props.getState(err.response.data.message,"error",true);
         })
-        
+        navigation ('/');
     }
 
     function handleClose(reason)
@@ -211,6 +212,7 @@ function Forms (props) {
         {
             setAddressState2(z);
         }
+
 
     }
 
