@@ -3,12 +3,12 @@ import {createAdmin, adminLogin, approvePost, rejectPost, viewApplications,start
 import {isAuthenticatedUser} from "../middleware/auth";
 const router = Router();
 
-router.route("/create").post(isAuthenticatedUser,createAdmin);
-router.route("/login").post(isAuthenticatedUser,adminLogin);
-router.route("/approve").get(isAuthenticatedUser,approvePost);
-router.route("/reject").get(isAuthenticatedUser,rejectPost);
-router.route("/viewApplications").get(isAuthenticatedUser, viewApplications);
-router.route("/generalLogOut").get( isAuthenticatedUser,logOut);
+router.route("/create").post(createAdmin);
+router.route("/login").post(adminLogin);
+router.route("/approve").get(approvePost);
+router.route("/reject").get(rejectPost);
+router.route("/viewApplications").get( viewApplications);
+router.route("/generalLogOut").get(logOut);
 router.route("/").get(startApp);
 export default router;
 
