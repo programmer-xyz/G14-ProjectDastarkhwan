@@ -55,8 +55,8 @@ function FormsDonation (props) {
     const [user2, setUser2] = useState(user2Init);
     const [user3, setUser3] = useState(user3Init);
     const [searchParams] = useSearchParams();
-    const[ role,setRole] = useState("user");
-    const [email,setEmail] = useState("amgio@lums.edu.pk")
+    const[ role,setRole] = useState("rest");
+    const [email,setEmail] = useState("rest4@gmail.com");
 
     console.log(searchParams);
     

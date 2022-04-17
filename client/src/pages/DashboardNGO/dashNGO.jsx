@@ -5,7 +5,10 @@ import Cards2 from '../../components/ProfileCard/profileCard.jsx';
 import { Grid,Typography,Box} from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import image2 from '../../assets/output-onlinepngtools1.png';
-
+import {myProfile} from '../../servicesApi/DashboardNgo.js';
+import { useState, useEffect} from 'react';
+import { useNavigate } from "react-router-dom";
+import ModalAccepted from '../../components/Modals/modalAccepted.jsx';
 
 const theme = createTheme({
     typography: {
@@ -24,8 +27,46 @@ const theme1 = createTheme({
     },});
 
 function NGODashboard (props){
+    let navigate = useNavigate();
+
+    const [email,setemail] = useState('ngo2@gmail.com');
+    const [userStat,setUserStats] = useState({});
+    const [state,setState] = useState(false);
+    function onClick()
+    {
+        //setStateDonation(false);
+        navigate('/ngoRequestAcceptPage');
+
+    }
+    async function getUserStats ()
+    {
+      try
+      {
+          
+          let res = await myProfile(email)
+          setUserStats(res.data.body);
+          console.log(userStat);
+        }
+        catch (err)
+        {
+            console.log(err)
+        }
+    }
+    useEffect( ()=>{
+        getUserStats();
+
+    }, []);
+    function handleClose()
+    {
+        setState(false);
+    }
+    function getModelStatus(open)
+    {
+        setState(open);
+    }
     return(
     <Box sx = {{spacing: "0",backgroundColor:'rgba(244, 162, 97, 0.1)',paddingLeft:'5%',backgroundImage:`url(${image2})`,backgroundRepeat:'no-repeat',backgroundPositionX:'center',backgroundSize:'50% auto'}}>
+        <ModalAccepted handleClose={handleClose} state={state} />
         <Grid  container direction="row" display="flex" sx={{width:'100%', height:'100%'}}>
             <Grid container sx={{margin:"0%"}}>
             <Grid item sx={{width:"100vw", height:"100%" ,padding:"0% 0% 4% 0%"}}>
@@ -52,10 +93,10 @@ function NGODashboard (props){
             </Grid>
             <Grid container direction="row" display="flex"  sx ={{height:"50%"}} marginBottom="10%">
             <Grid container item xs={9} sx = {{width:'100%',height:'100%'}}>
-            <Cards Resturant={1} monetaryDonations ={100} mealDonations={10} rationDonations={20}/>
+            <Cards openDM={onClick} Resturant={1} monetaryDonations ={userStat.monetaryFundsAccepted} mealDonations={userStat.mealsAccepted} rationDonations={userStat.rationAccepted} openRequst={getModelStatus}/>
             </Grid>
             <Grid container item xs={3} sx = {{width:'100%', height:'100%'}}>
-            <Cards2 Resturant={false} name={"Abdul Muizz khan"} email={"muizz481@gmail.com"} number={"0304-4923899"} description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.'}/>
+            <Cards2 Resturant={false} name={userStat.name} email={userStat.email} number={userStat.phoneNumber} description={userStat.description}/>
             </Grid>
             </Grid>
         </Grid>

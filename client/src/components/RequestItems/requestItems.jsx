@@ -11,6 +11,9 @@ import { Typography } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import Button from '@mui/material/Button';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import {acceptDonation} from  '../../servicesApi/DashboardNgo.js';
+import { useState } from 'react';
+import ModelResD from '../../components/modalResturantDetails/modalResturantDetails.jsx';
 
 const theme = createTheme({
     typography: {
@@ -33,13 +36,55 @@ const theme = createTheme({
 
 function RequestItems(props)
 {
+    const [state,SetState] = useState(false)
+    async function takeDonation ()
+    {
+        SetState(false);
+        try
+        {
+            console.log(props.donationId)
+            let response = await acceptDonation(props.donationId)
+            if(response.data.succesful)
+            {
+                console.log(response.data)
+            }
+        }
+        catch(err)
+        {
+
+        }
+    }
+    function  onClick()
+    {
+        takeDonation()
+    }
+
+
+    function openModel()
+    {
+        SetState(true);
+    }
+    function handleClose(reason)
+    {
+         if (reason !== "backdropClick")
+         {
+         return 
+         }
+         SetState(false);
+     }
+     function onClickModelClose()
+     {
+        SetState(false);
+     }
     if(props.NGOrequests)
     {
         return (
             <div>
+
+                <ModelResD userD={props.userDetails}callFun={takeDonation} onClick ={onClickModelClose}handleClose={handleClose} state ={state}/> 
                 <ListItem sx={{width: '100%', border:'1px solid #422F5F21', borderRadius:"25px", backgroundColor:"rgba(244, 162, 97, 0.17)",marginBottom:"20px"}}>
                     <ListItemAvatar> 
-                    <Avatar sx={{width:"80px", height:"80px", marginRight:"20px"}}src ={props.image} alt ="User Image"/>
+                    <Avatar sx={{width:"80px", height:"80px", marginRight:"20px"}} src = {props.image} alt ="User Image"/>
                     {/* <img class= "image1" src={props.image} alt="here"/> */}
                     </ListItemAvatar>
                     <ThemeProvider theme = {theme}>
@@ -77,7 +122,7 @@ function RequestItems(props)
                     </ThemeProvider>
                 <Grid item display="flex" sx={{alignItems:"left",justifyContent:"flex-end"}}>
                 <ThemeProvider theme = {theme}>
-                <Button className='butClass' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
+                <Button onClick={onClick} className='butClass' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
                     {"&.MuiButtonBase-root:hover": {
                         bgcolor: "#E76F51"
                         },
@@ -98,7 +143,7 @@ function RequestItems(props)
                 <ListItemButton  disableRipple sx={{"&.MuiButtonBase-root:hover": {
                         bgcolor: "transparent"
                 }}}>
-                <IoChevronForwardCircle size={30} color="#E76F51"/>
+                <IoChevronForwardCircle onClick ={openModel}size={30} color="#E76F51"/>
                 </ListItemButton>
                 </Grid>
                 </ListItem>

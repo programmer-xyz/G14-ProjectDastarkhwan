@@ -120,8 +120,7 @@ function returnTime (date)
 export default function ModalAccepted(prop)
 {
     let naviagte = useNavigate();
-    const {modelMsg,state,modalImage,actionMsg,route} = prop;
-    const [open,setOpen] = useState(state);
+    const {handleClose,state,modalImage,actionMsg,route} = prop;
     const [allReqList,setAllReqList] = useState([]);
     const [filteredReq,setfilterReq] = useState([]);
     const [selectedID,setID] = useState(1);
@@ -168,7 +167,7 @@ export default function ModalAccepted(prop)
             }
         }catch(err){
             console.log(err)
-            naviagte("/");
+            naviagte("/ngoDashboard");
         } 
     }
     function GetSelectedID (id)
@@ -185,25 +184,13 @@ export default function ModalAccepted(prop)
       },[])
 
 
-    function handleClose(reason)
-    {
-    if (reason !== "backdropClick")
-    {
-    return 
-    }
-    setOpen(false);
-    }
-    function onClick()
-    {
-    setOpen(false);
-    naviagte(`/${route}`)
 
-    }
+
 
     return (
     <div>
     <Dialog fullScreen = {true} PaperProps={{ sx: { borderRadius: "10px", width: "60%", height: "auto" } }}
-        open={open}
+        open={state}
         aria-labelledby="responsive-dialog-title"
         onClose={handleClose}
         >
@@ -250,7 +237,7 @@ export default function ModalAccepted(prop)
     outline: '1px solid slategrey'
     }}}>
         {filteredReq.map(item =>(
-            <RequestItem image={item.image} name={item.name} heading1={"Type"} heading2={"Date"} pargaraph1={item.pargaraph1} date={item.date} time={item.time} userRequests={true} NGOrequests={false} buttonStat={3}/>
+            <RequestItem image={`data:image/jpeg;base64,${item.image}`} name={item.name} heading1={"Type"} heading2={"Date"} pargaraph1={item.pargaraph1} date={item.date} time={item.time} userRequests={true} NGOrequests={false} buttonStat={3}/>
         ))}
         </List>
         </Grid>
