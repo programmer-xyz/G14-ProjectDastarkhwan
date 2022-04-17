@@ -2,15 +2,38 @@ import './newPassword.css';
 import React from 'react';
 import logo from '../../assets/MaskGroup2.png';
 import { useState } from 'react';
+import { updatePassres } from '../../servicesApi/authenticationApi';
+import { useNavigate } from 'react-router-dom';
 
-function NewPassRes (){ 
-const [selectedID,setID] = useState(1);
-function GetSelectID(Id)
-{
-    setID(Id+1);
-    
-
+const initialState = {
+    password:""
 }
+function NewPassRes (){ 
+
+    const navigate = useNavigate();
+    const [password, setPassword] = useState(initialState)
+
+    const onClick = (e) =>{
+        e.preventDefault();
+        console.log();
+        let email = localStorage.getItem('res_email');
+        console.log(email);
+        updatePassres(email, password.password).then((response)=>{
+            if(response.data.success){
+               navigate("/");
+            }
+        }).catch((err)=>{
+            alert(err.data.response);
+            navigate("/")
+        });
+    }
+
+    const handleChange = (e)=>{
+        e.preventDefault();
+        const {name, value} = e.target;
+        setPassword({...password, [name]: value});
+
+    }
 return (
 <div className="loginbody">
 <div className="left-container">
@@ -24,11 +47,11 @@ return (
 <p>&nbsp;</p>
 <div className="Loginform">
 <div className ="form">
-    <form action="/">
-    <input type = "password" placeholder = "New Password" className="input1"/>
+    <form >
+    <input type = "password" placeholder = "New Password" value={password.password} className="input1"  name = "password"  onChange={handleChange}/>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
-    <button className = "sign-in" type = "submit">Confirm</button>
+    <button className = "sign-in" onClick={onClick}>Confirm</button>
     </form>
     </div>
 </div>

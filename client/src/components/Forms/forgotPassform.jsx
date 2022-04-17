@@ -46,6 +46,7 @@ function ForgotForm(props){
         forgetPassuser(email.email).then((response)=>{
             if(response.data.success){
                localStorage.setItem('user_email',email.email);
+               console.log(localStorage.getItem('user_email'));
                navigate("/newpass/user");
             }
         }).catch((err)=>{

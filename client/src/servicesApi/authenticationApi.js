@@ -157,7 +157,7 @@ export const forgetPassres = async (email) =>{
 export const updatePassuser = async (email,password) =>{
     let obj = {
         email:email,
-        password:password
+        newPassword:password
     }
     return await axios.post(`${Url}/user/forgetPassU`,obj);
 }
@@ -165,7 +165,7 @@ export const updatePassuser = async (email,password) =>{
 export const updatePassngo = async (email,password) =>{
     let obj = {
         email:email,
-        password:password
+        newPassword:password
     }
     return await axios.post(`${Url}/ngo/forgetPassU`,obj);
 }
@@ -174,7 +174,7 @@ export const updatePassngo = async (email,password) =>{
 export const updatePassres = async (email,password) =>{
     let obj = {
         email:email,
-        password:password
+        newPassword:password
     }
     return await axios.post(`${Url}/rest/forgetPassU`,obj);
 }

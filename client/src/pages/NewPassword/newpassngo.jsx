@@ -1,19 +1,25 @@
 import './newPassword.css';
 import React from 'react';
 import logo from '../../assets/MaskGroup2.png';
-import ForgotForm from '../../components/Forms/forgotPassform.jsx';
 import { updatePassngo } from '../../servicesApi/authenticationApi';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
+const initialState = {
+    pw:""
+}
+
 function NewPassNgo (){ 
 
     const navigate = useNavigate();
-    const [password, setPassword] = useState('')
+    const [password, setPassword] = useState(initialState)
 
     const onClick = (e) =>{
         e.preventDefault();
-        updatePassngo(localStorage.getItem('ngo_email'), password).then((response)=>{
+        let email = localStorage.getItem('ngo_email');
+        console.log(email);
+        updatePassngo(email, password.pw).then((response)=>{
             if(response.data.success){
                navigate("/");
             }
@@ -26,7 +32,8 @@ function NewPassNgo (){
     const handleChange = (e)=>{
         e.preventDefault();
         const {name, value} = e.target;
-        setPassword(value);
+        setPassword({...password, [name]: value});
+
     }
 
 return (
@@ -42,11 +49,11 @@ return (
 <p>&nbsp;</p>
 <div className="Loginform">
 <div className ="form">
-    <form action="/">
-    <input type = "password" placeholder = "New Password" name="password" className="input1"/>
+    <form>
+    <input type = "password" placeholder = "New Password" name="password" value={password.pw} className="input1" onChange={handleChange}/>
     <p>&nbsp;</p>
     <p>&nbsp;</p>
-    <button className = "sign-in" type = "submit" onClick={onClick}>Confirm</button>
+    <button className = "sign-in" onClick={onClick}>Confirm</button>
     </form>
     </div>
 </div>
