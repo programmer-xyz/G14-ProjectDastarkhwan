@@ -11,10 +11,6 @@ function Cards (props) {
     {
         props.openRequst(true);
     }
-    function openDonationModel()
-    {
-        props.openDM(true);
-    }
     if(props.Resturant === 0)
     {
         return(
@@ -43,7 +39,7 @@ function Cards (props) {
             <hr class="hr"></hr>
             <div class="row">
                 <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                    <button class="buttonsCards" onClick={openDonationModel}>Make Donations</button>
+                    <button class="buttonsCards" onClick={props.openDM}>Make Donations</button>
                 </div>
                 <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <button class="buttonsCards white" onClick={openRequestModel}>Past Requests</button>
@@ -92,7 +88,7 @@ function Cards (props) {
                     <button class="buttonsCards">Accept Donations</button>
                 </div>
                 <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                    <button class="buttonsCards white">Past Requests</button>
+                    <button class="buttonsCards white" onClick={openRequestModel}>Past Requests</button>
                 </div>
             </div>
             </div>
@@ -135,13 +131,13 @@ function Cards (props) {
             <hr class="hr1"></hr>
             <div class="row">
                 <div class="col-lg-4 col-xs-12 col-md-12 col-sm-12">
-                    <button class="buttonsCards" >Make Donations</button>
+                    <button class="buttonsCards"onClick={props.openDM} >Make Donations</button>
                 </div>
                 <div class="col-lg-4 col-xs-12 col-md-12 col-sm-12">
-                    <button class="buttonsCards white">Past Requests</button>
+                    <button class="buttonsCards white" onClick={openRequestModel}>Past Requests</button>
                 </div>
                 <div class="col-lg-4 col-xs-12 col-md-12 col-sm-12">
-                    <button class="buttonsCards white">Subscription</button>
+                    <button disabled class="buttonsCards white">Subscription</button>
                 </div>
             </div>
             </div>

@@ -215,33 +215,34 @@ export const deleteProfile = handleAsyncErr(async (req,res,next)=>
         let ngoProfile = await Ngo.findOne({'email':email, 'isActive': true});
         if(!!ngoProfile)
         {
-            let bit = await bcrypt.compare(password,ngoProfile.password);
-            if(bit)
+            let boolCheck  = await bcrypt.compare(password, ngoProfile.password);
+            if(!boolCheck)
             {
-                let updateResponse = await Ngo.updateOne({'email':email, 'isActive': true},{'isActive':false, 'lastUpdated':Date.now()});
-                if(updateResponse.modifiedCount===0)
-                {
-                    res.status(200).json({
-                        success:false,
-                        message:"Ngo account couldn't be deleted",
-                    });
-                }
-                else
-                {
-                          
-                    res.status(200).json({
-                        success:true,
-                        message:"Ngo account deleted",
-                    });
-                }
+                return next(new HandErr("InValid Password",400));
             }
             else
             {
+                const session = await mongoose.startSession();
+                session.startTransaction();
+                try{
+                    const deleteNgo = await Ngo.findOneAndUpdate({'email':email, 'isActive': true},{"isActive":false})
+                    const ids = deleteNgo._id;
+                    const deactivate = await donation.updateMany({ "acceptedBy":  ids }, { "$set": { "isActive": "false" }})
+                    console.log(deactivate)
+                }
+                catch (error)
+                {
+                    await session.abortTransaction();
+                    return next(new HandErr(error,401));
+                }
+                await session.commitTransaction();
+                await session.endSession();
                 res.status(200).json({
-                    success:false,
-                    message:"Incorrect password",
+                    success:true,
+                    message:"User has been deleted"
                 });
             }
+            
         }
         else
         {
