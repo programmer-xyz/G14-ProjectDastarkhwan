@@ -11,7 +11,8 @@ import { Typography } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import Button from '@mui/material/Button';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-
+import {acceptDonation} from  '../../servicesApi/DashboardNgo.js';
+import { useState } from 'react';
 const theme = createTheme({
     typography: {
     fontFamily: [
@@ -33,6 +34,32 @@ const theme = createTheme({
 
 function RequestItems(props)
 {
+    const [state,SetState] = useState(false)
+    async function takeDonation ()
+    {
+        try
+        {
+            console.log(props.donationId)
+            let response = await acceptDonation(props.donationId)
+            if(response.data.succesful)
+            {
+                console.log(response.data)
+            }
+        }
+        catch(err)
+        {
+
+        }
+    }
+    function  onClick()
+    {
+        takeDonation()
+    }
+
+    function openModel()
+    {
+        SetState(true);
+    }
     if(props.NGOrequests)
     {
         return (
@@ -77,7 +104,7 @@ function RequestItems(props)
                     </ThemeProvider>
                 <Grid item display="flex" sx={{alignItems:"left",justifyContent:"flex-end"}}>
                 <ThemeProvider theme = {theme}>
-                <Button className='butClass' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
+                <Button onClick={onClick}className='butClass' variant="contained" size="medium" disableRipple aria-label=""  sx={ 
                     {"&.MuiButtonBase-root:hover": {
                         bgcolor: "#E76F51"
                         },
@@ -98,7 +125,7 @@ function RequestItems(props)
                 <ListItemButton  disableRipple sx={{"&.MuiButtonBase-root:hover": {
                         bgcolor: "transparent"
                 }}}>
-                <IoChevronForwardCircle size={30} color="#E76F51"/>
+                <IoChevronForwardCircle onClick ={openModel}size={30} color="#E76F51"/>
                 </ListItemButton>
                 </Grid>
                 </ListItem>

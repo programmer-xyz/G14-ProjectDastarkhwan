@@ -18,18 +18,11 @@ import CloseIcon from '@mui/icons-material/Close';
 function ResturantDetailModal(props)
 {
   let naviagte = useNavigate();
-  const {modelMsg,state,modalImage,actionMsg,route} = props;
+  const {modelMsg,state,modalImage,userDetails,route,handleClose} = props;
   const [open,setOpen] = React.useState(state);
 
   
-  function handleClose(reason)
-  {
-    if (reason !== "backdropClick")
-    {
-      return 
-    }
-    setOpen(false);
-  }
+ 
   function onClick()
   {
     setOpen(false);
