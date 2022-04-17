@@ -190,6 +190,7 @@ function NGOacceptpage(props){
             }
         }catch(err){
             console.log(err)
+            setNgoRequests([]);
         } 
     }
     function GetSelectedID (id)
@@ -244,7 +245,9 @@ function NGOacceptpage(props){
             {ngorequests.length!==0 && ngorequests.map(item =>(
                     <RequestItems image={`data:image/jpeg;base64,${item.image}`} name={getName(item)} heading1={"Type"} heading2={"Date"} pargaraph1={`${item.typeOfDonation} donation`} date={getDate(item.createdAt)} time={returnTime(item.createdAt)} userRequests={false} NGOrequests={true} Resreq={false} buttonStat={1}/>
             ))}
-            {ngorequests.length===0 && <Typography display="flex" sx={{alignContent:'center',justifyContent:'center',font: 'normal normal normal 42px/109px Poppins'}} component="span" variant="h3">{"No requests to show at the momment"}</Typography>}
+            {ngorequests.length===0 && selectedID === 1 && <Typography display="flex" sx={{alignContent:'center',justifyContent:'center',font: 'normal normal normal 42px/109px Poppins'}} component="span" variant="h3">{"No requests to show at the momment"}</Typography>}
+            {ngorequests.length===0 && selectedID === 2 && <Typography display="flex" sx={{alignContent:'center',justifyContent:'center',font: 'normal normal normal 42px/109px Poppins'}} component="span" variant="h3">{"No requests to show at the momment"}</Typography>}
+            {ngorequests.length===0 && selectedID === 3 && <Typography display="flex" sx={{alignContent:'center',justifyContent:'center',font: 'normal normal normal 42px/109px Poppins'}} component="span" variant="h3">{"No requests to show at the momment"}</Typography>}
             </List>
             </Grid>
             </Grid>
