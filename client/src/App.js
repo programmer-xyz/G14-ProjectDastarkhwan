@@ -9,8 +9,6 @@ import NGOacceptpage from './pages/ngoacceptpage/ngoacceptpage.jsx';
 import ResDashboard from './pages/DashboardRes/DashboardRes.jsx';
 import ResModals from './components/modalResturantDetails/modalResturantDetails.jsx';
 import NgoModals from './components/modelNGODetails/modelNGOdetails.jsx';
-import ProfileCards from './components/ProfileCard/profileCard.jsx';
-import Modals from './components/Modals/SignOutModal.jsx';
 import ModalNGO from './components/ModalNGO/ModalNGO.jsx';
 import ForgotPass from './pages/ForgotPassword/forgotPass.jsx';
 import AdminModalSignIn from './components/Modals/modalAdminSignIn.jsx';
@@ -37,7 +35,6 @@ const App = () => {
                     <Route path="/userprofile" element = {<UserProfile />} />
                     <Route path="/resprofile" element = {<ResProfile />} />
                     <Route path="/ngoprofile" element = {<NgoProfile />} />
-                    <Route path = "/donationForms" element= {<DonationForms Resturant={false} Number = {2}/>} />
                     <Route path = "/newForms" element = {<FormsOfPorfile User ={1} />} />
                     <Route path="/ModalNGO" element = {<ModalNGO state={true}/>} />
                     <Route path="/adminlogin" element = {<AdminModalSignIn state = {true}/>} />
