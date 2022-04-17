@@ -105,7 +105,7 @@ export const approvePost = handleAsyncErr(async(req, res, next) =>{
     const appObjNew = await application.findOneAndUpdate({email}, {approved: true, approvalStatus:"approved", isActive:false});
     
     
-    const message = `Welcome to desterkhawan`
+    const message = `Welcome to dastarkhwaan`
 
     res.status(200).json({
         success: true,
