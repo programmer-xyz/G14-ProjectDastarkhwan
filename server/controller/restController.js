@@ -228,10 +228,10 @@ export const myRequestRest = handleAsyncErr(async(req,res,next)=>
     let {email} = req.body;
     if(!!email)
     {
-        let rest = await Rest.findOne({'email':email,'isActive':true}).populate({path:'donations',populate:{
+        let rest = await Rest.findOne({'email':email,'isActive':true}).populate({path:'donations',select: 'createdAt acceptBy typeOfDonation isActive donataionComplete',populate:{
             path: 'acceptedBy',
             model: 'NGO',
-            select: 'name email userName address description phoneNumber contactEmail contactName contactNumber image'
+            select: 'name description image'
         }});
         if(!!rest)
         {   

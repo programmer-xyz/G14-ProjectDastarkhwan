@@ -6,7 +6,7 @@ import { Grid,Typography,Box} from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import image2 from '../../assets/ResturantbackgroundImage.png';
 import {useState,useEffect} from 'react';
-import {myStats} from '../../servicesApi/DashboardResturant.js';
+import {myProfile} from '../../servicesApi/DashboardResturant.js';
 import { useNavigate } from "react-router-dom";
 import Modalsmyrequest from "../../components/ModelMyRequest/ModelMyRequest.jsx";
 const theme = createTheme({
@@ -45,7 +45,7 @@ function Dashboard (props){
       try
       {
           
-          let res = await myStats(email)
+          let res = await myProfile(email)
           setUserStats(res.data.body);
           console.log(userStat);
         }
@@ -77,7 +77,7 @@ function Dashboard (props){
                 <Grid item>
                 <ThemeProvider theme={theme}>
                 <Typography sx = {{display:'inline-block',letterSpacing:'-1.97px'}} component="span" variant="h3" color="#264653">
-                {`Hello ${props.name} !`}
+                {`Hello ${userStat.name} !`}
                 </Typography>
                 </ThemeProvider>
                 </Grid>
@@ -93,10 +93,10 @@ function Dashboard (props){
             </Grid>
             <Grid container direction="row" display="flex"  sx ={{height:"50%"}} marginBottom="10%">
             <Grid container item xs ={9} sx = {{width:'100%',height:'100%'}}>
-            <Cards Resturant={0} mealsDonated={userStat.mealsDonated} ngosDonatedTo={userStat.dotionsListed} openRequst={getModelStatus} />
+            <Cards Resturant={0} mealsDonated={userStat.mealsDonated} ngosDonatedTo={userStat?.donations?.length} openRequst={getModelStatus} />
             </Grid>
             <Grid container item xs ={3} sx = {{width:'100%', height:'100%'}}>
-            <Cards2 Resturant={true} name={"Abdul Muizz khan"} email={"muizz481@gmail.com"} number={"0304-4923899"} description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.'}/>
+            <Cards2 Resturant={true} name={userStat.name} email={userStat.email} number={userStat.phoneBumber} description={userStat.description}/>
             </Grid>
             </Grid>
         </Grid>
