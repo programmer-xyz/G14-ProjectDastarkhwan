@@ -18,28 +18,28 @@ import CloseIcon from '@mui/icons-material/Close';
 function ResturantDetailModal(props)
 {
   let naviagte = useNavigate();
-  const {modelMsg,state,modalImage,userDetails,route,handleClose} = props;
-  const [open,setOpen] = React.useState(state);
+  const {state,onClick,handleClose} = props;
+
 
   
  
-  function onClick()
-  {
-    setOpen(false);
-    naviagte(`/${route}`)
+  // function onClick()
+  // {
+  //   setOpen(false);
+  //   naviagte(`/${route}`)
 
-  }
+  // }
 
   return (
     <div>
       <Dialog fullScreen={true} PaperProps={{ sx: { width: "718px", height: "620px",borderRadius:'10px'} }}
-        open={open}
+        open={state}
         aria-labelledby="responsive-dialog-title"
         onClose={handleClose}
         >
         <DialogTitle sx = {{textAlign:'center',font: 'normal normal normal 24px/35px Poppins',color:'#E76F51'}}>Restuarant Details
         <Box display="flex" justifyContent={'right'} sx ={{position:'relative',top:'-35px'}}>
-        <button className="buttonClass1"> <IoIosCloseCircle size={30} color="#F4A261"/></button>
+        <button onClick = {onClick} className="buttonClass1"> <IoIosCloseCircle size={30} color="#F4A261"/></button>
         </Box>
         </DialogTitle>
         <Grid container justifyContent={'center'} alignItems="center" direction="row" >
