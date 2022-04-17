@@ -199,9 +199,11 @@ export const mealDonation = handleAsyncErr(async (req,res,next) =>{
 
 export const rationDonation = handleAsyncErr(async (req,res,next) =>{
     //user email and selected ngo will be sent from frontend
+    console.log(req.body);
     let image = req.file.buffer;
-    const {address, description, email, ngoIdentifier} = req.body;
   
+    let {address, description, email, ngoIdentifier} = req.body;
+    address = JSON.parse(address);
     if( !address|| !description||!image){
         return next(new HandErr("some fields are missing", 401))
     }
