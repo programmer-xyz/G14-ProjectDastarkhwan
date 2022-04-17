@@ -139,29 +139,25 @@ export default function ModalNGO(prop){
             <Grid container display="flex" alignItems={'center'} justifyContent="center">
     <Grid container alignItems={'center'} justifyContent="center">
     <Grid item display="flex">
-    <ThemeProvider theme = {theme}>
-    <Typography  sx={{ display: 'block'}}
+    <Typography  sx={{ display: 'block',font: 'normal normal normal 24px/61px Poppins'}}
     component="span"
     variant="h6"
     color="#264653">
         {` Non-Governmental Organizations `}
     </Typography>
-    </ThemeProvider>
     </Grid>
     </Grid>
-    <Grid container alignItems={'center'} justifyContent="center" >
+    <Grid container alignItems={'center'} justifyContent="center">
     <Grid item display={"flex"}>
-    <ThemeProvider theme = {theme}>
-    <Typography sx={{ display: 'block' }}
+    <Typography sx={{ display: 'block',font: 'normal normal normal 18px/61px Poppins'}}
     component="span"
     variant="h12"
     color="#264653">
     {"Find the NGOs you can donate to below"}
     </Typography>
-    </ThemeProvider>
     </Grid>
     </Grid>
-    <Grid container display={"flex"} alignItems={'center'} justifyContent="center">
+    <Grid container display={"flex"} alignItems={'center'} justifyContent="center" sx={{paddingRight:'2%',paddingLeft:'2%'}}>
     <List sx={{width:'100%',height:'100%',overflow:'auto',maxHeight:"500px",'&::-webkit-scrollbar': {
     width: '0.5rem',
     },
@@ -175,7 +171,7 @@ export default function ModalNGO(prop){
     outline: '1px solid slategrey'
     }}}>
     {ngo_lis.map(item =>(
-        <RequestItemsNGO image={item.image} name={item.name} heading1={item.heading1} heading2={item.heading2} pargaraph1={item.pargaraph1} date={item.date} time={item.time} userRequests={false} NGOrequests={item.NGOrequests} Resreq={false} buttonStat={1}/>
+        <RequestItemsNGO image={item.image} name={item.name} description={item.description}/>
     ))}
     </List>
     </Grid>

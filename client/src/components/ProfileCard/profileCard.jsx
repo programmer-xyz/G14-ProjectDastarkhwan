@@ -26,7 +26,7 @@ const Input = styled('input')({
     display: 'none',
   });
 
-function profileCards(){
+function profileCards(props){
     return (
         <div class ="container cards">
           <Grid item alignContent = {'center'} alignItems = {'center'}  justifyContent={'center'} display="flex">
@@ -35,12 +35,12 @@ function profileCards(){
             component="img"
             image={testImage}
             alt="Abdul Muizz khan"
-            sx = {{borderRadius:'50%',border:'5px solid #00000073'}}/>  
+            sx = {{borderRadius:'50%',border:`5px solid ${props.Resturant?"#00000073":"rgba(231, 111, 81, 0.4)"}`}}/>  
           </Grid>  
           <Grid item alignContent = {'center'} alignItems = {'center'}  justifyContent={'center'} display="flex">
           <label htmlFor="icon-button-file">
             <Input accept="image/*" id="icon-button-file" type="file" />
-            <IconButton size="large" sx= {{color:'#E76F51', top: '-30px', right: '-30px',}} disableRipple color="primary" aria-label="upload picture" component="span">
+            <IconButton size="large" sx= {{color:`white`, top: '-45px', right: '-40px',backgroundColor:`${props.Resturant?"#264653":"#E76F51"}`}} disableRipple color="primary" aria-label="upload picture" component="span">
               <PhotoCamera />
             </IconButton>
             </label>
@@ -48,23 +48,23 @@ function profileCards(){
         <Grid item  >
           <Grid item alignContent = {'center'} alignItems = {'center'}  justifyContent={'center'} display="flex" >
           <Typography gutterBottom variant="h6" component="div" textAlign={'center'} theme = {theme}>
-            Abdul Muizz Khan
+           {`${props.name}`}
           </Typography>
           </Grid>
           <Grid item  alignContent = {'center'} alignItems = {'center'}  justifyContent={'center'} display="flex" >
           <Typography variant="body2" color="text.secondary" textAlign={'center'} theme = {theme}>
-            muiz@gmail.com
+          {`${props.email}`}
           </Typography>
           </Grid>
           <Grid item alignContent = {'center'} alignItems = {'center'}  justifyContent={'center'} display="flex" >
           <Typography variant="body2" color="text.secondary" theme = {theme}>
-            +9732-45678
+          {`${props.number}`}
           </Typography>
           </Grid>
-          <Divider sx={{color:"#E76F51",margin:"5% 0 5% 0",}}/>
+          <Divider sx={{color:`${props.Resturant?"#132B34":"#E76F51"}`,margin:"5% 0 5% 0"}}/>
           <Grid item alignContent = {'center'} alignItems = {'center'}  justifyContent={'center'} display="flex" >
           <Typography variant="body2" color="text.secondary" textAlign={'center'} theme = {theme}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.
+          {`${props.description}`}
           </Typography>
           </Grid>
         </Grid>

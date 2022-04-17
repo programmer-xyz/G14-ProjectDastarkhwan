@@ -41,31 +41,11 @@ function RequestItemsNGO(props)
                     <ThemeProvider theme = {theme}>
                     <ListItemText primary={props.name} secondary={
                     <React.Fragment>
-                        <ThemeProvider theme = {theme}>
-                        <Typography  sx={{ display: 'block' }}
-                        component="span"
-                        variant="body2"
-                        color="#264653">
-                            {`${props.heading1}:  `}
-                        <Typography sx={{ display: 'inline' }}
-                        component="span"
-                        variant="paragraph"
-                        color="#264653">
-                        {`${props.pargaraph1}`} 
-                        </Typography>
-                        </Typography> 
-                        <Typography  sx={{ display: 'block' }}
-                        component="span"
-                        variant="body2"
-                        color="#264653">
-                            {`${props.heading2}:  `}
-                        <Typography sx={{ display: 'inline' }}
-                        component="span"
-                        variant="paragraph"
-                        color="#264653">
-                        {`${props.date} | ${props.time}`} 
-                        </Typography>
-                        </Typography>
+                        <ThemeProvider theme = {theme}> 
+                            <Typography component={"span"} variant="paragraph" sx={{textOverflow:'ellipsis'}}>
+                            {props.description}
+                            </Typography>
+
                         </ThemeProvider>
                     </React.Fragment>
                 }>

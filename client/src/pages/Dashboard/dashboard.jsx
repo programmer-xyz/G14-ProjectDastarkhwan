@@ -38,7 +38,7 @@ function Dashboard (props){
                 <Grid item>
                 <ThemeProvider theme={theme}>
                 <Typography sx = {{display:'inline-block',letterSpacing:'-1.97px'}} component="span" variant="h3" color="#E76F51">
-                {"Hello Jane!"}
+                {`Hello ${props.name} !`}
                 </Typography>
                 </ThemeProvider>
                 </Grid>
@@ -52,12 +52,12 @@ function Dashboard (props){
                 </ThemeProvider>
             </Grid>
             </Grid>
-            <Grid container display="flex"  sx ={{height:"50%"}} columns={2}>
-            <Grid item sx = {{width:'70%',height:'25%'}}>
+            <Grid container direction ="row" display="flex"  sx ={{height:"50%",marginBottom:'10%'}}>
+            <Grid container item xs ={9} sx = {{width:'100%',height:'100%'}}>
             <Cards Resturant={2} mealDonations={10} rationDonations={20} monetaryDonations={30}/>
             </Grid>
-            <Grid item sx = {{width:'30%', height:'25%'}}>
-            <Cards2 />
+            <Grid container item xs={3} sx = {{width:'100%', height:'100%'}}>
+            <Cards2 Resturant={false} name={"Abdul Muizz khan"} email={"muizz481@gmail.com"} number={"0304-4923899"} description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make.'}/>
             </Grid>
             </Grid>
         </Grid>
