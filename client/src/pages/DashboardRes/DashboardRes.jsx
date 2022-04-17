@@ -7,9 +7,9 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import image2 from '../../assets/ResturantbackgroundImage.png';
 import {useState,useEffect} from 'react';
 import {myProfile} from '../../servicesApi/DashboardResturant.js';
-import { useNavigate,createSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Modalsmyrequest from "../../components/ModelMyRequest/ModelMyRequest.jsx";
-import ModalNGO from "../../components/ModalNGO/ModalNGO.jsx"
+
 const theme = createTheme({
     typography: {
       fontFamily: [
@@ -30,24 +30,21 @@ function Dashboard (props){
     let navigate = useNavigate();
     const[userStat,setUserStats] = useState({})
     const [state,setState] = useState(false);
-    const [stateDonation,setStateDonation] = useState(false);
-    const [route,setRoute] = useState ('');
+    // const [stateDonation,setStateDonation] = useState(false);
     const [email,setEmail] = useState ('rest4@gmail.com');
-    const [userId,setUserId] = useState ('62386a881d8d6e8aeabe6d6f')
+    // const [userId,setUserId] = useState ('62386a881d8d6e8aeabe6d6f')
     function handleClose(reason)
     {
         setState(false);
     }
-    function handleCloseDonation()
+    // function handleCloseDonation()
+    // {
+    //     setStateDonation(false);
+    // }
+    function onClick()
     {
-        setStateDonation(false);
-    }
-    function onClick(email)
-    {
-        setStateDonation(false);
-        navigate({pathname:'/resturantdonationForms',
-        search: `?ngoSelected=${email}`
-    });
+        //setStateDonation(false);
+        navigate('/resturantdonationForms');
 
     }
     async function getUserStats ()
@@ -72,15 +69,10 @@ function Dashboard (props){
     {
         setState(open);
     }
-    function getDonationModelStatus(open)
-    {
-        setStateDonation(open);
-    }
 
     return(
     <Box sx = {{spacing: "0",backgroundColor:'rgba(42, 157, 143, 0.1)',paddingLeft:'5%',backgroundImage:`url(${image2})`,backgroundRepeat:'no-repeat',backgroundPositionX:'center',backgroundSize:'50% auto'}}>
         <Modalsmyrequest User= {1} handleClose={handleClose} state={state} email={email}/>
-        <ModalNGO onC={onClick}  state={stateDonation} role={"rest"}  id_user={userId} handleClose={handleCloseDonation}/>
         <Grid  container direction="row" display="flex" sx={{width:'100%', height:'100%'}}>
             <Grid container sx={{margin:"0%"}}>
             <Grid item sx={{width:"100vw", height:"100%" ,padding:"0% 0% 4% 0%"}}>
@@ -107,10 +99,10 @@ function Dashboard (props){
             </Grid>
             <Grid container direction="row" display="flex"  sx ={{height:"50%"}} marginBottom="10%">
             <Grid container item xs ={9} sx = {{width:'100%',height:'100%'}}>
-            <Cards  openDM={getDonationModelStatus} Resturant={0} mealsDonated={userStat.mealsDonated} ngosDonatedTo={userStat?.donations?.length} openRequst={getModelStatus} />
+            <Cards  openDM={onClick} Resturant={0} mealsDonated={userStat.mealsDonated} ngosDonatedTo={userStat?.donations?.length} openRequst={getModelStatus} />
             </Grid>
             <Grid container item xs ={3} sx = {{width:'100%', height:'100%'}}>
-            <Cards2 Resturant={true} name={userStat.name} email={userStat.email} number={userStat.phoneBumber} description={userStat.description}/>
+            <Cards2 Resturant={true} name={userStat.name} email={userStat.email} number={userStat.phoneNumber} description={userStat.description}/>
             </Grid>
             </Grid>
         </Grid>

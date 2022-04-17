@@ -5,7 +5,7 @@ import { handleAsyncErr } from "../middleware/handleAsyncErr.js";
 import bcrypt from "bcrypt";
 import HandErr from "../utils/err.js";
 import {tokenMaker} from "../utils/tokenManager"
-
+import mongoose from "mongoose";
 
 
 //login 
@@ -365,4 +365,52 @@ export const myRequestUser = handleAsyncErr(async(req,res,next)=>
         return next(new HandErr("Email is missing",400))
     }
    
+});
+
+export const deleteProfile = handleAsyncErr(async (req,res,next)=>
+{
+    let {email,password} = req.body;
+    if(!!email && !!password)
+    {
+        let ngoProfile = await User.findOne({'email':email, 'isActive': true});
+        if(!!ngoProfile)
+        {
+            let boolCheck  = await bcrypt.compare(password, ngoProfile.password);
+            if(!boolCheck)
+            {
+                return next(new HandErr("InValid Password",400));
+            }
+            else
+            {
+                const session = await mongoose.startSession();
+                session.startTransaction();
+                try{
+                    const deleteNgo = await User.findOneAndUpdate({'email':email, 'isActive': true},{"isActive":false})
+                    const ids = deleteNgo._id;
+                    const deactivate = await Donation.updateMany({ "donatedByUser":  ids }, { "$set": { "isActive": false }})
+                    console.log(deactivate)
+                }
+                catch (error)
+                {
+                    await session.abortTransaction();
+                    return next(new HandErr(error,401));
+                }
+                await session.commitTransaction();
+                await session.endSession();
+                res.status(200).json({
+                    success:true,
+                    message:"User has been deleted"
+                });
+            }
+            
+        }
+        else
+        {
+            return next(new HandErr("User profile not found or account is no longer active",400));
+        }
+    } 
+    else
+    {
+        return next(new HandErr("Error as email or password is missing",401));
+    }
 });

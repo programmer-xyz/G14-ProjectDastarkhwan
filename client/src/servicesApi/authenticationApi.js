@@ -127,3 +127,7 @@ export const checkLoggedIn = async () =>
     // }
     return await axios.get(`${Url}/auth/isLoggedin`);
 }
+export const viewApplicationadminDashboard = async () =>{
+
+    return await axios.get(`${Url}/admin/viewApplications`)
+}

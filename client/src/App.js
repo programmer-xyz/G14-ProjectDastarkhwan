@@ -53,7 +53,7 @@ const App = () => {
                     <Route path ="/resturantDashboard" element = {<ResDashboard name={"Abdul Muizz khan"} />} />
                     <Route path ="/userdashboard" element = {<Dashboard/>} />
                     <Route path = "/adminDashboard" element = {<DashAdmin/>} />
-
+                    <Route path = "/ngoDashboard" element = {<NGODashboard/>}/>
                     {/* add Dashboard button routes here */}
                     <Route path="/ngoRequestAcceptPage" element = {<NGOacceptpage />} />
                     <Route path = "/myRequests" element = {<Modalsmyrequest state={true} User={0}/>} />

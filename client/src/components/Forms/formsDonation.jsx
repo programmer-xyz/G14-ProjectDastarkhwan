@@ -1,6 +1,7 @@
 import './formsDonation.css';
 import React from 'react';
 import { useState,  useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { findNgoUser,findNgoRest, mealDonationRest,mealDonationUser ,rationDonationUser,moneyDonationUser } from  '../../servicesApi/donation.js';
 
 
@@ -53,7 +54,11 @@ function FormsDonation (props) {
     const [user1, setUser1] = useState(user1Init);
     const [user2, setUser2] = useState(user2Init);
     const [user3, setUser3] = useState(user3Init);
-    
+    const [searchParams] = useSearchParams();
+    const[ role,setRole] = useState("rest");
+    const [email,setEmail] = useState("rest4@gmail.com");
+
+    console.log(searchParams);
     
 
     const handleForm1 = (e)=>{
@@ -71,20 +76,18 @@ function FormsDonation (props) {
     }
 
     const mealDon = (e) =>{
- 
+        
         e.preventDefault();
         const address = {
             "city":"lahore",
             "country":"country",
             "streetNumber":"streetNumber",
             "houseNumber":"houseNumber"
-        }
-        let em = "amgio@lums.edu.pk";
-        let role = "user";
-
+        }     
+        
         if(role === "rest")
         {
-        mealDonationRest( address,  user3.description, em,  user3.ngo,  user3.rationImage).then((response)=>{
+        mealDonationRest( address,  user3.description, email,  user3.ngo,  user3.rationImage).then((response)=>{
     
                 if(response.data.success)
                 {
@@ -105,7 +108,7 @@ function FormsDonation (props) {
         })
     }
     else if(role === "user"){
-        mealDonationUser( address,  user3.description, em,  user3.ngo,  user3.rationImage).then((response)=>{
+        mealDonationUser( address,  user3.description, email,  user3.ngo,  user3.rationImage).then((response)=>{
     
             if(response.data.success)
             {

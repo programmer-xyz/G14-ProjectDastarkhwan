@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {ngoLogin, ngoRegister,forgetPassResCheckUser,forgetPassUpdatePassNgo,changePassNgo,deleteProfile} from "../controller/ngoController";
-import {restRequestNgo,userRequestNgo,myRequestNgo,viewNgoStats,viewNgoProfile,viewDonation,viewUserDonation,viewRestDonation,editProfileNgo,acceptDonation, findNgoUser, findNgoRest} from "../controller/ngoController";
+import {restRequestNgo,userRequestNgo,myRequestNgo,viewNgoStats,viewNgoProfile,viewDonation,viewUserDonation,viewRestDonation,editProfileNgo,acceptDonation, findNgoUser, findNgoRest,deleteProfileNgo} from "../controller/ngoController";
 import multer from "multer";
 import {isAuthenticatedUser} from "../middleware/auth";
 const router = Router();
@@ -25,5 +25,6 @@ router.route("/myRequest/user").post(userRequestNgo);
 router.route("/myRequest/rest").post(restRequestNgo);
 router.route("/findNgoUser").post(findNgoUser);
 router.route("/findNgoRest").post(findNgoRest);
+router.route("/deleteProfileNgo").post(deleteProfileNgo);
 // router.route("/test").post(test);
 export default router;
