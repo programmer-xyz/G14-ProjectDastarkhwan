@@ -5,69 +5,69 @@ import { Typography } from '@mui/material';
 import React, { useEffect,useState } from 'react';
 import { List } from '@mui/material';
 import image1 from '../../components/RequestItems/testImage.jpeg';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import {createTheme } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import { useNavigate } from "react-router-dom";
 import { findNgoUser,findNgoRest } from  '../../servicesApi/donation.js';
 
-const theme = createTheme({
-    typography: {
-    fontFamily: [
-        'Poppins',
-        'Sans-Serif',
-    ].join(','),
-    color:'#264653',
-    },});
+// const theme = createTheme({
+//     typography: {
+//     fontFamily: [
+//         'Poppins',
+//         'Sans-Serif',
+//     ].join(','),
+//     color:'#264653',
+//     },});
 
-var templist = [{
-    image: image1,
-    name:"Al Khair Foundation",
-    pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
-    NGOrequests: true,
-    // buttonStat:1
+// var templist = [{
+//     image: image1,
+//     name:"Al Khair Foundation",
+//     pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
+//     NGOrequests: true,
+//     // buttonStat:1
 
-},
-{
-    image: image1,
-    name:"Academy for Educational Developement",
-    pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
-    NGOrequests: true,
-    // buttonStat:1
+// },
+// {
+//     image: image1,
+//     name:"Academy for Educational Developement",
+//     pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
+//     NGOrequests: true,
+//     // buttonStat:1
 
-},
-{
-    image: image1,
-    name:"RNGB Foundation",
-    pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
-    NGOrequests: true,
-    // buttonStat:1
+// },
+// {
+//     image: image1,
+//     name:"RNGB Foundation",
+//     pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
+//     NGOrequests: true,
+//     // buttonStat:1
 
-},
-{
-    image: image1,
-    name:"Al Khair Foundation",
-    pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
-    NGOrequests: true,
-    // buttonStat:1
+// },
+// {
+//     image: image1,
+//     name:"Al Khair Foundation",
+//     pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
+//     NGOrequests: true,
+//     // buttonStat:1
 
-},
-{
-    image: image1,
-    name:"Academy for Educational Developement",
-    pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
-    NGOrequests: true,
-    // buttonStat:1
+// },
+// {
+//     image: image1,
+//     name:"Academy for Educational Developement",
+//     pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
+//     NGOrequests: true,
+//     // buttonStat:1
 
-},
-{
-    image: image1,
-    name:"RNGB Foundation",
-    pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
-    NGOrequests: true,
-    // buttonStat:1
+// },
+// {
+//     image: image1,
+//     name:"RNGB Foundation",
+//     pargaraph1:"A well known foundation that collects monetary, ration and meal donations",
+//     NGOrequests: true,
+//     // buttonStat:1
 
-},
-]
+// },
+// ]
 
 export default function ModalNGO(prop){
     let naviagte = useNavigate();

@@ -80,7 +80,7 @@ function Dashboard (props){
     return(
     <Box sx = {{spacing: "0",backgroundColor:'rgba(42, 157, 143, 0.1)',paddingLeft:'5%',backgroundImage:`url(${image2})`,backgroundRepeat:'no-repeat',backgroundPositionX:'center',backgroundSize:'50% auto'}}>
         <Modalsmyrequest User= {1} handleClose={handleClose} state={state} email={email}/>
-        <ModalNGO onC={onClick}  state={stateDonation} role={"rest"}  id_user={userId}/>
+        <ModalNGO onC={onClick}  state={stateDonation} role={"rest"}  id_user={userId} handleClose={handleCloseDonation}/>
         <Grid  container direction="row" display="flex" sx={{width:'100%', height:'100%'}}>
             <Grid container sx={{margin:"0%"}}>
             <Grid item sx={{width:"100vw", height:"100%" ,padding:"0% 0% 4% 0%"}}>

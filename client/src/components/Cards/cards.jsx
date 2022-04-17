@@ -26,7 +26,7 @@ function Cards (props) {
                         <div class="card-body">
                             <h5 class="card-title">Meals Donations</h5>
                             <p class="card-text">{props.mealsDonated}</p>
-                            <img class ="Res1" src={mealsforres}/>
+                             <img class ="Res1" src={mealsforres} alt="res1img"/>
                         </div>
                     </div>
                 </div>
