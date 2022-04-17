@@ -19,7 +19,6 @@ import ResProfile from './pages/resProfile/resProfile.jsx';
 import NGODashboard from './pages/DashboardNGO/dashNGO.jsx';
 import NgoProfile from './pages/ngoProfile/ngoProfile.jsx';
 const App = () => {
-
     return(
         <Router>
             <div className="App">
