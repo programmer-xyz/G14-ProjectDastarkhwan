@@ -1,25 +1,36 @@
-import './forgotPass.css';
+import './newPassword.css';
 import React from 'react';
 import logo from '../../assets/MaskGroup2.png';
-import ForgotForm from '../../components/Forms/forgotPassform.jsx';
 import { useState } from 'react';
 
-function ForgotPass (){ 
+function NewPassRes (){ 
 const [selectedID,setID] = useState(1);
+function GetSelectID(Id)
+{
+    setID(Id+1);
+    
 
+}
 return (
 <div className="loginbody">
 <div className="left-container">
 <div className="left-div">
 <div className='headingL'>
-<h3 >Forgot Password?</h3>
+<h3 >Email verified</h3>
 </div>
 <div className="paragraphL">
-    <p>No sweat. Enter the email used for your account and we'll shoot you an email to get back on track.</p>
+    <p>Enter your new password to sign in</p>
 </div>
 <p>&nbsp;</p>
 <div className="Loginform">
-    <ForgotForm User = {1}/>
+<div className ="form">
+    <form action="/">
+    <input type = "password" placeholder = "New Password" className="input1"/>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <button className = "sign-in" type = "submit">Confirm</button>
+    </form>
+    </div>
 </div>
 <div className="admin-login">
     <p>Feeling Lucky?</p>
@@ -37,10 +48,8 @@ return (
 </div>
 <img className="image-c" src={logo}></img>
 </div>
-    
 </div>
-
 </div>
 );
 }
-export default ForgotPass;
+export default NewPassRes;

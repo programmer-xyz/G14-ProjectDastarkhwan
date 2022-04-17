@@ -52,8 +52,8 @@ export const makeRequestRestNgo = async (ngoId) =>{
     let obj = {
         ngoId:ngoId    
    }
-   console.log(obj)
-   console.log(`${Url}/viewRestDonation`)
+//    console.log(obj)
+//    console.log(`${Url}/viewRestDonation`)
 
    return await axios.post(`${Url}/viewRestDonation`,obj)
 }

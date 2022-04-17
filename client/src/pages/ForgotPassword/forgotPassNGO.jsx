@@ -4,7 +4,7 @@ import logo from '../../assets/MaskGroup2.png';
 import ForgotForm from '../../components/Forms/forgotPassform.jsx';
 import { useState } from 'react';
 
-function ForgotPassNGO (props){ 
+function ForgotPassNGO (){ 
 const [selectedID,setID] = useState(1);
 
 return (

@@ -24,8 +24,13 @@ import NgoProfile from './pages/ngoProfile/ngoProfile.jsx';
 import Modals from './components/Modals/SignOutModal.jsx';
 import ModalAddress from './components/Modals/modalAddress.jsx';
 import NewPass from './pages/NewPassword/newPassword.jsx';
+import ForgotPassRes from './pages/ForgotPassword/forgotPassRes.jsx';
+import ForgotPassNGO from './pages/ForgotPassword/forgotPassNGO.jsx';
+import NewPassRes from './pages/NewPassword/newpassres.jsx';
+import NewPassNgo from './pages/NewPassword/newpassngo.jsx';
 
 const App = () => {
+
     return(
         <Router>
             <div className="App">
@@ -34,7 +39,12 @@ const App = () => {
                     <Route path='/' element={<Login/>}/>
                     <Route path="/adminlogin" element = {<AdminModalSignIn state = {true}/>} />
                     <Route path="/Signup" element= {<Signup/>}/> 
-                    <Route path="/forgotpassword" element = {<ForgotPass />} />
+                    <Route path="/forgotpassword/user" element = {<ForgotPass />} />
+                    <Route path="/forgotpassword/resturant" element = {<ForgotPassRes />} />
+                    <Route path="/forgotpassword/ngo" element = {<ForgotPassNGO />} />
+                    <Route path="/newpass/res" element = {<NewPassRes />} />
+                    <Route path = "/newpass/user" element = {<NewPass />} />
+                    <Route path = "/newpass/ngo" element = {<NewPassNgo />} />
                     <Route path="/signoutModal" element={<Modals state={true} modelMsg={"Are you sure you want to sign out"} actionMsg={"cancel"} actionMsg2={"sign out"}/>} />
                     
                     {/* add donation routes here  */}
@@ -66,7 +76,7 @@ const App = () => {
                     
 
                     <Route path = "/address" element = {<ModalAddress state = {true}/>} />
-                    <Route path = "/newpass" element = {<NewPass />} />
+                    
                 </Routes>
             </div>
         </Router>

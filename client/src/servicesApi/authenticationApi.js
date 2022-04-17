@@ -134,4 +134,48 @@ export const adminLoginform = async (userName,password) =>{
     
 }
 
-// export const    
+export const forgetPassuser = async (email) =>{
+    let obj = {
+        email:email
+    }
+    return await axios.post(`${Url}/user/forgetPassV`,obj);
+}
+
+export const forgetPassngo = async (email) =>{
+    let obj = {
+        email:email
+    }
+    return await axios.post(`${Url}/ngo/forgetPassV`,obj);
+}
+
+export const forgetPassres = async (email) =>{
+    let obj = {
+        email:email
+    }
+    return await axios.post(`${Url}/rest/forgetPassV`,obj);
+}
+export const updatePassuser = async (email,password) =>{
+    let obj = {
+        email:email,
+        password:password
+    }
+    return await axios.post(`${Url}/user/forgetPassU`,obj);
+}
+
+export const updatePassngo = async (email,password) =>{
+    let obj = {
+        email:email,
+        password:password
+    }
+    return await axios.post(`${Url}/ngo/forgetPassU`,obj);
+}
+
+
+export const updatePassres = async (email,password) =>{
+    let obj = {
+        email:email,
+        password:password
+    }
+    return await axios.post(`${Url}/rest/forgetPassU`,obj);
+}
+
