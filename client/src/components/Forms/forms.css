@@ -9,6 +9,12 @@
     text-align: left;
 }
 
+.input3 {
+    background: #FFF !important;
+    width: 450px;
+    height: 54px;
+}
+
 .form-group {
     /* background: #FFFFFF 0% 0% no-repeat padding-box; */
     position:relative;

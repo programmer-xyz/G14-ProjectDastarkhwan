@@ -179,19 +179,19 @@ function Forms (props) {
                     <div class= "col-lg-6 col-xs-12 col-md-4 col-sm-12 col1">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputUser1" aria-describedby="emailHelp" placeholder="Name" name ="name" value={user1.name} onChange = {handleForm1}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputUser1" aria-describedby="emailHelp" placeholder="Name" name ="name" value={user1.name} onChange = {handleForm1}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputUserName1" placeholder="User Name" name= "username" value = {user1.username} onChange = {handleForm1}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputUserName1" placeholder="User Name" name= "username" value = {user1.username} onChange = {handleForm1}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleEmail1" placeholder="Email" name="email" value = {user1.email} onChange = {handleForm1}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleEmail1" placeholder="Email" name="email" value = {user1.email} onChange = {handleForm1}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleNum1" placeholder="Phone Number" name="phoneNum" value = {user1.phoneNum} onChange = {handleForm1}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleNum1" placeholder="Phone Number" name="phoneNum" value = {user1.phoneNum} onChange = {handleForm1}/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control shadow-none" id="examplePW1" placeholder="Password" name= "pw" value = {user1.pw} onChange = {handleForm1}/>
+                            <input type="password" class="form-control input3 shadow-none" id="examplePW1" placeholder="Password" name= "pw" value = {user1.pw} onChange = {handleForm1}/>
                         </div>
                     </form>
                     </div>
@@ -199,13 +199,13 @@ function Forms (props) {
                     <div class= "col-lg-6 col-xs-12 col-md-4 col-sm-12 col2">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputCnic1" aria-describedby="emailHelp" placeholder="CNIC" name= "cnic" value = {user1.cnic} onChange = {handleForm1}/>                        
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputCnic1" aria-describedby="emailHelp" placeholder="CNIC" name= "cnic" value = {user1.cnic} onChange = {handleForm1}/>                        
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputAddress1" placeholder="Address (House No, St. Block, City, Country)" name= "address" value = {user1.address} onChange = {handleForm1}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputAddress1" placeholder="Address (House No, St. Block, City, Country)" name= "address" value = {user1.address} onChange = {handleForm1}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleDescription1" placeholder="Description" name= "description" value = {user1.description} onChange = {handleForm1}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleDescription1" placeholder="Description" name= "description" value = {user1.description} onChange = {handleForm1}/>
                             <button type = "submit" class="buttonsForms" onClick={onCreateUser}>SIGN UP!</button>
                         </div>
                     </form>
@@ -221,37 +221,37 @@ function Forms (props) {
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputName2" aria-describedby="emailHelp" placeholder="Name" name = "name" value = {user2.name} onChange = {handleForm2}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputName2" aria-describedby="emailHelp" placeholder="Name" name = "name" value = {user2.name} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputUserName2" placeholder="User Name" name = "username" value = {user2.username} onChange = {handleForm2}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputUserName2" placeholder="User Name" name = "username" value = {user2.username} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleemail2" placeholder="Email" name = "email" value = {user2.email} onChange = {handleForm2}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleemail2" placeholder="Email" name = "email" value = {user2.email} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleNum2" placeholder="Phone Number" name = "phoneNum" value = {user2.phoneNum} onChange = {handleForm2}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleNum2" placeholder="Phone Number" name = "phoneNum" value = {user2.phoneNum} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control shadow-none" id="examplePW2" placeholder="Password" name = "pw" value = {user2.pw} onChange = {handleForm2}/>
+                            <input type="password" class="form-control input3 shadow-none" id="examplePW2" placeholder="Password" name = "pw" value = {user2.pw} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck2" placeholder="Address (House No, St. Block, City, Country)" name = "address" value = {user2.address} onChange = {handleForm2}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleCheck2" placeholder="Address (House No, St. Block, City, Country)" name = "address" value = {user2.address} onChange = {handleForm2}/>
                         </div>
                     </form>
                     </div>
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputEmail3" aria-describedby="emailHelp" placeholder="Description" name = "description" value = {user2.description} onChange = {handleForm2}/>                        </div>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputEmail3" aria-describedby="emailHelp" placeholder="Description" name = "description" value = {user2.description} onChange = {handleForm2}/>                        </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputPassword3" placeholder="Contact Name" name = "name2" value = {user2.name2} onChange = {handleForm2}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputPassword3" placeholder="Contact Name" name = "name2" value = {user2.name2} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck3" placeholder="Contact Number" name = "phoneNum2" value = {user2.phoneNum2} onChange = {handleForm2}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleCheck3" placeholder="Contact Number" name = "phoneNum2" value = {user2.phoneNum2} onChange = {handleForm2}/>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control shadow-none" id="exampleCheck3" placeholder="Contact Email" name = "email2" value = {user2.email2} onChange = {handleForm2}/>
+                            <input type="email" class="form-control input3 shadow-none" id="exampleCheck3" placeholder="Contact Email" name = "email2" value = {user2.email2} onChange = {handleForm2}/>
                         </div>
                         <button type = "submit" class="buttonsForms1" onClick={onCreateRest}>SIGN UP!</button>
                     </form>
@@ -265,44 +265,44 @@ function Forms (props) {
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputEmail42" aria-describedby="emailHelp" placeholder="Name" name = "name" value = {user3.name} onChange = {handleForm3}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputEmail42" aria-describedby="emailHelp" placeholder="Name" name = "name" value = {user3.name} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputPassword41" placeholder="User Name" name = "username" value = {user3.username} onChange = {handleForm3}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputPassword41" placeholder="User Name" name = "username" value = {user3.username} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck46" placeholder="Email" name = "email" value = {user3.email} onChange = {handleForm3}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleCheck46" placeholder="Email" name = "email" value = {user3.email} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck45" placeholder="Phone Number" name = "phoneNum" value = {user3.phoneNum} onChange = {handleForm3}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleCheck45" placeholder="Phone Number" name = "phoneNum" value = {user3.phoneNum} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control shadow-none" id="exampleCheck44" placeholder="Password" name = "pw" value = {user3.pw} onChange = {handleForm3}/>
+                            <input type="password" class="form-control input3 shadow-none" id="exampleCheck44" placeholder="Password" name = "pw" value = {user3.pw} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck43" placeholder="Address (House No, St. Block, City, Country)" name = "address" value = {user3.address} onChange = {handleForm3}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleCheck43" placeholder="Address (House No, St. Block, City, Country)" name = "address" value = {user3.address} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck42" placeholder="Account Number" name = "bankAccount" value = {user3.bankAccount} onChange = {handleForm3}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleCheck42" placeholder="Account Number" name = "bankAccount" value = {user3.bankAccount} onChange = {handleForm3}/>
                         </div>
                     </form>
                     </div>
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12 ">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputEmail5" aria-describedby="emailHelp" placeholder="Description" name = "description" value = {user3.description} onChange = {handleForm3}/>                        </div>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputEmail5" aria-describedby="emailHelp" placeholder="Description" name = "description" value = {user3.description} onChange = {handleForm3}/>                        </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputPassword5" placeholder="Contact Name" name = "name2" value = {user3.name2} onChange = {handleForm3}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleInputPassword5" placeholder="Contact Name" name = "name2" value = {user3.name2} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck52" placeholder="Contact Number" name = "phoneNum2" value = {user3.phoneNum2} onChange = {handleForm3}/>
+                            <input type="text" class="form-control input3 shadow-none" id="exampleCheck52" placeholder="Contact Number" name = "phoneNum2" value = {user3.phoneNum2} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control shadow-none" id="exampleCheck51" placeholder="Contact Email" name = "email2" value = {user3.email2} onChange = {handleForm3}/>
+                            <input type="email" class="form-control input3 shadow-none" id="exampleCheck51" placeholder="Contact Email" name = "email2" value = {user3.email2} onChange = {handleForm3}/>
                         </div>
                         <div class="form-group">
                             <label>Add Certification Email</label>
-                            <input type="file" class="form-control shadow-none" id="exampleCheck5" placeholder="Add Certification Email"  onChange = {onFileChange}/>
+                            <input type="file" class="form-control input3 shadow-none" id="exampleCheck5" placeholder="Add Certification Email"  onChange = {onFileChange}/>
                         </div>
                         <button type = "submit" class="buttonsForms1" onClick={onCreate}>SIGN UP!</button>
                     </form>

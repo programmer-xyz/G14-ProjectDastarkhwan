@@ -44,7 +44,13 @@ const App = () => {
                     {/* add dashboard routes here */}
                     <Route path ="/resturantDashboard" element = {<ResDashboard name={"Abdul Muizz khan"} />} />
                     <Route path ="/userdashboard" element = {<Dashboard/>} />
+                    <Route path = "/ngodashboard" element = {<NGODashboard/>} />
                     <Route path = "/adminDashboard" element = {<DashAdmin/>} />
+
+                    {/* add profile routes here */}
+                    <Route path = "/userprofile" element = {<UserProfile/>} />
+                    <Route path = "/resprofile" element = {<ResProfile/>} />
+                    <Route path = "/ngoprofile" element = {<NgoProfile/>} />
 
                     {/* add Dashboard button routes here */}
                     <Route path="/ngoRequestAcceptPage" element = {<NGOacceptpage />} />

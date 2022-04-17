@@ -261,7 +261,7 @@ console.log('here')
         return(
                 <div class = "row newClass">
                     <form>
-                        <div class="form-group">
+                        <div class="form-group2">
                             <select class="form-select shadow-none"  placeholder="NGO" name="ngo"  onChange={handleForm1}> 
                                 <option >Select NGO</option>
                                 {
@@ -274,23 +274,23 @@ console.log('here')
                                 
                             </select>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputPassword1" placeholder="Amount ($)" name="amount" value={user1.amount} onChange={handleForm1}/>
+                        <div class="form-group2">
+                            <input type="text" class="form-control input5 shadow-none" id="exampleInputPassword1" placeholder="Amount ($)" name="amount" value={user1.amount} onChange={handleForm1}/>
                             <p class="details1">Card Details</p>
                         </div>
                         
-                        <div class="form-group">
+                        <div class="form-group2">
                             {/* <label>Card Details</label> */}
-                            <input type="text" class="form-control shadow-none" id="namecard" placeholder="Name On Card" name="nameCard"/>
+                            <input type="text" class="form-control input5 shadow-none" id="namecard" placeholder="Name On Card" name="nameCard"/>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="numcard" placeholder="Card Number" name="cardNumber" value={user1.cardNumber} onChange={handleForm1}/>
+                        <div class="form-group2">
+                            <input type="text" class="form-control input5 shadow-none" id="numcard" placeholder="Card Number" name="cardNumber" value={user1.cardNumber} onChange={handleForm1}/>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="expdate" placeholder="Expiry Date" name="expDate" />
+                        <div class="form-group2">
+                            <input type="text" class="form-control input5 shadow-none" id="expdate" placeholder="Expiry Date" name="expDate" />
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="cvc" placeholder="CVC" />
+                        <div class="form-group2">
+                            <input type="text" class="form-control input5 shadow-none" id="cvc" placeholder="CVC" />
                             <button type = "submit" class="buttonsDonations"  onClick={moneyDon }>Confirm Donation!</button>
 
                         </div>
@@ -304,7 +304,7 @@ console.log('here')
             <div class = "row newClass">
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <form>
-                        <div class="form-group">
+                        <div class="form-group2">
                             <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="ngo" onChange={handleForm2}>
                                 <option>Select NGO</option>
                                 {
@@ -316,16 +316,16 @@ console.log('here')
                                 }
                             </select>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputPassword1" placeholder="Address (House No, St. Block, City, Country)" name="address" value={user2.address} onChange={handleForm2}/>
+                        <div class="form-group2">
+                            <input type="text" class="form-control input5 shadow-none" id="exampleInputPassword1" placeholder="Address (House No, St. Block, City, Country)" name="address" value={user2.address} onChange={handleForm2}/>
                             <p class="details1">Ration Details</p>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="Description" name="description" value={user2.description} onChange={handleForm2}/>
+                        <div class="form-group2">
+                            <input type="text" class="form-control input5 shadow-none" id="exampleCheck1" placeholder="Description" name="description" value={user2.description} onChange={handleForm2}/>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group2">
                             <label>Upload Ration Image</label>
-                            <input type="file" class="form-control shadow-none" id="exampleCheck1" placeholder="Add Ration Image" name="rationImg" onChange={onFileChange2}/>
+                            <input type="file" class="form-control input5 shadow-none" id="exampleCheck1" placeholder="Add Ration Image" name="rationImg" onChange={onFileChange2}/>
                         </div>
                         <button type = "submit" class="buttonsDonations1" onClick = {rationDon}>Confirm Donation!</button>
                     </form>
@@ -338,7 +338,7 @@ console.log('here')
             <div class = "row newClass">
                     <div class= "col-lg-6 col-xs-12 col-md-12 col-sm-12">
                     <form>
-                        <div class="form-group">
+                        <div class="form-group2">
                             <select class="form-select shadow-none" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="NGO" name="ngo" onChange={handleForm3}>
                                 <option>Select NGO</option>
                                 {
@@ -350,16 +350,16 @@ console.log('here')
                                 }
                             </select>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleInputPassword1" placeholder="Address (House No, St. Block, City, Country)" name="address" value={user3.address} onChange={handleForm3}/>
+                        <div class="form-group2">
+                            <input type="text" class="form-control input5 shadow-none" id="exampleInputPassword1" placeholder="Address (House No, St. Block, City, Country)" name="address" value={user3.address} onChange={handleForm3}/>
                             <p class="details1">Meal Details</p>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control shadow-none" id="exampleCheck1" placeholder="Description" name="description" value={user3.description} onChange={handleForm3}/>
+                        <div class="form-group2">
+                            <input type="text" class="form-control input5 shadow-none" id="exampleCheck1" placeholder="Description" name="description" value={user3.description} onChange={handleForm3}/>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group2">
                             <label>Upload Meal Image</label>
-                            <input type="file" class="form-control shadow-none" id="exampleCheck1" placeholder="Add Ration Image" name="rationImage" onChange={onFileChange3}/>
+                            <input type="file" class="form-control input5 shadow-none" id="exampleCheck1" placeholder="Add Ration Image" name="rationImage" onChange={onFileChange3}/>
                         </div>
                         <button type = "submit" class="buttonsDonations1" onClick = {mealDon}>Confirm Donation!</button>
                     </form>
