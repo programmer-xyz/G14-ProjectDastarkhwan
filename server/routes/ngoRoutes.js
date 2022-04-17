@@ -2,6 +2,7 @@ import { Router } from "express";
 import {ngoLogin, ngoRegister,forgetPassResCheckUser,forgetPassUpdatePassNgo,changePassNgo,deleteProfile} from "../controller/ngoController";
 import {restRequestNgo,userRequestNgo,myRequestNgo,viewNgoStats,viewNgoProfile,viewDonation,viewUserDonation,viewRestDonation,editProfileNgo,acceptDonation, findNgoUser, findNgoRest,deleteProfileNgo} from "../controller/ngoController";
 import multer from "multer";
+import {isAuthenticatedUser} from "../middleware/auth";
 const router = Router();
 const upload = multer();
 

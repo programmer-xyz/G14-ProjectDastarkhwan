@@ -3,8 +3,12 @@ import React from 'react';
 import logo from '../../assets/MaskGroup2.png';
 import ForgotForm from '../../components/Forms/forgotPassform.jsx';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function ForgotPass (){ 
+
+const navigate1 = useNavigate();
+
 const [selectedID,setID] = useState(1);
 function GetSelectID(Id)
 {
@@ -28,7 +32,7 @@ return (
 </div>
 <div className="admin-login">
     <p>Feeling Lucky?</p>
-    <button className="adminmodel">Try Signing In?</button>
+    <button className="adminmodel" onClick = {()=>navigate1('/')}>Try Signing In?</button>
 </div>
 </div>
 </div>

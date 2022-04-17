@@ -22,12 +22,22 @@ import ResProfile from './pages/resProfile/resProfile.jsx';
 import NGODashboard from './pages/DashboardNGO/dashNGO.jsx';
 import NgoProfile from './pages/ngoProfile/ngoProfile.jsx';
 import Modals from './components/Modals/SignOutModal.jsx'
+
+// import { UserInfo } from './customHooks/userInfo.js';
+// import {UseLoginUser} from "./customHooks/LoginHook";
+//import PrivateRoute from './components/RestrictedRoute/restrictedRoute.js';
+
 const App = () => {
+
+    // let role = "user";
+    // const {loggedState} = UseLoginUser();
 
     return(
         <Router>
+             {/* <UserInfo.Provider value={{loggedState }}> */}
             <div className="App">
                 <Routes> 
+             
                     {/* // add authentication routes here login /signup/forget/change/logout */}
                     <Route path='/' element={<Login/>}/>
                     <Route path="/adminlogin" element = {<AdminModalSignIn state = {true}/>} />
@@ -44,6 +54,7 @@ const App = () => {
                     <Route path ="/userdashboard" element = {<Dashboard/>} />
                     <Route path = "/adminDashboard" element = {<DashAdmin/>} />
                     <Route path = "/ngoDashboard" element = {<NGODashboard/>}/>
+
                     {/* add Dashboard button routes here */}
                     <Route path="/ngoRequestAcceptPage" element = {<NGOacceptpage />} />
                     <Route path = "/myRequests" element = {<Modalsmyrequest state={true} User={0}/>} />
@@ -55,10 +66,15 @@ const App = () => {
                     <Route path="/profileCards" element = {<ProfileCards />} />
                     <Route path = "/modelResDetails" element ={<ResturantDetailModal state={true} email={"muizz481@gmail.com"} phoneNumber={'1231343421-2'} address={"512 f2 johar town lahore"} accountNumber={"23134211-3"} description={'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'} pointOfCName={"James Charles"} pointOfCEmail={"Jamescharles@gmail.com"} pointOfCNumber={"1232441"}/>} />
                     
-                   
+            
                 </Routes>
+
+                {/* <PrivateRoute path="/userdonationForms"  component={Resturant => <DonationForms {...Resturant}/>}/>
+                <PrivateRoute path="/adminDashboard" component={DashAdmin}/> */}
             </div>
+            {/* </UserInfo.Provider> */}
         </Router>
+
     );
 
 }

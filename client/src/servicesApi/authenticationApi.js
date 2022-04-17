@@ -119,6 +119,14 @@ export const restLogin = async (email,password) =>
     return await axios.post(`${Url}/rest/login`,obj);
 }
 
+export const checkLoggedIn = async () =>
+{
+    // const obj = 
+    // {
+    //     "role":role
+    // }
+    return await axios.get(`${Url}/auth/isLoggedin`);
+}
 export const viewApplicationadminDashboard = async () =>{
 
     return await axios.get(`${Url}/admin/viewApplications`)

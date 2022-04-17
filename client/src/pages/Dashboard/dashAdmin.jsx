@@ -2,10 +2,15 @@ import './dashAdmin.css';
 import CardContent from '@mui/material/CardContent';
 import NavBar from '../../components/Navbar/Navbar.jsx'
 import AdminAcceptpage from '../../components/AdminAccept/adminAccept.jsx';
+import {UseLoginUser} from "../../customHooks/LoginHook";
+import { useNavigate } from 'react-router-dom';
 
-function dashAdmin (){
+function DashAdmin (){
 
-
+    // let navigate = useNavigate();
+    // let role = "admin";
+    
+    
     return (
         <div className = "main">
         <NavBar/>
@@ -22,5 +27,6 @@ function dashAdmin (){
         </div>
         
     );
+
 }
-export default dashAdmin;
+export default DashAdmin;

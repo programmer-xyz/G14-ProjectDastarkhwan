@@ -9,6 +9,8 @@ import {useState,useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
 import Modalsmyrequest from "../../components/ModelMyRequest/ModelMyRequest.jsx";
 import {myProfile} from  '../../servicesApi/DashboardUser.js';
+import {UseLoginUser} from "../../customHooks/LoginHook";
+
 const theme = createTheme({
     typography: {
     fontFamily: [
@@ -32,7 +34,8 @@ function Dashboard (props){
     let navigate = useNavigate();
     const[userStat,setUserStats] = useState({})
     const [state,setState] = useState(false);
-    const [email,setEmail] = useState ('adeel@gmail.com');
+    const [email, setEmail] = useState ('');
+    
     function handleClose(reason)
     {
         setState(false);
@@ -47,7 +50,7 @@ function Dashboard (props){
         navigate('/userdonationForms');
 
     }
-    async function getUserStats ()
+    async function getUserStats (email)
     {
       try
       {
@@ -61,9 +64,13 @@ function Dashboard (props){
             console.log(err)
         }
     }
-    useEffect( ()=>{
-        getUserStats();
 
+    //    let s = UseLoginUser();
+    console.log(localStorage.getItem('email'))
+    useEffect( ()=>{
+       
+        setEmail(localStorage.getItem('email'));
+        getUserStats(localStorage.getItem('email'));
     }, []);
 
     return(
