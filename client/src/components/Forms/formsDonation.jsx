@@ -55,6 +55,9 @@ function FormsDonation (props) {
     const [user2, setUser2] = useState(user2Init);
     const [user3, setUser3] = useState(user3Init);
     const [searchParams] = useSearchParams();
+    const[ role,setRole] = useState("user");
+    const [email,setEmail] = useState("amgio@lums.edu.pk")
+
     console.log(searchParams);
     
 
@@ -80,13 +83,11 @@ function FormsDonation (props) {
             "country":"country",
             "streetNumber":"streetNumber",
             "houseNumber":"houseNumber"
-        }
-        let em = "amgio@lums.edu.pk";
-        let role = "user";
+        }     
         
         if(role === "rest")
         {
-        mealDonationRest( address,  user3.description, em,  user3.ngo,  user3.rationImage).then((response)=>{
+        mealDonationRest( address,  user3.description, email,  user3.ngo,  user3.rationImage).then((response)=>{
     
                 if(response.data.success)
                 {
@@ -107,7 +108,7 @@ function FormsDonation (props) {
         })
     }
     else if(role === "user"){
-        mealDonationUser( address,  user3.description, em,  user3.ngo,  user3.rationImage).then((response)=>{
+        mealDonationUser( address,  user3.description, email,  user3.ngo,  user3.rationImage).then((response)=>{
     
             if(response.data.success)
             {
