@@ -4,10 +4,17 @@ import bag from './Santa_Bag_1.svg';
 import Meals from './Group 6951.svg';
 import mealsforres from './Group 6831.svg';
 import ngodonated from './Group 6954.svg';
-import { Grid ,Box} from '@mui/material';
 
 function Cards (props) {
 
+    function openRequestModel()
+    {
+        props.openRequst(true);
+    }
+    function openDonationModel()
+    {
+        props.openDM(true);
+    }
     if(props.Resturant === 0)
     {
         return(
@@ -19,7 +26,7 @@ function Cards (props) {
                         <div class="card-body">
                             <h5 class="card-title">Meals Donations</h5>
                             <p class="card-text">{props.mealsDonated}</p>
-                            <img class ="Res1" src={mealsforres}/>
+                             <img class ="Res1" src={mealsforres} alt="res1img"/>
                         </div>
                     </div>
                 </div>
@@ -36,10 +43,10 @@ function Cards (props) {
             <hr class="hr"></hr>
             <div class="row">
                 <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                    <button class="buttonsCards">Make Donations</button>
+                    <button class="buttonsCards" onClick={openDonationModel}>Make Donations</button>
                 </div>
                 <div class="col-lg-6 col-xs-12 col-md-12 col-sm-12">
-                    <button class="buttonsCards white">Past Requests</button>
+                    <button class="buttonsCards white" onClick={openRequestModel}>Past Requests</button>
                 </div>
             </div>
             </div>

@@ -7,7 +7,7 @@ import { handleAsyncErr } from "../middleware/handleAsyncErr.js";
 import bcrypt from "bcrypt";
 import HandErr from "../utils/err.js";
 import mongoose from "mongoose";
-
+import {tokenMaker} from "../utils/tokenManager"
 
 //login 
 export const ngoLogin =  handleAsyncErr(async (req,res, next) =>{
@@ -33,11 +33,12 @@ export const ngoLogin =  handleAsyncErr(async (req,res, next) =>{
     //boolCheck = user.password == password ? true : false; //add bcrypt here
 
     if(boolCheck){
-        res.status(200).json({
-            success: true,
-            message: "user logged in",
-            user
-          });
+        tokenMaker(user, 201, res);
+        // res.status(200).json({
+        //     success: true,
+        //     message: "user logged in",
+        //     user
+        //   });
     }
     else
     {
@@ -641,13 +642,13 @@ export const restRequestNgo = handleAsyncErr(async(req,res,next)=>
 
 export const findNgoUser = handleAsyncErr(async(req,res,next)=>{
     let user_id = req.body._id;
-    let userObj = await User.findOne({_id: user_id});
+    let userObj = await User.findOne({_id: user_id, isActive:true});
 
     let add = userObj.address;
     console.log(`here ${add}`);
     let city = add.city;
 
-    let cityNgos = await Ngo.find({'address.city' : city});
+    let cityNgos = await Ngo.find({'address.city' : city, isActive:true});
 
     if(!cityNgos ){
         return next(new HandErr("No NGOs in your area",400))
@@ -665,13 +666,13 @@ export const findNgoUser = handleAsyncErr(async(req,res,next)=>{
 
 export const findNgoRest = handleAsyncErr(async(req,res,next)=>{
     let user_id = req.body._id;
-    let userObj = await Rest.findOne({_id: user_id});
+    let userObj = await Rest.findOne({_id: user_id, isActive:true});
 
     let add = userObj.address;
     console.log(`here ${add}`);
     let city = add.city;
 
-    let cityNgos = await Ngo.find({'address.city' : city});
+    let cityNgos = await Ngo.find({'address.city' : city, isActive:true});
 
     if(!cityNgos ){
         return next(new HandErr("No NGOs in your area",400))

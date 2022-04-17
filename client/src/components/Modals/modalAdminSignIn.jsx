@@ -39,7 +39,7 @@ export default function AdminModalSignIn(prop){
     }
     return (
     <div>
-    <Dialog PaperProps={{ sx: { borderRadius: "10px", width: "90%", height: "auto" } }}
+    <Dialog PaperProps={{ sx: { borderRadius: "10px", width: "90%", height: "auto",overflowX:"hidden"} }}
         open={open}
         aria-labelledby="responsive-dialog-title"
         onClose={handleClose}>
@@ -66,9 +66,6 @@ export default function AdminModalSignIn(prop){
     </Grid>
     <p>&nbsp;</p>
     <Grid container display="flex" alignItems={'center'} justifyContent="center">
-        <div>
-        <a href='#'> Forget Password ? </a>
-        </div>
         </Grid>
         <p>&nbsp;</p>
     </Dialog>
