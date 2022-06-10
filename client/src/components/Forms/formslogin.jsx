@@ -161,18 +161,19 @@ function LoginForm(prop){
             <p>&nbsp;</p>
             <input type = "password" placeholder = "Password" className="input1" name ="pw" value={user1.pw} onChange = {handleForm1}/>
             <div className="forgetPass">
-                <a href='#'> Forget Password ? </a>
+                <a href='/forgotpassword'> Forget Password ? </a>
             </div>
             <button className = "sign-in" type = "submit" onClick = {onLogin}> SIGN IN</button>
             <div className='signup'>
-                <p>Dont have an account ?  <a href='#'> Sign Up </a> </p>
+                <p>Dont have an account ?  <a href='/Signup'> Sign Up </a> </p>
             </div>
             <div className="admin-login">
-                <p>Do you want to sign in as Admin ? <button className="adminmodel">Admin</button> </p>
+            <p>Do you want to sign in as Admin ? <button  className="adminmodel" onClick = {()=>{navigate('/adminlogin')}}>Admin</button> </p>
             </div>
             </form>
             </div>
-        );
+        )
+
     }
     
 ;}

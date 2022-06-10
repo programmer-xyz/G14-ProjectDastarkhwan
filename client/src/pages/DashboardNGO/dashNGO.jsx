@@ -29,7 +29,7 @@ const theme1 = createTheme({
 function NGODashboard (props){
     let navigate = useNavigate();
 
-    const [email,setemail] = useState('ngo2@gmail.com');
+    const [email,setemail] = useState('');
     const [userStat,setUserStats] = useState({});
     const [state,setState] = useState(false);
     function onClick()
@@ -38,7 +38,7 @@ function NGODashboard (props){
         navigate('/ngoRequestAcceptPage');
 
     }
-    async function getUserStats ()
+    async function getUserStats (email)
     {
       try
       {
@@ -53,7 +53,8 @@ function NGODashboard (props){
         }
     }
     useEffect( ()=>{
-        getUserStats();
+        setemail(localStorage.getItem('email'));
+        getUserStats(localStorage.getItem('email'));
 
     }, []);
     function handleClose()
@@ -77,7 +78,7 @@ function NGODashboard (props){
                 <Grid item>
                 <ThemeProvider theme={theme}>
                 <Typography sx = {{display:'inline-block',letterSpacing:'-1.97px'}} component="span" variant="h3" color="#E76f51">
-                {`Hello ${props.name} !`}
+                {`Hello ${userStat.name} !`}
                 </Typography>
                 </ThemeProvider>
                 </Grid>
