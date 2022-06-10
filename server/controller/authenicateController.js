@@ -33,26 +33,27 @@ export const adminLogin = handleAsyncErr(async (req,res, next) =>{
         return next(new HandErr("userName or password missing", 400))
     }
     const user = await Admin.findOne({userName}); //.select("+password");
-    let pw = user.password;
+    console.log(user)
 
-    if(!user){
-       
-        return next(new HandErr("Wrong userName or password", 401));
+    if(!!user){
+        let pw = user.password;
+        let boolCheck  = await bcrypt.compare(password, pw);
+        //boolCheck = user.password == password ? true : false; //add bcrypt here
+    
+        if(boolCheck){
+            //tokenMaker(user, 201, res);
+            res.status(200).json({
+                success: true,
+                message: "user logged in",
+                user
+              });
+        }
+        else{
+            return next(new HandErr("Password entered wrong", 401));
+        }
+        
     }
-    let boolCheck  = await bcrypt.compare(password, pw);
-    //boolCheck = user.password == password ? true : false; //add bcrypt here
-
-    if(boolCheck){
-        tokenMaker(user, 201, res);
-        // res.status(200).json({
-        //     success: true,
-        //     message: "user logged in",
-        //     user
-        //   });
-    }
-    else{
-        return next(new HandErr("Password entered wrong", 401));
-    }
+    return next(new HandErr("Wrong userName or password", 401));
     
 });
 
