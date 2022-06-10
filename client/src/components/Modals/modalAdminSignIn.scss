@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+$my-fontFamily: normal normal normal 19px/25px Poppins;
+
+:export {
+    myFont: $my-fontFamily;
+}
+
+.logoimg{
+    box-shadow: 0px 3px #00000014; 
+    border-radius: 10px; 
+    border: 2px solid #00000014 ;
+}

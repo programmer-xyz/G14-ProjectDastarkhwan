@@ -1,0 +1,30 @@
+.sign-in {
+    width: 450px;
+    height: 54px;
+    background: #264653 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    opacity: 1;
+    align-items: center;
+    font: normal normal 600 16px/25px Poppins;
+    color: #FFFFFF;
+    margin-bottom: 1%;
+}
+.form{
+    display: inline-block;
+}
+.input1{
+    width: 435px;
+    height: 54px;
+    font: normal normal normal 14px/21px Poppins;
+    text-align: left;
+    padding-left: 15px;
+    vertical-align: middle;
+    letter-spacing: -0.66px;
+    color: #838E94;
+    border: none;
+    background: #FFF4D7 0% 0% no-repeat padding-box;
+    border-radius: 10px;
+    opacity: 0.55;
+}

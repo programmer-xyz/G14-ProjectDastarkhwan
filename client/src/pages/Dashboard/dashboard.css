@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+/* .fullBody {
+    background-color: #F7EAC9;
+    flex-direction: column;
+    width: 100vw;
+    display: flex;
+    overflow-x:hidden;
+    background-image: url('./output-onlinepngtools1.png');
+    background-repeat: no-repeat;
+    background-size: 50% auto;
+    background-position-x: center;
+    align-content: center;
+} */
+
+/* .row1 {
+    margin-top: 4%;
+    margin-bottom: 10%;
+    display: flex;
+    height: auto;
+    align-items: center;
+} */
+
+
+
+/* 
+.column2{
+    display:flex;
+    position: relative;
+    top:20%;
+    right: 7%; 
+    height: 70vh;
+    width:50vw;
+    margin-left: 5%;
+    margin-right: 5%;
+
+
+}
+
+.nameUser {
+    font: normal normal normal 42px/109px Poppins;
+    color: #E76F51;
+    display:flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 10%;
+}
+
+.welcome {
+    font: normal normal normal 22px/33px Poppins;
+    color: #264653;
+    display:flex;
+    position: relative;
+    top:5%;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+.column1{
+    display: flex;
+    position: relative;
+    margin-top:20%;
+}
+.ddiv{
+    display: flex;
+    flex-direction: row;
+    height:55vh;
+    justify-content: center;
+}
+.col12{
+    display: flex;
+    height: auto;
+    width: 170vw;
+    height: 70vh;
+    margin-left: 5%;
+    position: relative;
+    top:20%;
+    left:10%;
+}
+@media screen and (max-width:1404px) {
+
+    .column2{
+        display: none;
+    }
+    .col12{
+        width: 100vw;
+        left: 20%;
+    }
+    
+}
+
+@media screen and (max-width:986px){
+
+    .column2{
+        display: none;
+    }
+    .ddiv{
+        height: 150vh;
+    }
+    .col12{
+        top:2%;
+        height: 120vh;
+    }
+    .column1{
+        top:50%;
+    }
+    
+}
+
+@media screen and (min-width:1000px) and (max-width:1024px){
+    .col12{
+        width: 100vw;
+        height: 90vh;
+        position: relative;
+        left:5%;
+        top:-10%;
+    }
+}
+
+@media screen and (min-width:1025px) and (max-width:1280px) {
+    .col12{
+        width: 100vw;
+        position: relative;
+        left:5%;
+        top:-10%;
+    }
+}
+
+ */
+ 

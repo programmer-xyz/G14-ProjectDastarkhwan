@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.button
+{  
+    border-left:None;
+    border-right:None;
+    border-top:None;
+    margin-right:1%;
+    padding-bottom: 1%;
+    font:normal normal normal 19px/25px Poppins;
+    color:#26465399;
+    width: 146px;
+    background-color: transparent;
+
+}
+.orangeborder
+{
+    color:#E76F51;
+    border-bottom: 3px solid #E76F51;
+    
+}
+.noborder
+{
+    border-bottom: none;
+}
+.outer-border
+{
+    border-bottom: 1px solid #E76F51;
+}
+.container1
+{
+    box-shadow: none;
+    box-sizing: content-box;
+    padding-bottom: 0%;
+    text-align: center;
+    width: 25%;
+    display: inline-flex;
+    border-bottom: 1px solid #E4BF68;
+    padding-bottom: 0%;
+    padding-right: 0%;
+    padding-left: 0%;
+    background-color: transparent;
+    
+}
+.container12{
+    box-shadow: none;
+    box-sizing: content-box;
+    padding-bottom: 0%;
+    text-align: center;
+    width: 25%;
+    display: inline-flex;
+    border-bottom: 1px solid #E4BF68;
+    padding-bottom: 0%;
+    padding-right: 0%;
+    padding-left: 0%;
+    width: 9%;
+
+}
+$my-fontFamily: normal normal normal 19px/25px Poppins;
+
+:export {
+    myFont: $my-fontFamily;
+  }

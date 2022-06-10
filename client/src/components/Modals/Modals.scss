@@ -1,0 +1,18 @@
+$my-fontFamily: normal normal normal 19px/25px Poppins;
+
+:export {
+    myFont: $my-fontFamily;
+  }
+
+  .btModal{
+    background: #264653;
+    font: normal normal normal 14px/25px Poppins;
+    color:#fff;
+    border-radius: 10px;
+    border: 2px solid #fff;
+    border:1px solid #264653; 
+    cursor:pointer;
+    width: 100%;
+    height: 100%;
+    margin-top: 10%;
+}
