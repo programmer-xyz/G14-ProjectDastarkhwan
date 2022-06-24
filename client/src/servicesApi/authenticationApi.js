@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 const Url = "http://localhost:8080/api/v1";
+axios.defaults.withCredentials=true;
+
 
 export const createAccountUser =  async (name,username,email,phoneNumber,password,cnic,city,country,streetNumber,houseNumber,Description) =>
 {
@@ -98,7 +100,11 @@ export const userLogin = async (email,password) =>
         "email":email, 
         "password":password
     }
-    return await axios.post(`${Url}/user/login`,obj);
+    return await axios.post(`${Url}/user/login`,obj,{headers:{
+        "Content-Type":"application/json"
+    },
+    withCredentials: true
+});
 }
 export const ngoLogin = async (email,password) =>
 {

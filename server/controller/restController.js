@@ -33,7 +33,7 @@ export const restLogin =  handleAsyncErr(async (req,res, next) =>{
     //boolCheck = user.password == password ? true : false; //add bcrypt here
 
     if(boolCheck){
-        tokenMaker(user, 201, res);
+        return tokenMaker(user, 'Rest',res);
         // res.status(200).json({
         //     success: true,
         //     message: "user logged in",

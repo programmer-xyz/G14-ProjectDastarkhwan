@@ -6,7 +6,7 @@ import {isAuthenticatedUser} from "../middleware/auth";
 const router = Router();
 const upload = multer();
 
-router.route("/login").post(ngoLogin);
+
 // router.route("/ngoRegister").post(ngoRegister);
 router.post("/register",upload.single("verifyDoc"),ngoRegister);
 router.route("/changePass").post(changePassNgo);

@@ -41,12 +41,12 @@ export const adminLogin = handleAsyncErr(async (req,res, next) =>{
         //boolCheck = user.password == password ? true : false; //add bcrypt here
     
         if(boolCheck){
-            //tokenMaker(user, 201, res);
-            res.status(200).json({
-                success: true,
-                message: "user logged in",
-                user
-              });
+            return tokenMaker(user, 'Admin',res);
+            // res.status(200).json({
+            //     success: true,
+            //     message: "user logged in",
+            //     user
+            //   });
         }
         else{
             return next(new HandErr("Password entered wrong", 401));
@@ -170,12 +170,11 @@ export const startApp = handleAsyncErr(async(req, res, next) =>
 
 export const logOut = handleAsyncErr(async(req, res, next) =>
 {
-    res.cookie("token", null, {
-        expires: new Date(Date.now()),
-        httpOnly: true,
-      });
     
-      res.status(200).json({
+   res
+   .clearCookie("token")
+   .status(200)
+   .json({
         success: true,
         message: "Logged Out",
       });     

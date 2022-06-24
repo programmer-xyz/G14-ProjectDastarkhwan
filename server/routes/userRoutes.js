@@ -6,7 +6,7 @@ const router = Router();
 import multer from "multer";
 const upload = multer();
 
-router.route("/login").post( userLogin );
+
 router.route("/register").post( userRegister);
 router.route("/forgetPassV").post(forgetPassCheckUser);
 router.route("/forgetPassU").post(forgetPassUpdateUser);
