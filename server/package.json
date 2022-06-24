@@ -4,7 +4,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node -r esm server.js",
+    "start": "nodemon -r esm server.js",
     "dev": "set NODE_ENV=development && nodemon -r esm server.js",
     "prod": "set NODE_ENV=production && node -r esm server.js"
   },
@@ -27,6 +27,7 @@
     "node-cron": "^3.0.0",
     "nodemailer": "^6.7.2",
     "nodemon": "^2.0.15",
+    "uuid": "^8.3.2",
     "validator": "^13.7.0"
   },
   "devDependencies": {
