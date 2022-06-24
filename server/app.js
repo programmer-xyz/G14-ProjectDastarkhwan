@@ -1,11 +1,7 @@
 import express from "express";
 import bodyParser from 'body-parser';
-import admin from "./routes/adminRoutes";
 import midErr from "./middleware/basicErr";
-import ngo from "./routes/ngoRoutes";
-import rest from "./routes/restRoutes";
-import user from "./routes/userRoutes";
-import auth from "./routes/authRoutes"
+import central from "./routes/centralRoutes";
 import cookieParser from "cookie-parser";
 import cors from 'cors'
 
@@ -24,15 +20,21 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(form.array());
 // app.use(express.static('public'))
 app.use(cookieParser());
-app.use(cors());
+app.use(cors(
+    {
+        credentials:true,
+        origin:"http://localhost:3000",
+    }
+));
 
 //admin
 
-app.use("/api/v1/admin", admin);
-app.use("/api/v1/ngo", ngo);
-app.use("/api/v1/user", user);
-app.use("/api/v1/rest", rest);
-app.use("/api/v1/auth", auth);
+// app.use("/api/v1/admin", admin);
+// app.use("/api/v1/ngo", ngo);
+// app.use("/api/v1/user", user);
+// app.use("/api/v1/rest", rest);
+// app.use("/api/v1/", auth);
+app.use("/api/v1",central)
 ///middleware err this must always be at the end 
 app.use(midErr);
 

@@ -7,7 +7,6 @@ import HandErr from "../utils/err.js";
 import {tokenMaker} from "../utils/tokenManager"
 import mongoose from "mongoose";
 
-
 //login 
 export const userLogin =  handleAsyncErr(async (req,res, next) =>{
     const {email, password} = req.body;
@@ -33,12 +32,13 @@ export const userLogin =  handleAsyncErr(async (req,res, next) =>{
     //boolCheck = user.password == password ? true : false; //add bcrypt here
 
     if(boolCheck){
-        //tokenMaker(user, 201, res);
-        res.status(200).json({
-            success: true,
-            message: "user logged in",
-            user
-          });
+        tokenMaker(user, 'User', res);
+        
+        // res.status(200).json({
+        //     success: true,
+        //     message: "user logged in",
+        //     user
+        //   });
     }
     else
     {

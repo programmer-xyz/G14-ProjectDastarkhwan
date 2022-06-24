@@ -8,50 +8,25 @@ import ngo from "../models/ngoSchema.mjs";
 import Admin from "../models/adminSchema.mjs";
 import User from "../models/userSchema.mjs";
 
-export const isAuthenticatedUser = handleAsyncErr(async (req, res, next) => {
+export const isAuthenticatedUser  = handleAsyncErr(async (req, res, next) => {
   //const role = req.role;
 
   const { token } = req.cookies;
-
+  console.log(req.cookies);
+  console.log(token)
   if (!token) {
-    res.status(201).json({
+    return res.status(401).json({
       success: false,
-      message: "user not logged in",
+      message: "You have to login to access this feature",
       login:false
       //user: user1,
       //role:role
   
     });
-    return;
-  
-    //return next(new HandErr("Please Login to access this resource", 401));
   }
- 
   const decodedData = jwt.verify(token, config.JWT_SECRET);
-  
-  // let user1 = null;
-  // if(role == "user"){
-  //   user1 = await User.findById(decodedData.id);
-
-  // }
-  // else if(role == "rest"){
-  //  user1 = await restaurant.findById(decodedData.id);
-  // }
-  // else if(role == "ngo"){
-  //   user1 = await ngo.findById(decodedData.id);
-  // }
-  // else if(role == "admin"){
-  //   user1 = await Admin.findById(decodedData.id);
-  // }
-  
-  res.status(200).json({
-    success: true,
-    message: "user logged in",
-    login:true,
-    // user: user1,
-    // role:role
-  });
-
- // next();
+  res.role = decodedData.role;
+  console.log(decodedData);
+  next();
 });
 
